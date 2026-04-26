@@ -6,7 +6,7 @@
     <title>Området — Domek</title>
     <meta
       name="description"
-      content="Området runt Domek — matbutiker, löprundor, lokala favoriter, transport och praktisk vardag i Örnsköldsvik."
+      content="Området runt Domek — interaktiv karta över matbutiker, restauranger, löprundor, sängklädesbutiker, tåg och lokala favoriter i Örnsköldsvik."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,6 +17,20 @@
     />
 
     <link rel="stylesheet" href="src/output.css" />
+
+    <!-- Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
 
     <link
       rel="icon"
@@ -32,6 +46,98 @@
         html {
           scroll-behavior: auto;
         }
+      }
+
+      /* Domek anchor pin (terra, pulsing) */
+      .domek-pin {
+        position: relative;
+        width: 18px;
+        height: 18px;
+      }
+      .domek-pin::before {
+        content: "";
+        position: absolute;
+        inset: -10px;
+        border-radius: 9999px;
+        background: rgba(201, 82, 47, 0.22);
+        animation: domek-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+      }
+      .domek-pin::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 9999px;
+        background: #c9522f;
+        border: 3px solid #fff;
+        box-shadow: 0 2px 8px rgba(34, 30, 21, 0.3);
+      }
+      @keyframes domek-ping {
+        75%,
+        100% {
+          transform: scale(2);
+          opacity: 0;
+        }
+      }
+
+      /* Numbered place pin — bg sätts inline per kategori */
+      .place-pin {
+        width: 28px;
+        height: 28px;
+        border: 2.5px solid #fff;
+        border-radius: 50%;
+        color: #fff;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 12px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(34, 30, 21, 0.35);
+        letter-spacing: -0.02em;
+      }
+
+      /* Domek floating label */
+      .pin-label {
+        position: absolute;
+        bottom: calc(100% + 14px);
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #221e15;
+        background: rgba(251, 247, 240, 0.95);
+        padding: 3px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+        box-shadow: 0 2px 6px rgba(34, 30, 21, 0.18);
+        pointer-events: none;
+      }
+      .pin-label::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 4px solid transparent;
+        border-top-color: rgba(251, 247, 240, 0.95);
+      }
+
+      /* Hide scrollbar on toggle bar (still scrollable) */
+      .cat-bar::-webkit-scrollbar {
+        display: none;
+      }
+      .cat-bar {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+
+      .leaflet-control-attribution {
+        font-size: 10px !important;
+        background: rgba(251, 247, 240, 0.85) !important;
+        padding: 2px 6px !important;
       }
     </style>
   </head>
@@ -132,7 +238,7 @@
     <main id="main">
       <!-- ============== HERO ============== -->
       <section
-        class="reveal max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-8 lg:pt-20 lg:pb-12"
+        class="reveal max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-6 lg:pt-20 lg:pb-8"
       >
         <p
           class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-4 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
@@ -163,1064 +269,150 @@
           class="font-display font-light text-[18px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0"
           style="font-variation-settings: &quot;opsz&quot; 24"
         >
-          Det dagliga, det praktiska — och en handfull lokala favoriter som inte
-          syns på en standardkarta.
+          Välj en kategori — kartan filtreras och listan uppdateras. Klicka en
+          plats för att få vägbeskrivning från
+          <span translate="no">Domek</span>.
         </p>
       </section>
 
-      <!-- ============== MAT & VARDAG ============== -->
-      <section
-        class="reveal max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
-      >
-        <p
-          class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-4 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
-        >
-          Mat &amp; vardag
-        </p>
-        <h2
-          class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.05] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
-          style="
-            font-variation-settings:
-              &quot;opsz&quot; 96,
-              &quot;SOFT&quot; 30;
-          "
-        >
-          Var du
-          <em
-            class="wonk text-terra-600 font-normal"
-            style="
-              font-variation-settings:
-                &quot;opsz&quot; 96,
-                &quot;WONK&quot; 1,
-                &quot;SOFT&quot; 30;
-            "
-            >handlar</em
-          >.
-        </h2>
-        <p
-          class="font-display font-light text-[16px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0 mb-10"
-          style="font-variation-settings: &quot;opsz&quot; 18"
-        >
-          Willys ligger närmast — 8 minuter att gå. För större inköp eller om du
-          vill jämföra finns flera alternativ inom 5 minuters bilväg.
-        </p>
-
-        <!-- Featured: Willys -->
-        <a
-          href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Willys+Centralesplanaden+14+%C3%96rnsk%C3%B6ldsvik"
-          target="_blank"
-          rel="noopener"
-          class="block bg-blaeck-800 text-linne-100 rounded-md p-6 sm:p-8 mb-6 no-underline transition-colors hover:bg-blaeck-900 group"
-        >
-          <div class="flex items-baseline justify-between gap-4 mb-2 flex-wrap">
-            <div class="flex items-baseline gap-3">
-              <h3
-                class="font-display font-light text-[clamp(24px,3vw,32px)] leading-tight text-linne-50 m-0"
-                style="
-                  font-variation-settings:
-                    &quot;opsz&quot; 72,
-                    &quot;SOFT&quot; 30;
-                "
-              >
-                Willys
-              </h3>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-300 bg-terra-700/30 px-2 py-0.5 rounded-pill border border-terra-700/40"
-                >Närmast</span
-              >
-            </div>
-            <span
-              class="font-mono text-[11px] uppercase tracking-[0.1em] text-terra-300"
-            >
-              650 m · 8 min gång
-            </span>
-          </div>
-          <p
-            class="font-mono text-[11px] uppercase tracking-[0.1em] text-linne-400 m-0 mb-1"
-          >
-            Centralesplanaden 14
-          </p>
-          <p
-            class="font-display text-[15px] leading-[1.55] text-linne-200 m-0 mt-3"
-            style="font-variation-settings: &quot;opsz&quot; 18"
-          >
-            Öppet 07–22 alla dagar. Pantmaskin innanför ingången.
-            <span
-              class="text-terra-300 group-hover:text-terra-200 inline-flex items-center gap-1 ml-1"
-              >Vägbeskrivning <span aria-hidden="true">→</span></span
-            >
-          </p>
-        </a>
-
-        <!-- Övriga matbutiker -->
+      <!-- ============== INTERAKTIV KARTA ============== -->
+      <section class="reveal">
         <div
-          class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 mb-10"
+          class="relative h-[60vh] min-h-[480px] sm:h-[70vh] lg:h-[78vh] overflow-hidden bg-linne-100"
         >
-          <article
-            class="bg-white border border-linne-200 rounded-md p-5 shadow-paper-1"
-          >
-            <div class="flex items-baseline justify-between gap-3 mb-1">
-              <h3
-                class="font-display font-medium text-[20px] leading-tight text-blaeck-900 m-0"
-                style="font-variation-settings: &quot;opsz&quot; 36"
-              >
-                Coop Konsum
-              </h3>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-terra-600"
-                >1,2 km</span
-              >
-            </div>
-            <p
-              class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 m-0 mb-2"
-            >
-              Hörneborgsvägen 3
-            </p>
-            <p class="text-[14px] leading-[1.5] text-blaeck-600 m-0 mb-3">
-              15 min gång · 4 min bil · Öppet 08–21. Apotek på samma adress.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Coop+Konsum+H%C3%B6rneborgsv%C3%A4gen+3+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block"
-              >Vägbeskrivning →</a
-            >
-          </article>
+          <div id="omradet-map" class="absolute inset-0 z-0"></div>
 
-          <article
-            class="bg-white border border-linne-200 rounded-md p-5 shadow-paper-1"
-          >
-            <div class="flex items-baseline justify-between gap-3 mb-1">
-              <h3
-                class="font-display font-medium text-[20px] leading-tight text-blaeck-900 m-0"
-                style="font-variation-settings: &quot;opsz&quot; 36"
-              >
-                ICA Nära Strand
-              </h3>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-terra-600"
-                >2,1 km</span
-              >
-            </div>
-            <p
-              class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 m-0 mb-2"
-            >
-              Strandgatan 9
-            </p>
-            <p class="text-[14px] leading-[1.5] text-blaeck-600 m-0 mb-3">
-              25 min gång · 5 min bil · Öppet 08–22.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=ICA+N%C3%A4ra+Strandgatan+9+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block"
-              >Vägbeskrivning →</a
-            >
-          </article>
-
-          <article
-            class="bg-white border border-linne-200 rounded-md p-5 shadow-paper-1"
-          >
-            <div class="flex items-baseline justify-between gap-3 mb-1">
-              <h3
-                class="font-display font-medium text-[20px] leading-tight text-blaeck-900 m-0"
-                style="font-variation-settings: &quot;opsz&quot; 36"
-              >
-                Lidl
-              </h3>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-terra-600"
-                >2,8 km</span
-              >
-            </div>
-            <p
-              class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 m-0 mb-2"
-            >
-              Sjögatan 22
-            </p>
-            <p class="text-[14px] leading-[1.5] text-blaeck-600 m-0 mb-3">
-              6 min bil · Öppet 08–21. Bra för bulk och basvaror.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Lidl+Sj%C3%B6gatan+22+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block"
-              >Vägbeskrivning →</a
-            >
-          </article>
-
-          <article
-            class="bg-white border border-linne-200 rounded-md p-5 shadow-paper-1"
-          >
-            <div class="flex items-baseline justify-between gap-3 mb-1">
-              <h3
-                class="font-display font-medium text-[20px] leading-tight text-blaeck-900 m-0"
-                style="font-variation-settings: &quot;opsz&quot; 36"
-              >
-                ICA Maxi
-              </h3>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-terra-600"
-                >4,5 km</span
-              >
-            </div>
-            <p
-              class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 m-0 mb-2"
-            >
-              Köpmangatan 1, Domsjö
-            </p>
-            <p class="text-[14px] leading-[1.5] text-blaeck-600 m-0 mb-3">
-              9 min bil · Öppet 07–23. Störst utbud.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=ICA+Maxi+K%C3%B6pmangatan+1+Domsj%C3%B6"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block"
-              >Vägbeskrivning →</a
-            >
-          </article>
-        </div>
-
-        <!-- Övrig vardag — apotek, återvinning, sängkit -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <!-- Kategorifilter (toggles) — vertikal stack längs vänster -->
           <div
-            class="bg-linne-100 border border-linne-200 rounded-md p-5 flex flex-col"
+            class="cat-bar absolute top-3 left-3 z-30 max-h-[calc(100%-1.5rem)] overflow-y-auto"
           >
-            <p
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 font-semibold m-0 mb-2"
+            <div
+              class="flex flex-col items-start gap-1.5"
+              role="tablist"
+              aria-label="Filtrera platser efter kategori"
             >
-              Apotek
-            </p>
-            <p class="text-[14px] leading-[1.5] text-blaeck-700 m-0">
-              Vid stora Coop på Hörneborgsvägen 3 — samma promenad som matbutiken.
-            </p>
+              <button
+                type="button"
+                data-cat="stores"
+                class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-white/40 text-blaeck-800 bg-linne-50/40 backdrop-blur-md backdrop-saturate-150 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/65 hover:border-white/60 shadow-sm whitespace-nowrap"
+                aria-pressed="false"
+              >
+                Mat
+              </button>
+              <button
+                type="button"
+                data-cat="apotek"
+                class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-white/40 text-blaeck-800 bg-linne-50/40 backdrop-blur-md backdrop-saturate-150 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/65 hover:border-white/60 shadow-sm whitespace-nowrap"
+                aria-pressed="false"
+              >
+                Apotek
+              </button>
+              <button
+                type="button"
+                data-cat="waste"
+                class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-white/40 text-blaeck-800 bg-linne-50/40 backdrop-blur-md backdrop-saturate-150 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/65 hover:border-white/60 shadow-sm whitespace-nowrap"
+                aria-pressed="false"
+              >
+                Sopor
+              </button>
+              <button
+                type="button"
+                data-cat="bedding"
+                class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-white/40 text-blaeck-800 bg-linne-50/40 backdrop-blur-md backdrop-saturate-150 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/65 hover:border-white/60 shadow-sm whitespace-nowrap"
+                aria-pressed="false"
+              >
+                Sängkit
+              </button>
+              <button
+                type="button"
+                data-cat="restaurants"
+                class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-white/40 text-blaeck-800 bg-linne-50/40 backdrop-blur-md backdrop-saturate-150 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/65 hover:border-white/60 shadow-sm whitespace-nowrap"
+                aria-pressed="false"
+              >
+                Restauranger
+              </button>
+              <button
+                type="button"
+                data-cat="cafes"
+                class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-white/40 text-blaeck-800 bg-linne-50/40 backdrop-blur-md backdrop-saturate-150 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/65 hover:border-white/60 shadow-sm whitespace-nowrap"
+                aria-pressed="false"
+              >
+                Kaféer
+              </button>
+              <button
+                type="button"
+                data-cat="trails"
+                class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-white/40 text-blaeck-800 bg-linne-50/40 backdrop-blur-md backdrop-saturate-150 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/65 hover:border-white/60 shadow-sm whitespace-nowrap"
+                aria-pressed="false"
+              >
+                Vandring
+              </button>
+              <button
+                type="button"
+                data-cat="transit"
+                class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-white/40 text-blaeck-800 bg-linne-50/40 backdrop-blur-md backdrop-saturate-150 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/65 hover:border-white/60 shadow-sm whitespace-nowrap"
+                aria-pressed="false"
+              >
+                Kollektivtrafik
+              </button>
+              <button
+                type="button"
+                data-cat="gems"
+                class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-white/40 text-blaeck-800 bg-linne-50/40 backdrop-blur-md backdrop-saturate-150 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/65 hover:border-white/60 shadow-sm whitespace-nowrap"
+                aria-pressed="false"
+              >
+                Tips
+              </button>
+            </div>
           </div>
 
-          <div
-            class="bg-linne-100 border border-linne-200 rounded-md p-5 flex flex-col"
+          <!-- Lista (desktop overlay) -->
+          <aside
+            class="hidden lg:flex flex-col absolute bottom-4 right-4 top-[5.5rem] w-[400px] z-20 bg-linne-50/95 backdrop-blur-md backdrop-saturate-150 border border-linne-200 rounded-md shadow-paper-2 overflow-hidden"
           >
-            <p
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 font-semibold m-0 mb-2"
+            <div
+              class="px-5 pt-4 pb-3 border-b border-linne-200 flex items-baseline justify-between gap-2"
             >
-              Återvinning
-            </p>
-            <p class="text-[14px] leading-[1.5] text-blaeck-700 m-0 mb-3">
-              Förpackningar &amp; tidningar — 300 m bort på Strandgatan.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=63.30951,18.75163"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 self-start mt-auto"
-              >Hitta dit →</a
+              <h2
+                data-cat-title
+                class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 36"
+              >
+                Mat
+              </h2>
+              <span
+                data-cat-count
+                class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400"
+                >0</span
+              >
+            </div>
+            <ol
+              data-list
+              class="overflow-y-auto p-2 m-0 list-none flex flex-col gap-1"
+            ></ol>
+          </aside>
+        </div>
+
+        <!-- Lista (mobil — under kartan) -->
+        <div class="lg:hidden max-w-[1280px] mx-auto px-6 sm:px-8 mt-5">
+          <div class="flex items-baseline justify-between gap-2 mb-3">
+            <h2
+              data-cat-title
+              class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 36"
+            >
+              Mat
+            </h2>
+            <span
+              data-cat-count
+              class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400"
+              >0</span
             >
           </div>
-
-          <div
-            class="bg-linne-100 border border-linne-200 rounded-md p-5 flex flex-col"
-          >
-            <p
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 font-semibold m-0 mb-2"
-            >
-              Glömt sängkläder?
-            </p>
-            <p class="text-[14px] leading-[1.5] text-blaeck-700 m-0">
-              Jysk, Mio och Hemtex i centrum — ~10 min med bil. Mer info
-              <a href="index.html#main" class="text-terra-700 underline decoration-terra-300 hover:decoration-terra-600 underline-offset-2">på startsidan</a>.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============== AKTIVITETER ============== -->
-      <section
-        class="reveal max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
-      >
-        <p
-          class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-4 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
-        >
-          Aktiviteter
-        </p>
-        <h2
-          class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.05] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
-          style="
-            font-variation-settings:
-              &quot;opsz&quot; 96,
-              &quot;SOFT&quot; 30;
-          "
-        >
-          Löprundor &amp;
-          <em
-            class="wonk text-skog-700 font-normal"
-            style="
-              font-variation-settings:
-                &quot;opsz&quot; 96,
-                &quot;WONK&quot; 1,
-                &quot;SOFT&quot; 30;
-            "
-            >friluft</em
-          >.
-        </h2>
-        <p
-          class="font-display font-light text-[16px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0 mb-10"
-          style="font-variation-settings: &quot;opsz&quot; 18"
-        >
-          Örnsköldsvik är en utomhusstad. Allt från platta promenadslingor till
-          branta utsiktsleder finns inom 10 minuters bilväg.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <article
-            class="bg-white border border-linne-200 rounded-md p-5 shadow-paper-1 flex flex-col"
-          >
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <h3
-                class="font-display font-medium text-[20px] leading-tight text-blaeck-900 m-0"
-                style="font-variation-settings: &quot;opsz&quot; 36"
-              >
-                Höglandsjön Runt
-              </h3>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-skog-700 bg-skog-100 px-2 py-0.5 rounded-pill whitespace-nowrap"
-                >Lätt</span
-              >
-            </div>
-            <dl
-              class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-[13px] m-0 mb-3"
-            >
-              <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 mt-0.5">
-                Slinga
-              </dt>
-              <dd class="m-0 text-blaeck-700">6 km runt sjön</dd>
-              <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 mt-0.5">
-                Start
-              </dt>
-              <dd class="m-0 text-blaeck-700">Hägglundsområdet · 1,5 km bort</dd>
-            </dl>
-            <p class="text-[13px] leading-[1.5] text-blaeck-600 m-0 mb-3">
-              Platt grus/asfalt, barnvagnsvänligt. Bra första runda.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=H%C3%B6glandssj%C3%B6n+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block self-start mt-auto"
-              >Hitta dit →</a
-            >
-          </article>
-
-          <article
-            class="bg-white border border-linne-200 rounded-md p-5 shadow-paper-1 flex flex-col"
-          >
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <h3
-                class="font-display font-medium text-[20px] leading-tight text-blaeck-900 m-0"
-                style="font-variation-settings: &quot;opsz&quot; 36"
-              >
-                Gullängets elljusspår
-              </h3>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-senap-700 bg-senap-100 px-2 py-0.5 rounded-pill whitespace-nowrap"
-                >Medel</span
-              >
-            </div>
-            <dl
-              class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-[13px] m-0 mb-3"
-            >
-              <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 mt-0.5">
-                Slinga
-              </dt>
-              <dd class="m-0 text-blaeck-700">2,5 km</dd>
-              <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 mt-0.5">
-                Start
-              </dt>
-              <dd class="m-0 text-blaeck-700">Älgvägen · 2,5 km bort</dd>
-            </dl>
-            <p class="text-[13px] leading-[1.5] text-blaeck-600 m-0 mb-3">
-              Klassiskt skogsspår med belysning kvällstid. Bra året runt.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Gull%C3%A4ngets+elljussp%C3%A5r+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block self-start mt-auto"
-              >Hitta dit →</a
-            >
-          </article>
-
-          <article
-            class="bg-white border border-linne-200 rounded-md p-5 shadow-paper-1 flex flex-col"
-          >
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <h3
-                class="font-display font-medium text-[20px] leading-tight text-blaeck-900 m-0"
-                style="font-variation-settings: &quot;opsz&quot; 36"
-              >
-                Gula Leden
-              </h3>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-terra-700 bg-terra-100 px-2 py-0.5 rounded-pill whitespace-nowrap"
-                >Utmanande</span
-              >
-            </div>
-            <dl
-              class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-[13px] m-0 mb-3"
-            >
-              <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 mt-0.5">
-                Slinga
-              </dt>
-              <dd class="m-0 text-blaeck-700">6 km — Åsberget</dd>
-              <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 mt-0.5">
-                Start
-              </dt>
-              <dd class="m-0 text-blaeck-700">Brödrabacken · 3 km bort</dd>
-            </dl>
-            <p class="text-[13px] leading-[1.5] text-blaeck-600 m-0 mb-3">
-              Brant, riktiga stigar — men utsikten över hela Övik är värt det.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Gula+Leden+%C3%85sberget+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block self-start mt-auto"
-              >Hitta dit →</a
-            >
-          </article>
-
-          <article
-            class="bg-white border border-linne-200 rounded-md p-5 shadow-paper-1 flex flex-col"
-          >
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <h3
-                class="font-display font-medium text-[20px] leading-tight text-blaeck-900 m-0"
-                style="font-variation-settings: &quot;opsz&quot; 36"
-              >
-                Skyttis
-              </h3>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-senap-700 bg-senap-100 px-2 py-0.5 rounded-pill whitespace-nowrap"
-                >Lätt — medel</span
-              >
-            </div>
-            <dl
-              class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-[13px] m-0 mb-3"
-            >
-              <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 mt-0.5">
-                Slingor
-              </dt>
-              <dd class="m-0 text-blaeck-700">1–13 km, du väljer</dd>
-              <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 mt-0.5">
-                Start
-              </dt>
-              <dd class="m-0 text-blaeck-700">Valhallavägen · 4 km bort</dd>
-            </dl>
-            <p class="text-[13px] leading-[1.5] text-blaeck-600 m-0 mb-3">
-              Friluftsområde med breda skogsspår, kuperat. Mycket att utforska.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Skyttis+Friluftsomr%C3%A5de+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block self-start mt-auto"
-              >Hitta dit →</a
-            >
-          </article>
-
-          <article
-            class="bg-white border border-linne-200 rounded-md p-5 shadow-paper-1 flex flex-col"
-          >
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <h3
-                class="font-display font-medium text-[20px] leading-tight text-blaeck-900 m-0"
-                style="font-variation-settings: &quot;opsz&quot; 36"
-              >
-                Hälsans Stig
-              </h3>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-skog-700 bg-skog-100 px-2 py-0.5 rounded-pill whitespace-nowrap"
-                >Lätt</span
-              >
-            </div>
-            <dl
-              class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-[13px] m-0 mb-3"
-            >
-              <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 mt-0.5">
-                Slinga
-              </dt>
-              <dd class="m-0 text-blaeck-700">4 km</dd>
-              <dt class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 mt-0.5">
-                Start
-              </dt>
-              <dd class="m-0 text-blaeck-700">Hamnen · 3,5 km bort</dd>
-            </dl>
-            <p class="text-[13px] leading-[1.5] text-blaeck-600 m-0 mb-3">
-              Helt platt asfalt genom centrum och längs hamnen. Perfekt på
-              kvällen.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=H%C3%A4lsans+Stig+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block self-start mt-auto"
-              >Hitta dit →</a
-            >
-          </article>
-        </div>
-      </section>
-
-      <!-- ============== HIDDEN GEMS ============== -->
-      <section
-        class="reveal max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
-      >
-        <p
-          class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-4 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
-        >
-          Hidden gems
-        </p>
-        <h2
-          class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.05] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
-          style="
-            font-variation-settings:
-              &quot;opsz&quot; 96,
-              &quot;SOFT&quot; 30;
-          "
-        >
-          Lokala
-          <em
-            class="wonk text-terra-600 font-normal"
-            style="
-              font-variation-settings:
-                &quot;opsz&quot; 96,
-                &quot;WONK&quot; 1,
-                &quot;SOFT&quot; 30;
-            "
-            >favoriter</em
-          >.
-        </h2>
-        <p
-          class="font-display font-light text-[16px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0 mb-10"
-          style="font-variation-settings: &quot;opsz&quot; 18"
-        >
-          Kuraterat urval — det som krävs lokal kännedom för att hitta. Hugos
-          rekommendationer.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <article
-            class="relative isolate overflow-hidden bg-terra-50 border border-terra-200 rounded-md p-6 sm:p-7 before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-[image:var(--tex-bukett)] before:bg-[length:240px] before:opacity-[0.06] before:pointer-events-none"
-          >
-            <div class="flex items-baseline justify-between gap-3 mb-2 flex-wrap">
-              <p
-                class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 m-0"
-              >
-                Café · Björnavägen 45
-              </p>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-terra-700"
-                >★ 5,0 · 5 min bil</span
-              >
-            </div>
-            <h3
-              class="font-display font-light text-[clamp(24px,3vw,30px)] leading-tight text-blaeck-900 m-0 mb-2"
-              style="
-                font-variation-settings:
-                  &quot;opsz&quot; 72,
-                  &quot;SOFT&quot; 30;
-              "
-            >
-              Cafe
-              <em
-                class="wonk text-terra-700 font-normal"
-                style="
-                  font-variation-settings:
-                    &quot;opsz&quot; 72,
-                    &quot;WONK&quot; 1,
-                    &quot;SOFT&quot; 30;
-                "
-                >45</em
-              >
-            </h3>
-            <p
-              class="font-display text-[15px] leading-[1.55] text-blaeck-700 m-0 mb-4"
-              style="font-variation-settings: &quot;opsz&quot; 18"
-            >
-              Det högst betygsatta caféet i området, drivs lokalt. Få
-              recensioner men de som finns är samstämmiga.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Cafe+45+Bj%C3%B6rnav%C3%A4gen+45+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-800 no-underline border-b border-terra-400 hover:text-terra-900 hover:border-terra-700 inline-block"
-              >Vägbeskrivning →</a
-            >
-          </article>
-
-          <article
-            class="relative isolate overflow-hidden bg-terra-50 border border-terra-200 rounded-md p-6 sm:p-7 before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-[image:var(--tex-solros)] before:bg-[length:160px] before:opacity-[0.05] before:pointer-events-none"
-          >
-            <div class="flex items-baseline justify-between gap-3 mb-2 flex-wrap">
-              <p
-                class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 m-0"
-              >
-                Lunch · Svartbyvägen 5
-              </p>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-terra-700"
-                >★ 4,9 · 5 min gång</span
-              >
-            </div>
-            <h3
-              class="font-display font-light text-[clamp(24px,3vw,30px)] leading-tight text-blaeck-900 m-0 mb-2"
-              style="
-                font-variation-settings:
-                  &quot;opsz&quot; 72,
-                  &quot;SOFT&quot; 30;
-              "
-              translate="no"
-            >
-              Matlådan<em
-                class="wonk text-terra-700 font-normal"
-                style="
-                  font-variation-settings:
-                    &quot;opsz&quot; 72,
-                    &quot;WONK&quot; 1,
-                    &quot;SOFT&quot; 30;
-                "
-                >.eu</em
-              >
-            </h3>
-            <p
-              class="font-display text-[15px] leading-[1.55] text-blaeck-700 m-0 mb-4"
-              style="font-variation-settings: &quot;opsz&quot; 18"
-            >
-              400 m från huset — billigt, bra mat, lokalt drivet. Många blir
-              stamgäster första veckan.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Matl%C3%A5dan+Svartbyv%C3%A4gen+5+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-800 no-underline border-b border-terra-400 hover:text-terra-900 hover:border-terra-700 inline-block"
-              >Vägbeskrivning →</a
-            >
-          </article>
-
-          <article
-            class="relative isolate overflow-hidden bg-skog-50 border border-skog-200 rounded-md p-6 sm:p-7 before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-[image:var(--tex-klover)] before:bg-[length:80px] before:opacity-[0.06] before:pointer-events-none"
-          >
-            <div class="flex items-baseline justify-between gap-3 mb-2 flex-wrap">
-              <p
-                class="font-mono text-[10px] uppercase tracking-[0.12em] text-skog-700 m-0"
-              >
-                Vandring · Åsberget
-              </p>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-skog-700"
-                >Brant · 6 km</span
-              >
-            </div>
-            <h3
-              class="font-display font-light text-[clamp(24px,3vw,30px)] leading-tight text-blaeck-900 m-0 mb-2"
-              style="
-                font-variation-settings:
-                  &quot;opsz&quot; 72,
-                  &quot;SOFT&quot; 30;
-              "
-            >
-              Utsikten från
-              <em
-                class="wonk text-skog-700 font-normal"
-                style="
-                  font-variation-settings:
-                    &quot;opsz&quot; 72,
-                    &quot;WONK&quot; 1,
-                    &quot;SOFT&quot; 30;
-                "
-                >Åsberget</em
-              >
-            </h3>
-            <p
-              class="font-display text-[15px] leading-[1.55] text-blaeck-700 m-0 mb-4"
-              style="font-variation-settings: &quot;opsz&quot; 18"
-            >
-              Gula Leden tar dig till toppen — branta partier men hela
-              Örnsköldsvik öppnar sig. Bäst på lediga helger.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=%C3%85sberget+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-skog-800 no-underline border-b border-skog-300 hover:text-skog-900 hover:border-skog-600 inline-block"
-              >Hitta dit →</a
-            >
-          </article>
-
-          <article
-            class="relative isolate overflow-hidden bg-skog-50 border border-skog-200 rounded-md p-6 sm:p-7 before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-[image:var(--tex-sol)] before:bg-[length:200px] before:opacity-[0.05] before:pointer-events-none"
-          >
-            <div class="flex items-baseline justify-between gap-3 mb-2 flex-wrap">
-              <p
-                class="font-mono text-[10px] uppercase tracking-[0.12em] text-skog-700 m-0"
-              >
-                Promenad · Hamnen
-              </p>
-              <span
-                class="font-mono text-[10px] uppercase tracking-[0.1em] text-skog-700"
-                >Helt platt · 4 km</span
-              >
-            </div>
-            <h3
-              class="font-display font-light text-[clamp(24px,3vw,30px)] leading-tight text-blaeck-900 m-0 mb-2"
-              style="
-                font-variation-settings:
-                  &quot;opsz&quot; 72,
-                  &quot;SOFT&quot; 30;
-              "
-            >
-              Hälsans
-              <em
-                class="wonk text-skog-700 font-normal"
-                style="
-                  font-variation-settings:
-                    &quot;opsz&quot; 72,
-                    &quot;WONK&quot; 1,
-                    &quot;SOFT&quot; 30;
-                "
-                >Stig</em
-              >
-            </h3>
-            <p
-              class="font-display text-[15px] leading-[1.55] text-blaeck-700 m-0 mb-4"
-              style="font-variation-settings: &quot;opsz&quot; 18"
-            >
-              Hela slingan på asfalt genom hamnen och centrum. Perfekt
-              kvällsrunda efter en lång arbetsdag — du behöver inga kängor.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=H%C3%A4lsans+Stig+%C3%96rnsk%C3%B6ldsvik"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-skog-800 no-underline border-b border-skog-300 hover:text-skog-900 hover:border-skog-600 inline-block"
-              >Hitta dit →</a
-            >
-          </article>
-        </div>
-      </section>
-
-      <!-- ============== MAT & FIKA ============== -->
-      <section
-        class="reveal max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
-      >
-        <p
-          class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-4 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
-        >
-          Mat &amp; fika
-        </p>
-        <h2
-          class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.05] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
-          style="
-            font-variation-settings:
-              &quot;opsz&quot; 96,
-              &quot;SOFT&quot; 30;
-          "
-        >
-          Äta
-          <em
-            class="wonk text-terra-600 font-normal"
-            style="
-              font-variation-settings:
-                &quot;opsz&quot; 96,
-                &quot;WONK&quot; 1,
-                &quot;SOFT&quot; 30;
-            "
-            >ute</em
-          >.
-        </h2>
-        <p
-          class="font-display font-light text-[16px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0 mb-10"
-          style="font-variation-settings: &quot;opsz&quot; 18"
-        >
-          När det blir middag — eller en paus på fika.
-        </p>
-
-        <ul class="list-none p-0 m-0 divide-y divide-linne-200">
-          <li class="grid grid-cols-[1fr_auto] sm:grid-cols-[1fr_auto_auto_auto] gap-x-4 gap-y-1 items-baseline py-4">
-            <div class="col-span-2 sm:col-span-1">
-              <h3 class="font-display font-medium text-[18px] text-blaeck-900 m-0 inline" style="font-variation-settings: &quot;opsz&quot; 36">
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Matl%C3%A5dan+Svartbyv%C3%A4gen+5+%C3%96rnsk%C3%B6ldsvik"
-                  target="_blank"
-                  rel="noopener"
-                  translate="no"
-                  class="text-blaeck-900 no-underline border-b border-transparent hover:border-terra-500 transition-colors"
-                  >Matlådan.eu</a
-                >
-              </h3>
-              <p class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-400 m-0">
-                Restaurang · Svartbyvägen 5
-              </p>
-            </div>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-700">★ 4,9</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500">$</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 max-sm:row-start-1 max-sm:col-start-2">5 min gång</span>
-          </li>
-
-          <li class="grid grid-cols-[1fr_auto] sm:grid-cols-[1fr_auto_auto_auto] gap-x-4 gap-y-1 items-baseline py-4">
-            <div class="col-span-2 sm:col-span-1">
-              <h3 class="font-display font-medium text-[18px] text-blaeck-900 m-0 inline" style="font-variation-settings: &quot;opsz&quot; 36">
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Cafe+45+Bj%C3%B6rnav%C3%A4gen+45+%C3%96rnsk%C3%B6ldsvik"
-                  target="_blank"
-                  rel="noopener"
-                  class="text-blaeck-900 no-underline border-b border-transparent hover:border-terra-500 transition-colors"
-                  >Cafe 45</a
-                >
-              </h3>
-              <p class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-400 m-0">
-                Café · Björnavägen 45
-              </p>
-            </div>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-700">★ 5,0</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500">$</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 max-sm:row-start-1 max-sm:col-start-2">5 min bil</span>
-          </li>
-
-          <li class="grid grid-cols-[1fr_auto] sm:grid-cols-[1fr_auto_auto_auto] gap-x-4 gap-y-1 items-baseline py-4">
-            <div class="col-span-2 sm:col-span-1">
-              <h3 class="font-display font-medium text-[18px] text-blaeck-900 m-0 inline" style="font-variation-settings: &quot;opsz&quot; 36">
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Smakfullt+Tegelbruksv%C3%A4gen+22+%C3%96rnsk%C3%B6ldsvik"
-                  target="_blank"
-                  rel="noopener"
-                  class="text-blaeck-900 no-underline border-b border-transparent hover:border-terra-500 transition-colors"
-                  >Smakfullt</a
-                >
-              </h3>
-              <p class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-400 m-0">
-                Restaurang · Tegelbruksvägen 22
-              </p>
-            </div>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-700">★ 4,4</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500">$$</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 max-sm:row-start-1 max-sm:col-start-2">3 min bil</span>
-          </li>
-
-          <li class="grid grid-cols-[1fr_auto] sm:grid-cols-[1fr_auto_auto_auto] gap-x-4 gap-y-1 items-baseline py-4">
-            <div class="col-span-2 sm:col-span-1">
-              <h3 class="font-display font-medium text-[18px] text-blaeck-900 m-0 inline" style="font-variation-settings: &quot;opsz&quot; 36">
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Fura+Restaurang+Centrumv%C3%A4gen+5A+%C3%96rnsk%C3%B6ldsvik"
-                  target="_blank"
-                  rel="noopener"
-                  class="text-blaeck-900 no-underline border-b border-transparent hover:border-terra-500 transition-colors"
-                  >Fura</a
-                >
-              </h3>
-              <p class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-400 m-0">
-                Restaurang · Centrumvägen 5A
-              </p>
-            </div>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-700">★ 4,3</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500">$$</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 max-sm:row-start-1 max-sm:col-start-2">5 min bil</span>
-          </li>
-
-          <li class="grid grid-cols-[1fr_auto] sm:grid-cols-[1fr_auto_auto_auto] gap-x-4 gap-y-1 items-baseline py-4">
-            <div class="col-span-2 sm:col-span-1">
-              <h3 class="font-display font-medium text-[18px] text-blaeck-900 m-0 inline" style="font-variation-settings: &quot;opsz&quot; 36">
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Restaurang+M%C3%A5let+Bj%C3%B6rnav%C3%A4gen+72+%C3%96rnsk%C3%B6ldsvik"
-                  target="_blank"
-                  rel="noopener"
-                  class="text-blaeck-900 no-underline border-b border-transparent hover:border-terra-500 transition-colors"
-                  >Restaurang Målet</a
-                >
-              </h3>
-              <p class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-400 m-0">
-                Restaurang · Björnavägen 72
-              </p>
-            </div>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-700">★ 4,0</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500">$$</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 max-sm:row-start-1 max-sm:col-start-2">5 min bil</span>
-          </li>
-
-          <li class="grid grid-cols-[1fr_auto] sm:grid-cols-[1fr_auto_auto_auto] gap-x-4 gap-y-1 items-baseline py-4">
-            <div class="col-span-2 sm:col-span-1">
-              <h3 class="font-display font-medium text-[18px] text-blaeck-900 m-0 inline" style="font-variation-settings: &quot;opsz&quot; 36">
-                <a
-                  href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Pizzeria+Ali+Baba+Centrumv%C3%A4gen+2+%C3%96rnsk%C3%B6ldsvik"
-                  target="_blank"
-                  rel="noopener"
-                  class="text-blaeck-900 no-underline border-b border-transparent hover:border-terra-500 transition-colors"
-                  >Pizzeria Ali Baba</a
-                >
-              </h3>
-              <p class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-400 m-0">
-                Pizza · Centrumvägen 2
-              </p>
-            </div>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-700">★ 3,9</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500">$</span>
-            <span class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 max-sm:row-start-1 max-sm:col-start-2">5 min bil</span>
-          </li>
-        </ul>
-      </section>
-
-      <!-- ============== RESOR & TRANSPORT ============== -->
-      <section
-        class="reveal max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
-      >
-        <p
-          class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-4 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
-        >
-          Resor &amp; transport
-        </p>
-        <h2
-          class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.05] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
-          style="
-            font-variation-settings:
-              &quot;opsz&quot; 96,
-              &quot;SOFT&quot; 30;
-          "
-        >
-          Ta dig
-          <em
-            class="wonk text-terra-600 font-normal"
-            style="
-              font-variation-settings:
-                &quot;opsz&quot; 96,
-                &quot;WONK&quot; 1,
-                &quot;SOFT&quot; 30;
-            "
-            >fram</em
-          >.
-        </h2>
-        <p
-          class="font-display font-light text-[16px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0 mb-10"
-          style="font-variation-settings: &quot;opsz&quot; 18"
-        >
-          Du behöver inte bil. Centrum nås på 10 minuter med buss, jobbet ligger
-          15 minuter bort till fots.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <!-- Till Sanco -->
-          <article
-            class="bg-white border border-linne-200 rounded-md p-6 shadow-paper-1"
-          >
-            <p
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 font-semibold m-0 mb-2"
-            >
-              Till jobbet
-            </p>
-            <h3
-              class="font-display font-light text-[22px] leading-tight text-blaeck-900 m-0 mb-3"
-              style="
-                font-variation-settings:
-                  &quot;opsz&quot; 48,
-                  &quot;SOFT&quot; 30;
-              "
-            >
-              <span translate="no">Sanco AB</span>
-            </h3>
-            <p class="text-[14px] leading-[1.55] text-blaeck-700 m-0 mb-4">
-              <span translate="no">Nibblingsvägen 5, Arnäsvall</span> — 1,2 km
-              österut. <strong>12–15 min till fots</strong>, 4 min cykel, 2 min
-              bil.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=Sanco+Nibblingsv%C3%A4gen+5+Arn%C3%A4svall&amp;travelmode=walking"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block"
-              >Gångväg →</a
-            >
-          </article>
-
-          <!-- Buss -->
-          <article
-            class="bg-white border border-linne-200 rounded-md p-6 shadow-paper-1"
-          >
-            <p
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 font-semibold m-0 mb-2"
-            >
-              Buss
-            </p>
-            <h3
-              class="font-display font-light text-[22px] leading-tight text-blaeck-900 m-0 mb-3"
-              style="
-                font-variation-settings:
-                  &quot;opsz&quot; 48,
-                  &quot;SOFT&quot; 30;
-              "
-            >
-              <span translate="no">Din Tur</span>
-            </h3>
-            <p class="text-[14px] leading-[1.55] text-blaeck-700 m-0 mb-4">
-              Hållplatserna <em>Svartbyvägen</em> och
-              <em>Örtagårdsvägen</em> ligger 300–500 m från huset. 10–15 min in
-              till centrum.
-            </p>
-            <p class="text-[13px] leading-[1.5] text-blaeck-500 m-0 mb-4">
-              Ladda ner appen <span translate="no">Din Tur</span> — finns på
-              engelska, GPS-tider, digitala biljetter.
-            </p>
-            <div class="flex flex-wrap gap-3">
-              <a
-                href="https://apps.apple.com/se/app/din-tur/id1054192302"
-                target="_blank"
-                rel="noopener"
-                class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block"
-                >iOS →</a
-              >
-              <a
-                href="https://play.google.com/store/apps/details?id=se.dintur.mobileTickets"
-                target="_blank"
-                rel="noopener"
-                class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block"
-                >Android →</a
-              >
-            </div>
-          </article>
-
-          <!-- Tåg -->
-          <article
-            class="bg-white border border-linne-200 rounded-md p-6 shadow-paper-1"
-          >
-            <p
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 font-semibold m-0 mb-2"
-            >
-              Tåg
-            </p>
-            <h3
-              class="font-display font-light text-[22px] leading-tight text-blaeck-900 m-0 mb-3"
-              style="
-                font-variation-settings:
-                  &quot;opsz&quot; 48,
-                  &quot;SOFT&quot; 30;
-              "
-            >
-              Två stationer
-            </h3>
-            <p class="text-[14px] leading-[1.55] text-blaeck-700 m-0 mb-4">
-              <strong>Örnsköldsvik C</strong> — 12 min med bil, alla tåg stannar
-              här.
-              <strong>Norra station</strong> — fjärrtågen, men inte alla.
-            </p>
-            <a
-              href="https://www.google.com/maps/dir/?api=1&amp;origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&amp;destination=%C3%96rnsk%C3%B6ldsvik+C+station"
-              target="_blank"
-              rel="noopener"
-              class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 no-underline border-b border-terra-300 hover:text-terra-900 hover:border-terra-600 inline-block"
-              >Vägbeskrivning →</a
-            >
-          </article>
+          <ol
+            data-list
+            class="bg-white border border-linne-200 rounded-md shadow-paper-1 p-2 m-0 list-none flex flex-col gap-1"
+          ></ol>
         </div>
       </section>
     </main>
@@ -1360,5 +552,815 @@
     </footer>
 
     <script src="script.js"></script>
+
+    <!-- ============== INTERAKTIV KARTA + KATEGORIFILTER ============== -->
+    <script>
+      (function () {
+        const DOMEK = [63.3126583393299, 18.754278759225077];
+        const ORIGIN = "Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik";
+
+        // OBS: koordinaterna nedan är uppskattade utifrån adress.
+        // Pin-positionen är därför ungefärlig (±100–300 m).
+        // Google Maps-länken använder adressen och navigerar exakt rätt.
+
+        const CATEGORIES = {
+          stores: {
+            label: "Mat",
+            places: [
+              {
+                name: "Willys",
+                coords: [63.305057, 18.743376],
+                address: "Terminalvägen 3A",
+                meta: "1,0 km · 12 min gång · 2 min bil",
+                hours: { weekday: "08–21", saturday: "08–21", sunday: "09–21" },
+                destQuery:
+                  "Willys+Terminalv%C3%A4gen+3A+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Stora Coop",
+                coords: [63.302548, 18.734056],
+                address: "Hästmarksvägen 6A",
+                meta: "1,5 km · 3 min bil",
+                hours: { weekday: "07–22", saturday: "07–22", sunday: "07–22" },
+                destQuery:
+                  "Stora+Coop+H%C3%A4stmarksv%C3%A4gen+6A+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "ICA Nära Östra",
+                coords: [63.29456, 18.72724],
+                address: "Vintergatan 2",
+                meta: "2,4 km · 5 min bil",
+                hours: { weekday: "08–21", saturday: "08–21", sunday: "08–21" },
+                destQuery:
+                  "ICA+N%C3%A4ra+%C3%96stra+Vintergatan+2+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Lidl",
+                coords: [63.30287, 18.7179],
+                address: "Ångermanlandsgatan 17",
+                meta: "2,1 km · 4 min bil",
+                hours: { weekday: "08–21", saturday: "08–19", sunday: "09–19" },
+                destQuery:
+                  "Lidl+%C3%85ngermanlandsgatan+17+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "ICA Kvantum",
+                coords: [63.302757, 18.721486],
+                address: "Ångermanlandsgatan 24",
+                meta: "2,0 km · 4 min bil · störst utbud",
+                hours: { weekday: "07–22", saturday: "07–22", sunday: "07–22" },
+                destQuery:
+                  "ICA+Kvantum+%C3%85ngermanlandsgatan+24+%C3%96rnsk%C3%B6ldsvik",
+              },
+            ],
+          },
+          apotek: {
+            label: "Apotek",
+            places: [
+              {
+                name: "Apoteket Havsörnen",
+                coords: [63.30264, 18.73403],
+                address: "Hästmarksvägen 6A · vid Stora Coop",
+                meta: "1,5 km · 3 min bil · närmst",
+                hours: {
+                  weekday: "09–19 (tor 09–17, fre 11–16)",
+                  saturday: "10–16",
+                  sunday: "11–16",
+                },
+                destQuery:
+                  "Apoteket+Havs%C3%B6rnen+H%C3%A4stmarksv%C3%A4gen+6A+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Apotek Hjärtat",
+                coords: [63.29122, 18.715228],
+                address: "Storgatan 28 · centrum",
+                meta: "3 km · 6 min bil",
+                hours: { weekday: "09–18", saturday: "10–15", sunday: "—" },
+                destQuery:
+                  "Apotek+Hj%C3%A4rtat+Storgatan+28+%C3%96rnsk%C3%B6ldsvik",
+              },
+            ],
+          },
+          waste: {
+            label: "Sopor",
+            places: [
+              {
+                name: "Återvinningsstation",
+                coords: [63.30951, 18.75163],
+                address: "Strandgatan",
+                meta: "300 m bort · förpackningar, tidningar, glas, metall",
+                hours: {
+                  weekday: "Dygnet runt",
+                  saturday: "Dygnet runt",
+                  sunday: "Dygnet runt",
+                },
+                destQuery: "63.30951,18.75163",
+              },
+              {
+                name: "Må återvinningscentral",
+                coords: [63.301196, 18.765169],
+                address: "Returvägen 11",
+                meta: "1,4 km · 3 min bil · grovavfall, farligt, elavfall",
+                hours: {
+                  weekday: "07–20 (fre 07–16)",
+                  saturday: "10–14",
+                  sunday: "—",
+                },
+                destQuery:
+                  "M%C3%A5+%C3%85tervinningscentral+Returv%C3%A4gen+11+%C3%96rnsk%C3%B6ldsvik",
+              },
+            ],
+          },
+          bedding: {
+            label: "Sängkit",
+            places: [
+              {
+                name: "Jysk",
+                coords: [63.304885, 18.745824],
+                address: "Terminalvägen 2",
+                meta: "1,0 km · 2 min bil · sängkläder, handdukar",
+                hours: { weekday: "10–19", saturday: "10–17", sunday: "11–17" },
+                destQuery: "Jysk+Terminalv%C3%A4gen+2+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Mio",
+                coords: [63.303707, 18.723314],
+                address: "Ångermanlandsgatan 25",
+                meta: "1,9 km · 4 min bil · sängkläder, möbler",
+                hours: { weekday: "10–19", saturday: "10–16", sunday: "11–16" },
+                destQuery:
+                  "Mio+%C3%85ngermanlandsgatan+25+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Hemtex",
+                coords: [63.289627, 18.718219],
+                address: "Nygatan 12",
+                meta: "3,1 km · 6 min bil · textil, lakan, handdukar",
+                hours: { weekday: "10–18", saturday: "10–15", sunday: "—" },
+                destQuery: "Hemtex+Nygatan+12+%C3%96rnsk%C3%B6ldsvik",
+              },
+            ],
+          },
+          restaurants: {
+            label: "Restauranger",
+            places: [
+              {
+                name: "Matlådan.eu",
+                coords: [63.311734, 18.751166],
+                address: "Svartbyvägen 5",
+                meta: "5 min gång · närmst",
+                hours: { weekday: "11–20", saturday: "11–20", sunday: "11–20" },
+                destQuery:
+                  "Matl%C3%A5dan+Svartbyv%C3%A4gen+5+%C3%96rnsk%C3%B6ldsvik",
+                noTranslate: true,
+              },
+              {
+                name: "Burger Burger",
+                coords: [63.291081, 18.717324],
+                address: "Nygatan 20",
+                meta: "3 km · 6 min bil · burgare",
+                hours: {
+                  weekday: "11–19 (mån stängt)",
+                  saturday: "12–19",
+                  sunday: "—",
+                },
+                destQuery: "Burger+Burger+Nygatan+20+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Linnéa & Peter",
+                coords: [63.290628, 18.718025],
+                address: "Fabriksgatan 12B",
+                meta: "3 km · 6 min bil · centrum",
+                hours: {
+                  weekday: "17–23 (mån–tis stängt, fre 17–00)",
+                  saturday: "17–00",
+                  sunday: "—",
+                },
+                destQuery:
+                  "Linn%C3%A9a+%26+Peter+Fabriksgatan+12B+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Mamma Mia",
+                coords: [63.287595, 18.717198],
+                address: "Storgatan 6",
+                meta: "3,2 km · 6 min bil · italienskt",
+                hours: {
+                  weekday: "11–14, 16:30–22 (fre kväll till 23)",
+                  saturday: "16:30–23",
+                  sunday: "—",
+                },
+                destQuery: "Mamma+Mia+Storgatan+6+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Restaurang Safir",
+                coords: [63.310858, 18.709633],
+                address: "Björnavägen 42B",
+                meta: "2,3 km · 5 min bil",
+                hours: {
+                  weekday: "11–21 (fre 11–23)",
+                  saturday: "11–23",
+                  sunday: "11–21",
+                },
+                destQuery:
+                  "Restaurang+Safir+Bj%C3%B6rnav%C3%A4gen+42B+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Il Romanos",
+                coords: [63.282159, 18.736605],
+                address: "Sjögatan 5D",
+                meta: "3,5 km · 7 min bil · italienskt",
+                hours: {
+                  weekday: "11–21 (fre 11–22)",
+                  saturday: "12–22",
+                  sunday: "12–21",
+                },
+                destQuery: "Il+Romanos+Sj%C3%B6gatan+5D+%C3%96rnsk%C3%B6ldsvik",
+              },
+            ],
+          },
+          cafes: {
+            label: "Kaféer",
+            places: [
+              {
+                name: "Gräddat i Norr",
+                coords: [63.290379, 18.716251],
+                address: "Fabriksgatan 16",
+                meta: "3 km · 6 min bil · centrum",
+                hours: {
+                  weekday: "07:30–17:30",
+                  saturday: "09–16",
+                  sunday: "—",
+                },
+                destQuery:
+                  "Gr%C3%A4ddat+i+Norr+Fabriksgatan+16+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Café UH",
+                coords: [63.289098, 18.712339],
+                address: "Lasarettsgatan 9A",
+                meta: "3,3 km · 6 min bil",
+                hours: {
+                  weekday: "09–21 (fre 08–21)",
+                  saturday: "09–21",
+                  sunday: "10–18",
+                },
+                destQuery:
+                  "Caf%C3%A9+UH+Lasarettsgatan+9A+%C3%96rnsk%C3%B6ldsvik",
+              },
+              {
+                name: "Lundbergs Bröd",
+                coords: [63.292795, 18.716],
+                address: "Nygatan 35",
+                meta: "2,8 km · 5 min bil · bageri & fika",
+                hours: { weekday: "06–17", saturday: "—", sunday: "—" },
+                destQuery:
+                  "Lundbergs+Br%C3%B6d+Nygatan+35+%C3%96rnsk%C3%B6ldsvik",
+              },
+            ],
+          },
+          trails: {
+            label: "Vandring",
+            places: [
+              {
+                name: "Gimåt Elljusspår",
+                file: "vandring/Gimåt_Elljusspår.js",
+                coords: [63.32009, 18.71747],
+                address: "Gimåtvägen · belyst spår",
+                meta: "Lätt · ~5 km slinga · närmst",
+                destQuery: "63.32009,18.71747",
+              },
+              {
+                name: "Gula Leden",
+                file: "vandring/Gula_Leden_Örnsköldsvik.js",
+                coords: [63.29568, 18.70785],
+                address: "Brödrabacken · Åsberget",
+                meta: "Utmanande · ~6 km · brant, fin utsikt",
+                destQuery: "63.29568,18.70785",
+              },
+              {
+                name: "Höga Kustenleden",
+                file: "vandring/Höga_Kustenleden_Sandlåga__Balestjärn.js",
+                coords: [63.20097, 18.70212],
+                address: "Sandlåga – Balestjärn",
+                meta: "Klassiska Höga Kusten · längre tur",
+                destQuery: "63.20097,18.70212",
+              },
+              {
+                name: "Fäbodleden",
+                file: "vandring/Fäbodleden_i_Nätra_Fjällskog.js",
+                coords: [63.16479, 18.27446],
+                address: "Nätra Fjällskog",
+                meta: "Medel–utmanande · längre tur",
+                destQuery: "63.16479,18.27446",
+              },
+              {
+                name: "Skuleskogen Syd",
+                file: "vandring/Skuleskogen_Syd__Trollporten__Slåttdalsskrevan__Tärnättstugan.js",
+                coords: [63.08568, 18.48174],
+                address: "Skuleskogen · södra entrén",
+                meta: "Utmanande · Slåttdalsskrevan, Trollporten, Tärnättstugan",
+                destQuery: "63.08568,18.48174",
+              },
+            ],
+          },
+          transit: {
+            label: "Kollektivtrafik",
+            places: [
+              {
+                name: "Svartbyvägen (buss)",
+                coords: [63.310073, 18.760531],
+                address: "Hållplats Svartbyvägen",
+                meta: "~300 m gång · stadsbuss mot centrum",
+                destQuery: "63.310073,18.760531",
+              },
+              {
+                name: "Örtagårdsvägen (buss)",
+                coords: [63.310413, 18.750585],
+                address: "Hållplats Örtagårdsvägen",
+                meta: "~300 m gång · stadsbuss mot centrum",
+                destQuery: "63.310413,18.750585",
+              },
+              {
+                name: "Örnsköldsvik C",
+                coords: [63.288016, 18.70777],
+                address: "Järnvägsgatan 11 · centralstation",
+                meta: "7 min bil · alla tåg stannar här",
+                destQuery:
+                  "%C3%96rnsk%C3%B6ldsvik+C+J%C3%A4rnv%C3%A4gsgatan+11",
+              },
+              {
+                name: "Örnsköldsvik Norra",
+                coords: [63.303032, 18.716104],
+                address: "Norra station",
+                meta: "4 min bil · fjärrtåg — inte alla stannar här",
+                destQuery: "%C3%96rnsk%C3%B6ldsvik+Norra+station",
+              },
+            ],
+          },
+          gems: {
+            label: "Tips",
+            places: [
+              {
+                name: "Örnsköldsviks museum & konsthall",
+                coords: [63.29, 18.725278],
+                address: "Läroverksgatan 1",
+                meta: "Sevärdhet · konst, lokal historia",
+                hours: {
+                  weekday: "12–16 (tis 12–20, mån stängt)",
+                  saturday: "12–16",
+                  sunday: "—",
+                },
+                destQuery: "63.29,18.725278",
+              },
+              {
+                name: "Strutsfarmen i Gerdal",
+                coords: [63.29528, 18.423538],
+                address: "Kasta 241, Överhörnäs",
+                meta: "Utflyktsmål · säsongsöppet, ring för bordsbokning",
+                hours: {
+                  weekday: "Säsongsöppet · bokning",
+                  saturday: "Säsong",
+                  sunday: "Säsong",
+                },
+                destQuery: "63.29528,18.423538",
+              },
+              {
+                name: "Ulvön (Ulvöhamn)",
+                coords: [63.02239, 18.647777],
+                address: "Färja från Köpmanholmen",
+                meta: "Utflyktsmål · klassisk höga kusten-ö",
+                hours: {
+                  weekday: "Dygnet runt (se färjetider)",
+                  saturday: "Dygnet runt",
+                  sunday: "Dygnet runt",
+                },
+                destQuery: "63.02239,18.647777",
+              },
+            ],
+          },
+        };
+
+        // Kategorifärger — en distinkt ton per kategori från paletten
+        const COLORS = {
+          stores: "#B68F18", // senap-500
+          apotek: "#627944", // skog-500
+          waste: "#5F5743", // blaeck-500
+          bedding: "#DC6F50", // terra-400
+          restaurants: "#8B321B", // terra-700
+          cafes: "#322C1F", // blaeck-700 (espresso)
+          trails: "#3B4A26", // skog-700
+          transit: "#3D6AA8", // blå (transit)
+          gems: "#745809", // senap-700
+        };
+
+        function colorFor(key) {
+          return COLORS[key] || "#3D6AA8";
+        }
+
+        function dirUrl(destQuery) {
+          return (
+            "https://www.google.com/maps/dir/?api=1&origin=" +
+            ORIGIN +
+            "&destination=" +
+            destQuery
+          );
+        }
+
+        function makeDomekIcon() {
+          return L.divIcon({
+            className: "",
+            html: '<div class="domek-pin"><span class="pin-label" translate="no">Domek</span></div>',
+            iconSize: [18, 18],
+            iconAnchor: [9, 9],
+          });
+        }
+
+        function makePlaceIcon(num, color, opts) {
+          opts = opts || {};
+          const size = opts.size || 28;
+          const alpha = opts.alpha || ""; // hex-suffix t.ex. "66" = 40% opacitet
+          const bg = color + alpha;
+          const fontSize = size <= 22 ? 10 : 12;
+          const styles = [
+            "background:" + bg,
+            "width:" + size + "px",
+            "height:" + size + "px",
+            "font-size:" + fontSize + "px",
+          ];
+          if (alpha) {
+            // Mindre framträdande border + mjukare skugga + text-shadow för läsbarhet
+            styles.push("border-width:1.5px");
+            styles.push("box-shadow:0 1px 3px rgba(34,30,21,0.22)");
+            styles.push("text-shadow:0 0 3px rgba(0,0,0,0.55)");
+          }
+          return L.divIcon({
+            className: "",
+            html:
+              '<div class="place-pin" style="' +
+              styles.join(";") +
+              ';">' +
+              num +
+              "</div>",
+            iconSize: [size, size],
+            iconAnchor: [size / 2, size / 2],
+          });
+        }
+
+        let map = null;
+        let placeLayer = null;
+        let trailLayer = null;
+        let activeKey = "stores";
+        const trailCache = {};
+
+        async function loadTrail(file) {
+          if (trailCache[file]) return trailCache[file];
+          // URL-encode varje path-segment så å/ä/ö i filnamnen funkar
+          const url = file.split("/").map(encodeURIComponent).join("/");
+          const resp = await fetch(url);
+          if (!resp.ok) {
+            throw new Error(
+              "Kunde inte hämta " + file + " (status " + resp.status + ")",
+            );
+          }
+          const data = await resp.json();
+          trailCache[file] = data;
+          return data;
+        }
+
+        function escapeHtml(s) {
+          return String(s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+        }
+
+        // Dagens öppettider — söndag=0, mån–fre=1–5, lör=6
+        const HOUR_KEYS = [
+          "sunday",
+          "weekday",
+          "weekday",
+          "weekday",
+          "weekday",
+          "weekday",
+          "saturday",
+        ];
+        const HOUR_LABELS = [
+          "Söndag",
+          "Idag",
+          "Idag",
+          "Idag",
+          "Idag",
+          "Idag",
+          "Lördag",
+        ];
+
+        function todayHoursLine(hours) {
+          if (!hours) return "";
+          const day = new Date().getDay();
+          const value = hours[HOUR_KEYS[day]];
+          if (!value) return "";
+          return HOUR_LABELS[day] + " · " + value;
+        }
+
+        // Bygger HTML för alla tre dagars öppettider — dagens rad fetstil
+        function hoursTableHtml(hours) {
+          if (!hours) return "";
+          const today = HOUR_KEYS[new Date().getDay()];
+          const rows = [
+            { key: "weekday", label: "Mån–fre", value: hours.weekday },
+            { key: "saturday", label: "Lör", value: hours.saturday },
+            { key: "sunday", label: "Sön", value: hours.sunday },
+          ].filter((r) => r.value);
+          if (!rows.length) return "";
+          const inner = rows
+            .map(function (r) {
+              const isToday = r.key === today;
+              const labelCls =
+                "font-mono text-[10px] uppercase tracking-[0.08em] " +
+                (isToday
+                  ? "text-blaeck-900 font-semibold"
+                  : "text-blaeck-400");
+              const valueCls = isToday
+                ? "text-blaeck-900 font-semibold"
+                : "text-blaeck-600";
+              return (
+                '<span class="' +
+                labelCls +
+                '">' +
+                escapeHtml(r.label) +
+                "</span>" +
+                '<span class="' +
+                valueCls +
+                '">' +
+                escapeHtml(r.value) +
+                "</span>"
+              );
+            })
+            .join("");
+          return (
+            '<div class="grid grid-cols-[auto_1fr] gap-x-3 gap-y-0 text-[12px] leading-[1.5] mb-1.5">' +
+            inner +
+            "</div>"
+          );
+        }
+
+        function renderList(key) {
+          const category = CATEGORIES[key];
+          if (!category) return;
+          const color = colorFor(key);
+
+          const titleEls = document.querySelectorAll("[data-cat-title]");
+          titleEls.forEach((el) => {
+            el.textContent = category.label;
+          });
+
+          const countEls = document.querySelectorAll("[data-cat-count]");
+          const countLabel =
+            category.places.length === 1
+              ? "1 plats"
+              : category.places.length + " platser";
+          countEls.forEach((el) => {
+            el.textContent = countLabel;
+          });
+
+          const listEls = document.querySelectorAll("[data-list]");
+          const items = category.places
+            .map(function (p, idx) {
+              const num = idx + 1;
+              const noTrans = p.noTranslate ? ' translate="no"' : "";
+              const hoursHtml = hoursTableHtml(p.hours);
+              return (
+                "<li>" +
+                '<a href="' +
+                dirUrl(p.destQuery) +
+                '" target="_blank" rel="noopener" ' +
+                'class="block p-3 rounded-md hover:bg-linne-100 transition-colors no-underline group">' +
+                '<div class="grid grid-cols-[28px_1fr] gap-3 items-start">' +
+                '<span class="inline-flex items-center justify-center w-7 h-7 rounded-full text-linne-50 text-[12px] font-mono font-semibold mt-0.5" style="background:' +
+                color +
+                ';">' +
+                num +
+                "</span>" +
+                '<div class="min-w-0">' +
+                '<h3 class="font-display font-medium text-[16px] leading-tight text-blaeck-900 m-0 mb-0.5"' +
+                noTrans +
+                ' style="font-variation-settings: &quot;opsz&quot; 36">' +
+                escapeHtml(p.name) +
+                "</h3>" +
+                '<p class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400 m-0 mb-1">' +
+                escapeHtml(p.address) +
+                "</p>" +
+                '<p class="text-[13px] leading-[1.45] text-blaeck-600 m-0 mb-1.5">' +
+                escapeHtml(p.meta) +
+                "</p>" +
+                hoursHtml +
+                '<p class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 group-hover:text-terra-900 m-0">' +
+                "Vägbeskrivning →" +
+                "</p>" +
+                "</div>" +
+                "</div>" +
+                "</a>" +
+                "</li>"
+              );
+            })
+            .join("");
+          listEls.forEach((el) => {
+            el.innerHTML = items;
+          });
+        }
+
+        function fitBoundsForCategory(places) {
+          if (!map) return;
+          const bounds = L.latLngBounds([DOMEK]);
+          places.forEach((p) => bounds.extend(p.coords));
+          if (trailLayer) {
+            trailLayer.eachLayer((l) => {
+              if (l.getBounds) {
+                const b = l.getBounds();
+                if (b.isValid()) bounds.extend(b);
+              }
+            });
+          }
+
+          const isDesktop = window.matchMedia("(min-width: 56.25rem)").matches;
+          const opts = { maxZoom: 14 };
+          // Vänster: vertikala togglarna (~140 px). Höger: listpanel på desktop.
+          if (isDesktop) {
+            opts.paddingTopLeft = [150, 30];
+            opts.paddingBottomRight = [430, 30];
+          } else {
+            opts.paddingTopLeft = [150, 30];
+            opts.paddingBottomRight = [30, 30];
+          }
+          map.fitBounds(bounds, opts);
+        }
+
+        async function setActiveCategory(key) {
+          if (!CATEGORIES[key]) return;
+          activeKey = key;
+          const cat = CATEGORIES[key];
+          const color = colorFor(key);
+
+          // Toggle button states — aktiv får kategorifärgen tonad (liquid glass)
+          document.querySelectorAll("[data-cat]").forEach((btn) => {
+            const isActive = btn.dataset.cat === key;
+            btn.classList.toggle("is-active", isActive);
+            btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+            if (isActive) {
+              // CC = ~80% alpha → kartan skimrar fortfarande igenom
+              btn.style.backgroundColor = colorFor(btn.dataset.cat) + "CC";
+              btn.style.color = "#FBF7F0";
+              btn.style.borderColor = colorFor(btn.dataset.cat);
+            } else {
+              btn.style.backgroundColor = "";
+              btn.style.color = "";
+              btn.style.borderColor = "";
+            }
+          });
+
+          // Render list (badge-numret får också färgen)
+          renderList(key);
+
+          if (!map) return;
+
+          // Rensa tidigare lager
+          if (placeLayer) {
+            map.removeLayer(placeLayer);
+            placeLayer = null;
+          }
+          if (trailLayer) {
+            map.removeLayer(trailLayer);
+            trailLayer = null;
+          }
+
+          // Numrerade pins (start/parkering för Vandring blir mindre + mer transparenta)
+          const isTrails = key === "trails";
+          const iconOpts = isTrails ? { size: 20, alpha: "66" } : null;
+          placeLayer = L.layerGroup();
+          cat.places.forEach((p, idx) => {
+            L.marker(p.coords, {
+              icon: makePlaceIcon(idx + 1, color, iconOpts),
+              keyboard: false,
+              interactive: false,
+            }).addTo(placeLayer);
+          });
+          placeLayer.addTo(map);
+
+          // Polylines för kategorier med GeoJSON-rutter (Vandring)
+          const hasTrails = cat.places.some((p) => p.file);
+          if (hasTrails) {
+            const layer = L.layerGroup();
+            // Lägg under place-pins genom att addTo före placeLayer flyttas;
+            // Leaflet ritar i tilläggsordning, så vi tar bort & lägger till igen.
+            map.removeLayer(placeLayer);
+            layer.addTo(map);
+            placeLayer.addTo(map);
+            trailLayer = layer;
+
+            // Fitta först med bara starter (snabbt visuellt feedback)
+            fitBoundsForCategory(cat.places);
+
+            // Hämta GeoJSON-filer parallellt och rita rutter
+            await Promise.all(
+              cat.places.map(async (p) => {
+                if (!p.file) return;
+                try {
+                  const data = await loadTrail(p.file);
+                  L.geoJSON(data, {
+                    style: {
+                      color: color,
+                      weight: 2.5,
+                      opacity: 0.75,
+                      lineCap: "round",
+                      lineJoin: "round",
+                    },
+                    interactive: false,
+                  }).addTo(layer);
+                } catch (e) {
+                  console.warn("Kunde inte ladda rutt:", p.file, e);
+                }
+              }),
+            );
+
+            // Re-fitta nu när polylines finns (visa hela slingorna)
+            fitBoundsForCategory(cat.places);
+          } else {
+            fitBoundsForCategory(cat.places);
+          }
+        }
+
+        function initMap() {
+          if (typeof L === "undefined") return;
+          const el = document.getElementById("omradet-map");
+          if (!el) return;
+          if (el.dataset.mapInited === "1") return;
+          el.dataset.mapInited = "1";
+
+          map = L.map(el, {
+            zoomControl: false,
+            scrollWheelZoom: false,
+            doubleClickZoom: false,
+            dragging: false,
+            touchZoom: false,
+            boxZoom: false,
+            keyboard: false,
+            attributionControl: true,
+          });
+
+          L.tileLayer(
+            "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+            {
+              maxZoom: 19,
+              attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &middot; &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            },
+          ).addTo(map);
+
+          // Permanent Domek-pin
+          L.marker(DOMEK, {
+            icon: makeDomekIcon(),
+            keyboard: false,
+            interactive: false,
+          }).addTo(map);
+
+          // Initial category
+          setActiveCategory(activeKey);
+        }
+
+        function attachToggleHandlers() {
+          document.querySelectorAll("[data-cat]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              setActiveCategory(btn.dataset.cat);
+            });
+          });
+        }
+
+        function init() {
+          attachToggleHandlers();
+          // Initial render of list + active toggle (works före Leaflet laddat)
+          renderList(activeKey);
+          document.querySelectorAll("[data-cat]").forEach((btn) => {
+            const isActive = btn.dataset.cat === activeKey;
+            btn.classList.toggle("is-active", isActive);
+            btn.setAttribute("aria-pressed", isActive ? "true" : "false");
+            if (isActive) {
+              btn.style.backgroundColor = colorFor(btn.dataset.cat) + "CC";
+              btn.style.color = "#FBF7F0";
+              btn.style.borderColor = colorFor(btn.dataset.cat);
+            }
+          });
+          initMap();
+        }
+
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", init);
+        } else {
+          init();
+        }
+        // Ensure Leaflet is loaded (defer) before map init
+        window.addEventListener("load", initMap);
+      })();
+    </script>
   </body>
 </html>
