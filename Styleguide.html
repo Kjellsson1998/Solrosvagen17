@@ -1,0 +1,2545 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Domek — Grafisk profil &amp; designsystem</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/output.css" />
+  </head>
+
+  <body class="scroll-smooth">
+    <!-- ================== TOP NAV ================== -->
+    <header
+      class="sticky top-0 z-50 bg-linne-50/90 backdrop-blur-md border-b border-linne-200"
+    >
+      <div
+        class="flex items-center justify-between gap-6 px-6 py-4 mx-auto max-w-[1280px]"
+      >
+        <div
+          class="flex items-baseline gap-2 font-display font-medium text-[22px] tracking-[-0.01em] text-blaeck-900"
+          style="
+            font-variation-settings:
+              &quot;opsz&quot; 144,
+              &quot;SOFT&quot; 30;
+          "
+        >
+          domek<span
+            class="inline-block w-[7px] h-[7px] -mt-px rounded-full bg-terra-500"
+          ></span>
+        </div>
+        <nav
+          class="hidden lg:flex gap-4 font-mono text-label uppercase tracking-[0.06em]"
+        >
+          <a
+            href="#fond"
+            class="px-2 py-1 rounded-sm text-blaeck-600 hover:text-terra-600 hover:bg-terra-50 transition-colors"
+            >00 · Fond</a
+          >
+          <a
+            href="#farg"
+            class="px-2 py-1 rounded-sm text-blaeck-600 hover:text-terra-600 hover:bg-terra-50 transition-colors"
+            >01 · Färg</a
+          >
+          <a
+            href="#typ"
+            class="px-2 py-1 rounded-sm text-blaeck-600 hover:text-terra-600 hover:bg-terra-50 transition-colors"
+            >02 · Typografi</a
+          >
+          <a
+            href="#rum"
+            class="px-2 py-1 rounded-sm text-blaeck-600 hover:text-terra-600 hover:bg-terra-50 transition-colors"
+            >03 · Rum</a
+          >
+          <a
+            href="#knapp"
+            class="px-2 py-1 rounded-sm text-blaeck-600 hover:text-terra-600 hover:bg-terra-50 transition-colors"
+            >04 · Knappar</a
+          >
+          <a
+            href="#form"
+            class="px-2 py-1 rounded-sm text-blaeck-600 hover:text-terra-600 hover:bg-terra-50 transition-colors"
+            >05 · Formulär</a
+          >
+          <a
+            href="#kort"
+            class="px-2 py-1 rounded-sm text-blaeck-600 hover:text-terra-600 hover:bg-terra-50 transition-colors"
+            >06 · Kort</a
+          >
+          <a
+            href="#monster"
+            class="px-2 py-1 rounded-sm text-blaeck-600 hover:text-terra-600 hover:bg-terra-50 transition-colors"
+            >07 · Mönster</a
+          >
+        </nav>
+        <div
+          class="font-mono text-label uppercase tracking-[0.08em] text-blaeck-400"
+        >
+          v.1 · 2026
+        </div>
+      </div>
+    </header>
+
+    <!-- ================== COVER ================== -->
+    <section id="fond" class="max-w-[1280px] mx-auto px-6 pt-24 pb-16 relative">
+      <div class="grid lg:grid-cols-[1.4fr_1fr] gap-16 lg:gap-12 items-end">
+        <div>
+          <p
+            class="eyebrow text-terra-600 mb-4 inline-flex items-center gap-2.5"
+          >
+            <span class="inline-block w-8 h-px bg-terra-500"></span>
+            Grafisk profil &amp; designsystem
+          </p>
+          <h1 class="h-display-xl text-blaeck-900 mb-5">
+            Domek.<br />
+            Ett <span class="wonk text-terra-600">litet hus</span><br />
+            med tydliga ramar.
+          </h1>
+          <p
+            class="font-display text-[22px] leading-[1.4] font-light text-blaeck-600 max-w-[38ch] m-0"
+            style="font-variation-settings: &quot;opsz&quot; 24"
+          >
+            En sjuttiotalsvilla med starka väggar och ännu starkare karaktär.
+            Den här guiden samlar färg, typografi och komponenter för en sajt
+            som ska kännas <em class="wonk text-terra-600">hemma</em>
+            — men också få regler och rutiner att respekteras.
+          </p>
+        </div>
+
+        <dl class="border-l border-linne-200 pl-6 flex flex-col gap-4">
+          <div class="grid grid-cols-[80px_1fr] gap-4 text-body-sm">
+            <dt class="eyebrow text-blaeck-400 mt-[3px]">Namn</dt>
+            <dd class="m-0 text-blaeck-800 leading-[1.5]">
+              Domek
+              <span class="wonk text-terra-600 font-medium">(litet hus)</span>
+            </dd>
+          </div>
+          <div class="grid grid-cols-[80px_1fr] gap-4 text-body-sm">
+            <dt class="eyebrow text-blaeck-400 mt-[3px]">Roll</dt>
+            <dd class="m-0 text-blaeck-800 leading-[1.5]">
+              Företagsbostad — boende för anställda under arbete på orten.
+            </dd>
+          </div>
+          <div class="grid grid-cols-[80px_1fr] gap-4 text-body-sm">
+            <dt class="eyebrow text-blaeck-400 mt-[3px]">Mottagare</dt>
+            <dd class="m-0 text-blaeck-800 leading-[1.5]">
+              Företaget som hyr, och den som bor.
+            </dd>
+          </div>
+          <div class="grid grid-cols-[80px_1fr] gap-4 text-body-sm">
+            <dt class="eyebrow text-blaeck-400 mt-[3px]">Ton</dt>
+            <dd class="m-0 text-blaeck-800 leading-[1.5]">
+              Varm i form,
+              <span class="wonk text-terra-600 font-medium">seriös</span> i
+              innehåll.
+            </dd>
+          </div>
+          <div class="grid grid-cols-[80px_1fr] gap-4 text-body-sm">
+            <dt class="eyebrow text-blaeck-400 mt-[3px]">Version</dt>
+            <dd class="m-0 text-blaeck-800 leading-[1.5]">v.1 · April 2026</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="border-t border-blaeck-800 mt-12 mb-6"></div>
+
+      <!-- Brand principles -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="border-t border-blaeck-800 pt-3">
+          <p class="font-mono text-label tracking-[0.1em] text-terra-500 mb-2">
+            01
+          </p>
+          <h4
+            class="font-display font-medium text-[22px] leading-[1.15] tracking-[-0.01em] text-blaeck-900 mb-2"
+            style="
+              font-variation-settings:
+                &quot;opsz&quot; 36,
+                &quot;SOFT&quot; 30;
+            "
+          >
+            Färgen <span class="wonk text-terra-600">är huset.</span>
+          </h4>
+          <p class="text-body-sm text-blaeck-600 m-0">
+            Tapeterna gör jobbet. Layouten håller sig still. Vi möblerar med
+            ljus, vit yta och mycket luft — så att rummen får tala.
+          </p>
+        </div>
+        <div class="border-t border-blaeck-800 pt-3">
+          <p class="font-mono text-label tracking-[0.1em] text-terra-500 mb-2">
+            02
+          </p>
+          <h4
+            class="font-display font-medium text-[22px] leading-[1.15] tracking-[-0.01em] text-blaeck-900 mb-2"
+            style="
+              font-variation-settings:
+                &quot;opsz&quot; 36,
+                &quot;SOFT&quot; 30;
+            "
+          >
+            Allvar <span class="wonk text-terra-600">i ord.</span>
+          </h4>
+          <p class="text-body-sm text-blaeck-600 m-0">
+            Information är inte dekoration. Regler, kontaktvägar och rutiner får
+            tydliga rubriker, ren typografi och inga emojis.
+          </p>
+        </div>
+        <div class="border-t border-blaeck-800 pt-3">
+          <p class="font-mono text-label tracking-[0.1em] text-terra-500 mb-2">
+            03
+          </p>
+          <h4
+            class="font-display font-medium text-[22px] leading-[1.15] tracking-[-0.01em] text-blaeck-900 mb-2"
+            style="
+              font-variation-settings:
+                &quot;opsz&quot; 36,
+                &quot;SOFT&quot; 30;
+            "
+          >
+            <span class="wonk text-terra-600">Kort</span> svenska.
+          </h4>
+          <p class="text-body-sm text-blaeck-600 m-0">
+            Aktiva verb. Konkreta substantiv. Punkt slut. Engelska bara där det
+            krävs — men alltid som komplement, aldrig istället.
+          </p>
+        </div>
+        <div class="border-t border-blaeck-800 pt-3">
+          <p class="font-mono text-label tracking-[0.1em] text-terra-500 mb-2">
+            04
+          </p>
+          <h4
+            class="font-display font-medium text-[22px] leading-[1.15] tracking-[-0.01em] text-blaeck-900 mb-2"
+            style="
+              font-variation-settings:
+                &quot;opsz&quot; 36,
+                &quot;SOFT&quot; 30;
+            "
+          >
+            Värme <span class="wonk text-terra-600">utan kitsch.</span>
+          </h4>
+          <p class="text-body-sm text-blaeck-600 m-0">
+            Italic-wonk i Fraunces, en pil i terrakotta, en ram av linne. Aldrig
+            ironi om huset självt.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== 01 FÄRG ================== -->
+    <section
+      id="farg"
+      class="max-w-[1280px] mx-auto px-6 py-24 border-t border-linne-200"
+    >
+      <div class="grid md:grid-cols-[80px_1fr] gap-6 mb-12">
+        <div
+          class="font-mono text-[12px] tracking-[0.08em] text-terra-500 pt-2 font-medium"
+        >
+          01
+        </div>
+        <div>
+          <h2 class="h-display-l text-blaeck-900 mb-3">
+            Färgsystem.<br />Fem familjer,
+            <span class="wonk text-terra-600">elva nyanser</span>.
+          </h2>
+          <p
+            class="font-display text-[17px] leading-[1.55] font-light text-blaeck-600 max-w-[60ch] m-0"
+            style="font-variation-settings: &quot;opsz&quot; 18"
+          >
+            Paletten är destillerad ur husets tapeter — terrakotta, senap, skog,
+            linne och bläck. Varje familj går från 50 till 950 så samma ton kan
+            användas för bakgrund, text, ram och accent.
+          </p>
+        </div>
+      </div>
+
+      <!-- Color families -->
+      <div class="flex flex-col gap-6">
+        <!-- LINNE -->
+        <div class="grid lg:grid-cols-[200px_1fr] gap-6 lg:gap-6 items-stretch">
+          <div class="flex flex-col justify-center py-3">
+            <h3
+              class="font-display font-medium text-[26px] leading-none tracking-[-0.01em] text-blaeck-900 mb-1"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Linne
+            </h3>
+            <div
+              class="font-mono text-label uppercase tracking-[0.08em] text-blaeck-400"
+            >
+              grundton · pappersyta
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-11 gap-[2px] rounded-md overflow-hidden border border-linne-200 bg-linne-200"
+          >
+            <div
+              class="aspect-[1/1.15] bg-linne-50 text-blaeck-800 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between cursor-pointer hover:scale-105 transition-transform"
+            >
+              <span class="font-medium opacity-85">50</span
+              ><span class="opacity-0 hover:opacity-100">FBF7F0</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-linne-100 text-blaeck-800 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">100</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-linne-200 text-blaeck-800 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">200</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-linne-300 text-blaeck-800 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">300</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-linne-400 text-blaeck-800 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">400</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-linne-500 text-blaeck-800 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">500</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-linne-600 text-linne-50 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">600</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-linne-700 text-linne-50 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">700</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-linne-800 text-linne-50 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">800</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-linne-900 text-linne-50 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">900</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-linne-950 text-linne-50 font-mono text-[9.5px] tracking-[0.04em] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">950</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TERRAKOTTA -->
+        <div class="grid lg:grid-cols-[200px_1fr] gap-6 lg:gap-6 items-stretch">
+          <div class="flex flex-col justify-center py-3">
+            <h3
+              class="font-display font-medium text-[26px] leading-none tracking-[-0.01em] text-blaeck-900 mb-1"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Terrakotta
+            </h3>
+            <div
+              class="font-mono text-label uppercase tracking-[0.08em] text-blaeck-400"
+            >
+              accent · cta · länkar
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-11 gap-[2px] rounded-md overflow-hidden border border-linne-200 bg-linne-200"
+          >
+            <div
+              class="aspect-[1/1.15] bg-terra-50 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">50</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-terra-100 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">100</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-terra-200 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">200</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-terra-300 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">300</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-terra-400 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">400</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-terra-500 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">500</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-terra-600 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">600</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-terra-700 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">700</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-terra-800 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">800</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-terra-900 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">900</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-terra-950 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">950</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SENAP -->
+        <div class="grid lg:grid-cols-[200px_1fr] gap-6 lg:gap-6 items-stretch">
+          <div class="flex flex-col justify-center py-3">
+            <h3
+              class="font-display font-medium text-[26px] leading-none tracking-[-0.01em] text-blaeck-900 mb-1"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Senap
+            </h3>
+            <div
+              class="font-mono text-label uppercase tracking-[0.08em] text-blaeck-400"
+            >
+              notiser · sekundära ytor
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-11 gap-[2px] rounded-md overflow-hidden border border-linne-200 bg-linne-200"
+          >
+            <div
+              class="aspect-[1/1.15] bg-senap-50 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">50</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-senap-100 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">100</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-senap-200 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">200</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-senap-300 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">300</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-senap-400 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">400</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-senap-500 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">500</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-senap-600 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">600</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-senap-700 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">700</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-senap-800 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">800</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-senap-900 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">900</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-senap-950 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">950</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKOG -->
+        <div class="grid lg:grid-cols-[200px_1fr] gap-6 lg:gap-6 items-stretch">
+          <div class="flex flex-col justify-center py-3">
+            <h3
+              class="font-display font-medium text-[26px] leading-none tracking-[-0.01em] text-blaeck-900 mb-1"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Skog
+            </h3>
+            <div
+              class="font-mono text-label uppercase tracking-[0.08em] text-blaeck-400"
+            >
+              lugn · bekräftelse
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-11 gap-[2px] rounded-md overflow-hidden border border-linne-200 bg-linne-200"
+          >
+            <div
+              class="aspect-[1/1.15] bg-skog-50 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">50</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-skog-100 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">100</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-skog-200 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">200</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-skog-300 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">300</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-skog-400 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">400</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-skog-500 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">500</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-skog-600 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">600</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-skog-700 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">700</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-skog-800 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">800</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-skog-900 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">900</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-skog-950 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">950</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLÄCK -->
+        <div class="grid lg:grid-cols-[200px_1fr] gap-6 lg:gap-6 items-stretch">
+          <div class="flex flex-col justify-center py-3">
+            <h3
+              class="font-display font-medium text-[26px] leading-none tracking-[-0.01em] text-blaeck-900 mb-1"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Bläck
+            </h3>
+            <div
+              class="font-mono text-label uppercase tracking-[0.08em] text-blaeck-400"
+            >
+              text · struktur · ramar
+            </div>
+          </div>
+          <div
+            class="grid grid-cols-11 gap-[2px] rounded-md overflow-hidden border border-linne-200 bg-linne-200"
+          >
+            <div
+              class="aspect-[1/1.15] bg-blaeck-50 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">50</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-blaeck-100 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">100</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-blaeck-200 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">200</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-blaeck-300 text-blaeck-800 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">300</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-blaeck-400 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">400</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-blaeck-500 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">500</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-blaeck-600 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">600</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-blaeck-700 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">700</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-blaeck-800 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">800</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-blaeck-900 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">900</span>
+            </div>
+            <div
+              class="aspect-[1/1.15] bg-blaeck-950 text-linne-50 font-mono text-[9.5px] p-2 flex flex-col justify-between"
+            >
+              <span class="font-medium opacity-85">950</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Room accents -->
+      <div class="mt-12 border-t border-linne-200 pt-8">
+        <p
+          class="eyebrow uppercase tracking-[0.14em] mb-4 pb-2 border-b border-linne-200"
+        >
+          Rumsaccenter — sju rum, sju färger
+        </p>
+        <p class="max-w-[60ch] text-blaeck-600 mb-6 leading-[1.55]">
+          Husets sju rum får varsin accentfärg, hämtad direkt ur tapeten eller
+          golvet. Använd dessa
+          <span class="wonk text-terra-600">endast</span> som markörer på
+          rumssidor och i välkomstmappen — aldrig i den globala navigationen.
+        </p>
+        <div
+          class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3"
+        >
+          <div class="card">
+            <div class="h-24 bg-rum-klover"></div>
+            <div class="px-3 pt-3 pb-4">
+              <h5
+                class="font-display font-medium text-[16px] mb-0.5 text-blaeck-900"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 24,
+                    &quot;SOFT&quot; 30;
+                "
+              >
+                Klöver
+              </h5>
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-400 mb-1.5"
+              >
+                Hall
+              </p>
+              <span class="font-mono text-[11px] text-blaeck-600">#B53E1F</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-24 bg-rum-bukett"></div>
+            <div class="px-3 pt-3 pb-4">
+              <h5
+                class="font-display font-medium text-[16px] mb-0.5 text-blaeck-900"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 24,
+                    &quot;SOFT&quot; 30;
+                "
+              >
+                Bukett
+              </h5>
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-400 mb-1.5"
+              >
+                Kök
+              </p>
+              <span class="font-mono text-[11px] text-blaeck-600">#C8782C</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-24 bg-rum-mossa"></div>
+            <div class="px-3 pt-3 pb-4">
+              <h5
+                class="font-display font-medium text-[16px] mb-0.5 text-blaeck-900"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 24,
+                    &quot;SOFT&quot; 30;
+                "
+              >
+                Mossa
+              </h5>
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-400 mb-1.5"
+              >
+                Sovrum 1
+              </p>
+              <span class="font-mono text-[11px] text-blaeck-600">#4D6033</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-24 bg-rum-kamelia"></div>
+            <div class="px-3 pt-3 pb-4">
+              <h5
+                class="font-display font-medium text-[16px] mb-0.5 text-blaeck-900"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 24,
+                    &quot;SOFT&quot; 30;
+                "
+              >
+                Kamélia
+              </h5>
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-400 mb-1.5"
+              >
+                Sovrum 2
+              </p>
+              <span class="font-mono text-[11px] text-blaeck-600">#A12424</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-24 bg-rum-saffran"></div>
+            <div class="px-3 pt-3 pb-4">
+              <h5
+                class="font-display font-medium text-[16px] mb-0.5 text-blaeck-900"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 24,
+                    &quot;SOFT&quot; 30;
+                "
+              >
+                Saffran
+              </h5>
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-400 mb-1.5"
+              >
+                Sovrum 3
+              </p>
+              <span class="font-mono text-[11px] text-blaeck-600">#D6A340</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-24 bg-rum-tobak"></div>
+            <div class="px-3 pt-3 pb-4">
+              <h5
+                class="font-display font-medium text-[16px] mb-0.5 text-blaeck-900"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 24,
+                    &quot;SOFT&quot; 30;
+                "
+              >
+                Tobak
+              </h5>
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-400 mb-1.5"
+              >
+                Sovrum 4 · kontoret
+              </p>
+              <span class="font-mono text-[11px] text-blaeck-600">#6E4A1C</span>
+            </div>
+          </div>
+          <div class="card">
+            <div class="h-24 bg-rum-parkett"></div>
+            <div class="px-3 pt-3 pb-4">
+              <h5
+                class="font-display font-medium text-[16px] mb-0.5 text-blaeck-900"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 24,
+                    &quot;SOFT&quot; 30;
+                "
+              >
+                Parkett
+              </h5>
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-400 mb-1.5"
+              >
+                Vardagsrum
+              </p>
+              <span class="font-mono text-[11px] text-blaeck-600">#6F6961</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== 02 TYPOGRAFI ================== -->
+    <section
+      id="typ"
+      class="max-w-[1280px] mx-auto px-6 py-24 border-t border-linne-200"
+    >
+      <div class="grid md:grid-cols-[80px_1fr] gap-6 mb-12">
+        <div
+          class="font-mono text-[12px] tracking-[0.08em] text-terra-500 pt-2 font-medium"
+        >
+          02
+        </div>
+        <div>
+          <h2 class="h-display-l text-blaeck-900 mb-3">
+            Typografi.<br />En
+            <span class="wonk text-terra-600">varm serif</span>, en saklig sans.
+          </h2>
+          <p
+            class="font-display text-[17px] leading-[1.55] font-light text-blaeck-600 max-w-[60ch] m-0"
+            style="font-variation-settings: &quot;opsz&quot; 18"
+          >
+            Fraunces bär identitet och rubriker — variabel serif med italic-wonk
+            för ord som ska värmas. IBM Plex Sans bär information, regler och
+            formulär — saklig och alltigenom läsbar. Plex Mono är till tekniska
+            etiketter och nummer.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-12 mb-12">
+        <div class="border border-linne-200 rounded-md p-6 bg-white">
+          <p class="eyebrow text-terra-600 mb-2">Display — rubriker, värme</p>
+          <h3
+            class="font-display font-normal text-[56px] leading-[0.95] tracking-[-0.02em] text-blaeck-900 mb-3"
+            style="
+              font-variation-settings:
+                &quot;opsz&quot; 96,
+                &quot;SOFT&quot; 30;
+            "
+          >
+            Fraunces
+          </h3>
+          <p
+            class="font-display text-[22px] leading-[1.4] text-blaeck-600 mb-3"
+            style="font-variation-settings: &quot;opsz&quot; 24"
+          >
+            ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ<br />abcdefghijklmnopqrstuvwxyz åäö<br />0123456789
+            — !?#&amp;€
+          </p>
+          <p
+            class="text-body-sm text-blaeck-600 m-0 pt-3 border-t border-linne-200"
+          >
+            Variabel serif med optisk axel (opsz), mjukhet (SOFT) och
+            "wonk"-italic. Använd opsz 96–144 för stora rubriker, 18–36 för
+            intro. Italic-wonk bara på enskilda ord.
+          </p>
+        </div>
+
+        <div class="border border-linne-200 rounded-md p-6 bg-white">
+          <p class="eyebrow text-terra-600 mb-2">Brödtext — saklig, läsbar</p>
+          <h3
+            class="font-sans font-medium text-[48px] leading-[0.95] tracking-[-0.025em] text-blaeck-900 mb-3"
+          >
+            IBM Plex Sans
+          </h3>
+          <p class="font-sans text-body leading-[1.4] text-blaeck-600 mb-3">
+            ABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ<br />abcdefghijklmnopqrstuvwxyz åäö<br />0123456789
+            — !?#&amp;€
+          </p>
+          <p
+            class="text-body-sm text-blaeck-600 m-0 pt-3 border-t border-linne-200"
+          >
+            Vikt 400 som standard, 500 för betoning, 600 för sub-rubriker.
+            Letterspacing 0. Plex Mono används för etiketter, koder och
+            rumsnummer.
+          </p>
+        </div>
+      </div>
+
+      <p
+        class="eyebrow uppercase tracking-[0.14em] mb-4 pb-2 border-b border-linne-200"
+      >
+        Typskala — sju steg från display till etikett
+      </p>
+
+      <div class="flex flex-col">
+        <div
+          class="grid md:grid-cols-[200px_1fr] gap-6 py-6 border-t border-linne-200 items-baseline"
+        >
+          <div
+            class="font-mono text-label tracking-[0.06em] text-blaeck-400 leading-[1.5]"
+          >
+            <strong
+              class="block font-medium text-[12px] tracking-[0.08em] uppercase text-terra-600 mb-0.5"
+              >Display XL</strong
+            >
+            Fraunces 350 · opsz 144<br />72–88px / 0.95
+          </div>
+          <div class="h-display-xl text-blaeck-900">
+            Bo i ett <span class="wonk text-terra-600">litet hus</span
+            ><br />under ett uppdrag.
+          </div>
+        </div>
+        <div
+          class="grid md:grid-cols-[200px_1fr] gap-6 py-6 border-t border-linne-200 items-baseline"
+        >
+          <div
+            class="font-mono text-label tracking-[0.06em] text-blaeck-400 leading-[1.5]"
+          >
+            <strong
+              class="block font-medium text-[12px] tracking-[0.08em] uppercase text-terra-600 mb-0.5"
+              >Display L</strong
+            >
+            Fraunces 400 · opsz 96<br />40–60px / 1.0
+          </div>
+          <div class="h-display-l text-blaeck-900">
+            Tre sovrum, ett kök,
+            <span class="wonk text-terra-600">fjorton tapeter</span>.
+          </div>
+        </div>
+        <div
+          class="grid md:grid-cols-[200px_1fr] gap-6 py-6 border-t border-linne-200 items-baseline"
+        >
+          <div
+            class="font-mono text-label tracking-[0.06em] text-blaeck-400 leading-[1.5]"
+          >
+            <strong
+              class="block font-medium text-[12px] tracking-[0.08em] uppercase text-terra-600 mb-0.5"
+              >Display M</strong
+            >
+            Fraunces 400 · opsz 72<br />28–40px / 1.05
+          </div>
+          <div class="h-display-m text-blaeck-900">
+            Ordningsregler som faktiskt läses.
+          </div>
+        </div>
+        <div
+          class="grid md:grid-cols-[200px_1fr] gap-6 py-6 border-t border-linne-200 items-baseline"
+        >
+          <div
+            class="font-mono text-label tracking-[0.06em] text-blaeck-400 leading-[1.5]"
+          >
+            <strong
+              class="block font-medium text-[12px] tracking-[0.08em] uppercase text-terra-600 mb-0.5"
+              >Heading</strong
+            >
+            Plex Sans 600<br />22px / 1.25
+          </div>
+          <div class="text-heading text-blaeck-900">
+            Incheckning &amp; nycklar
+          </div>
+        </div>
+        <div
+          class="grid md:grid-cols-[200px_1fr] gap-6 py-6 border-t border-linne-200 items-baseline"
+        >
+          <div
+            class="font-mono text-label tracking-[0.06em] text-blaeck-400 leading-[1.5]"
+          >
+            <strong
+              class="block font-medium text-[12px] tracking-[0.08em] uppercase text-terra-600 mb-0.5"
+              >Subhead</strong
+            >
+            Plex Sans 500<br />17px / 1.35
+          </div>
+          <div class="text-subhead text-blaeck-900">
+            Tystnad efter klockan 22:00 gäller hela huset.
+          </div>
+        </div>
+        <div
+          class="grid md:grid-cols-[200px_1fr] gap-6 py-6 border-t border-linne-200 items-baseline"
+        >
+          <div
+            class="font-mono text-label tracking-[0.06em] text-blaeck-400 leading-[1.5]"
+          >
+            <strong
+              class="block font-medium text-[12px] tracking-[0.08em] uppercase text-terra-600 mb-0.5"
+              >Body L</strong
+            >
+            Plex Sans 400<br />18px / 1.55
+          </div>
+          <div class="text-body-lg text-blaeck-900">
+            Den här guiden riktar sig till alla som bor i huset under ett
+            arbetsuppdrag. Läs igenom den första kvällen — den tar tio minuter.
+          </div>
+        </div>
+        <div
+          class="grid md:grid-cols-[200px_1fr] gap-6 py-6 border-t border-linne-200 items-baseline"
+        >
+          <div
+            class="font-mono text-label tracking-[0.06em] text-blaeck-400 leading-[1.5]"
+          >
+            <strong
+              class="block font-medium text-[12px] tracking-[0.08em] uppercase text-terra-600 mb-0.5"
+              >Body</strong
+            >
+            Plex Sans 400<br />16px / 1.6
+          </div>
+          <div class="text-body text-blaeck-900">
+            Huset hyrs ut i sin helhet till företaget. Boendet är personalbostad
+            och varken hotell eller fritidshus.
+          </div>
+        </div>
+        <div
+          class="grid md:grid-cols-[200px_1fr] gap-6 py-6 border-y border-linne-200 items-baseline"
+        >
+          <div
+            class="font-mono text-label tracking-[0.06em] text-blaeck-400 leading-[1.5]"
+          >
+            <strong
+              class="block font-medium text-[12px] tracking-[0.08em] uppercase text-terra-600 mb-0.5"
+              >Label</strong
+            >
+            Plex Mono 500<br />11px / +0.1em
+          </div>
+          <div
+            class="font-mono text-label uppercase tracking-[0.1em] text-blaeck-400"
+          >
+            RUM 03 · SOVRUM · NORRA SIDAN
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="mt-12 px-7 py-6 bg-terra-500 text-linne-50 rounded-md font-display font-light text-[clamp(24px,3vw,32px)] leading-[1.25] tracking-[-0.015em]"
+        style="
+          font-variation-settings:
+            &quot;opsz&quot; 96,
+            &quot;SOFT&quot; 30;
+        "
+      >
+        Det som står här är inte tips. Det är
+        <em
+          class="italic text-terra-100"
+          style="
+            font-variation-settings:
+              &quot;opsz&quot; 96,
+              &quot;WONK&quot; 1,
+              &quot;SOFT&quot; 80;
+          "
+          >villkoren</em
+        >
+        för att vi ska kunna fortsätta hyra ut huset till er.
+      </div>
+    </section>
+
+    <!-- ================== 03 RUM (SPACING) ================== -->
+    <section
+      id="rum"
+      class="max-w-[1280px] mx-auto px-6 py-24 border-t border-linne-200"
+    >
+      <div class="grid md:grid-cols-[80px_1fr] gap-6 mb-12">
+        <div
+          class="font-mono text-[12px] tracking-[0.08em] text-terra-500 pt-2 font-medium"
+        >
+          03
+        </div>
+        <div>
+          <h2 class="h-display-l text-blaeck-900 mb-3">
+            Rum &amp; raster.<br />En
+            <span class="wonk text-terra-600">bas på fyra</span>, multipler upp.
+          </h2>
+          <p
+            class="font-display text-[17px] leading-[1.55] font-light text-blaeck-600 max-w-[60ch] m-0"
+            style="font-variation-settings: &quot;opsz&quot; 18"
+          >
+            All luft byggs på samma grundenhet om 4&nbsp;pixlar. Tailwind's
+            <code
+              class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs font-mono text-[11px] text-blaeck-600"
+              >p-1</code
+            >
+            = 4&nbsp;px,
+            <code
+              class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs font-mono text-[11px] text-blaeck-600"
+              >p-4</code
+            >
+            = 16&nbsp;px,
+            <code
+              class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs font-mono text-[11px] text-blaeck-600"
+              >p-12</code
+            >
+            = 48&nbsp;px osv.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col border-t border-linne-200">
+        <div
+          class="grid md:grid-cols-[80px_80px_1fr_200px] gap-4 py-3 border-b border-linne-200 items-center text-[13px]"
+        >
+          <span class="font-mono text-[12px] text-terra-600 font-medium"
+            >p-1</span
+          >
+          <span class="font-mono text-[12px] text-blaeck-400">4 px</span>
+          <div>
+            <div
+              class="h-3.5 bg-terra-500 rounded-[1px]"
+              style="width: 4px"
+            ></div>
+          </div>
+          <span class="text-[13px] text-blaeck-600 text-right hidden md:block"
+            >Mellan ikon och etikett</span
+          >
+        </div>
+        <div
+          class="grid md:grid-cols-[80px_80px_1fr_200px] gap-4 py-3 border-b border-linne-200 items-center text-[13px]"
+        >
+          <span class="font-mono text-[12px] text-terra-600 font-medium"
+            >p-2</span
+          >
+          <span class="font-mono text-[12px] text-blaeck-400">8 px</span>
+          <div>
+            <div
+              class="h-3.5 bg-terra-500 rounded-[1px]"
+              style="width: 8px"
+            ></div>
+          </div>
+          <span class="text-[13px] text-blaeck-600 text-right hidden md:block"
+            >Mellan label och fält</span
+          >
+        </div>
+        <div
+          class="grid md:grid-cols-[80px_80px_1fr_200px] gap-4 py-3 border-b border-linne-200 items-center text-[13px]"
+        >
+          <span class="font-mono text-[12px] text-terra-600 font-medium"
+            >p-3</span
+          >
+          <span class="font-mono text-[12px] text-blaeck-400">12 px</span>
+          <div>
+            <div
+              class="h-3.5 bg-terra-500 rounded-[1px]"
+              style="width: 12px"
+            ></div>
+          </div>
+          <span class="text-[13px] text-blaeck-600 text-right hidden md:block"
+            >Stack inom kort</span
+          >
+        </div>
+        <div
+          class="grid md:grid-cols-[80px_80px_1fr_200px] gap-4 py-3 border-b border-linne-200 items-center text-[13px]"
+        >
+          <span class="font-mono text-[12px] text-terra-600 font-medium"
+            >p-4</span
+          >
+          <span class="font-mono text-[12px] text-blaeck-400">16 px</span>
+          <div>
+            <div
+              class="h-3.5 bg-terra-500 rounded-[1px]"
+              style="width: 16px"
+            ></div>
+          </div>
+          <span class="text-[13px] text-blaeck-600 text-right hidden md:block"
+            >Standardpadding</span
+          >
+        </div>
+        <div
+          class="grid md:grid-cols-[80px_80px_1fr_200px] gap-4 py-3 border-b border-linne-200 items-center text-[13px]"
+        >
+          <span class="font-mono text-[12px] text-terra-600 font-medium"
+            >p-6</span
+          >
+          <span class="font-mono text-[12px] text-blaeck-400">24 px</span>
+          <div>
+            <div
+              class="h-3.5 bg-terra-500 rounded-[1px]"
+              style="width: 24px"
+            ></div>
+          </div>
+          <span class="text-[13px] text-blaeck-600 text-right hidden md:block"
+            >Mellan kort &amp; block</span
+          >
+        </div>
+        <div
+          class="grid md:grid-cols-[80px_80px_1fr_200px] gap-4 py-3 border-b border-linne-200 items-center text-[13px]"
+        >
+          <span class="font-mono text-[12px] text-terra-600 font-medium"
+            >p-8</span
+          >
+          <span class="font-mono text-[12px] text-blaeck-400">32 px</span>
+          <div>
+            <div
+              class="h-3.5 bg-terra-500 rounded-[1px]"
+              style="width: 32px"
+            ></div>
+          </div>
+          <span class="text-[13px] text-blaeck-600 text-right hidden md:block"
+            >Sektioner internt</span
+          >
+        </div>
+        <div
+          class="grid md:grid-cols-[80px_80px_1fr_200px] gap-4 py-3 border-b border-linne-200 items-center text-[13px]"
+        >
+          <span class="font-mono text-[12px] text-terra-600 font-medium"
+            >p-12</span
+          >
+          <span class="font-mono text-[12px] text-blaeck-400">48 px</span>
+          <div>
+            <div
+              class="h-3.5 bg-terra-500 rounded-[1px]"
+              style="width: 48px"
+            ></div>
+          </div>
+          <span class="text-[13px] text-blaeck-600 text-right hidden md:block"
+            >Sektionsavstånd S</span
+          >
+        </div>
+        <div
+          class="grid md:grid-cols-[80px_80px_1fr_200px] gap-4 py-3 border-b border-linne-200 items-center text-[13px]"
+        >
+          <span class="font-mono text-[12px] text-terra-600 font-medium"
+            >p-16</span
+          >
+          <span class="font-mono text-[12px] text-blaeck-400">64 px</span>
+          <div>
+            <div
+              class="h-3.5 bg-terra-500 rounded-[1px]"
+              style="width: 64px"
+            ></div>
+          </div>
+          <span class="text-[13px] text-blaeck-600 text-right hidden md:block"
+            >Sektionsavstånd M</span
+          >
+        </div>
+        <div
+          class="grid md:grid-cols-[80px_80px_1fr_200px] gap-4 py-3 border-b border-linne-200 items-center text-[13px]"
+        >
+          <span class="font-mono text-[12px] text-terra-600 font-medium"
+            >p-24</span
+          >
+          <span class="font-mono text-[12px] text-blaeck-400">96 px</span>
+          <div>
+            <div
+              class="h-3.5 bg-terra-500 rounded-[1px]"
+              style="width: 96px"
+            ></div>
+          </div>
+          <span class="text-[13px] text-blaeck-600 text-right hidden md:block"
+            >Sektionsavstånd L</span
+          >
+        </div>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-2 gap-6">
+        <div>
+          <p
+            class="eyebrow uppercase tracking-[0.14em] mb-4 pb-2 border-b border-linne-200"
+          >
+            Radie
+          </p>
+          <p class="text-body-sm text-blaeck-600 mb-3">
+            Domek använder fyra radier. Stora radier är reserverade för knappar
+            (pill); kort och fält håller sig i 4–8&nbsp;px så de inte tappar sin
+            hantverkskänsla.
+          </p>
+          <ul class="list-none p-0 m-0 font-mono text-[13px] leading-[2]">
+            <li>
+              <code
+                class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs text-[11px] text-blaeck-600"
+                >rounded-xs</code
+              >
+              &nbsp;2 px &nbsp;<span class="text-blaeck-400"
+                >— badges, tags</span
+              >
+            </li>
+            <li>
+              <code
+                class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs text-[11px] text-blaeck-600"
+                >rounded-sm</code
+              >
+              &nbsp;4 px &nbsp;<span class="text-blaeck-400"
+                >— inputs, små kort</span
+              >
+            </li>
+            <li>
+              <code
+                class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs text-[11px] text-blaeck-600"
+                >rounded-md</code
+              >
+              &nbsp;8 px &nbsp;<span class="text-blaeck-400"
+                >— kort, paneler</span
+              >
+            </li>
+            <li>
+              <code
+                class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs text-[11px] text-blaeck-600"
+                >rounded-pill</code
+              >
+              9999 px <span class="text-blaeck-400">— knappar</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <p
+            class="eyebrow uppercase tracking-[0.14em] mb-4 pb-2 border-b border-linne-200"
+          >
+            Brytpunkter
+          </p>
+          <p class="text-body-sm text-blaeck-600 mb-3">
+            Tre brytpunkter räcker. Mobilen är default — desktop är
+            förstärkning, inte tvärtom.
+          </p>
+          <ul class="list-none p-0 m-0 font-mono text-[13px] leading-[2]">
+            <li>
+              <code
+                class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs text-[11px] text-blaeck-600"
+                >sm:</code
+              >
+              &nbsp;480 px &nbsp;<span class="text-blaeck-400"
+                >— stor mobil</span
+              >
+            </li>
+            <li>
+              <code
+                class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs text-[11px] text-blaeck-600"
+                >md:</code
+              >
+              &nbsp;720 px &nbsp;<span class="text-blaeck-400">— platta</span>
+            </li>
+            <li>
+              <code
+                class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs text-[11px] text-blaeck-600"
+                >lg:</code
+              >
+              &nbsp;900 px &nbsp;<span class="text-blaeck-400">— desktop</span>
+            </li>
+            <li>
+              <code
+                class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs text-[11px] text-blaeck-600"
+                >xl:</code
+              >
+              1280 px <span class="text-blaeck-400">— max innehållsbredd</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== 04 KNAPPAR ================== -->
+    <section
+      id="knapp"
+      class="max-w-[1280px] mx-auto px-6 py-24 border-t border-linne-200"
+    >
+      <div class="grid md:grid-cols-[80px_1fr] gap-6 mb-12">
+        <div
+          class="font-mono text-[12px] tracking-[0.08em] text-terra-500 pt-2 font-medium"
+        >
+          04
+        </div>
+        <div>
+          <h2 class="h-display-l text-blaeck-900 mb-3">
+            Knappar &amp; länkar.<br />En primär,
+            <span class="wonk text-terra-600">tre stöd</span>.
+          </h2>
+          <p
+            class="font-display text-[17px] leading-[1.55] font-light text-blaeck-600 max-w-[60ch] m-0"
+            style="font-variation-settings: &quot;opsz&quot; 18"
+          >
+            Det finns alltid bara
+            <span class="wonk text-terra-600">en</span> primär knapp per vy. Den
+            är i terrakotta. Allt annat backar — outline, ghost eller länk.
+          </p>
+        </div>
+      </div>
+
+      <p
+        class="eyebrow uppercase tracking-[0.14em] mb-4 pb-2 border-b border-linne-200"
+      >
+        Tillstånd
+      </p>
+
+      <div class="border border-linne-200 rounded-md p-6 bg-white">
+        <!-- Primär row -->
+        <div
+          class="flex flex-col md:flex-row md:items-center gap-4 py-4 border-b border-linne-200"
+        >
+          <div class="md:w-40 eyebrow uppercase tracking-[0.08em]">
+            Primär · Terra
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="btn btn-primary">Boka visning →</button>
+            <button class="btn btn-primary bg-terra-700">Hover →</button>
+            <button class="btn btn-primary bg-terra-800 translate-y-px">
+              Active →
+            </button>
+            <button
+              class="btn btn-primary outline-2 outline-terra-500 outline-offset-2"
+            >
+              Focus →
+            </button>
+            <button class="btn btn-primary" disabled>Disabled →</button>
+          </div>
+        </div>
+        <!-- Sekundär row -->
+        <div
+          class="flex flex-col md:flex-row md:items-center gap-4 py-4 border-b border-linne-200"
+        >
+          <div class="md:w-40 eyebrow uppercase tracking-[0.08em]">
+            Sekundär · Outline
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="btn btn-secondary">Läs reglerna</button>
+            <button class="btn btn-secondary bg-blaeck-50 border-blaeck-700">
+              Hover
+            </button>
+            <button class="btn btn-secondary bg-blaeck-100 translate-y-px">
+              Active
+            </button>
+            <button
+              class="btn btn-secondary outline-2 outline-terra-500 outline-offset-2"
+            >
+              Focus
+            </button>
+            <button class="btn btn-secondary" disabled>Disabled</button>
+          </div>
+        </div>
+        <!-- Ghost row -->
+        <div
+          class="flex flex-col md:flex-row md:items-center gap-4 py-4 border-b border-linne-200"
+        >
+          <div class="md:w-40 eyebrow uppercase tracking-[0.08em]">
+            Ghost · text
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="btn btn-ghost">Avbryt</button>
+            <button class="btn btn-ghost text-terra-600">Hover</button>
+            <button class="btn btn-ghost text-terra-800">Active</button>
+            <button
+              class="btn btn-ghost outline-2 outline-terra-500 outline-offset-2"
+            >
+              Focus
+            </button>
+            <button class="btn btn-ghost" disabled>Disabled</button>
+          </div>
+        </div>
+        <!-- Notis row -->
+        <div class="flex flex-col md:flex-row md:items-center gap-4 py-4">
+          <div class="md:w-40 eyebrow uppercase tracking-[0.08em]">
+            Notis · Senap
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button class="btn btn-warning">Bekräfta</button>
+            <button class="btn btn-warning bg-senap-500 text-linne-50">
+              Hover
+            </button>
+            <button
+              class="btn btn-warning bg-senap-600 text-linne-50 translate-y-px"
+            >
+              Active
+            </button>
+            <button
+              class="btn btn-warning outline-2 outline-terra-500 outline-offset-2"
+            >
+              Focus
+            </button>
+            <button
+              class="btn btn-warning bg-linne-300 text-linne-100"
+              disabled
+            >
+              Disabled
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-2 gap-6">
+        <div>
+          <p
+            class="eyebrow uppercase tracking-[0.14em] mb-4 pb-2 border-b border-linne-200"
+          >
+            Storlekar
+          </p>
+          <div class="flex gap-3 items-center flex-wrap">
+            <button class="btn btn-primary text-[13px] px-3.5 py-2">
+              Liten →
+            </button>
+            <button class="btn btn-primary">Standard →</button>
+            <button class="btn btn-primary text-[15px] px-7 py-4">
+              Stor →
+            </button>
+          </div>
+          <p class="text-[13px] text-blaeck-400 mt-3">
+            Liten i navigation och inom kort. Standard överallt annars. Stor
+            bara i hero.
+          </p>
+        </div>
+        <div>
+          <p
+            class="eyebrow uppercase tracking-[0.14em] mb-4 pb-2 border-b border-linne-200"
+          >
+            Länkar i löpande text
+          </p>
+          <p class="text-[15px] leading-[1.6] m-0">
+            Vid frågor om kontraktet, kontakta
+            <a href="#" class="link">hyresansvarig</a> direkt. Akuta ärenden går
+            till <a href="#" class="link">jourtelefonen</a> dygnet runt.
+          </p>
+          <p class="text-[13px] text-blaeck-400 mt-3">
+            Länkar har alltid Terra-200 understreck och 600-färg. Hover går till
+            800.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================== 05 FORMULÄR ================== -->
+    <section
+      id="form"
+      class="max-w-[1280px] mx-auto px-6 py-24 border-t border-linne-200"
+    >
+      <div class="grid md:grid-cols-[80px_1fr] gap-6 mb-12">
+        <div
+          class="font-mono text-[12px] tracking-[0.08em] text-terra-500 pt-2 font-medium"
+        >
+          05
+        </div>
+        <div>
+          <h2 class="h-display-l text-blaeck-900 mb-3">
+            Formulär.<br />En kontaktyta som
+            <span class="wonk text-terra-600">förtjänar</span> svar.
+          </h2>
+          <p
+            class="font-display text-[17px] leading-[1.55] font-light text-blaeck-600 max-w-[60ch] m-0"
+            style="font-variation-settings: &quot;opsz&quot; 18"
+          >
+            Tydliga etiketter ovanför fältet, hjälptext under, fel under det.
+            Aldrig placeholder som enda etikett. Obligatoriska fält märks med en
+            liten terra-asterisk.
+          </p>
+        </div>
+      </div>
+
+      <p
+        class="eyebrow uppercase tracking-[0.14em] mb-4 pb-2 border-b border-linne-200"
+      >
+        Komponenter
+      </p>
+
+      <form
+        class="grid md:grid-cols-2 gap-6 border border-linne-200 rounded-md p-8 bg-white"
+        onsubmit="return false;"
+      >
+        <div class="flex flex-col gap-1.5">
+          <label for="ex-namn" class="font-medium text-[13px] text-blaeck-900"
+            >Namn <span class="text-terra-600">*</span></label
+          >
+          <input
+            id="ex-namn"
+            type="text"
+            class="input-base"
+            placeholder="Förnamn Efternamn"
+          />
+          <span class="text-[12px] text-blaeck-400 leading-[1.45]"
+            >Som du står registrerad hos arbetsgivaren.</span
+          >
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="ex-mail" class="font-medium text-[13px] text-blaeck-900"
+            >E-post <span class="text-terra-600">*</span></label
+          >
+          <input
+            id="ex-mail"
+            type="email"
+            class="input-base"
+            value="anna.kowalski@example.com"
+          />
+          <span class="text-[12px] text-blaeck-400 leading-[1.45]"
+            >Bekräftelse skickas hit inom 24 timmar.</span
+          >
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="ex-tel" class="font-medium text-[13px] text-blaeck-900"
+            >Telefon</label
+          >
+          <input
+            id="ex-tel"
+            type="tel"
+            class="input-base input-error"
+            value="073-12-34"
+          />
+          <span
+            class="text-[12px] text-terra-700 leading-[1.45] flex items-center gap-1.5"
+          >
+            <span
+              class="inline-flex w-3.5 h-3.5 rounded-full bg-terra-600 text-linne-50 font-mono text-[10px] font-semibold items-center justify-center"
+              >!</span
+            >
+            Telefonnumret måste vara minst 9 siffror.
+          </span>
+        </div>
+
+        <div class="flex flex-col gap-1.5">
+          <label for="ex-rum" class="font-medium text-[13px] text-blaeck-900"
+            >Rumstyp</label
+          >
+          <select
+            id="ex-rum"
+            class="input-base appearance-none bg-no-repeat pr-10 bg-[length:12px] bg-[position:right_14px_center]"
+            style="
+              background-image: url(&quot;data:image/svg+xml;utf8,<svg xmlns=%27http://www.w3.org/2000/svg%27 width=%2712%27 height=%278%27 viewBox=%270 0 12 8%27 fill=%27none%27><path d=%27M1 1L6 6L11 1%27 stroke=%27%23847B62%27 stroke-width=%271.5%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/></svg>&quot;);
+            "
+          >
+            <option>Enkelrum</option>
+            <option>Dubbelrum</option>
+            <option>Hela huset</option>
+          </select>
+          <span class="text-[12px] text-blaeck-400 leading-[1.45]"
+            >Företaget hyr huset i sin helhet — välj rum för intern
+            fördelning.</span
+          >
+        </div>
+
+        <div class="flex flex-col gap-1.5 md:col-span-2">
+          <label for="ex-msg" class="font-medium text-[13px] text-blaeck-900"
+            >Meddelande</label
+          >
+          <textarea
+            id="ex-msg"
+            class="input-base min-h-24 resize-y"
+            placeholder="Skriv kort vad ärendet gäller. Lämna gärna referensnummer från avtalet."
+          ></textarea>
+        </div>
+
+        <div class="flex flex-col gap-1.5 md:col-span-2">
+          <span class="font-medium text-[13px] text-blaeck-900 block mb-1.5"
+            >Vilket gäller besöket?</span
+          >
+          <div class="flex gap-6 flex-wrap">
+            <label
+              class="inline-flex items-start gap-2.5 cursor-pointer py-1 text-body-sm"
+            >
+              <input type="radio" name="ex-typ" checked class="peer sr-only" />
+              <span
+                class="w-[18px] h-[18px] mt-0.5 rounded-full border-[1.5px] border-blaeck-300 bg-white inline-flex items-center justify-center transition-colors peer-checked:border-terra-500 peer-checked:[&::after]:content-[''] peer-checked:[&::after]:w-2 peer-checked:[&::after]:h-2 peer-checked:[&::after]:rounded-full peer-checked:[&::after]:bg-terra-500 peer-focus-visible:ring-[3px] peer-focus-visible:ring-terra-100"
+              ></span>
+              <span>Incheckning</span>
+            </label>
+            <label
+              class="inline-flex items-start gap-2.5 cursor-pointer py-1 text-body-sm"
+            >
+              <input type="radio" name="ex-typ" class="peer sr-only" />
+              <span
+                class="w-[18px] h-[18px] mt-0.5 rounded-full border-[1.5px] border-blaeck-300 bg-white inline-flex items-center justify-center transition-colors peer-checked:border-terra-500 peer-checked:[&::after]:content-[''] peer-checked:[&::after]:w-2 peer-checked:[&::after]:h-2 peer-checked:[&::after]:rounded-full peer-checked:[&::after]:bg-terra-500"
+              ></span>
+              <span>Förlängning</span>
+            </label>
+            <label
+              class="inline-flex items-start gap-2.5 cursor-pointer py-1 text-body-sm"
+            >
+              <input type="radio" name="ex-typ" class="peer sr-only" />
+              <span
+                class="w-[18px] h-[18px] mt-0.5 rounded-full border-[1.5px] border-blaeck-300 bg-white inline-flex items-center justify-center transition-colors peer-checked:border-terra-500 peer-checked:[&::after]:content-[''] peer-checked:[&::after]:w-2 peer-checked:[&::after]:h-2 peer-checked:[&::after]:rounded-full peer-checked:[&::after]:bg-terra-500"
+              ></span>
+              <span>Felanmälan</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-2 md:col-span-2">
+          <label
+            class="inline-flex items-start gap-2.5 cursor-pointer py-1 text-body-sm"
+          >
+            <input type="checkbox" checked class="peer sr-only" />
+            <span
+              class="w-[18px] h-[18px] mt-0.5 rounded-xs border-[1.5px] border-blaeck-300 bg-white inline-flex items-center justify-center transition-colors peer-checked:bg-terra-500 peer-checked:border-terra-500 peer-checked:[&::after]:content-[''] peer-checked:[&::after]:w-[9px] peer-checked:[&::after]:h-[5px] peer-checked:[&::after]:border-l-[1.8px] peer-checked:[&::after]:border-b-[1.8px] peer-checked:[&::after]:border-linne-50 peer-checked:[&::after]:rotate-[-45deg] peer-checked:[&::after]:translate-x-[1px] peer-checked:[&::after]:-translate-y-[1px]"
+            ></span>
+            <span
+              >Jag har läst och godkänner
+              <a href="#" class="link">ordningsreglerna för Domek</a>.</span
+            >
+          </label>
+          <label
+            class="inline-flex items-start gap-2.5 cursor-pointer py-1 text-body-sm"
+          >
+            <input type="checkbox" class="peer sr-only" />
+            <span
+              class="w-[18px] h-[18px] mt-0.5 rounded-xs border-[1.5px] border-blaeck-300 bg-white inline-flex items-center justify-center transition-colors peer-checked:bg-terra-500 peer-checked:border-terra-500 peer-checked:[&::after]:content-[''] peer-checked:[&::after]:w-[9px] peer-checked:[&::after]:h-[5px] peer-checked:[&::after]:border-l-[1.8px] peer-checked:[&::after]:border-b-[1.8px] peer-checked:[&::after]:border-linne-50 peer-checked:[&::after]:rotate-[-45deg]"
+            ></span>
+            <span>Skicka mig en kopia av detta meddelande.</span>
+          </label>
+        </div>
+
+        <div
+          class="md:col-span-2 flex items-center gap-6 justify-between flex-wrap mt-3"
+        >
+          <label
+            class="inline-flex items-center gap-2.5 cursor-pointer text-body-sm"
+          >
+            <input type="checkbox" checked class="peer sr-only" />
+            <span
+              class="w-9 h-5 bg-blaeck-200 rounded-pill relative transition-colors peer-checked:bg-terra-500 [&::before]:content-[''] [&::before]:absolute [&::before]:top-0.5 [&::before]:left-0.5 [&::before]:w-4 [&::before]:h-4 [&::before]:bg-linne-50 [&::before]:rounded-full [&::before]:transition-transform peer-checked:[&::before]:translate-x-4"
+            ></span>
+            <span>SMS-bekräftelse</span>
+          </label>
+          <div class="flex gap-3">
+            <button class="btn btn-ghost">Avbryt</button>
+            <button class="btn btn-primary">Skicka →</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- ================== 06 KORT ================== -->
+    <section
+      id="kort"
+      class="max-w-[1280px] mx-auto px-6 py-24 border-t border-linne-200"
+    >
+      <div class="grid md:grid-cols-[80px_1fr] gap-6 mb-12">
+        <div
+          class="font-mono text-[12px] tracking-[0.08em] text-terra-500 pt-2 font-medium"
+        >
+          06
+        </div>
+        <div>
+          <h2 class="h-display-l text-blaeck-900 mb-3">
+            Kort &amp; sektioner.<br />Fyra varianter —
+            <span class="wonk text-terra-600">en logik</span>.
+          </h2>
+          <p
+            class="font-display text-[17px] leading-[1.55] font-light text-blaeck-600 max-w-[60ch] m-0"
+            style="font-variation-settings: &quot;opsz&quot; 18"
+          >
+            Alla kort har samma kropp (Linne-ram, vit yta, 8&nbsp;px-radie).
+            Variationen kommer från vad de bär: ett rum, en notis, en
+            informationsruta eller en kontakt.
+          </p>
+        </div>
+      </div>
+
+      <p
+        class="eyebrow uppercase tracking-[0.14em] mb-4 pb-2 border-b border-linne-200"
+      >
+        Standardkort &amp; rumskort
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="card">
+          <div class="p-6">
+            <p class="eyebrow text-terra-600 mb-2">Information</p>
+            <h3
+              class="font-display font-medium text-[22px] leading-[1.2] tracking-[-0.01em] text-blaeck-900 mb-2"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Incheckning klockan 15
+            </h3>
+            <p class="text-body-sm text-blaeck-600 mb-3">
+              Nycklar finns i nyckelboxen vid huvudingången. Koden får du via
+              SMS samma dag — kontrollera mobiltäckningen redan vid grinden.
+            </p>
+            <div
+              class="flex gap-3 font-mono text-[11px] uppercase tracking-[0.06em] text-blaeck-400 mb-3 pt-2 border-t border-linne-200"
+            >
+              <span>Senast uppdaterad</span
+              ><span class="text-blaeck-800">2026-04-09</span>
+            </div>
+            <a href="#" class="link">Läs hela rutinen →</a>
+          </div>
+        </article>
+
+        <!-- Mossa room card -->
+        <article class="card">
+          <div
+            class="h-40 bg-skog-700 bg-[image:var(--tex-sol)] bg-[length:200px] relative flex items-end p-4"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-skog-950/50 pointer-events-none"
+            ></div>
+            <span
+              class="relative z-10 font-display font-light text-[64px] leading-none text-linne-50 tracking-[-0.03em]"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 144,
+                  &quot;SOFT&quot; 30;
+              "
+              >03</span
+            >
+          </div>
+          <div class="p-6">
+            <p class="eyebrow mb-2" style="color: var(--color-rum-mossa)">
+              Sovrum 1 · Mossa
+            </p>
+            <h3
+              class="font-display font-medium text-[22px] leading-[1.2] tracking-[-0.01em] text-blaeck-900 mb-2"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Stora sovrummet på övervåningen
+            </h3>
+            <p class="text-body-sm text-blaeck-600 mb-3">
+              Två 90-sängar, garderob, eget skrivbord. Mod-sunburst-tapet i
+              skogsgrönt och guld. Fönster mot söder — använd rullgardinen vid
+              nattskift.
+            </p>
+            <div
+              class="flex gap-3 font-mono text-[11px] uppercase tracking-[0.06em] text-blaeck-400 pt-2 border-t border-linne-200"
+            >
+              <span>14 m²</span><span>2 sängar</span><span>Skrivbord</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Bukett (kitchen) -->
+        <article class="card">
+          <div
+            class="h-40 bg-[#E8DDC0] bg-[image:var(--tex-bukett)] bg-[length:240px] relative flex items-end p-4"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-blaeck-900/40 pointer-events-none"
+            ></div>
+            <span
+              class="relative z-10 font-display font-light text-[64px] leading-none text-linne-50 tracking-[-0.03em]"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 144,
+                  &quot;SOFT&quot; 30;
+              "
+              >01</span
+            >
+          </div>
+          <div class="p-6">
+            <p class="eyebrow mb-2" style="color: var(--color-rum-bukett)">
+              Rum 01 · Bukett
+            </p>
+            <h3
+              class="font-display font-medium text-[22px] leading-[1.2] tracking-[-0.01em] text-blaeck-900 mb-2"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Köket — där allt händer
+            </h3>
+            <p class="text-body-sm text-blaeck-600 mb-3">
+              Diskmaskin, induktionshäll, kaffebryggare. Sopsorteringen står i
+              nedre lådan. Den varma butterscotch-tapeten med bukettrosor är
+              husets tvättäkta original.
+            </p>
+            <div
+              class="flex gap-3 font-mono text-[11px] uppercase tracking-[0.06em] text-blaeck-400 pt-2 border-t border-linne-200"
+            >
+              <span>16 m²</span><span>Diskmaskin</span><span>Kaffe</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Parkett (living room) -->
+        <article class="card">
+          <div
+            class="h-40 relative flex items-end p-4"
+            style="
+              background: repeating-linear-gradient(
+                90deg,
+                #6f6961 0px,
+                #6f6961 28px,
+                #5d5750 28px,
+                #5d5750 30px,
+                #6f6961 30px,
+                #6f6961 58px,
+                #524d47 58px,
+                #524d47 60px,
+                #6f6961 60px,
+                #6f6961 90px,
+                #5d5750 90px,
+                #5d5750 92px
+              );
+            "
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-b from-transparent to-blaeck-900/40 pointer-events-none"
+            ></div>
+            <span
+              class="relative z-10 font-display font-light text-[64px] leading-none text-linne-50 tracking-[-0.03em]"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 144,
+                  &quot;SOFT&quot; 30;
+              "
+              >02</span
+            >
+          </div>
+          <div class="p-6">
+            <p class="eyebrow mb-2" style="color: var(--color-rum-parkett)">
+              Vardagsrum · Parkett
+            </p>
+            <h3
+              class="font-display font-medium text-[22px] leading-[1.2] tracking-[-0.01em] text-blaeck-900 mb-2"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Vardagsrum &amp; matplats
+            </h3>
+            <p class="text-body-sm text-blaeck-600 mb-3">
+              Soffa för fyra, matbord för sex. TV med Chromecast.
+              Originalparkett från 70-talet — använd inte sko inomhus.
+            </p>
+            <div
+              class="flex gap-3 font-mono text-[11px] uppercase tracking-[0.06em] text-blaeck-400 pt-2 border-t border-linne-200"
+            >
+              <span>22 m²</span><span>Parkett</span><span>WiFi</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <p
+        class="eyebrow uppercase tracking-[0.14em] mt-12 mb-4 pb-2 border-b border-linne-200"
+      >
+        Notiser — tre tonlägen
+      </p>
+
+      <div class="flex flex-col gap-3">
+        <div class="notice border-skog-500 bg-skog-50">
+          <span
+            class="shrink-0 w-6 h-6 rounded-full bg-skog-600 text-linne-50 font-mono font-semibold text-[13px] flex items-center justify-center mt-px"
+            >i</span
+          >
+          <div>
+            <h4
+              class="font-sans font-semibold text-[14px] mb-0.5 text-blaeck-900"
+            >
+              Bra att veta
+            </h4>
+            <p class="m-0 text-[13px] leading-[1.55] text-blaeck-600">
+              Sopsortering sker i förrådet bakom huset. Restavfall töms onsdagar
+              — allt annat efter behov.
+            </p>
+          </div>
+        </div>
+        <div class="notice border-senap-500 bg-senap-50">
+          <span
+            class="shrink-0 w-6 h-6 rounded-full bg-senap-600 text-linne-50 font-mono font-semibold text-[13px] flex items-center justify-center mt-px"
+            >!</span
+          >
+          <div>
+            <h4
+              class="font-sans font-semibold text-[14px] mb-0.5 text-blaeck-900"
+            >
+              Observera
+            </h4>
+            <p class="m-0 text-[13px] leading-[1.55] text-blaeck-600">
+              Tystnad efter klockan 22:00 gäller hela huset. Det är en
+              bostadsfastighet — grannarna har morgon.
+            </p>
+          </div>
+        </div>
+        <div class="notice border-terra-500 bg-terra-50">
+          <span
+            class="shrink-0 w-6 h-6 rounded-full bg-terra-500 text-linne-50 font-mono font-semibold text-[13px] flex items-center justify-center mt-px"
+            >!</span
+          >
+          <div>
+            <h4
+              class="font-sans font-semibold text-[14px] mb-0.5 text-blaeck-900"
+            >
+              Viktigt — läs noga
+            </h4>
+            <p class="m-0 text-[13px] leading-[1.55] text-blaeck-600">
+              Rökning är förbjuden inomhus. Vid överträdelse debiteras
+              saneringskostnad enligt avtalet (minst 8&nbsp;000&nbsp;kr).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p
+        class="eyebrow uppercase tracking-[0.14em] mt-12 mb-4 pb-2 border-b border-linne-200"
+      >
+        Kontaktkort
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <article class="bg-blaeck-800 text-linne-100 p-8 rounded-md">
+          <h3
+            class="font-display font-light text-[32px] leading-[1.1] m-0 text-linne-50 mb-4"
+            style="
+              font-variation-settings:
+                &quot;opsz&quot; 72,
+                &quot;SOFT&quot; 30;
+            "
+          >
+            Hyresansvarig — <span class="wonk text-terra-300">vardagar</span>
+          </h3>
+          <dl class="m-0 flex flex-col gap-0">
+            <div
+              class="grid grid-cols-[100px_1fr] gap-3 text-body-sm py-2 border-b border-blaeck-700"
+            >
+              <dt
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-linne-400 mt-0.5"
+              >
+                Namn
+              </dt>
+              <dd class="m-0 text-linne-100">Karin Lindberg</dd>
+            </div>
+            <div
+              class="grid grid-cols-[100px_1fr] gap-3 text-body-sm py-2 border-b border-blaeck-700"
+            >
+              <dt
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-linne-400 mt-0.5"
+              >
+                Telefon
+              </dt>
+              <dd class="m-0">
+                <a
+                  href="tel:+460700000000"
+                  class="text-terra-300 no-underline border-b border-terra-700 hover:text-terra-200 hover:border-terra-500"
+                  >+46 70 000 00 00</a
+                >
+              </dd>
+            </div>
+            <div
+              class="grid grid-cols-[100px_1fr] gap-3 text-body-sm py-2 border-b border-blaeck-700"
+            >
+              <dt
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-linne-400 mt-0.5"
+              >
+                E-post
+              </dt>
+              <dd class="m-0">
+                <a
+                  href="mailto:karin@domek.se"
+                  class="text-terra-300 no-underline border-b border-terra-700 hover:text-terra-200 hover:border-terra-500"
+                  >karin@domek.se</a
+                >
+              </dd>
+            </div>
+            <div class="grid grid-cols-[100px_1fr] gap-3 text-body-sm py-2">
+              <dt
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-linne-400 mt-0.5"
+              >
+                Tider
+              </dt>
+              <dd class="m-0 text-linne-100">Mån–fre 08–17</dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="bg-terra-700 text-linne-100 p-8 rounded-md">
+          <h3
+            class="font-display font-light text-[32px] leading-[1.1] m-0 text-linne-50 mb-4"
+            style="
+              font-variation-settings:
+                &quot;opsz&quot; 72,
+                &quot;SOFT&quot; 30;
+            "
+          >
+            Jour — <span class="wonk text-terra-200">akut</span>, dygnet runt
+          </h3>
+          <dl class="m-0 flex flex-col gap-0">
+            <div
+              class="grid grid-cols-[100px_1fr] gap-3 text-body-sm py-2 border-b border-terra-800"
+            >
+              <dt
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-200 mt-0.5"
+              >
+                Vatten
+              </dt>
+              <dd class="m-0">Stäng huvudkran. Ring jour.</dd>
+            </div>
+            <div
+              class="grid grid-cols-[100px_1fr] gap-3 text-body-sm py-2 border-b border-terra-800"
+            >
+              <dt
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-200 mt-0.5"
+              >
+                El
+              </dt>
+              <dd class="m-0">Kontrollera proppskåp. Ring jour.</dd>
+            </div>
+            <div
+              class="grid grid-cols-[100px_1fr] gap-3 text-body-sm py-2 border-b border-terra-800"
+            >
+              <dt
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-200 mt-0.5"
+              >
+                Lås
+              </dt>
+              <dd class="m-0">Reservnyckel hos grannen Bengt.</dd>
+            </div>
+            <div class="grid grid-cols-[100px_1fr] gap-3 text-body-sm py-2">
+              <dt
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-200 mt-0.5"
+              >
+                Telefon
+              </dt>
+              <dd class="m-0">
+                <a
+                  href="tel:+460700000001"
+                  class="text-linne-50 no-underline border-b border-terra-500"
+                  >+46 70 000 00 01</a
+                >
+              </dd>
+            </div>
+          </dl>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================== 07 MÖNSTER ================== -->
+    <section
+      id="monster"
+      class="max-w-[1280px] mx-auto px-6 py-24 border-t border-linne-200"
+    >
+      <div class="grid md:grid-cols-[80px_1fr] gap-6 mb-12">
+        <div
+          class="font-mono text-[12px] tracking-[0.08em] text-terra-500 pt-2 font-medium"
+        >
+          07
+        </div>
+        <div>
+          <h2 class="h-display-l text-blaeck-900 mb-3">
+            Mönster.<br />Fyra tapeter,
+            <span class="wonk text-terra-600">fyra roller</span>.
+          </h2>
+          <p
+            class="font-display text-[17px] leading-[1.55] font-light text-blaeck-600 max-w-[60ch] m-0"
+            style="font-variation-settings: &quot;opsz&quot; 18"
+          >
+            Fyra tileable SVG-mönster destillerade direkt ur husets tapeter. De
+            är inte dekoration — de är texturer som ger sajten doften av
+            sjuttiotal utan att stjäla läsningen.
+          </p>
+        </div>
+      </div>
+
+      <p
+        class="eyebrow uppercase tracking-[0.14em] mb-4 pb-2 border-b border-linne-200"
+      >
+        Mönsterbiblioteket
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="card">
+          <div
+            class="h-60 bg-[image:var(--tex-klover)] bg-[length:80px]"
+          ></div>
+          <div class="px-5 py-4 border-t border-linne-200">
+            <h4
+              class="font-display font-medium text-[22px] leading-[1.1] mb-1 text-blaeck-900"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Klöver
+            </h4>
+            <p
+              class="font-mono text-[10px] uppercase tracking-[0.08em] text-blaeck-400 mb-3"
+            >
+              Källa · hall (rosa korridor)
+            </p>
+            <p class="text-[13px] leading-[1.55] text-blaeck-600 mb-3">
+              Diamantraster med små fyrbladiga blommor. Lågmäld, läsbar
+              bakgrund.
+            </p>
+            <div
+              class="flex gap-3 font-mono text-[11px] text-terra-600 pt-3 border-t border-linne-200"
+            >
+              <span>80×80&nbsp;px</span><span>2&nbsp;färger</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="h-60 bg-[image:var(--tex-sol)] bg-[length:200px]"></div>
+          <div class="px-5 py-4 border-t border-linne-200">
+            <h4
+              class="font-display font-medium text-[22px] leading-[1.1] mb-1 text-blaeck-900"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Sol
+            </h4>
+            <p
+              class="font-mono text-[10px] uppercase tracking-[0.08em] text-blaeck-400 mb-3"
+            >
+              Källa · sovrum 1 (mod-tapet)
+            </p>
+            <p class="text-[13px] leading-[1.55] text-blaeck-600 mb-3">
+              Fyra mod-sunbursts i guld mot djup skog. Den djärvaste — använd i
+              hero.
+            </p>
+            <div
+              class="flex gap-3 font-mono text-[11px] text-terra-600 pt-3 border-t border-linne-200"
+            >
+              <span>200×200&nbsp;px</span><span>4&nbsp;färger</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div
+            class="h-60 bg-[image:var(--tex-solros)] bg-[length:160px]"
+          ></div>
+          <div class="px-5 py-4 border-t border-linne-200">
+            <h4
+              class="font-display font-medium text-[22px] leading-[1.1] mb-1 text-blaeck-900"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Solros
+            </h4>
+            <p
+              class="font-mono text-[10px] uppercase tracking-[0.08em] text-blaeck-400 mb-3"
+            >
+              Källa · vardagsrum (chokladblommor)
+            </p>
+            <p class="text-[13px] leading-[1.55] text-blaeck-600 mb-3">
+              Strödda 70-talsblommor i orange och gult mot Bläck 700. Varm och
+              organisk.
+            </p>
+            <div
+              class="flex gap-3 font-mono text-[11px] text-terra-600 pt-3 border-t border-linne-200"
+            >
+              <span>160×160&nbsp;px</span><span>6&nbsp;färger</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div
+            class="h-60 bg-[image:var(--tex-bukett)] bg-[length:240px]"
+          ></div>
+          <div class="px-5 py-4 border-t border-linne-200">
+            <h4
+              class="font-display font-medium text-[22px] leading-[1.1] mb-1 text-blaeck-900"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 36,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Bukett
+            </h4>
+            <p
+              class="font-mono text-[10px] uppercase tracking-[0.08em] text-blaeck-400 mb-3"
+            >
+              Källa · kök (gyllenrosa bukett)
+            </p>
+            <p class="text-[13px] leading-[1.55] text-blaeck-600 mb-3">
+              Täta bukettkluster i butterscotch och bränd amber. Husets
+              ikonbild.
+            </p>
+            <div
+              class="flex gap-3 font-mono text-[11px] text-terra-600 pt-3 border-t border-linne-200"
+            >
+              <span>240×240&nbsp;px</span><span>9&nbsp;färger</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pattern usage demo -->
+      <p
+        class="eyebrow uppercase tracking-[0.14em] mt-12 mb-4 pb-2 border-b border-linne-200"
+      >
+        Mönster i bruk — exempel
+      </p>
+
+      <div class="flex flex-col gap-6">
+        <!-- Sol hero -->
+        <div
+          class="rounded-md bg-blaeck-800 bg-[image:var(--tex-sol)] bg-[length:280px] p-12 md:p-16 relative overflow-hidden text-linne-50 min-h-72 flex flex-col justify-center"
+        >
+          <div
+            class="absolute inset-0 bg-gradient-to-br from-blaeck-800/65 via-blaeck-800/20 to-skog-800/50"
+          ></div>
+          <div class="relative z-10">
+            <p
+              class="font-mono text-label uppercase tracking-[0.14em] text-senap-300 mb-3"
+            >
+              Sol &middot; Hero / cover
+            </p>
+            <h3 class="h-display-l text-linne-50 max-w-[18ch] mb-3">
+              Bo i ett <span class="wonk text-terra-300">litet hus</span> under
+              uppdraget.
+            </h3>
+            <p
+              class="font-display text-[18px] leading-[1.45] text-linne-200 max-w-[42ch] mb-6"
+              style="font-variation-settings: &quot;opsz&quot; 24"
+            >
+              Ett hem för anställda som arbetar långt hemifrån. Tre sovrum, ett
+              kök, fjorton tapeter och tydliga ramar.
+            </p>
+            <button class="btn btn-primary">Boka visning →</button>
+          </div>
+        </div>
+
+        <!-- Bukett feature card -->
+        <div
+          class="grid md:grid-cols-[220px_1fr] border border-linne-200 rounded-md overflow-hidden bg-white"
+        >
+          <div
+            class="bg-[#322C1F] bg-[image:var(--tex-bukett)] bg-[length:240px] min-h-[200px] relative"
+          >
+            <div
+              class="absolute inset-0 bg-gradient-to-br from-transparent via-transparent to-blaeck-700/50"
+            ></div>
+          </div>
+          <div class="p-6 flex flex-col justify-center">
+            <p class="eyebrow text-terra-600 mb-2">
+              Bukett &middot; Feature-kort
+            </p>
+            <h4
+              class="font-display font-medium text-[26px] leading-[1.1] tracking-[-0.01em] text-blaeck-900 mb-3"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 48,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Välkomstmappen ligger i köket
+            </h4>
+            <p class="text-body-sm text-blaeck-600 m-0">
+              Allt du behöver första kvällen — från WiFi-koden till sopsortering
+              och nödnummer. Tio minuters läsning som sparar oss alla en hel del
+              missförstånd.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <p
+        class="eyebrow uppercase tracking-[0.14em] mt-12 mb-4 pb-2 border-b border-linne-200"
+      >
+        Användningsregler
+      </p>
+
+      <div class="grid md:grid-cols-3 gap-6">
+        <div>
+          <h4 class="eyebrow text-terra-600 mb-2">Aldrig under text</h4>
+          <p class="text-[13px] leading-[1.55] text-blaeck-600 m-0">
+            Mönster ligger alltid bakom ett färgat lager (gradient eller mask)
+            eller i en sektion utan löpande text.
+          </p>
+        </div>
+        <div>
+          <h4 class="eyebrow text-terra-600 mb-2">Ett mönster per vy</h4>
+          <p class="text-[13px] leading-[1.55] text-blaeck-600 m-0">
+            Två mönster på samma sida konkurrerar. Välj ett som leder ögat och
+            låt resten av sidan vila.
+          </p>
+        </div>
+        <div>
+          <h4 class="eyebrow text-terra-600 mb-2">Skala medvetet</h4>
+          <p class="text-[13px] leading-[1.55] text-blaeck-600 m-0">
+            Behåll de angivna pixelstorlekarna. Tailwind-användning:
+            <code
+              class="bg-linne-100 border border-linne-200 px-1 rounded-xs text-[11px]"
+              >bg-[length:200px]</code
+            >.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-[12px] text-blaeck-400 font-mono mt-8">
+        Mönstren laddas via CSS-variablerna
+        <code
+          class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs"
+          >--tex-klover</code
+        >,
+        <code
+          class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs"
+          >--tex-sol</code
+        >,
+        <code
+          class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs"
+          >--tex-solros</code
+        >,
+        <code
+          class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs"
+          >--tex-bukett</code
+        >
+        — använd som
+        <code
+          class="bg-linne-100 border border-linne-200 px-1.5 py-px rounded-xs"
+          >bg-[image:var(--tex-bukett)]</code
+        >
+        i Tailwind.
+      </p>
+    </section>
+
+    <!-- ================== FOOTER ================== -->
+    <footer class="max-w-[1280px] mx-auto px-6">
+      <div
+        class="relative bg-[image:var(--tex-klover)] bg-[length:80px] -mx-6 mt-24 px-6 py-12 border-y border-blaeck-200"
+      >
+        <div
+          class="absolute inset-0 bg-gradient-to-b from-linne-50/85 to-linne-50/70 pointer-events-none"
+        ></div>
+        <div
+          class="relative grid md:grid-cols-[2fr_1fr_1fr] gap-8 max-w-[1280px] mx-auto"
+        >
+          <div>
+            <p
+              class="font-display font-light text-[36px] leading-none tracking-[-0.02em] text-blaeck-900 mb-3"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 72,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Domek —
+              <span class="wonk text-terra-600">litet hus</span>,<br />tydliga
+              ramar.
+            </p>
+            <p class="text-[13px] leading-[1.55] text-blaeck-600 mb-2">
+              Den här grafiska profilen lever vidare i sajten, hyresavtalet och
+              välkomstmappen. När något ändras — paletten, en regel, ett
+              kontaktnummer — uppdateras hela systemet samtidigt.
+            </p>
+          </div>
+          <div>
+            <h5
+              class="font-mono text-label uppercase tracking-[0.1em] text-blaeck-400 mb-3"
+            >
+              Designsystem
+            </h5>
+            <ul class="list-none p-0 m-0 flex flex-col gap-1 text-[13px]">
+              <li>
+                <a
+                  href="#fond"
+                  class="text-blaeck-800 no-underline hover:text-terra-600"
+                  >00 · Fond &amp; principer</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#farg"
+                  class="text-blaeck-800 no-underline hover:text-terra-600"
+                  >01 · Färgsystem</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#typ"
+                  class="text-blaeck-800 no-underline hover:text-terra-600"
+                  >02 · Typografi</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#rum"
+                  class="text-blaeck-800 no-underline hover:text-terra-600"
+                  >03 · Rum &amp; raster</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#knapp"
+                  class="text-blaeck-800 no-underline hover:text-terra-600"
+                  >04 · Knappar</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h5
+              class="font-mono text-label uppercase tracking-[0.1em] text-blaeck-400 mb-3"
+            >
+              Komponenter
+            </h5>
+            <ul class="list-none p-0 m-0 flex flex-col gap-1 text-[13px]">
+              <li>
+                <a
+                  href="#form"
+                  class="text-blaeck-800 no-underline hover:text-terra-600"
+                  >05 · Formulär</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#kort"
+                  class="text-blaeck-800 no-underline hover:text-terra-600"
+                  >06 · Kort &amp; sektioner</a
+                >
+              </li>
+              <li>
+                <a
+                  href="#monster"
+                  class="text-blaeck-800 no-underline hover:text-terra-600"
+                  >07 · Mönster</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex justify-between items-center py-12 font-mono text-label uppercase tracking-[0.08em] text-blaeck-400"
+      >
+        <div>
+          Domek <span class="text-terra-500">·</span> Grafisk profil &amp;
+          designsystem
+        </div>
+        <div>v.1 <span class="text-terra-500">·</span> April 2026</div>
+      </div>
+    </footer>
+  </body>
+</html>

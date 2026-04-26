@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80">
+  <title>Domek — Klöver</title>
+  <desc>Tileable pattern, inspired by the cream + red diamond-grid clover wallpaper. 80×80 tile.</desc>
+
+  <!-- Background -->
+  <rect width="80" height="80" fill="#F5EFE3"/>
+
+  <!-- Diamond grid lines (subtle) -->
+  <g stroke="#C9522F" stroke-width="0.55" opacity="0.32" fill="none" stroke-linecap="round">
+    <line x1="0"  y1="0"  x2="80" y2="80"/>
+    <line x1="80" y1="0"  x2="0"  y2="80"/>
+    <line x1="40" y1="0"  x2="80" y2="40"/>
+    <line x1="80" y1="40" x2="40" y2="80"/>
+    <line x1="40" y1="80" x2="0"  y2="40"/>
+    <line x1="0"  y1="40" x2="40" y2="0"/>
+  </g>
+
+  <!-- Center flower -->
+  <g fill="#C9522F" transform="translate(40,40)">
+    <ellipse rx="2.6" ry="6.6" cy="-4.6"/>
+    <ellipse rx="2.6" ry="6.6" cy="4.6"/>
+    <ellipse rx="6.6" ry="2.6" cx="-4.6"/>
+    <ellipse rx="6.6" ry="2.6" cx="4.6"/>
+    <circle r="1.4" fill="#F5EFE3"/>
+  </g>
+
+  <!-- Edge midpoint flowers (split across tiles) -->
+  <!-- Top edge: half flower -->
+  <g fill="#C9522F" transform="translate(40,0)">
+    <ellipse rx="2.6" ry="6.6" cy="4.6"/>
+    <ellipse rx="6.6" ry="2.6" cx="-4.6"/>
+    <ellipse rx="6.6" ry="2.6" cx="4.6"/>
+  </g>
+  <!-- Bottom edge -->
+  <g fill="#C9522F" transform="translate(40,80)">
+    <ellipse rx="2.6" ry="6.6" cy="-4.6"/>
+    <ellipse rx="6.6" ry="2.6" cx="-4.6"/>
+    <ellipse rx="6.6" ry="2.6" cx="4.6"/>
+  </g>
+  <!-- Left edge -->
+  <g fill="#C9522F" transform="translate(0,40)">
+    <ellipse rx="2.6" ry="6.6" cy="-4.6"/>
+    <ellipse rx="2.6" ry="6.6" cy="4.6"/>
+    <ellipse rx="6.6" ry="2.6" cx="4.6"/>
+  </g>
+  <!-- Right edge -->
+  <g fill="#C9522F" transform="translate(80,40)">
+    <ellipse rx="2.6" ry="6.6" cy="-4.6"/>
+    <ellipse rx="2.6" ry="6.6" cy="4.6"/>
+    <ellipse rx="6.6" ry="2.6" cx="-4.6"/>
+  </g>
+
+  <!-- Corner flowers (quarter pieces — combine across 4 tiles) -->
+  <g fill="#C9522F">
+    <!-- Top-left -->
+    <ellipse rx="2.6" ry="6.6" cy="4.6"/>
+    <ellipse rx="6.6" ry="2.6" cx="4.6"/>
+    <!-- Top-right -->
+    <g transform="translate(80,0)">
+      <ellipse rx="2.6" ry="6.6" cy="4.6"/>
+      <ellipse rx="6.6" ry="2.6" cx="-4.6"/>
+    </g>
+    <!-- Bottom-left -->
+    <g transform="translate(0,80)">
+      <ellipse rx="2.6" ry="6.6" cy="-4.6"/>
+      <ellipse rx="6.6" ry="2.6" cx="4.6"/>
+    </g>
+    <!-- Bottom-right -->
+    <g transform="translate(80,80)">
+      <ellipse rx="2.6" ry="6.6" cy="-4.6"/>
+      <ellipse rx="6.6" ry="2.6" cx="-4.6"/>
+    </g>
+  </g>
+</svg>

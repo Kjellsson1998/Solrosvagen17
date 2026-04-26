@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+/* ================================================================
+   DOMEK — Tailwind v4 theme configuration
+   Allt nedan (färger, typografi, spacing, radii) blir automatiskt
+   till Tailwind-utilities som bg-terra-500, text-blaeck-800, p-7 osv.
+   ================================================================ */
+
+@theme {
+  /* ---------- COLORS ---------- */
+  /* Linne — pappersyta, bakgrund */
+  --color-linne-50:  #FBF7F0;
+  --color-linne-100: #F5EFE3;
+  --color-linne-200: #ECE3D0;
+  --color-linne-300: #DFD2B7;
+  --color-linne-400: #CFBE9C;
+  --color-linne-500: #B9A37D;
+  --color-linne-600: #9C875F;
+  --color-linne-700: #7C6A48;
+  --color-linne-800: #5C4F36;
+  --color-linne-900: #3D3424;
+  --color-linne-950: #1F1A12;
+
+  /* Terrakotta — accent, CTA, länkar */
+  --color-terra-50:  #FCEEEA;
+  --color-terra-100: #F8D6CB;
+  --color-terra-200: #F2B5A3;
+  --color-terra-300: #E89177;
+  --color-terra-400: #DC6F50;
+  --color-terra-500: #C9522F;
+  --color-terra-600: #A93F22;
+  --color-terra-700: #8B321B;
+  --color-terra-800: #6E2716;
+  --color-terra-900: #4F1C10;
+  --color-terra-950: #2D0F08;
+
+  /* Senap — notiser, sekundära ytor */
+  --color-senap-50:  #FBF6E0;
+  --color-senap-100: #F6EBB3;
+  --color-senap-200: #EFDC85;
+  --color-senap-300: #E6C656;
+  --color-senap-400: #D6AC2D;
+  --color-senap-500: #B68F18;
+  --color-senap-600: #95730F;
+  --color-senap-700: #745809;
+  --color-senap-800: #553F08;
+  --color-senap-900: #382806;
+  --color-senap-950: #1E1503;
+
+  /* Skog — lugn, bekräftelse */
+  --color-skog-50:  #EEF2EA;
+  --color-skog-100: #DBE3D0;
+  --color-skog-200: #BCCAA9;
+  --color-skog-300: #9CAF82;
+  --color-skog-400: #7E955F;
+  --color-skog-500: #627944;
+  --color-skog-600: #4D6033;
+  --color-skog-700: #3B4A26;
+  --color-skog-800: #2C381C;
+  --color-skog-900: #1D2613;
+  --color-skog-950: #0F140A;
+
+  /* Bläck — text, struktur, ramar */
+  --color-blaeck-50:  #F6F4F0;
+  --color-blaeck-100: #E5E1D8;
+  --color-blaeck-200: #C9C2B2;
+  --color-blaeck-300: #A89F88;
+  --color-blaeck-400: #847B62;
+  --color-blaeck-500: #5F5743;
+  --color-blaeck-600: #463F2E;
+  --color-blaeck-700: #322C1F;
+  --color-blaeck-800: #221E15;
+  --color-blaeck-900: #15110B;
+  --color-blaeck-950: #0A0805;
+
+  /* Rumsaccenter — sju rum, sju färger */
+  --color-rum-klover:  #B53E1F;  /* Hall          — tegelröd */
+  --color-rum-bukett:  #C8782C;  /* Kök           — butterscotch */
+  --color-rum-mossa:   #4D6033;  /* Sovrum 1      — skogsgrön */
+  --color-rum-kamelia: #A12424;  /* Sovrum 2      — djup karmosin */
+  --color-rum-saffran: #D6A340;  /* Sovrum 3      — solgul */
+  --color-rum-tobak:   #6E4A1C;  /* Sovrum 4 (kontoret) — choklad */
+  --color-rum-parkett: #6F6961;  /* Vardagsrum    — varmgrå */
+
+  /* ---------- TYPOGRAPHY ---------- */
+  --font-display: "Fraunces", "Times New Roman", serif;
+  --font-sans:    "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-mono:    "IBM Plex Mono", ui-monospace, "Menlo", monospace;
+
+  /* Font-size scale — every step has matching line-height baked in */
+  --text-display-xl:                    clamp(3rem, 7vw, 5.5rem);
+  --text-display-xl--line-height:       0.95;
+  --text-display-xl--letter-spacing:    -0.025em;
+  --text-display-xl--font-weight:       350;
+
+  --text-display-l:                     clamp(2.5rem, 5vw, 3.75rem);
+  --text-display-l--line-height:        1.0;
+  --text-display-l--letter-spacing:     -0.02em;
+  --text-display-l--font-weight:        400;
+
+  --text-display-m:                     clamp(1.75rem, 3.5vw, 2.5rem);
+  --text-display-m--line-height:        1.05;
+  --text-display-m--letter-spacing:     -0.015em;
+  --text-display-m--font-weight:        400;
+
+  --text-heading:                       1.375rem;
+  --text-heading--line-height:          1.25;
+  --text-heading--letter-spacing:       -0.005em;
+  --text-heading--font-weight:          600;
+
+  --text-subhead:                       1.0625rem;
+  --text-subhead--line-height:          1.35;
+  --text-subhead--font-weight:          500;
+
+  --text-body-lg:                       1.125rem;
+  --text-body-lg--line-height:          1.55;
+
+  --text-body:                          1rem;
+  --text-body--line-height:             1.6;
+
+  --text-body-sm:                       0.875rem;
+  --text-body-sm--line-height:          1.55;
+
+  --text-caption:                       0.8125rem;
+  --text-caption--line-height:          1.5;
+
+  --text-label:                         0.6875rem;
+  --text-label--line-height:            1.5;
+  --text-label--letter-spacing:         0.1em;
+
+  /* ---------- SPACING ---------- */
+  /* Tailwind's default spacing already gives us 0.25rem (4px) base.
+     We set --spacing to 4px so p-1 = 4px, p-2 = 8px, p-4 = 16px, p-12 = 48px etc.
+     This matches our existing s-1..s-10 scale exactly. */
+  --spacing: 4px;
+
+  /* ---------- RADII ---------- */
+  --radius-xs:   2px;
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   20px;
+  --radius-pill: 9999px;
+
+  /* ---------- SHADOWS — soft, like aged paper ---------- */
+  --shadow-paper-1: 0 1px 2px rgba(34, 30, 21, 0.04), 0 1px 1px rgba(34, 30, 21, 0.06);
+  --shadow-paper-2: 0 4px 8px rgba(34, 30, 21, 0.06), 0 2px 4px rgba(34, 30, 21, 0.04);
+  --shadow-paper-3: 0 12px 24px rgba(34, 30, 21, 0.08), 0 4px 8px rgba(34, 30, 21, 0.05);
+
+  /* ---------- BREAKPOINTS — three is enough ---------- */
+  --breakpoint-sm: 30rem;   /* 480 — stor mobil */
+  --breakpoint-md: 45rem;   /* 720 — platta */
+  --breakpoint-lg: 56.25rem; /* 900 — desktop */
+  --breakpoint-xl: 80rem;   /* 1280 — max innehållsbredd */
+}
+
+/* ================================================================
+   PATTERNS — tileable SVG textures
+   These are kept outside @theme because they're not utilities;
+   they're plain CSS variables you reference with bg-[image:var(--tex-...)].
+   ================================================================ */
+
+:root {
+  --tex-klover: url("../patterns/domek-klover.svg");
+  --tex-sol:    url("../patterns/domek-sol.svg");
+  --tex-solros: url("../patterns/domek-solros.svg");
+  --tex-bukett: url("../patterns/domek-bukett.svg");
+}
+
+/* ================================================================
+   BASE — globala default-stilar
+   Tailwind har redan reset, vi lägger bara på paper texture, fonts.
+   ================================================================ */
+
+@layer base {
+  body {
+    @apply bg-linne-50 text-blaeck-800 font-sans antialiased;
+    background-image:
+      radial-gradient(circle at 30% 20%, rgba(201, 82, 47, 0.012) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(98, 121, 68, 0.012) 0%, transparent 50%);
+  }
+
+  ::selection {
+    @apply bg-terra-200 text-blaeck-900;
+  }
+}
+
+/* ================================================================
+   COMPONENTS — kort, knappar, fält
+   Definieras här som @utility för att hållas konsekventa över sajten.
+   Alla kan överskridas med Tailwind-utilities i HTML.
+   ================================================================ */
+
+/* Buttons */
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 px-5 py-3
+         font-sans font-medium text-sm
+         rounded-pill border border-transparent
+         cursor-pointer select-none whitespace-nowrap
+         transition-[background-color,color,border-color,box-shadow,transform] duration-150;
+}
+@utility btn-primary {
+  @apply bg-terra-500 text-linne-50;
+  &:hover { @apply bg-terra-700; }
+  &:active { @apply bg-terra-800 translate-y-px; }
+  &:focus-visible { @apply outline-2 outline-terra-500 outline-offset-2; }
+  &:disabled { @apply bg-linne-300 text-linne-100 cursor-not-allowed; }
+}
+@utility btn-secondary {
+  @apply bg-transparent text-blaeck-900 border-blaeck-300;
+  &:hover { @apply bg-blaeck-50 border-blaeck-700; }
+  &:active { @apply bg-blaeck-100 translate-y-px; }
+  &:focus-visible { @apply outline-2 outline-terra-500 outline-offset-2; }
+  &:disabled { @apply text-linne-500 border-linne-200 cursor-not-allowed; }
+}
+@utility btn-ghost {
+  @apply bg-transparent text-blaeck-800 px-3;
+  &:hover { @apply text-terra-600; }
+  &:active { @apply text-terra-800; }
+  &:focus-visible { @apply outline-2 outline-terra-500 outline-offset-2; }
+  &:disabled { @apply text-linne-500 cursor-not-allowed; }
+}
+@utility btn-warning {
+  @apply bg-senap-400 text-blaeck-900;
+  &:hover { @apply bg-senap-500 text-linne-50; }
+  &:active { @apply bg-senap-600 text-linne-50 translate-y-px; }
+  &:focus-visible { @apply outline-2 outline-terra-500 outline-offset-2; }
+}
+
+/* Inline link */
+@utility link {
+  @apply text-terra-600 no-underline border-b border-terra-200 pb-px
+         transition-[color,border-color] duration-150;
+  &:hover { @apply text-terra-800 border-terra-500; }
+}
+
+/* Form fields */
+@utility input-base {
+  @apply font-sans text-[15px] leading-[1.4] text-blaeck-900
+         bg-white border border-blaeck-200 rounded-sm
+         px-3.5 py-2.5 w-full
+         transition-[border-color,box-shadow,background-color] duration-150;
+  &::placeholder { @apply text-blaeck-400; }
+  &:hover { @apply border-blaeck-400; }
+  &:focus { @apply outline-none border-terra-500 ring-[3px] ring-terra-100; }
+  &:disabled { @apply bg-linne-100 text-blaeck-400 border-linne-200 cursor-not-allowed; }
+}
+@utility input-error {
+  @apply border-terra-600 bg-terra-50;
+  &:focus { @apply ring-[3px] ring-terra-500/20; }
+}
+
+/* Display headings — apply correct font + weight in one class */
+@utility h-display-xl {
+  @apply font-display text-display-xl;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+@utility h-display-l {
+  @apply font-display text-display-l;
+  font-variation-settings: "opsz" 96, "SOFT" 30;
+}
+@utility h-display-m {
+  @apply font-display text-display-m;
+  font-variation-settings: "opsz" 72, "SOFT" 30;
+}
+
+/* Italic-wonk for accent words inside headings */
+@utility wonk {
+  @apply italic;
+  font-variation-settings: "opsz" 96, "WONK" 1, "SOFT" 30;
+}
+
+/* Mono-eyebrow used as section markers */
+@utility eyebrow {
+  @apply font-mono text-label uppercase tracking-[0.1em] text-blaeck-400;
+}
+
+/* Card primitive */
+@utility card {
+  @apply bg-white border border-linne-200 rounded-md overflow-hidden
+         transition-shadow duration-150;
+  &:hover { box-shadow: var(--shadow-paper-2); }
+}
+
+/* Notice block (uses left border + tinted bg, three tones below) */
+@utility notice {
+  @apply flex items-start gap-3 py-3.5 px-5
+         border-l-[3px] rounded-r-md;
+}
+
+/* Scroll-reveal animation (JS toggles .is-visible) */
+@utility reveal {
+  @apply opacity-0 translate-y-4
+         transition-[opacity,transform] duration-[550ms]
+         motion-reduce:opacity-100 motion-reduce:translate-y-0 motion-reduce:transition-none;
+  &.is-visible { @apply opacity-100 translate-y-0; }
+}
+
+/* Skip link — hidden until focused via keyboard */
+@utility skip {
+  @apply absolute -left-[9999px] top-0 z-[200]
+         bg-terra-500 text-linne-50 no-underline
+         px-4 py-3;
+  &:focus { @apply left-0; }
+}
+
+/* Glass panel — semi-transparent paper over map/photo backgrounds */
+@utility glass {
+  @apply bg-linne-50/85 backdrop-blur-md backdrop-saturate-150
+         border border-white/60 rounded-lg shadow-paper-2;
+}

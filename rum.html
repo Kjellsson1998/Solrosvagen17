@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="rum.title">Rummen — Domek</title>
+<meta name="description" content="Domek — fyra sovrum med fyra tapeter. Husets totala kapacitet är fyra personer.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="src/output.css">
+
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%23C9522F'/><text x='32' y='44' font-family='Georgia,serif' font-size='38' fill='%23FBF7F0' text-anchor='middle' font-weight='400'>D</text></svg>">
+</head>
+<body>
+
+<a href="#main" class="skip">Hoppa till innehåll</a>
+
+<!-- ============== TOP NAV ============== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand-mark">
+      <span class="dot" aria-hidden="true"></span>
+      Dom<em>e</em>k
+    </a>
+
+    <button class="nav-toggle" aria-label="Öppna meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-cluster">
+      <ul class="nav-links">
+        <li><a href="huset.html"            data-i18n="nav.huset">Huset</a></li>
+        <li><a href="rum.html"              data-i18n="nav.rummen">Rummen</a></li>
+        <li><a href="inflytt-utflytt.html"  data-i18n="nav.inflytt">Inflytt &amp; utflytt</a></li>
+        <li><a href="omradet.html"          data-i18n="nav.omradet">Området</a></li>
+      </ul>
+
+      <div class="lang-switch" role="group" aria-label="Språk">
+        <button data-lang="sv" aria-pressed="true">SV</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="pl" aria-pressed="false">PL</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============== COVER ============== -->
+<section class="shell cover">
+  <div class="cover-grid">
+    <div>
+      <p class="eyebrow" data-i18n="rum.eyebrow">Rummen · 4 sovrum</p>
+      <h1 data-i18n="rum.h1">Fyra <em>sovrum</em>, fyra tapeter.</h1>
+      <p class="cover-lede" data-i18n="rum.lede">Alla sängar är enkelsängar. Husets totala kapacitet är fyra personer i fyra rum, plus en plats i vardagsrummet vid behov.</p>
+    </div>
+    <dl class="cover-meta">
+      <div class="meta-row">
+        <dt data-i18n="rum.meta.cap">Kapacitet</dt>
+        <dd data-i18n="rum.meta.cap.value"><em>4</em> personer</dd>
+      </div>
+      <div class="meta-row">
+        <dt data-i18n="rum.meta.beds">Sängar</dt>
+        <dd data-i18n="rum.meta.beds.value">Enkelsängar</dd>
+      </div>
+      <div class="meta-row">
+        <dt data-i18n="rum.meta.bath">Badrum</dt>
+        <dd data-i18n="rum.meta.bath.value">1 (delat)</dd>
+      </div>
+      <div class="meta-row">
+        <dt data-i18n="rum.meta.linens">Sängkläder</dt>
+        <dd data-i18n="rum.meta.linens.value">Tar du <em>med själv</em></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============== GULA RUMMET ============== -->
+<section class="shell section reveal">
+  <div class="room">
+    <div class="room-feature feat-gula">
+      <span class="room-tag" data-i18n="rum.gula.tag">Bottenvåning</span>
+    </div>
+    <div class="room-body">
+      <h3 data-i18n="rum.gula.title">Det <em>gula</em> rummet</h3>
+      <p class="room-bed" data-i18n="rum.gula.bed">Säng · 105 × 200 cm — bred enkelsäng</p>
+      <p class="room-desc" data-i18n="rum.gula.desc">Husets största sovrum med tapet i senapsgult med små blommor från sent 60-tal. Garderob med skjutdörrar längs ena väggen.</p>
+      <div class="room-meta">
+        <div>
+          <span class="key" data-i18n="rum.gula.size.key">Storlek</span>
+          <span class="val" data-i18n="rum.gula.size.val">14 m²</span>
+        </div>
+        <div>
+          <span class="key" data-i18n="rum.gula.cap.key">Plats</span>
+          <span class="val" data-i18n="rum.gula.cap.val">1 person</span>
+        </div>
+        <div>
+          <span class="key" data-i18n="rum.gula.extra.key">Extra</span>
+          <span class="val" data-i18n="rum.gula.extra.val">Garderob</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== RÖDA RUMMET ============== -->
+<section class="shell section reveal">
+  <div class="room">
+    <div class="room-body">
+      <h3 data-i18n="rum.roda.title">Det <em>röda</em> rummet</h3>
+      <p class="room-bed" data-i18n="rum.roda.bed">Säng · 90 × 200 cm — standardenkel</p>
+      <p class="room-desc" data-i18n="rum.roda.desc">Mindre rum med randig terrakottatapet från 70-talet. Ligger närmast badrummet — bra för den som går upp tidigt.</p>
+      <div class="room-meta">
+        <div>
+          <span class="key" data-i18n="rum.roda.size.key">Storlek</span>
+          <span class="val" data-i18n="rum.roda.size.val">9 m²</span>
+        </div>
+        <div>
+          <span class="key" data-i18n="rum.roda.cap.key">Plats</span>
+          <span class="val" data-i18n="rum.roda.cap.val">1 person</span>
+        </div>
+        <div>
+          <span class="key" data-i18n="rum.roda.extra.key">Extra</span>
+          <span class="val" data-i18n="rum.roda.extra.val">Närmast bad</span>
+        </div>
+      </div>
+    </div>
+    <div class="room-feature feat-roda">
+      <span class="room-tag" data-i18n="rum.roda.tag">Bottenvåning</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== GRÖNA RUMMET ============== -->
+<section class="shell section reveal">
+  <div class="room">
+    <div class="room-feature feat-grona">
+      <span class="room-tag" data-i18n="rum.grona.tag">Övervåning</span>
+    </div>
+    <div class="room-body">
+      <h3 data-i18n="rum.grona.title">Det <em>gröna</em> rummet</h3>
+      <p class="room-bed" data-i18n="rum.grona.bed">Säng · 120 × 200 cm — bred enkelsäng</p>
+      <p class="room-desc" data-i18n="rum.grona.desc">Den bredaste enkelsängen finns här. Mörkgrön mosstapet med små guld- och senapsdetaljer. Egen balkong åt baksidan.</p>
+      <div class="room-meta">
+        <div>
+          <span class="key" data-i18n="rum.grona.size.key">Storlek</span>
+          <span class="val" data-i18n="rum.grona.size.val">12 m²</span>
+        </div>
+        <div>
+          <span class="key" data-i18n="rum.grona.cap.key">Plats</span>
+          <span class="val" data-i18n="rum.grona.cap.val">1 person</span>
+        </div>
+        <div>
+          <span class="key" data-i18n="rum.grona.extra.key">Extra</span>
+          <span class="val" data-i18n="rum.grona.extra.val">Balkong</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== BRUNA RUMMET ============== -->
+<section class="shell section reveal">
+  <div class="room">
+    <div class="room-body">
+      <h3 data-i18n="rum.bruna.title">Det <em>bruna</em> rummet</h3>
+      <p class="room-bed" data-i18n="rum.bruna.bed">Säng · 90 × 200 cm — standardenkel</p>
+      <p class="room-desc" data-i18n="rum.bruna.desc">Också kallat kontoret. Brun bukett-tapet och ett skrivbord vid fönstret. Bra om du behöver jobba kvällar.</p>
+      <div class="room-meta">
+        <div>
+          <span class="key" data-i18n="rum.bruna.size.key">Storlek</span>
+          <span class="val" data-i18n="rum.bruna.size.val">10 m²</span>
+        </div>
+        <div>
+          <span class="key" data-i18n="rum.bruna.cap.key">Plats</span>
+          <span class="val" data-i18n="rum.bruna.cap.val">1 person</span>
+        </div>
+        <div>
+          <span class="key" data-i18n="rum.bruna.extra.key">Extra</span>
+          <span class="val" data-i18n="rum.bruna.extra.val">Skrivbord</span>
+        </div>
+      </div>
+    </div>
+    <div class="room-feature feat-bruna">
+      <span class="room-tag" data-i18n="rum.bruna.tag">Övervåning</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============== FEMTE RUMMET — PLACEHOLDER ============== -->
+<section class="shell section reveal">
+  <div class="room-placeholder">
+    <span class="pill" data-i18n="rum.placeholder.pill">Kommer senare</span>
+    <h4 data-i18n="rum.placeholder.title">Femte rummet under planering</h4>
+    <p data-i18n="rum.placeholder.body">Vi tittar på att inreda källarrummet bredvid pannrummet. När det är klart läggs det in här.</p>
+  </div>
+</section>
+
+<!-- ============== SÄNGKLÄDER NOTICE ============== -->
+<section class="shell section reveal">
+  <div class="notice tone-terra">
+    <div class="icon" aria-hidden="true">!</div>
+    <div>
+      <h4 data-i18n="rum.notice.title">Sängkläder ingår INTE — oavsett rum</h4>
+      <p data-i18n="rum.notice.body">Kuddar och täcken ligger på sängarna men örngott, lakan, påslakan och handdukar tar du med själv. Glömmer du? → Jysk i Örnsköldsvik (se Området).</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="foot-wrap">
+  <div class="foot-inner">
+    <div class="foot-block">
+      <p class="signoff" data-i18n="foot.signoff">Domek — <em>litet hus</em>,<br>tydliga ramar.</p>
+      <p data-i18n="foot.about">Domek är ett enfamiljshus från 1959 på Solrosvägen 17 i Örnsköldsvik. Hugo och Vega Kjellsson äger det, Sanco hyr det åt sina arbetare.</p>
+    </div>
+
+    <div class="foot-block">
+      <h5 data-i18n="foot.contact">Kontakt</h5>
+      <div class="contact-row">
+        <span class="who" data-i18n="foot.contact.house">Huset</span>
+        <span>Hugo &amp; Vega Kjellsson</span>
+        <a href="tel:+46700000000">+46 70 000 00 00</a>
+        <a href="mailto:hej@domek.se">hej@domek.se</a>
+      </div>
+      <div class="contact-row">
+        <span class="who" data-i18n="foot.contact.work">Jobbet</span>
+        <span>Lars Hellgren · Sanco</span>
+        <a href="tel:+46700000001">+46 70 000 00 01</a>
+        <a href="mailto:lars@sanco.se">lars@sanco.se</a>
+      </div>
+    </div>
+
+    <div class="foot-block">
+      <h5 data-i18n="foot.pages">Sidor</h5>
+      <ul>
+        <li><a href="huset.html"           data-i18n="nav.huset">Huset</a></li>
+        <li><a href="rum.html"             data-i18n="nav.rummen">Rummen</a></li>
+        <li><a href="inflytt-utflytt.html" data-i18n="nav.inflytt">Inflytt &amp; utflytt</a></li>
+        <li><a href="omradet.html"         data-i18n="nav.omradet">Området</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-block">
+      <h5 data-i18n="foot.lang">Språk</h5>
+      <div class="lang-switch" role="group" aria-label="Språk">
+        <button data-lang="sv" aria-pressed="true">SV</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="pl" aria-pressed="false">PL</button>
+      </div>
+      <p style="margin-top: var(--s-4); font-size: 12px; color: var(--linne-400);">
+        <span data-i18n="foot.updated">Uppdaterad</span>: 2026-04-25
+      </p>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
+    <div class="foot-bottom-inner">
+      <div data-i18n="foot.copy">Domek <span class="terra">·</span> Solrosvägen 17, Örnsköldsvik</div>
+      <div>v.1 <span class="terra">·</span> April 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

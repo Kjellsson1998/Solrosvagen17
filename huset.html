@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="huset.title">Huset — Domek</title>
+<meta name="description" content="Hur huset fungerar — kök, tvätt, sopor, vad du gör vid läckage eller strömavbrott, och husets ordningsregler.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="src/output.css">
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%23C9522F'/><text x='32' y='44' font-family='Georgia,serif' font-size='38' fill='%23FBF7F0' text-anchor='middle' font-weight='400'>D</text></svg>">
+</head>
+<body>
+
+<a href="#main" class="skip">Hoppa till innehåll</a>
+
+<!-- ============== TOP NAV ============== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand-mark">
+      <span class="dot" aria-hidden="true"></span>
+      Dom<em>e</em>k
+    </a>
+    <button class="nav-toggle" aria-label="Öppna meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-cluster">
+      <ul class="nav-links">
+        <li><a href="huset.html"            data-i18n="nav.huset">Huset</a></li>
+        <li><a href="rum.html"              data-i18n="nav.rummen">Rummen</a></li>
+        <li><a href="inflytt-utflytt.html"  data-i18n="nav.inflytt">Inflytt &amp; utflytt</a></li>
+        <li><a href="omradet.html"          data-i18n="nav.omradet">Området</a></li>
+      </ul>
+      <div class="lang-switch" role="group" aria-label="Språk">
+        <button data-lang="sv" aria-pressed="true">SV</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="pl" aria-pressed="false">PL</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============== COVER ============== -->
+<section class="shell cover">
+  <div class="cover-grid">
+    <div>
+      <p class="eyebrow" data-i18n="huset.eyebrow">Huset · Solrosvägen 17</p>
+      <h1 data-i18n="huset.h1">Hur huset <em>fungerar</em>.</h1>
+      <p class="cover-lede" data-i18n="huset.lede">Allt du behöver veta om kök, tvätt, sopor och ordningsregler. Och vad du gör om något läcker eller slutar fungera.</p>
+    </div>
+    <dl class="cover-meta">
+      <div class="meta-row">
+        <dt data-i18n="huset.meta.built">Byggår</dt>
+        <dd data-i18n="huset.meta.built.value">1959</dd>
+      </div>
+      <div class="meta-row">
+        <dt data-i18n="huset.meta.style">Stil</dt>
+        <dd data-i18n="huset.meta.style.value"><em>Tidstypiskt</em> 50-tal</dd>
+      </div>
+      <div class="meta-row">
+        <dt data-i18n="huset.meta.size">Boyta</dt>
+        <dd data-i18n="huset.meta.size.value">110 m²</dd>
+      </div>
+      <div class="meta-row">
+        <dt data-i18n="huset.meta.heat">Värme</dt>
+        <dd data-i18n="huset.meta.heat.value">Fjärrvärme</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============== HISTORY ============== -->
+<section class="shell section reveal">
+  <div class="section-head">
+    <p class="section-num" data-i18n="huset.history.eyebrow">01 · Husets historia</p>
+    <div>
+      <h2 class="section-title" data-i18n="huset.history.title">Ett hus från <em>1959</em>.</h2>
+    </div>
+  </div>
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7); max-width: 1000px;">
+    <p style="font-family: var(--font-display); font-variation-settings: 'opsz' 18; font-size: 17px; line-height: 1.6; color: var(--ink-soft); margin: 0;" data-i18n="huset.history.p1">
+      Solrosvägen 17 byggdes 1959 som familjebostad. Originalplanlösningen är till stor del bevarad — kök, vardagsrum och fyra sovrum är som de var. Tapeter, golvmaterial och vissa skåp är från olika decennier av husets historia.
+    </p>
+    <p style="font-family: var(--font-display); font-variation-settings: 'opsz' 18; font-size: 17px; line-height: 1.6; color: var(--ink-soft); margin: 0;" data-i18n="huset.history.p2">
+      En tillbyggnad gjordes på 80-talet (badrum och tvättavdelning). Köket renoverades 2010 — nya vitvaror, gamla skåp. Det är ett 50-talshus, inte ett modernt hus. Saker har en patina och knarrar ibland.
+    </p>
+  </div>
+</section>
+
+<!-- ============== KITCHEN ============== -->
+<section class="shell section reveal">
+  <div class="section-head">
+    <p class="section-num" data-i18n="huset.kitchen.eyebrow">02 · Köket</p>
+    <div>
+      <h2 class="section-title" data-i18n="huset.kitchen.title">Vad finns i <em>köket</em>?</h2>
+      <p class="section-blurb" data-i18n="huset.kitchen.blurb">Tre vitvaror som täcker det du behöver för matlagning. Inga lyxvarianter — bara det som fungerar.</p>
+    </div>
+  </div>
+
+  <div class="card-grid-3" style="margin-bottom: var(--s-5);">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow">01</p>
+        <h3 data-i18n="huset.kitchen.fridge.title">Kyl &amp; frys</h3>
+        <p data-i18n="huset.kitchen.fridge.body">Kombiskåp, normal storlek för fyra personer. Frysen rymmer cirka 90 liter.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow">02</p>
+        <h3 data-i18n="huset.kitchen.stove.title">Spis, ugn &amp; mikro</h3>
+        <p data-i18n="huset.kitchen.stove.body">Induktionshäll med fyra zoner, varmluftsugn med grillfunktion. Mikrovågsugn vid sidan av spisen.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow">03</p>
+        <h3 data-i18n="huset.kitchen.kettle.title">Vattenkokare &amp; kaffe</h3>
+        <p data-i18n="huset.kitchen.kettle.body">Elektrisk vattenkokare och kaffebryggare. Kaffefilter köper du själv (Willys, två minuter bort).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice tone-mustard">
+    <div class="icon" aria-hidden="true">!</div>
+    <div>
+      <h4 data-i18n="huset.kitchen.notice.title">Det finns ingen diskmaskin</h4>
+      <p data-i18n="huset.kitchen.notice.body">Diska för hand i hon på höger sida. Diskmedel och svamp finns under hon. Lämna inget i hon över natten.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== LAUNDRY ============== -->
+<section class="shell section reveal">
+  <div class="section-head">
+    <p class="section-num" data-i18n="huset.laundry.eyebrow">03 · Tvätt och sängkläder</p>
+    <div>
+      <h2 class="section-title" data-i18n="huset.laundry.title">Vad <em>finns</em> och vad du <em>tar med</em>.</h2>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow" data-i18n="huset.laundry.in.eyebrow">Finns i huset</p>
+        <h3 data-i18n="huset.laundry.in.title">Tvättmaskin &amp; torkrum</h3>
+        <p data-i18n="huset.laundry.in.body">Tvättmaskin i pannrummet. Torkrum med uppvärmd luft — hängning på galge går snabbt.</p>
+        <div class="meta">
+          <span data-i18n="huset.laundry.in.meta">Ingen torktumlare</span>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="background: var(--terra-50); border-color: var(--terra-200);">
+      <div class="card-body">
+        <p class="card-eyebrow" data-i18n="huset.laundry.bring.eyebrow">Tar du med själv</p>
+        <h3 data-i18n="huset.laundry.bring.title">Sängkläder &amp; handdukar</h3>
+        <p data-i18n="huset.laundry.bring.body">Finns INTE i huset — du måste ta med själv. Glömmer du dem hänvisar vi till <a href="omradet.html" class="link">Jysk i Örnsköldsvik</a>.</p>
+        <div class="meta">
+          <span data-i18n="huset.laundry.bring.meta">Glömmer du? → Jysk</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== WASTE ============== -->
+<section class="shell section reveal">
+  <div class="section-head">
+    <p class="section-num" data-i18n="huset.waste.eyebrow">04 · Sopor och återvinning</p>
+    <div>
+      <h2 class="section-title" data-i18n="huset.waste.title">Vart sätter du <em>vad</em>?</h2>
+      <p class="section-blurb" data-i18n="huset.waste.blurb">Två kärl vid huset — bruna och gröna. Kartong, glas och metall lämnar du på återvinningsstationen 600 m bort.</p>
+    </div>
+  </div>
+
+  <div class="card-grid-4" style="margin-bottom: var(--s-5);">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow" style="color: var(--linne-700);">Brunt</p>
+        <h3 data-i18n="huset.waste.brown.title">Brunt kärl</h3>
+        <p data-i18n="huset.waste.brown.body">Matavfall i bruna påsar (finns under hon). Hämtas varannan onsdag.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow" style="color: var(--skog-600);">Grönt</p>
+        <h3 data-i18n="huset.waste.green.title">Grönt kärl</h3>
+        <p data-i18n="huset.waste.green.body">Övriga sopor i vanlig sopsäck. Hämtas varannan onsdag.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow">Återvinning</p>
+        <h3 data-i18n="huset.waste.cardboard.title">Kartong</h3>
+        <p data-i18n="huset.waste.cardboard.body">Vik ihop och bär till återvinningsstationen vid Solrosvägens slut.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow">Återvinning</p>
+        <h3 data-i18n="huset.waste.glass.title">Glas &amp; metall</h3>
+        <p data-i18n="huset.waste.glass.body">Samma återvinningsstation som kartong. Två separata kärl på plats.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="notice tone-forest">
+    <div class="icon" aria-hidden="true">·</div>
+    <div>
+      <h4 data-i18n="huset.waste.notice.title">Hämtningsdatum verifieras mot Miva</h4>
+      <p data-i18n="huset.waste.notice.body">Kontrollera Mivas kalender för exakta datum. Schemat ovan är generellt — undantag finns vid storhelger.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== AT PROBLEMS ============== -->
+<section class="shell section reveal">
+  <div class="section-head">
+    <p class="section-num" data-i18n="huset.problem.eyebrow">05 · Vid problem</p>
+    <div>
+      <h2 class="section-title" data-i18n="huset.problem.title">När något <em>går sönder</em>.</h2>
+      <p class="section-blurb" data-i18n="huset.problem.blurb">Den här sektionen är skriven för att kunna läsas under stress. Stora rubriker, korta steg, telefon synlig.</p>
+    </div>
+  </div>
+
+  <p class="subhead" data-i18n="huset.problem.water.title">Vid vattenläckage</p>
+  <div class="steps" style="margin-bottom: var(--s-7);">
+    <div class="step">
+      <p class="step-num">01</p>
+      <h4 data-i18n="huset.problem.water.step1.title">Gå till pannrummet</h4>
+      <p data-i18n="huset.problem.water.step1.body">Pannrummet ligger i källaren — dörren till vänster när du kommer ner för trappan.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">02</p>
+      <h4 data-i18n="huset.problem.water.step2.title">Stäng huvudkranen</h4>
+      <p data-i18n="huset.problem.water.step2.body">Huvudkranen är monterad på inkommande röret vid pannan — vrid medurs tills den tar emot.</p>
+    </div>
+    <div class="step" style="background: var(--terra-50); border-color: var(--terra-200);">
+      <p class="step-num">03</p>
+      <h4 data-i18n="huset.problem.water.step3.title">Ring oss direkt</h4>
+      <p data-i18n="huset.problem.water.step3.body">Ring Hugo på <a href="tel:+46700000000" class="link">+46 70 000 00 00</a>. Inget meddelande — ring tills någon svarar.</p>
+    </div>
+  </div>
+
+  <p class="subhead" data-i18n="huset.problem.power.title">Vid strömavbrott</p>
+  <div class="steps" style="margin-bottom: var(--s-7);">
+    <div class="step">
+      <p class="step-num">01</p>
+      <h4 data-i18n="huset.problem.power.step1.title">Hitta elcentralen</h4>
+      <p data-i18n="huset.problem.power.step1.body">Elcentralen sitter i hallen vid ytterdörren — bakom luckan i skåpet ovanför skoställets högra del.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">02</p>
+      <h4 data-i18n="huset.problem.power.step2.title">Ta en reservsäkring</h4>
+      <p data-i18n="huset.problem.power.step2.body">Reservsäkringar ligger i lådan under elcentralen. Fyra storlekar — märkta efter funktion.</p>
+    </div>
+    <div class="step">
+      <p class="step-num">03</p>
+      <h4 data-i18n="huset.problem.power.step3.title">Byt och testa</h4>
+      <p data-i18n="huset.problem.power.step3.body">Byt utlöst säkring. Om det löser ut igen — ring oss innan du gör ett tredje försök.</p>
+    </div>
+  </div>
+
+  <div class="notice tone-mustard">
+    <div class="icon" aria-hidden="true">i</div>
+    <div>
+      <h4 data-i18n="huset.problem.notice.title">Kolla vattenmätaren regelbundet</h4>
+      <p data-i18n="huset.problem.notice.body">Vattenmätaren sitter i pannrummet bredvid huvudkranen. Om den visar förbrukning när inget vatten används = möjlig läcka. Säg till.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============== HOUSE RULES ============== -->
+<section class="shell section reveal">
+  <div class="section-head">
+    <p class="section-num" data-i18n="huset.rules.eyebrow">06 · Ordningsregler</p>
+    <div>
+      <h2 class="section-title" data-i18n="huset.rules.title">Sex <em>regler</em>.</h2>
+      <p class="section-blurb" data-i18n="huset.rules.blurb">Tre är icke-förhandlingsbara (rökning, husdjur, eldstaden). Tre är observera-regler. Allvarsgraden står i höger marginal.</p>
+    </div>
+  </div>
+
+  <div class="rules-list">
+    <div class="rule-item">
+      <span class="num">01</span>
+      <div>
+        <h4 data-i18n="huset.rules.r1.title">Rökfritt inomhus</h4>
+        <p data-i18n="huset.rules.r1.body">Ingen röker inomhus. Ute på baksidan finns en stol och en askkopp.</p>
+      </div>
+      <span class="severity tier-strict" data-i18n="huset.rules.r1.severity">Strikt</span>
+    </div>
+    <div class="rule-item">
+      <span class="num">02</span>
+      <div>
+        <h4 data-i18n="huset.rules.r2.title">Inga husdjur</h4>
+        <p data-i18n="huset.rules.r2.body">Hund, katt eller annat djur får inte vistas i huset. Allergi och slitage.</p>
+      </div>
+      <span class="severity tier-strict" data-i18n="huset.rules.r2.severity">Strikt</span>
+    </div>
+    <div class="rule-item">
+      <span class="num">03</span>
+      <div>
+        <h4 data-i18n="huset.rules.r3.title">Eldstaden får inte användas</h4>
+        <p data-i18n="huset.rules.r3.body">Den öppna spisen i vardagsrummet är dekorativ — den är inte besiktigad för eldning.</p>
+      </div>
+      <span class="severity tier-strict" data-i18n="huset.rules.r3.severity">Strikt</span>
+    </div>
+    <div class="rule-item">
+      <span class="num">04</span>
+      <div>
+        <h4 data-i18n="huset.rules.r4.title">Max 5 boende samtidigt</h4>
+        <p data-i18n="huset.rules.r4.body">Fyra sovplatser, plus en plats i vardagsrummet vid behov. Inte fler.</p>
+      </div>
+      <span class="severity tier-observe" data-i18n="huset.rules.r4.severity">Observera</span>
+    </div>
+    <div class="rule-item">
+      <span class="num">05</span>
+      <div>
+        <h4 data-i18n="huset.rules.r5.title">Inga byggåtgärder</h4>
+        <p data-i18n="huset.rules.r5.body">Sätt inga skruvar, dyckert eller tejp i väggar eller möbler. Säg till vid behov.</p>
+      </div>
+      <span class="severity tier-observe" data-i18n="huset.rules.r5.severity">Observera</span>
+    </div>
+    <div class="rule-item">
+      <span class="num">06</span>
+      <div>
+        <h4 data-i18n="huset.rules.r6.title">Garaget &amp; gäststugan ingår inte</h4>
+        <p data-i18n="huset.rules.r6.body">Båda är låsta och används av oss för förvaring. Använd inte uppfarten för parkering.</p>
+      </div>
+      <span class="severity tier-good" data-i18n="huset.rules.r6.severity">Bra att veta</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="foot-wrap">
+  <div class="foot-inner">
+    <div class="foot-block">
+      <p class="signoff" data-i18n="foot.signoff">Domek — <em>litet hus</em>,<br>tydliga ramar.</p>
+      <p data-i18n="foot.about">Domek är ett enfamiljshus från 1959 på Solrosvägen 17 i Örnsköldsvik. Hugo och Vega Kjellsson äger det, Sanco hyr det åt sina arbetare.</p>
+    </div>
+    <div class="foot-block">
+      <h5 data-i18n="foot.contact">Kontakt</h5>
+      <div class="contact-row">
+        <span class="who" data-i18n="foot.contact.house">Huset</span>
+        <span>Hugo &amp; Vega Kjellsson</span>
+        <a href="tel:+46700000000">+46 70 000 00 00</a>
+        <a href="mailto:hej@domek.se">hej@domek.se</a>
+      </div>
+      <div class="contact-row">
+        <span class="who" data-i18n="foot.contact.work">Jobbet</span>
+        <span>Lars Hellgren · Sanco</span>
+        <a href="tel:+46700000001">+46 70 000 00 01</a>
+        <a href="mailto:lars@sanco.se">lars@sanco.se</a>
+      </div>
+    </div>
+    <div class="foot-block">
+      <h5 data-i18n="foot.pages">Sidor</h5>
+      <ul>
+        <li><a href="huset.html"           data-i18n="nav.huset">Huset</a></li>
+        <li><a href="rum.html"             data-i18n="nav.rummen">Rummen</a></li>
+        <li><a href="inflytt-utflytt.html" data-i18n="nav.inflytt">Inflytt &amp; utflytt</a></li>
+        <li><a href="omradet.html"         data-i18n="nav.omradet">Området</a></li>
+      </ul>
+    </div>
+    <div class="foot-block">
+      <h5 data-i18n="foot.lang">Språk</h5>
+      <div class="lang-switch" role="group" aria-label="Språk">
+        <button data-lang="sv" aria-pressed="true">SV</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="pl" aria-pressed="false">PL</button>
+      </div>
+      <p style="margin-top: var(--s-4); font-size: 12px; color: var(--linne-400);">
+        <span data-i18n="foot.updated">Uppdaterad</span>: 2026-04-25
+      </p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="foot-bottom-inner">
+      <div data-i18n="foot.copy">Domek <span class="terra">·</span> Solrosvägen 17, Örnsköldsvik</div>
+      <div>v.1 <span class="terra">·</span> April 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

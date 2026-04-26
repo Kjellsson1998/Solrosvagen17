@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="inflytt.title">Inflytt &amp; utflytt — Domek</title>
+<meta name="description" content="Domek — vad du gör första kvällen och sista dagen. Tre steg vid ankomst, tre städrutiner, nio punkter på avreschecklistan.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="src/output.css">
+
+<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%23C9522F'/><text x='32' y='44' font-family='Georgia,serif' font-size='38' fill='%23FBF7F0' text-anchor='middle' font-weight='400'>D</text></svg>">
+</head>
+<body>
+
+<a href="#main" class="skip">Hoppa till innehåll</a>
+
+<!-- ============== TOP NAV ============== -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a href="index.html" class="brand-mark">
+      <span class="dot" aria-hidden="true"></span>
+      Dom<em>e</em>k
+    </a>
+
+    <button class="nav-toggle" aria-label="Öppna meny" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <div class="nav-cluster">
+      <ul class="nav-links">
+        <li><a href="huset.html"            data-i18n="nav.huset">Huset</a></li>
+        <li><a href="rum.html"              data-i18n="nav.rummen">Rummen</a></li>
+        <li><a href="inflytt-utflytt.html"  data-i18n="nav.inflytt">Inflytt &amp; utflytt</a></li>
+        <li><a href="omradet.html"          data-i18n="nav.omradet">Området</a></li>
+      </ul>
+
+      <div class="lang-switch" role="group" aria-label="Språk">
+        <button data-lang="sv" aria-pressed="true">SV</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="pl" aria-pressed="false">PL</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============== COVER ============== -->
+<section class="shell cover">
+  <div class="cover-grid">
+    <div>
+      <p class="eyebrow" data-i18n="inflytt.eyebrow">Inflytt · utflytt</p>
+      <h1 data-i18n="inflytt.h1">Vad du gör <em>första</em> kvällen — och <em>sista</em> dagen.</h1>
+      <p class="cover-lede" data-i18n="inflytt.lede">Tre steg vid ankomst. Tre städrutiner under vistelsen. Nio punkter på avreschecklistan. Inget mer, inget mindre.</p>
+    </div>
+    <dl class="cover-meta">
+      <div class="meta-row">
+        <dt data-i18n="inflytt.meta.keys">Nycklar</dt>
+        <dd data-i18n="inflytt.meta.keys.value">Nyckelskåp vid dörren</dd>
+      </div>
+      <div class="meta-row">
+        <dt data-i18n="inflytt.meta.wifi">WiFi</dt>
+        <dd data-i18n="inflytt.meta.wifi.value">Täcker hela huset</dd>
+      </div>
+      <div class="meta-row">
+        <dt data-i18n="inflytt.meta.heat">Värme</dt>
+        <dd data-i18n="inflytt.meta.heat.value">Fjärrvärme + radiatorer</dd>
+      </div>
+      <div class="meta-row">
+        <dt data-i18n="inflytt.meta.vent">Ventilation</dt>
+        <dd data-i18n="inflytt.meta.vent.value">Självdrag — <em>vädra dagligen</em></dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- ============== 01 · VID ANKOMST ============== -->
+<section class="shell section reveal">
+  <div class="section-head">
+    <p class="section-num" data-i18n="inflytt.arrival.eyebrow">01 · Vid ankomst</p>
+    <div>
+      <h2 class="section-title" data-i18n="inflytt.arrival.title">Tre steg in i <em>huset</em>.</h2>
+      <p class="section-blurb" data-i18n="inflytt.arrival.blurb">Du behöver: kod till nyckelskåp, wifi-lösenord, och vetskap om hur värmen justeras. Allt finns nedan.</p>
+    </div>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <p class="step-num">01</p>
+      <h4 data-i18n="inflytt.arrival.s1.title">Nyckelskåp vid dörren</h4>
+      <p data-i18n="inflytt.arrival.s1.body">Nyckelskåpet sitter på vänster sida om ytterdörren. Slå koden, ta nyckeln, lås upp.</p>
+      <ul class="data-list">
+        <li>
+          <span class="key" data-i18n="inflytt.arrival.s1.code.key">Kod</span>
+          <span class="val" data-i18n="inflytt.arrival.s1.code.val">[fås av Lars]</span>
+        </li>
+        <li>
+          <span class="key" data-i18n="inflytt.arrival.s1.note.key">OBS</span>
+          <span class="val" data-i18n="inflytt.arrival.s1.note.val">Lägg tillbaka nyckeln vid avresa</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="step">
+      <p class="step-num">02</p>
+      <h4 data-i18n="inflytt.arrival.s2.title">Anslut till wifi</h4>
+      <p data-i18n="inflytt.arrival.s2.body">Routern sitter i vardagsrummet bakom TV:n. Nätverk och lösenord nedan.</p>
+      <ul class="data-list">
+        <li>
+          <span class="key" data-i18n="inflytt.arrival.s2.net.key">Nätverk</span>
+          <span class="val" data-i18n="inflytt.arrival.s2.net.val">[fås av Lars]</span>
+        </li>
+        <li>
+          <span class="key" data-i18n="inflytt.arrival.s2.pass.key">Lösenord</span>
+          <span class="val" data-i18n="inflytt.arrival.s2.pass.val">[fås av Lars]</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="step">
+      <p class="step-num">03</p>
+      <h4 data-i18n="inflytt.arrival.s3.title">Justera värmen</h4>
+      <p data-i18n="inflytt.arrival.s3.body">Varje radiator har ett vred 1–5. Standardläge är 3. Justera per rum efter behov.</p>
+      <ul class="data-list">
+        <li>
+          <span class="key" data-i18n="inflytt.arrival.s3.vent.key">Vädra</span>
+          <span class="val" data-i18n="inflytt.arrival.s3.vent.val">Korsdrag 5–10 min/dag</span>
+        </li>
+        <li>
+          <span class="key" data-i18n="inflytt.arrival.s3.note.key">OBS</span>
+          <span class="val" data-i18n="inflytt.arrival.s3.note.val">Stäng inte ventiler i fönsterkarmar</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 02 · STÄDNING ============== -->
+<section class="shell section reveal">
+  <div class="section-head">
+    <p class="section-num" data-i18n="inflytt.cleaning.eyebrow">02 · Städning under vistelsen</p>
+    <div>
+      <h2 class="section-title" data-i18n="inflytt.cleaning.title">Tre <em>rutiner</em>.</h2>
+      <p class="section-blurb" data-i18n="inflytt.cleaning.blurb">Köket dagligen, badrummet veckovis, golven vid behov. Att hålla det löpande är mycket lättare än att göra allt sista dagen.</p>
+    </div>
+  </div>
+
+  <div class="card-grid-3">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow">A</p>
+        <h3 data-i18n="inflytt.cleaning.kitchen.title">Köket — dagligen</h3>
+        <p data-i18n="inflytt.cleaning.kitchen.body">Diska efter måltid. Torka av bänken. Bär ut soporna när påsen är full. Ta inte rast på regler.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow">B</p>
+        <h3 data-i18n="inflytt.cleaning.bath.title">Badrum — veckovis</h3>
+        <p data-i18n="inflytt.cleaning.bath.body">Skura toaletten, torka handfat, tvätta golvet. Städmedel finns under hon i köket.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <p class="card-eyebrow">C</p>
+        <h3 data-i18n="inflytt.cleaning.floor.title">Golv — vid behov</h3>
+        <p data-i18n="inflytt.cleaning.floor.body">Dammsug entré och kök oftare än övriga rum. Moppa fuktigt — inte vått. Trägolv tål inte stora vattenmängder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============== 03 · VID AVRESA — CHECKLISTA ============== -->
+<section class="shell section reveal">
+  <div class="section-head">
+    <p class="section-num" data-i18n="inflytt.exit.eyebrow">03 · Vid avresa</p>
+    <div>
+      <h2 class="section-title" data-i18n="inflytt.exit.title">Avrese<em>checklista</em>.</h2>
+      <p class="section-blurb" data-i18n="inflytt.exit.blurb">Nio punkter. Kryssa i allt eftersom — framstegsindikatorn fyller på sig. Listan sparas inte mellan besök.</p>
+    </div>
+  </div>
+
+  <div class="checklist">
+    <div class="checklist-progress">
+      <div class="progress-bar">
+        <div class="progress-bar-fill" style="width: 0%;"></div>
+      </div>
+      <div class="progress-count">
+        <strong>0</strong> / 9
+      </div>
+    </div>
+
+    <ul class="check-list">
+      <li class="check-item">
+        <label>
+          <input type="checkbox">
+          <span class="box" aria-hidden="true"></span>
+          <span class="label" data-i18n="inflytt.check.1">Disken är gjord och torkad</span>
+        </label>
+      </li>
+      <li class="check-item">
+        <label>
+          <input type="checkbox">
+          <span class="box" aria-hidden="true"></span>
+          <span class="label" data-i18n="inflytt.check.2">Kyl och frys är tömda</span>
+        </label>
+      </li>
+      <li class="check-item">
+        <label>
+          <input type="checkbox">
+          <span class="box" aria-hidden="true"></span>
+          <span class="label" data-i18n="inflytt.check.3">Soporna är utburna</span>
+        </label>
+      </li>
+      <li class="check-item">
+        <label>
+          <input type="checkbox">
+          <span class="box" aria-hidden="true"></span>
+          <span class="label" data-i18n="inflytt.check.4">Tvätten är hemtagen</span>
+        </label>
+      </li>
+      <li class="check-item">
+        <label>
+          <input type="checkbox">
+          <span class="box" aria-hidden="true"></span>
+          <span class="label" data-i18n="inflytt.check.5">Sängkläder och handdukar är hemtagna</span>
+        </label>
+      </li>
+      <li class="check-item">
+        <label>
+          <input type="checkbox">
+          <span class="box" aria-hidden="true"></span>
+          <span class="label" data-i18n="inflytt.check.6">Alla fönster är stängda</span>
+        </label>
+      </li>
+      <li class="check-item">
+        <label>
+          <input type="checkbox">
+          <span class="box" aria-hidden="true"></span>
+          <span class="label" data-i18n="inflytt.check.7">Ytterdörrar är låsta</span>
+        </label>
+      </li>
+      <li class="check-item">
+        <label>
+          <input type="checkbox">
+          <span class="box" aria-hidden="true"></span>
+          <span class="label" data-i18n="inflytt.check.8">Grundstädning är gjord</span>
+        </label>
+      </li>
+      <li class="check-item">
+        <label>
+          <input type="checkbox">
+          <span class="box" aria-hidden="true"></span>
+          <span class="label" data-i18n="inflytt.check.9">Nycklarna är tillbaka i nyckelskåpet</span>
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <div class="notice tone-terra" style="margin-top: var(--s-5);">
+    <div class="icon" aria-hidden="true">!</div>
+    <div>
+      <h4 data-i18n="inflytt.exit.notice.title">Sängkläder ALLTID med hem</h4>
+      <p data-i18n="inflytt.exit.notice.body">Glömda sängkläder och handdukar slängs vid slutstädning. Vi sparar inte och skickar inte hem.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============== FOOTER ============== -->
+<footer class="foot-wrap">
+  <div class="foot-inner">
+    <div class="foot-block">
+      <p class="signoff" data-i18n="foot.signoff">Domek — <em>litet hus</em>,<br>tydliga ramar.</p>
+      <p data-i18n="foot.about">Domek är ett enfamiljshus från 1959 på Solrosvägen 17 i Örnsköldsvik. Hugo och Vega Kjellsson äger det, Sanco hyr det åt sina arbetare.</p>
+    </div>
+
+    <div class="foot-block">
+      <h5 data-i18n="foot.contact">Kontakt</h5>
+      <div class="contact-row">
+        <span class="who" data-i18n="foot.contact.house">Huset</span>
+        <span>Hugo &amp; Vega Kjellsson</span>
+        <a href="tel:+46700000000">+46 70 000 00 00</a>
+        <a href="mailto:hej@domek.se">hej@domek.se</a>
+      </div>
+      <div class="contact-row">
+        <span class="who" data-i18n="foot.contact.work">Jobbet</span>
+        <span>Lars Hellgren · Sanco</span>
+        <a href="tel:+46700000001">+46 70 000 00 01</a>
+        <a href="mailto:lars@sanco.se">lars@sanco.se</a>
+      </div>
+    </div>
+
+    <div class="foot-block">
+      <h5 data-i18n="foot.pages">Sidor</h5>
+      <ul>
+        <li><a href="huset.html"           data-i18n="nav.huset">Huset</a></li>
+        <li><a href="rum.html"             data-i18n="nav.rummen">Rummen</a></li>
+        <li><a href="inflytt-utflytt.html" data-i18n="nav.inflytt">Inflytt &amp; utflytt</a></li>
+        <li><a href="omradet.html"         data-i18n="nav.omradet">Området</a></li>
+      </ul>
+    </div>
+
+    <div class="foot-block">
+      <h5 data-i18n="foot.lang">Språk</h5>
+      <div class="lang-switch" role="group" aria-label="Språk">
+        <button data-lang="sv" aria-pressed="true">SV</button>
+        <button data-lang="en" aria-pressed="false">EN</button>
+        <button data-lang="pl" aria-pressed="false">PL</button>
+      </div>
+      <p style="margin-top: var(--s-4); font-size: 12px; color: var(--linne-400);">
+        <span data-i18n="foot.updated">Uppdaterad</span>: 2026-04-25
+      </p>
+    </div>
+  </div>
+
+  <div class="foot-bottom">
+    <div class="foot-bottom-inner">
+      <div data-i18n="foot.copy">Domek <span class="terra">·</span> Solrosvägen 17, Örnsköldsvik</div>
+      <div>v.1 <span class="terra">·</span> April 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
