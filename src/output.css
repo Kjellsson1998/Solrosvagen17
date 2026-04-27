@@ -600,6 +600,9 @@
   .h-\[92vh\] {
     height: 92vh;
   }
+  .h-\[180px\] {
+    height: 180px;
+  }
   .h-auto {
     height: auto;
   }
@@ -895,6 +898,9 @@
   .cursor-pointer {
     cursor: pointer;
   }
+  .resize {
+    resize: both;
+  }
   .resize-y {
     resize: vertical;
   }
@@ -963,9 +969,6 @@
   }
   .justify-center {
     justify-content: center;
-  }
-  .justify-end {
-    justify-content: flex-end;
   }
   .gap-0 {
     gap: calc(var(--spacing) * 0);
@@ -1310,12 +1313,6 @@
   .bg-blaeck-200 {
     background-color: var(--color-blaeck-200);
   }
-  .bg-blaeck-200\/90 {
-    background-color: color-mix(in srgb, #C9C2B2 90%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-blaeck-200) 90%, transparent);
-    }
-  }
   .bg-blaeck-300 {
     background-color: var(--color-blaeck-300);
   }
@@ -1393,12 +1390,6 @@
   }
   .bg-linne-300 {
     background-color: var(--color-linne-300);
-  }
-  .bg-linne-300\/90 {
-    background-color: color-mix(in srgb, #DFD2B7 90%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-linne-300) 90%, transparent);
-    }
   }
   .bg-linne-400 {
     background-color: var(--color-linne-400);
@@ -1496,12 +1487,6 @@
   .bg-skog-200 {
     background-color: var(--color-skog-200);
   }
-  .bg-skog-200\/90 {
-    background-color: color-mix(in srgb, #BCCAA9 90%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-skog-200) 90%, transparent);
-    }
-  }
   .bg-skog-300 {
     background-color: var(--color-skog-300);
   }
@@ -1546,12 +1531,6 @@
   }
   .bg-terra-200 {
     background-color: var(--color-terra-200);
-  }
-  .bg-terra-200\/90 {
-    background-color: color-mix(in srgb, #F2B5A3 90%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-terra-200) 90%, transparent);
-    }
   }
   .bg-terra-300 {
     background-color: var(--color-terra-300);
@@ -3026,6 +3005,11 @@
       height: 70vh;
     }
   }
+  .sm\:h-\[220px\] {
+    @media (width >= 30rem) {
+      height: 220px;
+    }
+  }
   .sm\:grid-cols-2 {
     @media (width >= 30rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3121,6 +3105,11 @@
       padding-top: calc(var(--spacing) * 4);
     }
   }
+  .sm\:pt-5 {
+    @media (width >= 30rem) {
+      padding-top: calc(var(--spacing) * 5);
+    }
+  }
   .sm\:pb-4 {
     @media (width >= 30rem) {
       padding-bottom: calc(var(--spacing) * 4);
@@ -3196,6 +3185,16 @@
       padding: calc(var(--spacing) * 16);
     }
   }
+  .lg\:absolute {
+    @media (width >= 56.25rem) {
+      position: absolute;
+    }
+  }
+  .lg\:inset-0 {
+    @media (width >= 56.25rem) {
+      inset: calc(var(--spacing) * 0);
+    }
+  }
   .lg\:mb-14 {
     @media (width >= 56.25rem) {
       margin-bottom: calc(var(--spacing) * 14);
@@ -3214,6 +3213,21 @@
   .lg\:h-\[78vh\] {
     @media (width >= 56.25rem) {
       height: 78vh;
+    }
+  }
+  .lg\:h-auto {
+    @media (width >= 56.25rem) {
+      height: auto;
+    }
+  }
+  .lg\:min-h-\[720px\] {
+    @media (width >= 56.25rem) {
+      min-height: 720px;
+    }
+  }
+  .lg\:w-auto {
+    @media (width >= 56.25rem) {
+      width: auto;
     }
   }
   .lg\:grid-cols-2 {
@@ -3271,6 +3285,16 @@
       grid-template-columns: 200px 1fr;
     }
   }
+  .lg\:flex-col {
+    @media (width >= 56.25rem) {
+      flex-direction: column;
+    }
+  }
+  .lg\:justify-end {
+    @media (width >= 56.25rem) {
+      justify-content: flex-end;
+    }
+  }
   .lg\:gap-6 {
     @media (width >= 56.25rem) {
       gap: calc(var(--spacing) * 6);
@@ -3289,6 +3313,38 @@
   .lg\:gap-16 {
     @media (width >= 56.25rem) {
       gap: calc(var(--spacing) * 16);
+    }
+  }
+  .lg\:bg-blaeck-200\/75 {
+    @media (width >= 56.25rem) {
+      background-color: color-mix(in srgb, #C9C2B2 75%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-blaeck-200) 75%, transparent);
+      }
+    }
+  }
+  .lg\:bg-linne-300\/75 {
+    @media (width >= 56.25rem) {
+      background-color: color-mix(in srgb, #DFD2B7 75%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-linne-300) 75%, transparent);
+      }
+    }
+  }
+  .lg\:bg-skog-200\/75 {
+    @media (width >= 56.25rem) {
+      background-color: color-mix(in srgb, #BCCAA9 75%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-skog-200) 75%, transparent);
+      }
+    }
+  }
+  .lg\:bg-terra-200\/75 {
+    @media (width >= 56.25rem) {
+      background-color: color-mix(in srgb, #F2B5A3 75%, transparent);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-terra-200) 75%, transparent);
+      }
     }
   }
   .lg\:px-6 {
@@ -3321,6 +3377,11 @@
       padding-block: calc(var(--spacing) * 20);
     }
   }
+  .lg\:pt-0 {
+    @media (width >= 56.25rem) {
+      padding-top: calc(var(--spacing) * 0);
+    }
+  }
   .lg\:pt-6 {
     @media (width >= 56.25rem) {
       padding-top: calc(var(--spacing) * 6);
@@ -3350,6 +3411,20 @@
     @media (width >= 56.25rem) {
       font-size: var(--text-6xl);
       line-height: var(--tw-leading, var(--text-6xl--line-height));
+    }
+  }
+  .lg\:backdrop-blur-md {
+    @media (width >= 56.25rem) {
+      --tw-backdrop-blur: blur(var(--blur-md));
+      -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+      backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    }
+  }
+  .lg\:backdrop-saturate-150 {
+    @media (width >= 56.25rem) {
+      --tw-backdrop-saturate: saturate(150%);
+      -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+      backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     }
   }
   .\[\&\.is-active\]\:bg-terra-50 {
