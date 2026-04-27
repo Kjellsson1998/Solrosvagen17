@@ -951,23 +951,69 @@
     const items = list.querySelectorAll('.check-item input[type="checkbox"]');
     const fill = document.querySelector('.progress-bar-fill');
     const count = document.querySelector('.progress-count');
+    const reward = document.querySelector('.checklist-reward');
+    const resetBtn = document.querySelector('.checklist-reset');
     const total = items.length;
+    const STORAGE_KEY = 'domek-checklist-v1';
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const saved = JSON.parse(raw);
+        if (!Array.isArray(saved) || saved.length !== total) return;
+        items.forEach((i, idx) => { i.checked = !!saved[idx]; });
+      } catch (e) { /* ignore */ }
+    }
+
+    function saveState() {
+      try {
+        const state = Array.from(items).map(i => i.checked);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) { /* ignore */ }
+    }
 
     function update() {
       const done = Array.from(items).filter(i => i.checked).length;
       const pct = total === 0 ? 0 : (done / total) * 100;
       if (fill) fill.style.width = pct + '%';
-      if (count) count.innerHTML = `<strong>${done}</strong> / ${total}`;
+      if (count) {
+        const strong = count.querySelector('strong');
+        if (strong) strong.textContent = String(done);
+        else count.innerHTML = `<strong>${done}</strong> / ${total}`;
+      }
       items.forEach(i => {
         i.closest('.check-item').classList.toggle('is-done', i.checked);
       });
+      if (reward) {
+        const shouldShow = done === total && total > 0;
+        reward.classList.toggle('hidden', !shouldShow);
+        reward.classList.toggle('flex', shouldShow);
+      }
     }
 
+    function reset() {
+      items.forEach(i => { i.checked = false; });
+      saveState();
+      update();
+    }
+
+    loadState();
+    update();
+
     items.forEach(i => {
-      i.addEventListener('change', update);
+      i.addEventListener('change', () => {
+        saveState();
+        update();
+      });
     });
 
-    update();
+    if (resetBtn) {
+      resetBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        reset();
+      });
+    }
   }
 
   // ============================================================

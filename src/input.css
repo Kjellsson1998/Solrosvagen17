@@ -173,6 +173,9 @@
    ================================================================ */
 
 @layer base {
+  html {
+    overflow-x: clip; /* Tillåter full-bleed via mx-[calc(50%-50vw)] utan h-scrollbar */
+  }
   body {
     @apply bg-linne-50 text-blaeck-800 font-sans antialiased;
     background-image:

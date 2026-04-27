@@ -1,395 +1,2882 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title data-i18n="huset.title">Huset — Domek</title>
-<meta name="description" content="Hur huset fungerar — kök, tvätt, sopor, vad du gör vid läckage eller strömavbrott, och husets ordningsregler.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Huset — Domek</title>
+    <meta
+      name="description"
+      content="Hur huset fungerar — kök, tvätt, sopor, vatten, el, värme och vad du gör om något går sönder. Solrosvägen 17, Örnsköldsvik."
+    />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-<link rel="stylesheet" href="src/output.css">
-<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%23C9522F'/><text x='32' y='44' font-family='Georgia,serif' font-size='38' fill='%23FBF7F0' text-anchor='middle' font-weight='400'>D</text></svg>">
-</head>
-<body>
+    <link rel="stylesheet" href="src/output.css" />
 
-<a href="#main" class="skip">Hoppa till innehåll</a>
+    <!-- Phosphor Duotone icons -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css"
+    />
 
-<!-- ============== TOP NAV ============== -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <a href="index.html" class="brand-mark">
-      <span class="dot" aria-hidden="true"></span>
-      Dom<em>e</em>k
-    </a>
-    <button class="nav-toggle" aria-label="Öppna meny" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-    <div class="nav-cluster">
-      <ul class="nav-links">
-        <li><a href="huset.html"            data-i18n="nav.huset">Huset</a></li>
-        <li><a href="rum.html"              data-i18n="nav.rummen">Rummen</a></li>
-        <li><a href="inflytt-utflytt.html"  data-i18n="nav.inflytt">Inflytt &amp; utflytt</a></li>
-        <li><a href="omradet.html"          data-i18n="nav.omradet">Området</a></li>
-      </ul>
-      <div class="lang-switch" role="group" aria-label="Språk">
-        <button data-lang="sv" aria-pressed="true">SV</button>
-        <button data-lang="en" aria-pressed="false">EN</button>
-        <button data-lang="pl" aria-pressed="false">PL</button>
-      </div>
-    </div>
-  </div>
-</header>
+    <!-- Leaflet (för sopor-kartan) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+      defer
+    ></script>
 
-<main id="main">
+    <link
+      rel="icon"
+      href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%23C9522F'/><text x='32' y='44' font-family='Georgia,serif' font-size='38' fill='%23FBF7F0' text-anchor='middle' font-weight='400'>D</text></svg>"
+    />
 
-<!-- ============== COVER ============== -->
-<section class="shell cover">
-  <div class="cover-grid">
-    <div>
-      <p class="eyebrow" data-i18n="huset.eyebrow">Huset · Solrosvägen 17</p>
-      <h1 data-i18n="huset.h1">Hur huset <em>fungerar</em>.</h1>
-      <p class="cover-lede" data-i18n="huset.lede">Allt du behöver veta om kök, tvätt, sopor och ordningsregler. Och vad du gör om något läcker eller slutar fungera.</p>
-    </div>
-    <dl class="cover-meta">
-      <div class="meta-row">
-        <dt data-i18n="huset.meta.built">Byggår</dt>
-        <dd data-i18n="huset.meta.built.value">1959</dd>
-      </div>
-      <div class="meta-row">
-        <dt data-i18n="huset.meta.style">Stil</dt>
-        <dd data-i18n="huset.meta.style.value"><em>Tidstypiskt</em> 50-tal</dd>
-      </div>
-      <div class="meta-row">
-        <dt data-i18n="huset.meta.size">Boyta</dt>
-        <dd data-i18n="huset.meta.size.value">110 m²</dd>
-      </div>
-      <div class="meta-row">
-        <dt data-i18n="huset.meta.heat">Värme</dt>
-        <dd data-i18n="huset.meta.heat.value">Fjärrvärme</dd>
-      </div>
-    </dl>
-  </div>
-</section>
+    <style>
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
 
-<!-- ============== HISTORY ============== -->
-<section class="shell section reveal">
-  <div class="section-head">
-    <p class="section-num" data-i18n="huset.history.eyebrow">01 · Husets historia</p>
-    <div>
-      <h2 class="section-title" data-i18n="huset.history.title">Ett hus från <em>1959</em>.</h2>
-    </div>
-  </div>
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--s-7); max-width: 1000px;">
-    <p style="font-family: var(--font-display); font-variation-settings: 'opsz' 18; font-size: 17px; line-height: 1.6; color: var(--ink-soft); margin: 0;" data-i18n="huset.history.p1">
-      Solrosvägen 17 byggdes 1959 som familjebostad. Originalplanlösningen är till stor del bevarad — kök, vardagsrum och fyra sovrum är som de var. Tapeter, golvmaterial och vissa skåp är från olika decennier av husets historia.
-    </p>
-    <p style="font-family: var(--font-display); font-variation-settings: 'opsz' 18; font-size: 17px; line-height: 1.6; color: var(--ink-soft); margin: 0;" data-i18n="huset.history.p2">
-      En tillbyggnad gjordes på 80-talet (badrum och tvättavdelning). Köket renoverades 2010 — nya vitvaror, gamla skåp. Det är ett 50-talshus, inte ett modernt hus. Saker har en patina och knarrar ibland.
-    </p>
-  </div>
-</section>
+      /* ===== Leaflet map-pins (sopor) ===== */
+      /* Två dots vid Domek — brun & grön = de fysiska kärlen */
+      .bin-pair {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        width: 36px;
+        height: 16px;
+      }
+      .bin-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 9999px;
+        border: 2.5px solid #fff;
+        box-shadow: 0 2px 6px rgba(34, 30, 21, 0.4);
+      }
+      .bin-brown {
+        background: #6e4a1c;
+      }
+      .bin-green {
+        background: #4d6033;
+      }
+      .place-pin {
+        width: 28px;
+        height: 28px;
+        border: 2.5px solid #fff;
+        border-radius: 50%;
+        color: #fff;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 12px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(34, 30, 21, 0.35);
+        letter-spacing: -0.02em;
+      }
+      .pin-label {
+        position: absolute;
+        bottom: calc(100% + 14px);
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #221e15;
+        background: rgba(251, 247, 240, 0.95);
+        padding: 3px 8px;
+        border-radius: 4px;
+        white-space: nowrap;
+        box-shadow: 0 2px 6px rgba(34, 30, 21, 0.18);
+        pointer-events: none;
+      }
+      .pin-label::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 4px solid transparent;
+        border-top-color: rgba(251, 247, 240, 0.95);
+      }
+      .leaflet-control-attribution {
+        font-size: 10px !important;
+        background: rgba(251, 247, 240, 0.85) !important;
+        padding: 2px 6px !important;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip">Hoppa till innehåll</a>
 
-<!-- ============== KITCHEN ============== -->
-<section class="shell section reveal">
-  <div class="section-head">
-    <p class="section-num" data-i18n="huset.kitchen.eyebrow">02 · Köket</p>
-    <div>
-      <h2 class="section-title" data-i18n="huset.kitchen.title">Vad finns i <em>köket</em>?</h2>
-      <p class="section-blurb" data-i18n="huset.kitchen.blurb">Tre vitvaror som täcker det du behöver för matlagning. Inga lyxvarianter — bara det som fungerar.</p>
-    </div>
-  </div>
+    <!-- ============== HEADER ============== -->
+    <header
+      class="sticky top-0 z-[100] bg-linne-50/90 backdrop-blur-md backdrop-saturate-150 border-b border-linne-200"
+    >
+      <div
+        class="max-w-[1280px] mx-auto flex items-center justify-between gap-6 px-6 py-4 sm:px-8 lg:px-12 max-sm:py-3"
+      >
+        <a
+          href="index.html"
+          translate="no"
+          class="font-display font-medium text-2xl -tracking-[0.01em] text-blaeck-900 inline-flex items-baseline gap-2 no-underline"
+          style="
+            font-variation-settings:
+              &quot;opsz&quot; 144,
+              &quot;SOFT&quot; 30;
+          "
+        >
+          <span
+            class="inline-block w-[7px] h-[7px] rounded-full bg-terra-500 -translate-y-px"
+            aria-hidden="true"
+          ></span>
+          Dom<em
+            class="not-italic font-normal text-terra-600"
+            style="
+              font-style: italic;
+              font-variation-settings:
+                &quot;opsz&quot; 144,
+                &quot;SOFT&quot; 30,
+                &quot;WONK&quot; 1;
+            "
+            >e</em
+          >k
+        </a>
 
-  <div class="card-grid-3" style="margin-bottom: var(--s-5);">
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow">01</p>
-        <h3 data-i18n="huset.kitchen.fridge.title">Kyl &amp; frys</h3>
-        <p data-i18n="huset.kitchen.fridge.body">Kombiskåp, normal storlek för fyra personer. Frysen rymmer cirka 90 liter.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow">02</p>
-        <h3 data-i18n="huset.kitchen.stove.title">Spis, ugn &amp; mikro</h3>
-        <p data-i18n="huset.kitchen.stove.body">Induktionshäll med fyra zoner, varmluftsugn med grillfunktion. Mikrovågsugn vid sidan av spisen.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow">03</p>
-        <h3 data-i18n="huset.kitchen.kettle.title">Vattenkokare &amp; kaffe</h3>
-        <p data-i18n="huset.kitchen.kettle.body">Elektrisk vattenkokare och kaffebryggare. Kaffefilter köper du själv (Willys, två minuter bort).</p>
-      </div>
-    </div>
-  </div>
+        <button
+          class="nav-toggle group lg:hidden bg-transparent border border-linne-200 rounded-sm p-2 cursor-pointer"
+          aria-label="Öppna meny"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+        >
+          <span
+            class="block w-[18px] h-[1.5px] bg-blaeck-800 my-1 transition-transform duration-200 group-[.is-open]:translate-y-[5.5px] group-[.is-open]:rotate-45"
+          ></span>
+          <span
+            class="block w-[18px] h-[1.5px] bg-blaeck-800 my-1 transition-opacity duration-200 group-[.is-open]:opacity-0"
+          ></span>
+          <span
+            class="block w-[18px] h-[1.5px] bg-blaeck-800 my-1 transition-transform duration-200 group-[.is-open]:-translate-y-[5.5px] group-[.is-open]:-rotate-45"
+          ></span>
+        </button>
 
-  <div class="notice tone-mustard">
-    <div class="icon" aria-hidden="true">!</div>
-    <div>
-      <h4 data-i18n="huset.kitchen.notice.title">Det finns ingen diskmaskin</h4>
-      <p data-i18n="huset.kitchen.notice.body">Diska för hand i hon på höger sida. Diskmedel och svamp finns under hon. Lämna inget i hon över natten.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============== LAUNDRY ============== -->
-<section class="shell section reveal">
-  <div class="section-head">
-    <p class="section-num" data-i18n="huset.laundry.eyebrow">03 · Tvätt och sängkläder</p>
-    <div>
-      <h2 class="section-title" data-i18n="huset.laundry.title">Vad <em>finns</em> och vad du <em>tar med</em>.</h2>
-    </div>
-  </div>
-
-  <div class="card-grid">
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow" data-i18n="huset.laundry.in.eyebrow">Finns i huset</p>
-        <h3 data-i18n="huset.laundry.in.title">Tvättmaskin &amp; torkrum</h3>
-        <p data-i18n="huset.laundry.in.body">Tvättmaskin i pannrummet. Torkrum med uppvärmd luft — hängning på galge går snabbt.</p>
-        <div class="meta">
-          <span data-i18n="huset.laundry.in.meta">Ingen torktumlare</span>
+        <div
+          id="primary-nav"
+          class="nav-cluster flex items-center gap-6 max-lg:fixed max-lg:top-16 max-lg:inset-x-0 max-lg:flex-col max-lg:items-stretch max-lg:gap-3 max-lg:p-6 max-lg:bg-linne-50 max-lg:border-b max-lg:border-linne-200 max-lg:shadow-paper-2 max-lg:opacity-0 max-lg:pointer-events-none max-lg:-translate-y-2 max-lg:transition-[opacity,transform] max-lg:duration-200 max-lg:ease-out [&.is-open]:max-lg:opacity-100 [&.is-open]:max-lg:pointer-events-auto [&.is-open]:max-lg:translate-y-0"
+        >
+          <ul
+            class="nav-links flex gap-4 list-none m-0 p-0 font-mono text-[11px] uppercase tracking-[0.08em] max-lg:flex-col max-lg:gap-0 max-lg:text-[13px]"
+          >
+            <li>
+              <a
+                href="huset.html"
+                class="block text-terra-700 bg-terra-50 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 max-lg:px-3 max-lg:py-3"
+                aria-current="page"
+                >Huset</a
+              >
+            </li>
+            <li>
+              <a
+                href="inflytt-utflytt.html"
+                class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 max-lg:px-3 max-lg:py-3"
+                >Inflytt &amp; utflytt</a
+              >
+            </li>
+            <li>
+              <a
+                href="omradet.html"
+                class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 max-lg:px-3 max-lg:py-3"
+                >Området</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-    <div class="card" style="background: var(--terra-50); border-color: var(--terra-200);">
-      <div class="card-body">
-        <p class="card-eyebrow" data-i18n="huset.laundry.bring.eyebrow">Tar du med själv</p>
-        <h3 data-i18n="huset.laundry.bring.title">Sängkläder &amp; handdukar</h3>
-        <p data-i18n="huset.laundry.bring.body">Finns INTE i huset — du måste ta med själv. Glömmer du dem hänvisar vi till <a href="omradet.html" class="link">Jysk i Örnsköldsvik</a>.</p>
-        <div class="meta">
-          <span data-i18n="huset.laundry.bring.meta">Glömmer du? → Jysk</span>
+    </header>
+
+    <main id="main">
+      <!-- ============== COVER ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-10 lg:pt-20 lg:pb-16"
+      >
+        <div
+          class="grid lg:grid-cols-[1fr_1.05fr] gap-10 lg:gap-14 items-center mb-10 lg:mb-14"
+        >
+          <div>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-5 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
+            >
+              Huset · <span translate="no">Solrosvägen 17</span>
+            </p>
+            <h1
+              class="font-display font-light text-[clamp(48px,8vw,88px)] leading-[0.95] -tracking-[0.02em] text-blaeck-900 m-0 mb-5"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 144,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Hur huset
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 144,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >fungerar</em
+              >.
+            </h1>
+            <p
+              class="font-display text-[clamp(17px,2vw,21px)] leading-[1.5] text-blaeck-600 max-w-[55ch] m-0"
+              style="font-variation-settings: &quot;opsz&quot; 24"
+            >
+              Allt du behöver veta om kök, tvätt, sopor, värme och vatten — och
+              vad du gör om något går sönder. Det här är ett 50-talshus, så
+              saker har en patina och knarrar ibland.
+            </p>
+          </div>
+
+          <figure
+            class="m-0 relative isolate overflow-hidden rounded-md border border-linne-200 shadow-paper-2 bg-linne-100"
+          >
+            <img
+              src="Image/Domek.jpg"
+              alt="Domek — röd träfasad med vita fönsterkarmar och inramad uppfart, hösten."
+              class="block w-full h-auto aspect-[3/2] object-cover"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
+        </div>
+
+        <dl
+          class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-5 bg-linne-100/60 border border-linne-200 rounded-md px-6 py-5 sm:px-7 sm:py-6 m-0"
+        >
+          <div class="flex flex-col gap-1">
+            <dt
+              class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+            >
+              Byggår
+            </dt>
+            <dd
+              class="font-display text-[20px] text-blaeck-900 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 24"
+            >
+              1959
+            </dd>
+          </div>
+          <div class="flex flex-col gap-1">
+            <dt
+              class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+            >
+              Boyta
+            </dt>
+            <dd
+              class="font-display text-[20px] text-blaeck-900 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 24"
+            >
+              128 m²
+            </dd>
+          </div>
+          <div class="flex flex-col gap-1">
+            <dt
+              class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+            >
+              Biarea
+            </dt>
+            <dd
+              class="font-display text-[20px] text-blaeck-900 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 24"
+            >
+              86 m²
+            </dd>
+          </div>
+          <div class="flex flex-col gap-1">
+            <dt
+              class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+            >
+              Tomt
+            </dt>
+            <dd
+              class="font-display text-[20px] text-blaeck-900 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 24"
+            >
+              940 m²
+            </dd>
+          </div>
+          <div class="flex flex-col gap-1">
+            <dt
+              class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+            >
+              Parkering
+            </dt>
+            <dd
+              class="font-display text-[20px] text-blaeck-900 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 24"
+            >
+              3 P-platser
+            </dd>
+          </div>
+          <div class="flex flex-col gap-1">
+            <dt
+              class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+            >
+              Värme
+            </dt>
+            <dd
+              class="font-display text-[20px] text-blaeck-900 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 24"
+            >
+              Fjärrvärme
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- ============== HISTORY ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16">
+          <div>
+            <i
+              class="ph-duotone ph-clock-counter-clockwise text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              01 · Husets historia
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Ett hus från
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >1959</em
+              >.
+            </h2>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-6">
+            <article class="flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                1959
+              </p>
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Originalhuset
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Familjebostad i rött trä med vita karmar. Hall, vardagsrum, tre
+                sovrum och två badrum på entréplan. Källaren rymmer pannrum,
+                tvättstuga, allrum och garage.
+              </p>
+            </article>
+            <article class="flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                1976
+              </p>
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Tillbyggnad
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Köket, kontoret (bruna rummet), en toalett och hallen byggdes
+                till. Tapeterna och skåpen i de tillagda delarna är från
+                70-talet.
+              </p>
+            </article>
+            <article class="flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                1979
+              </p>
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Takad uteplats
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Den takade uteplatsen mot trädgården kom till. Röda paneler,
+                vita räcken — i samma tonart som fasaden.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== RUMMEN ============== -->
+      <section
+        id="rummen"
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 mb-8">
+          <div>
+            <i
+              class="ph-duotone ph-door-open text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              02 · Rummen
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Fyra
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >sovrum</em
+              >, fyra tapeter.
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Alla rum ligger på entréplan. Alla sängar är enkelsängar i olika
+              bredd. Husets totala kapacitet är 4 personer — vem som sover var
+              bestämmer ni eller <span translate="no">Sanco</span>.
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <!-- Gula rummet -->
+            <article class="card overflow-hidden flex flex-col">
+              <div class="h-1.5 bg-rum-saffran" aria-hidden="true"></div>
+              <div class="p-5 flex flex-col gap-2">
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 m-0 inline-flex items-center gap-1.5"
+                >
+                  <span
+                    class="inline-block w-2 h-2 rounded-full bg-rum-saffran"
+                    aria-hidden="true"
+                  ></span>
+                  Gula rummet
+                </p>
+                <h3
+                  class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                  style="font-variation-settings: &quot;opsz&quot; 24"
+                >
+                  Senapsgult med blommor
+                </h3>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Husets största sovrum. Tapet i senapsgult med små blommor från
+                  sent 60-tal.
+                </p>
+                <dl
+                  class="grid grid-cols-3 gap-x-3 gap-y-2 mt-2 m-0 pt-3 border-t border-linne-200"
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Storlek
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                    >
+                      14 m²
+                    </dd>
+                  </div>
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Säng
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                      translate="no"
+                    >
+                      105 × 200
+                    </dd>
+                  </div>
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Extra
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                    ></dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+
+            <!-- Röda rummet -->
+            <article class="card overflow-hidden flex flex-col">
+              <div class="h-1.5 bg-rum-kamelia" aria-hidden="true"></div>
+              <div class="p-5 flex flex-col gap-2">
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 m-0 inline-flex items-center gap-1.5"
+                >
+                  <span
+                    class="inline-block w-2 h-2 rounded-full bg-rum-kamelia"
+                    aria-hidden="true"
+                  ></span>
+                  Röda rummet
+                </p>
+                <h3
+                  class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                  style="font-variation-settings: &quot;opsz&quot; 24"
+                >
+                  Randig terrakotta
+                </h3>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Mindre rum med randig terrakottatapet från 70-talet. Ligger
+                  närmast badrummet.
+                </p>
+                <dl
+                  class="grid grid-cols-3 gap-x-3 gap-y-2 mt-2 m-0 pt-3 border-t border-linne-200"
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Storlek
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                    >
+                      9 m²
+                    </dd>
+                  </div>
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Säng
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                      translate="no"
+                    >
+                      90 × 200
+                    </dd>
+                  </div>
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Extra
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                    ></dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+
+            <!-- Gröna rummet -->
+            <article class="card overflow-hidden flex flex-col">
+              <div class="h-1.5 bg-rum-mossa" aria-hidden="true"></div>
+              <div class="p-5 flex flex-col gap-2">
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 m-0 inline-flex items-center gap-1.5"
+                >
+                  <span
+                    class="inline-block w-2 h-2 rounded-full bg-rum-mossa"
+                    aria-hidden="true"
+                  ></span>
+                  Gröna rummet
+                </p>
+                <h3
+                  class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                  style="font-variation-settings: &quot;opsz&quot; 24"
+                >
+                  Mörkgrön mosstapet
+                </h3>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Mörkgrön mosstapet med små guld- och senapsdetaljer. Egen
+                  balkong åt söder, skrivbord vid fönstret.
+                </p>
+                <dl
+                  class="grid grid-cols-3 gap-x-3 gap-y-2 mt-2 m-0 pt-3 border-t border-linne-200"
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Storlek
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                    >
+                      12 m²
+                    </dd>
+                  </div>
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Säng
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                      translate="no"
+                    >
+                      120 × 200
+                    </dd>
+                  </div>
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Extra
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                    >
+                      Balkong Skrivbord
+                    </dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+
+            <!-- Bruna rummet -->
+            <article class="card overflow-hidden flex flex-col">
+              <div class="h-1.5 bg-rum-tobak" aria-hidden="true"></div>
+              <div class="p-5 flex flex-col gap-2">
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 m-0 inline-flex items-center gap-1.5"
+                >
+                  <span
+                    class="inline-block w-2 h-2 rounded-full bg-rum-tobak"
+                    aria-hidden="true"
+                  ></span>
+                  Bruna rummet
+                  <span class="text-blaeck-400 normal-case tracking-normal"
+                    >· kontoret</span
+                  >
+                </p>
+                <h3
+                  class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                  style="font-variation-settings: &quot;opsz&quot; 24"
+                >
+                  Brun bukett-tapet
+                </h3>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Innanför köket. Brun bukett-/randtapet och ett skrivbord vid
+                  fönstret — bra om du behöver jobba kvällar.
+                </p>
+                <dl
+                  class="grid grid-cols-3 gap-x-3 gap-y-2 mt-2 m-0 pt-3 border-t border-linne-200"
+                >
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Storlek
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                    >
+                      10 m²
+                    </dd>
+                  </div>
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Säng
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                      translate="no"
+                    >
+                      90 × 200
+                    </dd>
+                  </div>
+                  <div class="flex flex-col gap-0.5">
+                    <dt
+                      class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
+                    >
+                      Extra
+                    </dt>
+                    <dd
+                      class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
+                    ></dd>
+                  </div>
+                </dl>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Femte rummet — placeholder -->
+        <div
+          class="bg-linne-100/40 border border-dashed border-linne-300 rounded-md px-5 py-4 sm:px-6 sm:py-5 max-w-[68rem] flex items-start gap-4"
+        >
+          <span
+            class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold whitespace-nowrap mt-0.5 shrink-0"
+            >Kommer senare</span
+          >
+          <p
+            class="font-display text-[15px] leading-[1.5] text-blaeck-700 m-0"
+            style="font-variation-settings: &quot;opsz&quot; 18"
+          >
+            Källarrummet bredvid pannrummet utreds som ett femte sovrum. När det
+            är klart läggs det in här.
+          </p>
+        </div>
+      </section>
+
+      <!-- ============== KÖK ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 mb-10">
+          <div>
+            <i
+              class="ph-duotone ph-cooking-pot text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              03 · Köket
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Vad finns i
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >köket</em
+              >?
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Det vanliga som täcker matlagning för fyra. Bestick, glas och
+              porslin för 4–6 personer.
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="card p-5 flex gap-4">
+              <span
+                class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 mt-1 shrink-0"
+                >01</span
+              >
+              <div>
+                <h3
+                  class="font-sans font-medium text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Kyl &amp; frys
+                </h3>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Kombiskåp, normal storlek för fyra personer.
+                </p>
+              </div>
+            </div>
+            <div class="card p-5 flex gap-4">
+              <span
+                class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 mt-1 shrink-0"
+                >02</span
+              >
+              <div>
+                <h3
+                  class="font-sans font-medium text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Spis, ugn &amp; mikro
+                </h3>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Häll och ugn enligt 70-talsstandard. Mikrovågsugn vid sidan av
+                  spisen.
+                </p>
+              </div>
+            </div>
+            <div class="card p-5 flex gap-4">
+              <span
+                class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 mt-1 shrink-0"
+                >03</span
+              >
+              <div>
+                <h3
+                  class="font-sans font-medium text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Vattenkokare
+                </h3>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Elektrisk vattenkokare. Kaffefilter och kaffe köper du själv.
+                </p>
+              </div>
+            </div>
+            <div class="card p-5 flex gap-4">
+              <span
+                class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 mt-1 shrink-0"
+                >04</span
+              >
+              <div>
+                <h3
+                  class="font-sans font-medium text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Bestick &amp; porslin
+                </h3>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Tallrikar, glas, bestick för 4–6 personer av varje. Kastruller
+                  och stekpannor finns.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notice: Diskmaskin saknas -->
+        <div
+          class="notice border-l-terra-500 bg-terra-50/60 max-w-[68rem] mb-5"
+        >
+          <div
+            class="font-mono text-[14px] font-semibold text-terra-700 mt-0.5 shrink-0"
+            aria-hidden="true"
+          >
+            !
+          </div>
+          <div>
+            <h4
+              class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+            >
+              Det finns ingen diskmaskin
+            </h4>
+            <p class="text-body-sm text-blaeck-700 m-0">
+              Diska för hand i hon på höger sida. Diskmedel och svamp finns i
+              städskåpet. Lämna inget i hon över natten.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tar du med själv -->
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-3 max-w-[68rem]">
+          <div>
+            <p
+              class="font-mono text-[10px] uppercase tracking-[0.14em] text-skog-700 font-semibold m-0 mb-2"
+            >
+              Finns i städskåpet
+            </p>
+            <ul
+              class="list-none p-0 m-0 space-y-1 text-body-sm text-blaeck-700"
+            >
+              <li class="flex items-baseline gap-2">
+                <span class="text-skog-500 text-[10px] mt-0.5">●</span>
+                <span>Diskmedel &amp; svamp</span>
+              </li>
+              <li class="flex items-baseline gap-2">
+                <span class="text-skog-500 text-[10px] mt-0.5">●</span>
+                <span>Bruna papperspåsar för matavfall</span>
+              </li>
+              <li class="flex items-baseline gap-2">
+                <span class="text-skog-500 text-[10px] mt-0.5">●</span>
+                <span>Allrengöringsmedel &amp; trasor</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p
+              class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-2"
+            >
+              Tar du med själv
+            </p>
+            <ul
+              class="list-none p-0 m-0 space-y-1 text-body-sm text-blaeck-700"
+            >
+              <li class="flex items-baseline gap-2">
+                <span class="text-blaeck-300 text-[10px] mt-0.5">○</span>
+                <span>Salt, peppar, baskryddor &amp; olja</span>
+              </li>
+              <li class="flex items-baseline gap-2">
+                <span class="text-blaeck-300 text-[10px] mt-0.5">○</span>
+                <span>Kaffe &amp; kaffefilter</span>
+              </li>
+              <li class="flex items-baseline gap-2">
+                <span class="text-blaeck-300 text-[10px] mt-0.5">○</span>
+                <span>Disktrasor om du föredrar nya</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== TVÄTT & BAD ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 mb-8">
+          <div>
+            <i
+              class="ph-duotone ph-washing-machine text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              04 · Tvätt &amp; sängkläder
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Vad
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >finns</em
+              >
+              och vad du tar med.
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Tvättmaskin finns i källaren — sängkläder och handdukar tar du med
+              själv.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <article
+              class="card bg-skog-50/50 border-skog-200 p-6 flex flex-col gap-2"
+            >
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.14em] text-skog-700 font-semibold m-0"
+              >
+                Finns i huset
+              </p>
+              <h3
+                class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Tvättmaskin &amp; torkrum
+              </h3>
+              <p class="text-body-sm text-blaeck-700 m-0">
+                Tvättmaskinen står i källaren, intill pannrummet. Tvättmedel
+                finns på hyllan ovanför. Torkrum med uppvärmd luft och
+                torkställning bredvid maskinen.
+              </p>
+              <p
+                class="text-caption text-blaeck-500 m-0 mt-2 font-mono uppercase tracking-[0.06em]"
+              >
+                Ingen torktumlare
+              </p>
+            </article>
+            <article
+              class="card bg-terra-50 border-terra-200 p-6 flex flex-col gap-2"
+            >
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.14em] text-terra-700 font-semibold m-0"
+              >
+                Tar du med själv
+              </p>
+              <h3
+                class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Sängkläder &amp; handdukar
+              </h3>
+              <p class="text-body-sm text-blaeck-700 m-0">
+                Lakan, påslakan, örngott och handdukar
+                <strong class="font-semibold">finns inte i huset</strong>. På
+                sängarna ligger kuddar och täcken — inget annat.
+              </p>
+              <p class="text-caption text-blaeck-700 m-0 mt-1">
+                Glömt? Närmaste butiker (Jysk, Mio, Hemtex) finns på
+                <a href="omradet.html#sangkit" class="link">Området-kartan</a>.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Sängstorlekar -->
+        <div
+          class="bg-linne-100/60 border border-linne-200 rounded-md p-5 sm:p-6 max-w-[68rem]"
+        >
+          <p
+            class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
+          >
+            Sängstorlekar — för dig som handlar lakan
+          </p>
+          <dl
+            class="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-2 text-body-sm m-0"
+          >
+            <div class="flex justify-between sm:flex-col gap-1">
+              <dt class="text-blaeck-600">Röda &amp; bruna rummet</dt>
+              <dd
+                class="font-mono text-blaeck-900 font-semibold m-0"
+                translate="no"
+              >
+                90 × 200 cm
+              </dd>
+            </div>
+            <div class="flex justify-between sm:flex-col gap-1">
+              <dt class="text-blaeck-600">Gula rummet</dt>
+              <dd
+                class="font-mono text-blaeck-900 font-semibold m-0"
+                translate="no"
+              >
+                105 × 200 cm
+              </dd>
+            </div>
+            <div class="flex justify-between sm:flex-col gap-1">
+              <dt class="text-blaeck-600">Gröna rummet</dt>
+              <dd
+                class="font-mono text-blaeck-900 font-semibold m-0"
+                translate="no"
+              >
+                120 × 200 cm
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ============== BADRUM ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16">
+          <div>
+            <i
+              class="ph-duotone ph-bathtub text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              05 · Badrumen
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Två
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >badrum</em
+              >.
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <article class="card p-6 flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                Vid entrén
+              </p>
+              <h3
+                class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Lilla badrummet
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Toalett och dusch. Det här är badrummet du använder snabbt på
+                vägen in eller ut.
+              </p>
+            </article>
+            <article class="card p-6 flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                Mellan sovrummet och vardagsrummet
+              </p>
+              <h3
+                class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Gröna badrummet
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Toalett, dusch
+                <strong class="font-semibold">och badkar</strong>. Det större
+                badrummet — om någon vill bada efter en lång dag.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== SYSTEM (vatten, el, värme) ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 mb-8">
+          <div>
+            <i
+              class="ph-duotone ph-gauge text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              06 · System
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Vatten, el &amp;
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >värme</em
+              >.
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Var sakerna sitter, och hur du gör om något måste stängas av i en
+              hast.
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-4">
+            <article
+              class="card p-6 flex flex-col gap-2 relative isolate overflow-hidden border-l-[3px] border-l-terra-500"
+            >
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 m-0"
+              >
+                Vatten
+              </p>
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Huvudkran
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Sitter i pannrummet i källaren, direkt till vänster när du
+                kommer in. Klassisk kulventil — handtaget i rörets riktning =
+                öppet, tvärs över = stängt.
+              </p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 m-0 mt-1"
+              >
+                Kranvattnet kan drickas
+              </p>
+            </article>
+            <article
+              class="card p-6 flex flex-col gap-2 border-l-[3px] border-l-senap-500"
+            >
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-senap-700 m-0"
+              >
+                El
+              </p>
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Proppskåp
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Modernt skåp i hallen vid ytterdörren — jordfelsbrytare och
+                automatsäkringar. Äldre keramiska säkringar i källaren ligger
+                kvar.
+              </p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 m-0 mt-1"
+              >
+                Reservsäkringar i städskåpet
+              </p>
+            </article>
+            <article
+              class="card p-6 flex flex-col gap-2 border-l-[3px] border-l-skog-500"
+            >
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-skog-700 m-0"
+              >
+                Värme
+              </p>
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Fjärrvärme
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Alltid på, året runt. Varje radiator har ett vred 1–5 — ställ
+                som du vill ha det. Självdragsventilation sköter sig själv.
+              </p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 m-0 mt-1"
+              >
+                Vädra 5–10 min/dag mot kondens
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== SOPOR ============== -->
+      <section
+        id="sopor"
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <!-- Section header — full-bleed -->
+        <header class="max-w-3xl mb-10">
+          <i
+            class="ph-duotone ph-recycle text-terra-600 text-[36px] mb-3 block"
+            aria-hidden="true"
+          ></i>
+          <p
+            class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+          >
+            07 · Sopor &amp; återvinning
+          </p>
+          <h2
+            class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+            style="
+              font-variation-settings:
+                &quot;opsz&quot; 96,
+                &quot;SOFT&quot; 30;
+            "
+          >
+            Vart sätter du
+            <em
+              class="wonk text-terra-600 font-normal"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30,
+                  &quot;WONK&quot; 1;
+              "
+              >vad</em
+            >?
+          </h2>
+          <p
+            class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+            style="font-variation-settings: &quot;opsz&quot; 18"
+          >
+            Fyra ställen. Två kärl vid huset, en station 200&nbsp;m bort,
+            en central för storgods. Hitta din pryl i listorna nedan på
+            kartan.
+          </p>
+          <p class="text-caption text-blaeck-500 m-0 mt-4">
+            Nästa hämtning &amp; schema:
+            <a href="index.html#sopor" class="link">se startsidan</a>.
+          </p>
+        </header>
+
+        <!-- ============== HERO: KARTA SOM BAKGRUND + 4 KORT ============== -->
+        <div
+          class="relative isolate overflow-hidden border-y border-linne-200 mb-12 mx-[calc(50%-50vw)]"
+          style="min-height: 720px"
+        >
+          <!-- Karta fyller hela viewport-bredden -->
+          <div
+            id="sopor-map"
+            class="absolute inset-0 z-0"
+            aria-label="Karta över återvinningsstationer kring Domek"
+          ></div>
+
+          <!-- Topbar (legend + länk) — constrained till max-w-[68rem] -->
+          <div
+            class="absolute top-0 inset-x-0 z-20 max-w-[68rem] mx-auto px-3 sm:px-4 lg:px-6 pt-3 sm:pt-4 lg:pt-6 flex items-start justify-between gap-3 pointer-events-none"
+          >
+            <!-- Legend -->
+            <div
+              class="bg-linne-50/92 backdrop-blur-md backdrop-saturate-150 border border-linne-200 rounded-md px-3 py-2.5 shadow-paper-1 max-w-[200px] pointer-events-auto"
+            >
+            <p
+              class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-2"
+            >
+              På kartan
+            </p>
+            <ul class="list-none p-0 m-0 space-y-1.5 text-[11px] font-mono text-blaeck-700">
+              <li class="inline-flex items-center gap-2 w-full">
+                <span
+                  class="inline-block w-2.5 h-2.5 rounded-full ring-2 ring-white shrink-0"
+                  style="background: #6e4a1c"
+                  aria-hidden="true"
+                ></span>
+                Brunt kärl
+              </li>
+              <li class="inline-flex items-center gap-2 w-full">
+                <span
+                  class="inline-block w-2.5 h-2.5 rounded-full ring-2 ring-white shrink-0"
+                  style="background: #4d6033"
+                  aria-hidden="true"
+                ></span>
+                Grönt kärl
+              </li>
+              <li class="inline-flex items-center gap-2 w-full">
+                <span
+                  class="inline-block w-2.5 h-2.5 rounded-full ring-2 ring-white shrink-0"
+                  style="background: #c9522f"
+                  aria-hidden="true"
+                ></span>
+                Återvinningsst.
+              </li>
+              <li class="inline-flex items-center gap-2 w-full">
+                <span
+                  class="inline-block w-2.5 h-2.5 rounded-full ring-2 ring-white shrink-0"
+                  style="background: #221e15"
+                  aria-hidden="true"
+                ></span>
+                Må central
+              </li>
+            </ul>
+          </div>
+
+            <!-- Större karta-länk -->
+            <a
+              href="omradet.html#sopor"
+              class="bg-linne-50/92 backdrop-blur-md backdrop-saturate-150 border border-linne-200 rounded-md px-3 py-2 shadow-paper-1 font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-700 no-underline hover:text-terra-600 transition-colors pointer-events-auto whitespace-nowrap"
+            >
+              Större karta →
+            </a>
+          </div>
+          <!-- /topbar -->
+
+          <!-- 4 destinationskort som overlay i botten — constrained till max-w-[68rem] -->
+          <div
+            class="relative z-10 flex flex-col justify-end max-w-[68rem] mx-auto px-3 sm:px-4 lg:px-6 pb-3 sm:pb-4 lg:pb-6"
+            style="min-height: 720px"
+          >
+            <div class="grid sm:grid-cols-2 gap-3">
+            <!-- BRUNT KÄRL -->
+            <article
+              class="relative isolate border border-linne-200 border-l-[4px] rounded-md overflow-hidden flex flex-col bg-linne-300/90 backdrop-blur-md backdrop-saturate-150"
+              style="border-left-color: #6e4a1c"
+            >
+              <header class="flex items-start justify-between gap-3 px-5 pt-5 pb-3">
+                <div>
+                  <p
+                    class="font-mono text-[10px] uppercase tracking-[0.14em] m-0 mb-1.5"
+                    style="color: #6e4a1c"
+                  >
+                    Vid garaget
+                  </p>
+                  <h3
+                    class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                    style="font-variation-settings: &quot;opsz&quot; 24"
+                  >
+                    Brunt kärl
+                  </h3>
+                  <p class="text-caption text-blaeck-600 m-0 mt-0.5">
+                    Matavfall
+                  </p>
+                </div>
+                <i
+                  class="ph-duotone ph-leaf text-[32px] shrink-0"
+                  style="color: #6e4a1c"
+                  aria-hidden="true"
+                ></i>
+              </header>
+              <div class="px-5 pb-5">
+                <ul class="flex flex-wrap gap-1.5 list-none p-0 m-0">
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-orange text-[14px]" style="color:#6e4a1c" aria-hidden="true"></i>
+                    Bananskal
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-coffee text-[14px]" style="color:#6e4a1c" aria-hidden="true"></i>
+                    Kaffesump
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-egg text-[14px]" style="color:#6e4a1c" aria-hidden="true"></i>
+                    Äggskal
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-leaf text-[14px]" style="color:#6e4a1c" aria-hidden="true"></i>
+                    Tepåsar
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-bone text-[14px]" style="color:#6e4a1c" aria-hidden="true"></i>
+                    Köttben
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-carrot text-[14px]" style="color:#6e4a1c" aria-hidden="true"></i>
+                    Frukt &amp; grönt
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-bowl-food text-[14px]" style="color:#6e4a1c" aria-hidden="true"></i>
+                    Matrester
+                  </li>
+                </ul>
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-500 mt-3 m-0"
+                >
+                  Bruna papperspåsar (städskåpet) · ingen plast
+                </p>
+              </div>
+            </article>
+
+            <!-- GRÖNT KÄRL -->
+            <article
+              class="relative isolate border border-linne-200 border-l-[4px] border-l-skog-600 rounded-md overflow-hidden flex flex-col bg-skog-200/90 backdrop-blur-md backdrop-saturate-150"
+            >
+              <header class="flex items-start justify-between gap-3 px-5 pt-5 pb-3">
+                <div>
+                  <p
+                    class="font-mono text-[10px] uppercase tracking-[0.14em] text-skog-700 m-0 mb-1.5"
+                  >
+                    Vid garaget
+                  </p>
+                  <h3
+                    class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                    style="font-variation-settings: &quot;opsz&quot; 24"
+                  >
+                    Grönt kärl
+                  </h3>
+                  <p class="text-caption text-blaeck-600 m-0 mt-0.5">
+                    Restavfall
+                  </p>
+                </div>
+                <i
+                  class="ph-duotone ph-trash text-skog-700 text-[32px] shrink-0"
+                  aria-hidden="true"
+                ></i>
+              </header>
+              <div class="px-5 pb-5">
+                <ul class="flex flex-wrap gap-1.5 list-none p-0 m-0">
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-cigarette text-skog-700 text-[14px]" aria-hidden="true"></i>
+                    Snus
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-paint-brush text-skog-700 text-[14px]" aria-hidden="true"></i>
+                    Tops &amp; bomullspinnar
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-scissors text-skog-700 text-[14px]" aria-hidden="true"></i>
+                    Hår
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-bandaids text-skog-700 text-[14px]" aria-hidden="true"></i>
+                    Plåster
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-paper-plane text-skog-700 text-[14px]" aria-hidden="true"></i>
+                    Disktrasor
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-package text-skog-700 text-[14px]" aria-hidden="true"></i>
+                    Smutsiga förp.
+                  </li>
+                </ul>
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-500 mt-3 m-0"
+                >
+                  Knuten plastpåse · inga rena förpackningar
+                </p>
+              </div>
+            </article>
+
+            <!-- ÅTERVINNINGSSTATION -->
+            <article
+              class="relative isolate border border-linne-200 border-l-[4px] border-l-terra-500 rounded-md overflow-hidden flex flex-col bg-terra-200/90 backdrop-blur-md backdrop-saturate-150"
+            >
+              <header class="flex items-start justify-between gap-3 px-5 pt-5 pb-3">
+                <div>
+                  <p
+                    class="font-mono text-[10px] uppercase tracking-[0.14em] text-terra-700 m-0 mb-1.5"
+                  >
+                    200&nbsp;m bort · Strandgatan
+                  </p>
+                  <h3
+                    class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                    style="font-variation-settings: &quot;opsz&quot; 24"
+                  >
+                    Återvinnings­stationen
+                  </h3>
+                  <p class="text-caption text-blaeck-600 m-0 mt-0.5">
+                    Rena förpackningar &amp; tidningar
+                  </p>
+                </div>
+                <i
+                  class="ph-duotone ph-package text-terra-600 text-[32px] shrink-0"
+                  aria-hidden="true"
+                ></i>
+              </header>
+              <div class="px-5 pb-5">
+                <ul class="flex flex-wrap gap-1.5 list-none p-0 m-0">
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-package text-terra-600 text-[14px]" aria-hidden="true"></i>
+                    Mjölk- &amp; juicepaket
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-package text-terra-600 text-[14px]" aria-hidden="true"></i>
+                    Plastförpackning
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-wine text-terra-600 text-[14px]" aria-hidden="true"></i>
+                    Glasflaska &amp; -burk
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-package text-terra-600 text-[14px]" aria-hidden="true"></i>
+                    Konservburk
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-package text-terra-600 text-[14px]" aria-hidden="true"></i>
+                    Wellpapp &amp; kartong
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-newspaper text-terra-600 text-[14px]" aria-hidden="true"></i>
+                    Tidningar
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-envelope text-terra-600 text-[14px]" aria-hidden="true"></i>
+                    Kuvert &amp; papper
+                  </li>
+                </ul>
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-500 mt-3 m-0"
+                >
+                  Skölj rena · platta till kartonger · sortera per kärl
+                </p>
+              </div>
+            </article>
+
+            <!-- MÅ ÅTERVINNINGSCENTRAL -->
+            <article
+              class="relative isolate border border-linne-200 border-l-[4px] border-l-blaeck-500 rounded-md overflow-hidden flex flex-col bg-blaeck-200/90 backdrop-blur-md backdrop-saturate-150"
+            >
+              <header class="flex items-start justify-between gap-3 px-5 pt-5 pb-3">
+                <div>
+                  <p
+                    class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-600 m-0 mb-1.5"
+                  >
+                    1,4&nbsp;km · 3 min bil · Returvägen 11
+                  </p>
+                  <h3
+                    class="font-display font-medium text-[20px] text-blaeck-900 m-0"
+                    style="font-variation-settings: &quot;opsz&quot; 24"
+                  >
+                    Må återvinnings­central
+                  </h3>
+                  <p class="text-caption text-blaeck-600 m-0 mt-0.5">
+                    Grovsopor &amp; farligt avfall
+                  </p>
+                </div>
+                <i
+                  class="ph-duotone ph-truck text-blaeck-700 text-[32px] shrink-0"
+                  aria-hidden="true"
+                ></i>
+              </header>
+              <div class="px-5 pb-5">
+                <ul class="flex flex-wrap gap-1.5 list-none p-0 m-0">
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-couch text-blaeck-700 text-[14px]" aria-hidden="true"></i>
+                    Möbler
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-bed text-blaeck-700 text-[14px]" aria-hidden="true"></i>
+                    Madrasser
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-battery-medium text-blaeck-700 text-[14px]" aria-hidden="true"></i>
+                    Batterier
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-lightbulb text-blaeck-700 text-[14px]" aria-hidden="true"></i>
+                    Glödlampor
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-paint-bucket text-blaeck-700 text-[14px]" aria-hidden="true"></i>
+                    Färg &amp; kemikalier
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-plug text-blaeck-700 text-[14px]" aria-hidden="true"></i>
+                    Elavfall
+                  </li>
+                  <li class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700">
+                    <i class="ph-duotone ph-plant text-blaeck-700 text-[14px]" aria-hidden="true"></i>
+                    Trädgård
+                  </li>
+                </ul>
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-500 mt-3 m-0"
+                >
+                  Drop-in · ingen kostnad för hushåll · ID kan krävas
+                </p>
+              </div>
+            </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============== EDGE-CASES ============== -->
+        <div class="max-w-[68rem] mb-12">
+          <header class="mb-5">
+            <p class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-2">
+              Var slänger jag…
+            </p>
+            <h3
+              class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 24"
+            >
+              Det som inte är självklart.
+            </h3>
+          </header>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <!-- Pizzakartong -->
+            <div class="flex items-start gap-3 p-4 border border-linne-200 rounded-md bg-white/60">
+              <i class="ph-duotone ph-pizza text-skog-700 text-[24px] mt-0.5 shrink-0" aria-hidden="true"></i>
+              <div class="flex-1 min-w-0">
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Pizzakartong med fett?
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
+                  Smutsig wellpapp blir <strong>restavfall</strong>.
+                </p>
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-skog-700">
+                  <span class="inline-block w-2 h-2 rounded-full bg-skog-600" aria-hidden="true"></span>
+                  Grönt kärl
+                </span>
+              </div>
+            </div>
+
+            <!-- Mjölkförpackning -->
+            <div class="flex items-start gap-3 p-4 border border-linne-200 rounded-md bg-white/60">
+              <i class="ph-duotone ph-package text-terra-600 text-[24px] mt-0.5 shrink-0" aria-hidden="true"></i>
+              <div class="flex-1 min-w-0">
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Mjölkpaket med skvätt kvar?
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
+                  <strong>Skölj först</strong>, vik ihop, lämna i pappersförp.
+                </p>
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-terra-700">
+                  <span class="inline-block w-2 h-2 rounded-full bg-terra-500" aria-hidden="true"></span>
+                  Återvinnings­stationen
+                </span>
+              </div>
+            </div>
+
+            <!-- Snus & tuggummi -->
+            <div class="flex items-start gap-3 p-4 border border-linne-200 rounded-md bg-white/60">
+              <i class="ph-duotone ph-cigarette text-skog-700 text-[24px] mt-0.5 shrink-0" aria-hidden="true"></i>
+              <div class="flex-1 min-w-0">
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Snus, tuggummi, fimpar?
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
+                  Inga av dem komposteras. <strong>Knyt påsen</strong>.
+                </p>
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-skog-700">
+                  <span class="inline-block w-2 h-2 rounded-full bg-skog-600" aria-hidden="true"></span>
+                  Grönt kärl
+                </span>
+              </div>
+            </div>
+
+            <!-- Pant -->
+            <div class="flex items-start gap-3 p-4 border border-linne-200 rounded-md bg-white/60">
+              <i class="ph-duotone ph-coin text-senap-700 text-[24px] mt-0.5 shrink-0" aria-hidden="true"></i>
+              <div class="flex-1 min-w-0">
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  PET-flaskor &amp; aluminiumburkar?
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
+                  De har pant — <strong>lämna i butik</strong>, inte här.
+                </p>
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-senap-700">
+                  <span class="inline-block w-2 h-2 rounded-full bg-senap-500" aria-hidden="true"></span>
+                  Pantautomat (Coop, Willys, ICA)
+                </span>
+              </div>
+            </div>
+
+            <!-- Glasburk med lock -->
+            <div class="flex items-start gap-3 p-4 border border-linne-200 rounded-md bg-white/60">
+              <i class="ph-duotone ph-wine text-terra-600 text-[24px] mt-0.5 shrink-0" aria-hidden="true"></i>
+              <div class="flex-1 min-w-0">
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Glasburk med metall­lock?
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
+                  <strong>Skruva av locket</strong> — glas i glaskärl, lock i metallkärl.
+                </p>
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-terra-700">
+                  <span class="inline-block w-2 h-2 rounded-full bg-terra-500" aria-hidden="true"></span>
+                  Återvinnings­stationen
+                </span>
+              </div>
+            </div>
+
+            <!-- Kvitton -->
+            <div class="flex items-start gap-3 p-4 border border-linne-200 rounded-md bg-white/60">
+              <i class="ph-duotone ph-receipt text-skog-700 text-[24px] mt-0.5 shrink-0" aria-hidden="true"></i>
+              <div class="flex-1 min-w-0">
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Kvitton från butiken?
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
+                  Termopapper är <strong>inte återvinningsbart</strong>.
+                </p>
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-skog-700">
+                  <span class="inline-block w-2 h-2 rounded-full bg-skog-600" aria-hidden="true"></span>
+                  Grönt kärl
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notice: rutiner -->
+        <div class="notice border-l-senap-500 bg-senap-50/60 max-w-[68rem]">
+          <i
+            class="ph-duotone ph-clock text-senap-700 text-[22px] mt-0.5 shrink-0"
+            aria-hidden="true"
+          ></i>
+          <div>
+            <h4
+              class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+            >
+              Var står tunnorna och vem drar ut dem?
+            </h4>
+            <p class="text-body-sm text-blaeck-700 m-0">
+              Tunnorna står vid garaget. <strong>Kvällen innan tömning</strong>
+              drar ni ut dem till vägen. När sopbilen har tömt, dra tillbaka
+              dem mot garaget. Locket måste alltid gå att stänga.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== AKUT — VID PROBLEM ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 mb-10">
+          <div>
+            <i
+              class="ph-duotone ph-warning-circle text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              08 · Akut
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              När något
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >går sönder</em
+              >.
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Stora rubriker, korta steg. Telefonen längst ner — ring direkt vid
+              läckage, brand eller om något inte går att lösa.
+            </p>
+          </div>
+          <div class="flex items-end">
+            <div
+              class="w-full bg-blaeck-800 text-linne-100 rounded-md p-5 sm:p-6 flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between"
+            >
+              <div>
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.14em] text-terra-300 m-0 mb-1"
+                >
+                  Akut — ring först
+                </p>
+                <p
+                  class="font-display font-light text-[22px] text-linne-50 m-0"
+                  style="font-variation-settings: &quot;opsz&quot; 24"
+                  translate="no"
+                >
+                  Hugo Kjellsson
+                </p>
+              </div>
+              <a
+                href="tel:+46703909051"
+                translate="no"
+                class="font-mono text-[18px] font-semibold text-terra-300 no-underline border-b border-terra-700 pb-0.5 hover:text-terra-200 hover:border-terra-500 transition-colors"
+                >070-390 90 51</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Vattenläckage -->
+        <p
+          class="font-mono text-[11px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
+        >
+          Vid vattenläckage
+        </p>
+        <ol class="grid sm:grid-cols-3 gap-4 list-none p-0 m-0 mb-10">
+          <li class="card p-5 flex flex-col gap-2">
+            <span
+              class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >Steg 01</span
+            >
+            <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
+              Stäng huvudkranen
+            </h4>
+            <p class="text-body-sm text-blaeck-600 m-0">
+              I pannrummet, direkt till vänster. Vrid handtaget tvärs över
+              röret.
+            </p>
+          </li>
+          <li class="card p-5 flex flex-col gap-2">
+            <span
+              class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >Steg 02</span
+            >
+            <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
+              Torka upp
+            </h4>
+            <p class="text-body-sm text-blaeck-600 m-0">
+              Lämna inget vatten stående — det går snabbt in i golv och väggar i
+              ett 50-talshus.
+            </p>
+          </li>
+          <li class="card p-5 flex flex-col gap-2 bg-terra-50 border-terra-200">
+            <span
+              class="font-mono text-label uppercase tracking-[0.12em] text-terra-700 m-0"
+              >Steg 03</span
+            >
+            <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
+              Ring oss direkt
+            </h4>
+            <p class="text-body-sm text-blaeck-700 m-0">
+              <a href="tel:+46703909051" translate="no" class="link"
+                >070-390 90 51</a
+              >. Inget meddelande — ring tills någon svarar.
+            </p>
+          </li>
+        </ol>
+
+        <!-- Strömavbrott -->
+        <p
+          class="font-mono text-[11px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
+        >
+          Vid strömavbrott
+        </p>
+        <ol class="grid sm:grid-cols-3 gap-4 list-none p-0 m-0 mb-10">
+          <li class="card p-5 flex flex-col gap-2">
+            <span
+              class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >Steg 01</span
+            >
+            <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
+              Kolla grannarna
+            </h4>
+            <p class="text-body-sm text-blaeck-600 m-0">
+              Är det mörkt hos grannarna också? Då är det områdesfel — vänta
+              ungefär 15 min innan ni gör något mer.
+            </p>
+          </li>
+          <li class="card p-5 flex flex-col gap-2">
+            <span
+              class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >Steg 02</span
+            >
+            <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
+              Proppskåpet i hallen
+            </h4>
+            <p class="text-body-sm text-blaeck-600 m-0">
+              Slå tillbaka eventuell utlöst säkring. Använd inte den apparat som
+              orsakade utlösningen.
+            </p>
+          </li>
+          <li class="card p-5 flex flex-col gap-2 bg-terra-50 border-terra-200">
+            <span
+              class="font-mono text-label uppercase tracking-[0.12em] text-terra-700 m-0"
+              >Steg 03</span
+            >
+            <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
+              Löser ut igen?
+            </h4>
+            <p class="text-body-sm text-blaeck-700 m-0">
+              Ring oss innan du gör ett tredje försök —
+              <a href="tel:+46703909051" translate="no" class="link"
+                >070-390 90 51</a
+              >.
+            </p>
+          </li>
+        </ol>
+
+        <!-- Brand -->
+        <p
+          class="font-mono text-[11px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
+        >
+          Vid brand
+        </p>
+        <ol class="grid sm:grid-cols-3 gap-4 list-none p-0 m-0 mb-10">
+          <li class="card p-5 flex flex-col gap-2">
+            <span
+              class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >Steg 01</span
+            >
+            <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
+              Brandsläckare i hallen
+            </h4>
+            <p class="text-body-sm text-blaeck-600 m-0">
+              Står direkt i hallen — central placering, nära köket. Brandfilten
+              hänger bredvid.
+            </p>
+          </li>
+          <li class="card p-5 flex flex-col gap-2">
+            <span
+              class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >Steg 02</span
+            >
+            <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
+              Ut ur huset
+            </h4>
+            <p class="text-body-sm text-blaeck-600 m-0">
+              Lämna huset om elden inte slocknar omedelbart. Stäng inga dörrar
+              som du normalt går igenom.
+            </p>
+          </li>
+          <li class="card p-5 flex flex-col gap-2 bg-terra-50 border-terra-200">
+            <span
+              class="font-mono text-label uppercase tracking-[0.12em] text-terra-700 m-0"
+              >Steg 03</span
+            >
+            <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
+              Ring 112
+            </h4>
+            <p class="text-body-sm text-blaeck-700 m-0">
+              Sedan oss på
+              <a href="tel:+46703909051" translate="no" class="link"
+                >070-390 90 51</a
+              >.
+            </p>
+          </li>
+        </ol>
+
+        <!-- Akutnummer -->
+        <div
+          class="bg-linne-100/60 border border-linne-200 rounded-md p-5 sm:p-6 max-w-[68rem]"
+        >
+          <p
+            class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
+          >
+            Bra nummer att ha
+          </p>
+          <dl
+            class="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-3 text-body-sm m-0"
+          >
+            <div class="flex flex-col gap-0.5">
+              <dt
+                class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400"
+              >
+                Akut — brand, olycka, brott
+              </dt>
+              <dd class="m-0">
+                <a
+                  href="tel:112"
+                  translate="no"
+                  class="font-mono text-[18px] font-semibold text-blaeck-900 no-underline border-b border-blaeck-300 hover:border-terra-500 transition-colors"
+                  >112</a
+                >
+              </dd>
+            </div>
+            <div class="flex flex-col gap-0.5">
+              <dt
+                class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400"
+              >
+                Sjukvårdsrådgivning
+              </dt>
+              <dd class="m-0">
+                <a
+                  href="tel:1177"
+                  translate="no"
+                  class="font-mono text-[18px] font-semibold text-blaeck-900 no-underline border-b border-blaeck-300 hover:border-terra-500 transition-colors"
+                  >1177</a
+                >
+              </dd>
+            </div>
+            <div class="flex flex-col gap-0.5">
+              <dt
+                class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400"
+              >
+                Polis — icke-akut
+              </dt>
+              <dd class="m-0">
+                <a
+                  href="tel:11414"
+                  translate="no"
+                  class="font-mono text-[18px] font-semibold text-blaeck-900 no-underline border-b border-blaeck-300 hover:border-terra-500 transition-colors"
+                  >114 14</a
+                >
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ============== ORDNINGSREGLER ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 mb-8">
+          <div>
+            <i
+              class="ph-duotone ph-list-checks text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              09 · Ordningsregler
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Husets
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >ramar</em
+              >.
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Tre regler är icke-förhandlingsbara — brott räknas som väsentligt
+              avtalsbrott. Resten är observera-regler. Allvarsgraden står till
+              höger.
+            </p>
+          </div>
+
+          <ul class="list-none p-0 m-0 flex flex-col">
+            <li
+              class="grid grid-cols-[auto_1fr_auto] gap-4 items-start py-4 border-b border-linne-200"
+            >
+              <span
+                class="font-mono text-[12px] text-blaeck-400 mt-0.5 tabular-nums"
+                >01</span
+              >
+              <div>
+                <h4
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Rökfritt inomhus
+                </h4>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Rök utomhus på tomten. Fimpar i metalldosan på trappan — inte
+                  på marken.
+                </p>
+              </div>
+              <span
+                class="font-mono text-[10px] uppercase tracking-[0.12em] bg-terra-100 text-terra-800 px-2 py-1 rounded-sm whitespace-nowrap"
+                >Strikt</span
+              >
+            </li>
+            <li
+              class="grid grid-cols-[auto_1fr_auto] gap-4 items-start py-4 border-b border-linne-200"
+            >
+              <span
+                class="font-mono text-[12px] text-blaeck-400 mt-0.5 tabular-nums"
+                >02</span
+              >
+              <div>
+                <h4
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Inga husdjur
+                </h4>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Hund, katt eller annat djur får inte vistas i huset. Inga
+                  undantag.
+                </p>
+              </div>
+              <span
+                class="font-mono text-[10px] uppercase tracking-[0.12em] bg-terra-100 text-terra-800 px-2 py-1 rounded-sm whitespace-nowrap"
+                >Strikt</span
+              >
+            </li>
+            <li
+              class="grid grid-cols-[auto_1fr_auto] gap-4 items-start py-4 border-b border-linne-200"
+            >
+              <span
+                class="font-mono text-[12px] text-blaeck-400 mt-0.5 tabular-nums"
+                >03</span
+              >
+              <div>
+                <h4
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Eldstaden får inte användas
+                </h4>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Den öppna spisen i vardagsrummet är dekorativ — den är inte
+                  besiktigad för eldning.
+                </p>
+              </div>
+              <span
+                class="font-mono text-[10px] uppercase tracking-[0.12em] bg-terra-100 text-terra-800 px-2 py-1 rounded-sm whitespace-nowrap"
+                >Strikt</span
+              >
+            </li>
+            <li
+              class="grid grid-cols-[auto_1fr_auto] gap-4 items-start py-4 border-b border-linne-200"
+            >
+              <span
+                class="font-mono text-[12px] text-blaeck-400 mt-0.5 tabular-nums"
+                >04</span
+              >
+              <div>
+                <h4
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Inga byggåtgärder
+                </h4>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Inga skruvar, dyckert, krokar eller tejp i väggar och möbler.
+                  Säg till om något måste sättas upp.
+                </p>
+              </div>
+              <span
+                class="font-mono text-[10px] uppercase tracking-[0.12em] bg-senap-200 text-senap-900 px-2 py-1 rounded-sm whitespace-nowrap"
+                >Observera</span
+              >
+            </li>
+            <li
+              class="grid grid-cols-[auto_1fr_auto] gap-4 items-start py-4 border-b border-linne-200"
+            >
+              <span
+                class="font-mono text-[12px] text-blaeck-400 mt-0.5 tabular-nums"
+                >05</span
+              >
+              <div>
+                <h4
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Tystnad efter 22:00
+                </h4>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Volym ner på TV och musik. Det är ett villaområde — alla har
+                  jobb morgonen efter.
+                </p>
+              </div>
+              <span
+                class="font-mono text-[10px] uppercase tracking-[0.12em] bg-senap-200 text-senap-900 px-2 py-1 rounded-sm whitespace-nowrap"
+                >Observera</span
+              >
+            </li>
+            <li
+              class="grid grid-cols-[auto_1fr_auto] gap-4 items-start py-4 border-b border-linne-200"
+            >
+              <span
+                class="font-mono text-[12px] text-blaeck-400 mt-0.5 tabular-nums"
+                >06</span
+              >
+              <div>
+                <h4
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Diska samma dag
+                </h4>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Lämna inget i hon över natten. Det blir bara värre dagen
+                  efter.
+                </p>
+              </div>
+              <span
+                class="font-mono text-[10px] uppercase tracking-[0.12em] bg-senap-200 text-senap-900 px-2 py-1 rounded-sm whitespace-nowrap"
+                >Observera</span
+              >
+            </li>
+            <li
+              class="grid grid-cols-[auto_1fr_auto] gap-4 items-start py-4 border-b border-linne-200"
+            >
+              <span
+                class="font-mono text-[12px] text-blaeck-400 mt-0.5 tabular-nums"
+                >07</span
+              >
+              <div>
+                <h4
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Max 5 boende samtidigt
+                </h4>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Hyresavtalet medger max fem personer. Idag finns fyra sängar —
+                  den femte sovplatsen tillkommer när källarrummet blir klart.
+                </p>
+              </div>
+              <span
+                class="font-mono text-[10px] uppercase tracking-[0.12em] bg-senap-200 text-senap-900 px-2 py-1 rounded-sm whitespace-nowrap"
+                >Observera</span
+              >
+            </li>
+            <li
+              class="grid grid-cols-[auto_1fr_auto] gap-4 items-start py-4 border-b border-linne-200"
+            >
+              <span
+                class="font-mono text-[12px] text-blaeck-400 mt-0.5 tabular-nums"
+                >08</span
+              >
+              <div>
+                <h4
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Garaget &amp; gäststugan ingår inte
+                </h4>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Båda är låsta och används av oss för förvaring. Använd inte
+                  uppfarten på sätt som blockerar dem.
+                </p>
+              </div>
+              <span
+                class="font-mono text-[10px] uppercase tracking-[0.12em] bg-linne-200 text-blaeck-700 px-2 py-1 rounded-sm whitespace-nowrap"
+                >Bra att veta</span
+              >
+            </li>
+            <li class="grid grid-cols-[auto_1fr_auto] gap-4 items-start py-4">
+              <span
+                class="font-mono text-[12px] text-blaeck-400 mt-0.5 tabular-nums"
+                >09</span
+              >
+              <div>
+                <h4
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+                >
+                  Tvätta bilen — inte här
+                </h4>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Det går inte att tvätta bilen miljörätt på uppfarten. Kör till
+                  tvätthallen vid <span translate="no">OKQ8</span>,
+                  <span translate="no">Hästmarksvägen 1</span> — fem minuter
+                  bort.
+                </p>
+              </div>
+              <span
+                class="font-mono text-[10px] uppercase tracking-[0.12em] bg-linne-200 text-blaeck-700 px-2 py-1 rounded-sm whitespace-nowrap"
+                >Bra att veta</span
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============== TRÄDGÅRD & UTOMHUS ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16">
+          <div>
+            <i
+              class="ph-duotone ph-tree text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              10 · Utomhus
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Trädgård,
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >uppfart</em
+              >
+              &amp; uteplats.
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Vi sköter gräset och snöröjningen på parkeringen. Ni gör
+              vintervägen till entrén.
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <article class="card p-5 flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-skog-700 m-0"
+              >
+                Vi ansvarar för
+              </p>
+              <h3
+                class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
+              >
+                Gräsklippning &amp; snöröjning av parkeringen
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Sommartid klipper vi gräset. Vintertid skottar vi parkeringen så
+                att ni kommer in och ut.
+              </p>
+            </article>
+            <article class="card p-5 flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 m-0"
+              >
+                Ni ansvarar för
+              </p>
+              <h3
+                class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
+              >
+                Skotta &amp; grusa till entrén
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Spaden står i garagets ytterförråd, gruset i en tunna bredvid.
+                Halkbekämpa när det behövs — det räcker långt.
+              </p>
+            </article>
+            <article class="card p-5 flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                Trädgården
+              </p>
+              <h3
+                class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
+              >
+                Plocka kvistar om något har blåst ner
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Inget krav. Men det är välkommet — ni bor här ändå, och 940 m²
+                tomt blåser till en del under hösten.
+              </p>
+            </article>
+            <article class="card p-5 flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                Uteplatsen
+              </p>
+              <h3
+                class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
+              >
+                Grilla på den takade uteplatsen
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Det är OK. Vi litar på sunt förnuft — håll avstånd till
+                träväggen och stäng av kolen ordentligt.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== KONTAKT (bottom CTA) ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <h2
+          class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
+        >
+          Vem du ringer
+        </h2>
+        <p
+          class="font-display font-light text-[17px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0 mb-10"
+          style="font-variation-settings: &quot;opsz&quot; 18"
+        >
+          Allt som rör <em class="wonk text-terra-600">huset</em> går till
+          <span translate="no">Hugo</span>. Allt som rör
+          <em class="wonk text-terra-600">boendet</em> — kontrakt, schema, koder
+          — går till <span translate="no">Sanco</span>.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <article
+            class="relative isolate overflow-hidden bg-skog-900 text-linne-100 flex flex-col gap-4 p-8 rounded-md before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-[image:var(--tex-sol)] before:bg-[length:80px] before:opacity-[0.15] before:pointer-events-none"
+          >
+            <p
+              class="font-mono text-label uppercase tracking-[0.12em] text-linne-300 m-0"
+            >
+              Huset
+            </p>
+            <h3
+              translate="no"
+              class="font-display font-light text-[clamp(28px,3vw,36px)] leading-[1.1] text-linne-50 m-0"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 72,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Hugo
+              <em
+                class="wonk text-terra-300"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 72,
+                    &quot;WONK&quot; 1,
+                    &quot;SOFT&quot; 30;
+                "
+                >Kjellsson</em
+              >
+            </h3>
+            <p
+              class="font-display text-[15px] leading-[1.5] text-linne-200 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Vattenläcka, strömavbrott, trasig vitvara — eller något annat som
+              inte fungerar.
+            </p>
+            <dl
+              class="grid grid-cols-[90px_1fr] gap-3 text-[14px] py-3 border-t border-skog-700 m-0 mt-2"
+            >
+              <dt
+                class="font-mono text-label uppercase tracking-[0.08em] text-linne-400 mt-0.5"
+              >
+                Telefon
+              </dt>
+              <dd class="m-0 text-linne-100">
+                <a
+                  href="tel:+46703909051"
+                  translate="no"
+                  class="text-terra-300 no-underline border-b border-terra-700 transition-colors hover:text-terra-200 hover:border-terra-500"
+                  >070-390 90 51</a
+                >
+              </dd>
+              <dt
+                class="font-mono text-label uppercase tracking-[0.08em] text-linne-400 mt-0.5"
+              >
+                E-post
+              </dt>
+              <dd class="m-0 text-linne-100">
+                <a
+                  href="mailto:hugo@kjellsson.nu"
+                  class="text-terra-300 no-underline border-b border-terra-700 transition-colors hover:text-terra-200 hover:border-terra-500"
+                  >hugo@kjellsson.nu</a
+                >
+              </dd>
+            </dl>
+          </article>
+
+          <article
+            class="relative isolate overflow-hidden bg-terra-700 text-linne-100 flex flex-col gap-4 p-8 rounded-md before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-[image:var(--tex-bukett)] before:bg-[length:240px] before:opacity-[0.07] before:pointer-events-none"
+          >
+            <p
+              class="font-mono text-label uppercase tracking-[0.12em] text-terra-100 m-0"
+            >
+              Boendet · <span translate="no">Sanco</span>
+            </p>
+            <h3
+              translate="no"
+              class="font-display font-light text-[clamp(28px,3vw,36px)] leading-[1.1] text-linne-50 m-0"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 72,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Nicklas
+              <em
+                class="wonk text-senap-200"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 72,
+                    &quot;WONK&quot; 1,
+                    &quot;SOFT&quot; 30;
+                "
+                >Boström</em
+              >
+            </h3>
+            <p
+              class="font-display text-[15px] leading-[1.5] text-terra-100 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Bokningen, schemat, kontraktet, koder till nyckelskåp.
+            </p>
+            <dl
+              class="grid grid-cols-[90px_1fr] gap-3 text-[14px] py-3 border-t border-terra-800 m-0 mt-2"
+            >
+              <dt
+                class="font-mono text-label uppercase tracking-[0.08em] text-terra-200 mt-0.5"
+              >
+                Telefon
+              </dt>
+              <dd class="m-0 text-linne-50">
+                <a
+                  href="tel:+46706249411"
+                  translate="no"
+                  class="text-senap-200 no-underline border-b border-terra-800 transition-colors hover:text-linne-50 hover:border-senap-300"
+                  >070-624 94 11</a
+                >
+              </dd>
+              <dt
+                class="font-mono text-label uppercase tracking-[0.08em] text-terra-200 mt-0.5"
+              >
+                E-post
+              </dt>
+              <dd class="m-0 text-linne-50">
+                <a
+                  href="mailto:nicklas.bostrom@sancoab.se"
+                  class="text-senap-200 no-underline border-b border-terra-800 transition-colors hover:text-linne-50 hover:border-senap-300"
+                  >nicklas.bostrom@sancoab.se</a
+                >
+              </dd>
+            </dl>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============== FOOTER ============== -->
+    <footer
+      class="relative isolate overflow-hidden mt-24 bg-blaeck-800 text-linne-200 before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-[image:var(--tex-klover)] before:bg-[length:80px] before:opacity-[0.04] before:pointer-events-none"
+    >
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_2fr_1fr] gap-8 lg:gap-12 max-w-[1280px] mx-auto px-6 py-12 sm:px-8 sm:py-14 lg:px-12 lg:py-16"
+      >
+        <div>
+          <p
+            class="font-display font-light text-[28px] leading-[1.1] text-linne-50 m-0 mb-3 -tracking-[0.01em]"
+            style="
+              font-variation-settings:
+                &quot;opsz&quot; 72,
+                &quot;SOFT&quot; 30;
+            "
+          >
+            <span translate="no">Domek</span> —
+            <em
+              class="wonk text-terra-300"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 72,
+                  &quot;WONK&quot; 1,
+                  &quot;SOFT&quot; 30;
+              "
+              >litet hus</em
+            >,<br />tydliga ramar.
+          </p>
+          <p class="text-caption text-linne-300 m-0">
+            <span translate="no">Domek</span> är ett enfamiljshus från 1959 på
+            <span translate="no">Solrosvägen 17</span> i
+            <span translate="no">Örnsköldsvik</span>.
+            <span translate="no">Hugo &amp; Vega Kjellsson</span> äger det,
+            <span translate="no">Sanco</span> hyr det åt sina arbetare.
+          </p>
+        </div>
+
+        <div>
+          <h5
+            class="font-mono text-label uppercase tracking-[0.12em] text-terra-300 m-0 mb-4 font-medium"
+          >
+            Kontakt
+          </h5>
+          <div class="flex flex-col gap-1 text-caption mt-3">
+            <span
+              class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
+              >Huset</span
+            >
+            <span translate="no">Hugo Kjellsson</span>
+            <a
+              href="tel:+46703909051"
+              translate="no"
+              class="text-terra-300 no-underline hover:text-terra-200"
+              >+46 70-390 90 51</a
+            >
+            <a
+              href="mailto:hugo@kjellsson.nu"
+              class="text-terra-300 no-underline hover:text-terra-200"
+              >hugo@kjellsson.nu</a
+            >
+          </div>
+          <div class="flex flex-col gap-1 text-caption mt-3">
+            <span
+              class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
+              >Boendet · <span translate="no">Sanco</span></span
+            >
+            <span translate="no">Nicklas Boström</span>
+            <a
+              href="tel:+46706249411"
+              translate="no"
+              class="text-terra-300 no-underline hover:text-terra-200"
+              >+46 70-624 94 11</a
+            >
+            <a
+              href="mailto:nicklas.bostrom@sancoab.se"
+              class="text-terra-300 no-underline hover:text-terra-200"
+              >nicklas.bostrom@sancoab.se</a
+            >
+          </div>
+        </div>
+
+        <div>
+          <h5
+            class="font-mono text-label uppercase tracking-[0.12em] text-terra-300 m-0 mb-4 font-medium"
+          >
+            Sidor
+          </h5>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2">
+            <li>
+              <a
+                href="huset.html"
+                class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
+                >Huset</a
+              >
+            </li>
+            <li>
+              <a
+                href="inflytt-utflytt.html"
+                class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
+                >Inflytt &amp; utflytt</a
+              >
+            </li>
+            <li>
+              <a
+                href="omradet.html"
+                class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
+                >Området</a
+              >
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ============== WASTE ============== -->
-<section class="shell section reveal">
-  <div class="section-head">
-    <p class="section-num" data-i18n="huset.waste.eyebrow">04 · Sopor och återvinning</p>
-    <div>
-      <h2 class="section-title" data-i18n="huset.waste.title">Vart sätter du <em>vad</em>?</h2>
-      <p class="section-blurb" data-i18n="huset.waste.blurb">Två kärl vid huset — bruna och gröna. Kartong, glas och metall lämnar du på återvinningsstationen 600 m bort.</p>
-    </div>
-  </div>
+      <div class="border-t border-blaeck-700">
+        <div
+          class="max-w-[1280px] mx-auto px-6 py-4 sm:px-8 lg:px-12 flex flex-wrap justify-between items-center gap-3 font-mono text-label tracking-[0.06em] text-linne-400"
+        >
+          <div>
+            <span translate="no">Domek</span>
+            <span class="text-terra-400">·</span>
+            <span translate="no">Solrosvägen 17, Örnsköldsvik</span>
+          </div>
+          <div>
+            © 2026 <span translate="no">Hugo &amp; Vega Kjellsson</span>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-  <div class="card-grid-4" style="margin-bottom: var(--s-5);">
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow" style="color: var(--linne-700);">Brunt</p>
-        <h3 data-i18n="huset.waste.brown.title">Brunt kärl</h3>
-        <p data-i18n="huset.waste.brown.body">Matavfall i bruna påsar (finns under hon). Hämtas varannan onsdag.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow" style="color: var(--skog-600);">Grönt</p>
-        <h3 data-i18n="huset.waste.green.title">Grönt kärl</h3>
-        <p data-i18n="huset.waste.green.body">Övriga sopor i vanlig sopsäck. Hämtas varannan onsdag.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow">Återvinning</p>
-        <h3 data-i18n="huset.waste.cardboard.title">Kartong</h3>
-        <p data-i18n="huset.waste.cardboard.body">Vik ihop och bär till återvinningsstationen vid Solrosvägens slut.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow">Återvinning</p>
-        <h3 data-i18n="huset.waste.glass.title">Glas &amp; metall</h3>
-        <p data-i18n="huset.waste.glass.body">Samma återvinningsstation som kartong. Två separata kärl på plats.</p>
-      </div>
-    </div>
-  </div>
+    <script src="script.js"></script>
 
-  <div class="notice tone-forest">
-    <div class="icon" aria-hidden="true">·</div>
-    <div>
-      <h4 data-i18n="huset.waste.notice.title">Hämtningsdatum verifieras mot Miva</h4>
-      <p data-i18n="huset.waste.notice.body">Kontrollera Mivas kalender för exakta datum. Schemat ovan är generellt — undantag finns vid storhelger.</p>
-    </div>
-  </div>
-</section>
+    <!-- ============== SOPOR-KARTA ============== -->
+    <script>
+      (function () {
+        function initSoporMap() {
+          if (typeof L === "undefined") return;
+          const el = document.getElementById("sopor-map");
+          if (!el || el.dataset.mapInited === "1") return;
+          el.dataset.mapInited = "1";
 
-<!-- ============== AT PROBLEMS ============== -->
-<section class="shell section reveal">
-  <div class="section-head">
-    <p class="section-num" data-i18n="huset.problem.eyebrow">05 · Vid problem</p>
-    <div>
-      <h2 class="section-title" data-i18n="huset.problem.title">När något <em>går sönder</em>.</h2>
-      <p class="section-blurb" data-i18n="huset.problem.blurb">Den här sektionen är skriven för att kunna läsas under stress. Stora rubriker, korta steg, telefon synlig.</p>
-    </div>
-  </div>
+          const DOMEK = [63.3126583393299, 18.754278759225077];
+          const AVS = [63.30951, 18.75163];
+          const MA = [63.301196, 18.765169];
 
-  <p class="subhead" data-i18n="huset.problem.water.title">Vid vattenläckage</p>
-  <div class="steps" style="margin-bottom: var(--s-7);">
-    <div class="step">
-      <p class="step-num">01</p>
-      <h4 data-i18n="huset.problem.water.step1.title">Gå till pannrummet</h4>
-      <p data-i18n="huset.problem.water.step1.body">Pannrummet ligger i källaren — dörren till vänster när du kommer ner för trappan.</p>
-    </div>
-    <div class="step">
-      <p class="step-num">02</p>
-      <h4 data-i18n="huset.problem.water.step2.title">Stäng huvudkranen</h4>
-      <p data-i18n="huset.problem.water.step2.body">Huvudkranen är monterad på inkommande röret vid pannan — vrid medurs tills den tar emot.</p>
-    </div>
-    <div class="step" style="background: var(--terra-50); border-color: var(--terra-200);">
-      <p class="step-num">03</p>
-      <h4 data-i18n="huset.problem.water.step3.title">Ring oss direkt</h4>
-      <p data-i18n="huset.problem.water.step3.body">Ring Hugo på <a href="tel:+46700000000" class="link">+46 70 000 00 00</a>. Inget meddelande — ring tills någon svarar.</p>
-    </div>
-  </div>
+          const map = L.map(el, {
+            zoomControl: false,
+            scrollWheelZoom: false,
+            doubleClickZoom: false,
+            dragging: false,
+            touchZoom: false,
+            boxZoom: false,
+            keyboard: false,
+            attributionControl: true,
+          });
 
-  <p class="subhead" data-i18n="huset.problem.power.title">Vid strömavbrott</p>
-  <div class="steps" style="margin-bottom: var(--s-7);">
-    <div class="step">
-      <p class="step-num">01</p>
-      <h4 data-i18n="huset.problem.power.step1.title">Hitta elcentralen</h4>
-      <p data-i18n="huset.problem.power.step1.body">Elcentralen sitter i hallen vid ytterdörren — bakom luckan i skåpet ovanför skoställets högra del.</p>
-    </div>
-    <div class="step">
-      <p class="step-num">02</p>
-      <h4 data-i18n="huset.problem.power.step2.title">Ta en reservsäkring</h4>
-      <p data-i18n="huset.problem.power.step2.body">Reservsäkringar ligger i lådan under elcentralen. Fyra storlekar — märkta efter funktion.</p>
-    </div>
-    <div class="step">
-      <p class="step-num">03</p>
-      <h4 data-i18n="huset.problem.power.step3.title">Byt och testa</h4>
-      <p data-i18n="huset.problem.power.step3.body">Byt utlöst säkring. Om det löser ut igen — ring oss innan du gör ett tredje försök.</p>
-    </div>
-  </div>
+          L.tileLayer(
+            "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+            {
+              maxZoom: 19,
+              attribution:
+                '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &middot; &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            },
+          ).addTo(map);
 
-  <div class="notice tone-mustard">
-    <div class="icon" aria-hidden="true">i</div>
-    <div>
-      <h4 data-i18n="huset.problem.notice.title">Kolla vattenmätaren regelbundet</h4>
-      <p data-i18n="huset.problem.notice.body">Vattenmätaren sitter i pannrummet bredvid huvudkranen. Om den visar förbrukning när inget vatten används = möjlig läcka. Säg till.</p>
-    </div>
-  </div>
-</section>
+          // Domek — två dots (brun + grön) som representerar de fysiska kärlen
+          L.marker(DOMEK, {
+            icon: L.divIcon({
+              className: "",
+              html:
+                '<div class="bin-pair">' +
+                '<span class="pin-label" translate="no">Domek</span>' +
+                '<span class="bin-dot bin-brown" title="Brunt kärl"></span>' +
+                '<span class="bin-dot bin-green" title="Grönt kärl"></span>' +
+                "</div>",
+              iconSize: [36, 16],
+              iconAnchor: [18, 8],
+            }),
+            keyboard: false,
+            interactive: false,
+          }).addTo(map);
 
-<!-- ============== HOUSE RULES ============== -->
-<section class="shell section reveal">
-  <div class="section-head">
-    <p class="section-num" data-i18n="huset.rules.eyebrow">06 · Ordningsregler</p>
-    <div>
-      <h2 class="section-title" data-i18n="huset.rules.title">Sex <em>regler</em>.</h2>
-      <p class="section-blurb" data-i18n="huset.rules.blurb">Tre är icke-förhandlingsbara (rökning, husdjur, eldstaden). Tre är observera-regler. Allvarsgraden står i höger marginal.</p>
-    </div>
-  </div>
+          // Återvinningsstation (terra)
+          L.marker(AVS, {
+            icon: L.divIcon({
+              className: "",
+              html:
+                '<div class="place-pin" style="background:#c9522f">Å</div>',
+              iconSize: [28, 28],
+              iconAnchor: [14, 14],
+            }),
+          })
+            .bindPopup(
+              '<strong>Återvinningsstation</strong><br>Strandgatan · 200 m<br><a href="https://www.google.com/maps/dir/?api=1&origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&destination=63.30951,18.75163" target="_blank" rel="noopener">Vägbeskrivning →</a>',
+            )
+            .addTo(map);
 
-  <div class="rules-list">
-    <div class="rule-item">
-      <span class="num">01</span>
-      <div>
-        <h4 data-i18n="huset.rules.r1.title">Rökfritt inomhus</h4>
-        <p data-i18n="huset.rules.r1.body">Ingen röker inomhus. Ute på baksidan finns en stol och en askkopp.</p>
-      </div>
-      <span class="severity tier-strict" data-i18n="huset.rules.r1.severity">Strikt</span>
-    </div>
-    <div class="rule-item">
-      <span class="num">02</span>
-      <div>
-        <h4 data-i18n="huset.rules.r2.title">Inga husdjur</h4>
-        <p data-i18n="huset.rules.r2.body">Hund, katt eller annat djur får inte vistas i huset. Allergi och slitage.</p>
-      </div>
-      <span class="severity tier-strict" data-i18n="huset.rules.r2.severity">Strikt</span>
-    </div>
-    <div class="rule-item">
-      <span class="num">03</span>
-      <div>
-        <h4 data-i18n="huset.rules.r3.title">Eldstaden får inte användas</h4>
-        <p data-i18n="huset.rules.r3.body">Den öppna spisen i vardagsrummet är dekorativ — den är inte besiktigad för eldning.</p>
-      </div>
-      <span class="severity tier-strict" data-i18n="huset.rules.r3.severity">Strikt</span>
-    </div>
-    <div class="rule-item">
-      <span class="num">04</span>
-      <div>
-        <h4 data-i18n="huset.rules.r4.title">Max 5 boende samtidigt</h4>
-        <p data-i18n="huset.rules.r4.body">Fyra sovplatser, plus en plats i vardagsrummet vid behov. Inte fler.</p>
-      </div>
-      <span class="severity tier-observe" data-i18n="huset.rules.r4.severity">Observera</span>
-    </div>
-    <div class="rule-item">
-      <span class="num">05</span>
-      <div>
-        <h4 data-i18n="huset.rules.r5.title">Inga byggåtgärder</h4>
-        <p data-i18n="huset.rules.r5.body">Sätt inga skruvar, dyckert eller tejp i väggar eller möbler. Säg till vid behov.</p>
-      </div>
-      <span class="severity tier-observe" data-i18n="huset.rules.r5.severity">Observera</span>
-    </div>
-    <div class="rule-item">
-      <span class="num">06</span>
-      <div>
-        <h4 data-i18n="huset.rules.r6.title">Garaget &amp; gäststugan ingår inte</h4>
-        <p data-i18n="huset.rules.r6.body">Båda är låsta och används av oss för förvaring. Använd inte uppfarten för parkering.</p>
-      </div>
-      <span class="severity tier-good" data-i18n="huset.rules.r6.severity">Bra att veta</span>
-    </div>
-  </div>
-</section>
+          // Må återvinningscentral (mörk)
+          L.marker(MA, {
+            icon: L.divIcon({
+              className: "",
+              html:
+                '<div class="place-pin" style="background:#221e15">M</div>',
+              iconSize: [28, 28],
+              iconAnchor: [14, 14],
+            }),
+          })
+            .bindPopup(
+              '<strong>Må återvinningscentral</strong><br>Returvägen 11 · 1,4 km<br><a href="https://www.google.com/maps/dir/?api=1&origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&destination=M%C3%A5+%C3%85tervinningscentral+Returv%C3%A4gen+11+%C3%96rnsk%C3%B6ldsvik" target="_blank" rel="noopener">Vägbeskrivning →</a>',
+            )
+            .addTo(map);
 
-</main>
+          // Anpassa vy så alla tre pins syns OVANFÖR korten i botten.
+          // paddingBottomRight skjuter upp pins så de inte hamnar bakom kort-overlayen.
+          const bounds = L.latLngBounds([DOMEK, AVS, MA]);
+          map.fitBounds(bounds, {
+            paddingTopLeft: [40, 40],
+            paddingBottomRight: [40, 360],
+          });
+        }
 
-<!-- ============== FOOTER ============== -->
-<footer class="foot-wrap">
-  <div class="foot-inner">
-    <div class="foot-block">
-      <p class="signoff" data-i18n="foot.signoff">Domek — <em>litet hus</em>,<br>tydliga ramar.</p>
-      <p data-i18n="foot.about">Domek är ett enfamiljshus från 1959 på Solrosvägen 17 i Örnsköldsvik. Hugo och Vega Kjellsson äger det, Sanco hyr det åt sina arbetare.</p>
-    </div>
-    <div class="foot-block">
-      <h5 data-i18n="foot.contact">Kontakt</h5>
-      <div class="contact-row">
-        <span class="who" data-i18n="foot.contact.house">Huset</span>
-        <span>Hugo &amp; Vega Kjellsson</span>
-        <a href="tel:+46700000000">+46 70 000 00 00</a>
-        <a href="mailto:hej@domek.se">hej@domek.se</a>
-      </div>
-      <div class="contact-row">
-        <span class="who" data-i18n="foot.contact.work">Jobbet</span>
-        <span>Lars Hellgren · Sanco</span>
-        <a href="tel:+46700000001">+46 70 000 00 01</a>
-        <a href="mailto:lars@sanco.se">lars@sanco.se</a>
-      </div>
-    </div>
-    <div class="foot-block">
-      <h5 data-i18n="foot.pages">Sidor</h5>
-      <ul>
-        <li><a href="huset.html"           data-i18n="nav.huset">Huset</a></li>
-        <li><a href="rum.html"             data-i18n="nav.rummen">Rummen</a></li>
-        <li><a href="inflytt-utflytt.html" data-i18n="nav.inflytt">Inflytt &amp; utflytt</a></li>
-        <li><a href="omradet.html"         data-i18n="nav.omradet">Området</a></li>
-      </ul>
-    </div>
-    <div class="foot-block">
-      <h5 data-i18n="foot.lang">Språk</h5>
-      <div class="lang-switch" role="group" aria-label="Språk">
-        <button data-lang="sv" aria-pressed="true">SV</button>
-        <button data-lang="en" aria-pressed="false">EN</button>
-        <button data-lang="pl" aria-pressed="false">PL</button>
-      </div>
-      <p style="margin-top: var(--s-4); font-size: 12px; color: var(--linne-400);">
-        <span data-i18n="foot.updated">Uppdaterad</span>: 2026-04-25
-      </p>
-    </div>
-  </div>
-  <div class="foot-bottom">
-    <div class="foot-bottom-inner">
-      <div data-i18n="foot.copy">Domek <span class="terra">·</span> Solrosvägen 17, Örnsköldsvik</div>
-      <div>v.1 <span class="terra">·</span> April 2026</div>
-    </div>
-  </div>
-</footer>
-
-<script src="script.js"></script>
-</body>
+        // Vänta på att Leaflet (defer) och DOM laddats
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", initSoporMap);
+        } else {
+          initSoporMap();
+        }
+        // Backup: om Leaflet laddar långsamt
+        window.addEventListener("load", initSoporMap);
+      })();
+    </script>
+  </body>
 </html>

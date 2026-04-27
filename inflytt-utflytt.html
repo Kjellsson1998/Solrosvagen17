@@ -1,332 +1,1641 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title data-i18n="inflytt.title">Inflytt &amp; utflytt — Domek</title>
-<meta name="description" content="Domek — vad du gör första kvällen och sista dagen. Tre steg vid ankomst, tre städrutiner, nio punkter på avreschecklistan.">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inflytt &amp; utflytt — Domek</title>
+    <meta
+      name="description"
+      content="Vad du gör första kvällen — och sista dagen. Steg vid ankomst, städrutiner under vistelsen, och avreschecklistan på Solrosvägen 17."
+    />
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
 
-<link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet" href="src/output.css" />
 
-<link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%23C9522F'/><text x='32' y='44' font-family='Georgia,serif' font-size='38' fill='%23FBF7F0' text-anchor='middle' font-weight='400'>D</text></svg>">
-</head>
-<body>
+    <!-- Phosphor Duotone icons -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/duotone/style.css"
+    />
 
-<a href="#main" class="skip">Hoppa till innehåll</a>
+    <link
+      rel="icon"
+      href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><circle cx='32' cy='32' r='28' fill='%23C9522F'/><text x='32' y='44' font-family='Georgia,serif' font-size='38' fill='%23FBF7F0' text-anchor='middle' font-weight='400'>D</text></svg>"
+    />
 
-<!-- ============== TOP NAV ============== -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <a href="index.html" class="brand-mark">
-      <span class="dot" aria-hidden="true"></span>
-      Dom<em>e</em>k
-    </a>
+    <style>
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 80px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#main" class="skip">Hoppa till innehåll</a>
 
-    <button class="nav-toggle" aria-label="Öppna meny" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <!-- ============== HEADER ============== -->
+    <header
+      class="sticky top-0 z-[100] bg-linne-50/90 backdrop-blur-md backdrop-saturate-150 border-b border-linne-200"
+    >
+      <div
+        class="max-w-[1280px] mx-auto flex items-center justify-between gap-6 px-6 py-4 sm:px-8 lg:px-12 max-sm:py-3"
+      >
+        <a
+          href="index.html"
+          translate="no"
+          class="font-display font-medium text-2xl -tracking-[0.01em] text-blaeck-900 inline-flex items-baseline gap-2 no-underline"
+          style="
+            font-variation-settings:
+              &quot;opsz&quot; 144,
+              &quot;SOFT&quot; 30;
+          "
+        >
+          <span
+            class="inline-block w-[7px] h-[7px] rounded-full bg-terra-500 -translate-y-px"
+            aria-hidden="true"
+          ></span>
+          Dom<em
+            class="not-italic font-normal text-terra-600"
+            style="
+              font-style: italic;
+              font-variation-settings:
+                &quot;opsz&quot; 144,
+                &quot;SOFT&quot; 30,
+                &quot;WONK&quot; 1;
+            "
+            >e</em
+          >k
+        </a>
 
-    <div class="nav-cluster">
-      <ul class="nav-links">
-        <li><a href="huset.html"            data-i18n="nav.huset">Huset</a></li>
-        <li><a href="rum.html"              data-i18n="nav.rummen">Rummen</a></li>
-        <li><a href="inflytt-utflytt.html"  data-i18n="nav.inflytt">Inflytt &amp; utflytt</a></li>
-        <li><a href="omradet.html"          data-i18n="nav.omradet">Området</a></li>
-      </ul>
+        <button
+          class="nav-toggle group lg:hidden bg-transparent border border-linne-200 rounded-sm p-2 cursor-pointer"
+          aria-label="Öppna meny"
+          aria-controls="primary-nav"
+          aria-expanded="false"
+        >
+          <span
+            class="block w-[18px] h-[1.5px] bg-blaeck-800 my-1 transition-transform duration-200 group-[.is-open]:translate-y-[5.5px] group-[.is-open]:rotate-45"
+          ></span>
+          <span
+            class="block w-[18px] h-[1.5px] bg-blaeck-800 my-1 transition-opacity duration-200 group-[.is-open]:opacity-0"
+          ></span>
+          <span
+            class="block w-[18px] h-[1.5px] bg-blaeck-800 my-1 transition-transform duration-200 group-[.is-open]:-translate-y-[5.5px] group-[.is-open]:-rotate-45"
+          ></span>
+        </button>
 
-      <div class="lang-switch" role="group" aria-label="Språk">
-        <button data-lang="sv" aria-pressed="true">SV</button>
-        <button data-lang="en" aria-pressed="false">EN</button>
-        <button data-lang="pl" aria-pressed="false">PL</button>
+        <div
+          id="primary-nav"
+          class="nav-cluster flex items-center gap-6 max-lg:fixed max-lg:top-16 max-lg:inset-x-0 max-lg:flex-col max-lg:items-stretch max-lg:gap-3 max-lg:p-6 max-lg:bg-linne-50 max-lg:border-b max-lg:border-linne-200 max-lg:shadow-paper-2 max-lg:opacity-0 max-lg:pointer-events-none max-lg:-translate-y-2 max-lg:transition-[opacity,transform] max-lg:duration-200 max-lg:ease-out [&.is-open]:max-lg:opacity-100 [&.is-open]:max-lg:pointer-events-auto [&.is-open]:max-lg:translate-y-0"
+        >
+          <ul
+            class="nav-links flex gap-4 list-none m-0 p-0 font-mono text-[11px] uppercase tracking-[0.08em] max-lg:flex-col max-lg:gap-0 max-lg:text-[13px]"
+          >
+            <li>
+              <a
+                href="huset.html"
+                class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 max-lg:px-3 max-lg:py-3"
+                >Huset</a
+              >
+            </li>
+            <li>
+              <a
+                href="inflytt-utflytt.html"
+                class="block text-terra-700 bg-terra-50 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 max-lg:px-3 max-lg:py-3"
+                aria-current="page"
+                >Inflytt &amp; utflytt</a
+              >
+            </li>
+            <li>
+              <a
+                href="omradet.html"
+                class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 max-lg:px-3 max-lg:py-3"
+                >Området</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </div>
-</header>
+    </header>
 
-<main id="main">
+    <main id="main">
+      <!-- ============== COVER ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 pt-12 pb-10 lg:pt-20 lg:pb-16"
+      >
+        <div class="grid lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-16 items-end">
+          <div>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-5 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
+            >
+              Inflytt · utflytt
+            </p>
+            <h1
+              class="font-display font-light text-[clamp(48px,8vw,88px)] leading-[0.95] -tracking-[0.02em] text-blaeck-900 m-0 mb-5"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 144,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Vad du gör
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 144,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >första</em
+              >
+              kvällen — och
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 144,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >sista</em
+              >
+              dagen.
+            </h1>
+            <p
+              class="font-display text-[clamp(17px,2vw,21px)] leading-[1.5] text-blaeck-600 max-w-[55ch] m-0"
+              style="font-variation-settings: &quot;opsz&quot; 24"
+            >
+              Tre steg vid ankomst. Tre rutiner under vistelsen.
+              Grundstädning vid avresa följt av tio punkter på
+              avreschecklistan.
+            </p>
+          </div>
 
-<!-- ============== COVER ============== -->
-<section class="shell cover">
-  <div class="cover-grid">
-    <div>
-      <p class="eyebrow" data-i18n="inflytt.eyebrow">Inflytt · utflytt</p>
-      <h1 data-i18n="inflytt.h1">Vad du gör <em>första</em> kvällen — och <em>sista</em> dagen.</h1>
-      <p class="cover-lede" data-i18n="inflytt.lede">Tre steg vid ankomst. Tre städrutiner under vistelsen. Nio punkter på avreschecklistan. Inget mer, inget mindre.</p>
-    </div>
-    <dl class="cover-meta">
-      <div class="meta-row">
-        <dt data-i18n="inflytt.meta.keys">Nycklar</dt>
-        <dd data-i18n="inflytt.meta.keys.value">Nyckelskåp vid dörren</dd>
+          <dl
+            class="grid grid-cols-2 gap-x-6 gap-y-4 bg-linne-100/60 border border-linne-200 rounded-md p-6 sm:p-7 m-0"
+          >
+            <div class="flex flex-col gap-1">
+              <dt
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                Nyckel
+              </dt>
+              <dd
+                class="font-display text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Nyckelskåp vid dörren
+              </dd>
+            </div>
+            <div class="flex flex-col gap-1">
+              <dt
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                Wifi
+              </dt>
+              <dd
+                class="font-display text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Täcker hela huset
+              </dd>
+            </div>
+            <div class="flex flex-col gap-1">
+              <dt
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                Värme
+              </dt>
+              <dd
+                class="font-display text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Radiator 1–5
+              </dd>
+            </div>
+            <div class="flex flex-col gap-1">
+              <dt
+                class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
+              >
+                Sängkläder
+              </dt>
+              <dd
+                class="font-display text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Tar du <em class="wonk text-terra-600">med själv</em>
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- ============== 01 · VID ANKOMST ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 mb-8">
+          <div>
+            <i
+              class="ph-duotone ph-house-line text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              01 · Vid ankomst
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Tre steg in i
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >huset</em
+              >.
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Hämta nyckeln, koppla upp dig och bädda sängen — på den
+              ordningen. Är huset kallt eller utan vatten finns separat info
+              nedanför.
+            </p>
+            <p
+              class="font-mono text-caption text-blaeck-500 m-0 mt-4 leading-[1.5]"
+            >
+              Kod &amp; wifi-uppgifter får du av <span translate="no">Sanco</span>
+              före ankomst &mdash; och finns även på A3-skylten i hallen samt
+              direkt på routern.
+            </p>
+          </div>
+
+          <ol class="grid sm:grid-cols-3 gap-4 list-none p-0 m-0">
+            <li class="card p-5 flex flex-col gap-2">
+              <i
+                class="ph-duotone ph-key text-terra-600 text-[28px]"
+                aria-hidden="true"
+              ></i>
+              <span
+                class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+                >Steg 01</span
+              >
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Hämta nyckeln
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Nyckelskåpet sitter på höger sida om ytterdörren.
+                <strong>Slå koden, ta nyckeln, lås upp.</strong>
+              </p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 m-0 mt-1"
+              >
+                Två nycklar i skåpet
+              </p>
+            </li>
+
+            <li class="card p-5 flex flex-col gap-2">
+              <i
+                class="ph-duotone ph-wifi-high text-terra-600 text-[28px]"
+                aria-hidden="true"
+              ></i>
+              <span
+                class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+                >Steg 02</span
+              >
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Anslut till wifi
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Routern står i vardagsrummet. <strong>Nätverk och lösenord</strong>
+                finns på A3-skylten i hallen och under routern.
+              </p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 m-0 mt-1"
+              >
+                Täcker hela huset
+              </p>
+            </li>
+
+            <li
+              class="card p-5 flex flex-col gap-2 bg-terra-50 border-terra-200"
+            >
+              <i
+                class="ph-duotone ph-bed text-terra-700 text-[28px]"
+                aria-hidden="true"
+              ></i>
+              <span
+                class="font-mono text-label uppercase tracking-[0.12em] text-terra-700 m-0"
+                >Steg 03</span
+              >
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Bädda sängen
+              </h3>
+              <p class="text-body-sm text-blaeck-700 m-0">
+                Kuddar och täcken ligger på sängarna.
+                <strong>Lakan, örngott och påslakan</strong> tar du fram ur
+                väskan.
+              </p>
+              <p
+                class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-700 m-0 mt-1"
+              >
+                Inga sängkläder ingår
+              </p>
+            </li>
+          </ol>
+        </div>
+
+        <!-- Två notices: värme + kallt hus -->
+        <div class="grid md:grid-cols-2 gap-4 max-w-[68rem]">
+          <div class="notice border-l-skog-500 bg-skog-50/50">
+            <i
+              class="ph-duotone ph-thermometer text-skog-700 text-[22px] mt-0.5 shrink-0"
+              aria-hidden="true"
+            ></i>
+            <div>
+              <h4
+                class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+              >
+                Värme &amp; vädring
+              </h4>
+              <p class="text-body-sm text-blaeck-700 m-0">
+                Radiatorer har vred 1–5 — fjärrvärmen är alltid på. Vädra
+                <strong>5–10 min korsdrag dagligen</strong> mot kondens. Stäng
+                inte ventilerna i fönsterkarmarna.
+              </p>
+            </div>
+          </div>
+
+          <div class="notice border-l-senap-500 bg-senap-50/60">
+            <i
+              class="ph-duotone ph-faucet text-senap-700 text-[22px] mt-0.5 shrink-0"
+              aria-hidden="true"
+            ></i>
+            <div>
+              <h4
+                class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+              >
+                Kallt hus eller inget vatten?
+              </h4>
+              <p class="text-body-sm text-blaeck-700 m-0">
+                Har huset stått tomt en längre tid är huvudkranen avstängd.
+                <strong>Pannrummet i källaren</strong> — handtaget i rörets
+                riktning = öppet.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== 02 · UNDER VISTELSEN ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16">
+          <div>
+            <i
+              class="ph-duotone ph-sparkle text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              02 · Under vistelsen
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Tre
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >rutiner</em
+              >.
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Köket dagligen, badrummen veckovis, golven vid behov. Att hålla
+              det löpande är mycket lättare än att göra allt sista dagen.
+            </p>
+          </div>
+
+          <div class="grid sm:grid-cols-3 gap-4">
+            <article class="card p-5 flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.14em] text-terra-700 font-semibold m-0"
+              >
+                Dagligen
+              </p>
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Köket
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Diska efter måltid. Torka av bänken. Bär ut soporna när påsen
+                är full. Lämna inget i hon över natten.
+              </p>
+            </article>
+            <article class="card p-5 flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0"
+              >
+                Veckovis
+              </p>
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Badrumen
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Skura toaletten, torka handfaten, tvätta golvet. Städmedel
+                finns i städskåpet.
+              </p>
+            </article>
+            <article class="card p-5 flex flex-col gap-2">
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0"
+              >
+                Vid behov
+              </p>
+              <h3
+                class="font-display font-medium text-[18px] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Golv
+              </h3>
+              <p class="text-body-sm text-blaeck-600 m-0">
+                Dammsug entré och kök oftare än övriga rum. Moppa fuktigt — inte
+                vått. Trägolven tål inte stora vattenmängder.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== 03 · GRUNDSTÄDNING ============== -->
+      <section
+        id="grundstadning"
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <!-- Varning före listan — så ingen missar konsekvensen -->
+        <div
+          class="notice border-l-terra-500 bg-terra-50/60 max-w-[68rem] mb-10"
+        >
+          <i
+            class="ph-duotone ph-warning-octagon text-terra-700 text-[22px] mt-0.5 shrink-0"
+            aria-hidden="true"
+          ></i>
+          <div>
+            <h4
+              class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
+            >
+              Bristfällig städning faktureras
+            </h4>
+            <p class="text-body-sm text-blaeck-700 m-0">
+              Lämnas huset orent har vi rätt att anlita städfirma
+              <strong>på hyresgästens bekostnad</strong> enligt hyresavtalet.
+              Tag listan på allvar — den är till för att slippa just det.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 mb-10">
+          <div>
+            <i
+              class="ph-duotone ph-spray-bottle text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              03 · Grundstädning vid avresa
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Städa som ett
+              <em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >proffs</em
+              >.
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Innan du bockar av avreschecklistan görs en grundstädning.
+              Färgkodade trasor, ordning uppifrån och ner, och produkterna
+              från
+              <span translate="no">Västerbottenssåpa</span> som finns i
+              städskåpet.
+            </p>
+          </div>
+
+          <!-- Tre snabba regler -->
+          <div>
+            <p
+              class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
+            >
+              Innan du börjar — tre regler
+            </p>
+            <div class="grid sm:grid-cols-3 gap-3">
+              <article class="card p-5 flex flex-col gap-2">
+                <p
+                  class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+                >
+                  Regel 01
+                </p>
+                <h3
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
+                >
+                  Färgkoda trasorna
+                </h3>
+                <ul class="list-none p-0 m-0 space-y-1.5 text-body-sm">
+                  <li class="flex items-baseline gap-2 text-blaeck-700">
+                    <span
+                      class="w-2 h-2 rounded-full shrink-0 translate-y-0.5"
+                      style="background: #c9522f"
+                      aria-hidden="true"
+                    ></span>
+                    <span><strong>Röd</strong> — toalettstolen</span>
+                  </li>
+                  <li class="flex items-baseline gap-2 text-blaeck-700">
+                    <span
+                      class="w-2 h-2 rounded-full shrink-0 translate-y-0.5"
+                      style="background: #3d6aa8"
+                      aria-hidden="true"
+                    ></span>
+                    <span><strong>Blå</strong> — resten av badrummet</span>
+                  </li>
+                  <li class="flex items-baseline gap-2 text-blaeck-700">
+                    <span
+                      class="w-2 h-2 rounded-full shrink-0 translate-y-0.5"
+                      style="background: #627944"
+                      aria-hidden="true"
+                    ></span>
+                    <span><strong>Grön</strong> — köket</span>
+                  </li>
+                </ul>
+              </article>
+              <article class="card p-5 flex flex-col gap-2">
+                <p
+                  class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+                >
+                  Regel 02
+                </p>
+                <h3
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
+                >
+                  Spraya i trasan
+                </h3>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Direkt i mikrofiberduken, inte på ytan — det blir renare och
+                  lämnar inga ränder. Vik trasan på mitten två gånger så får
+                  du åtta rena sidor.
+                </p>
+              </article>
+              <article class="card p-5 flex flex-col gap-2">
+                <p
+                  class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
+                >
+                  Regel 03
+                </p>
+                <h3
+                  class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
+                >
+                  Torrt före vått
+                </h3>
+                <p class="text-body-sm text-blaeck-600 m-0">
+                  Dammsug alltid upp smuts och grus innan du våttorkar.
+                  Annars drar du runt lera över hela huset.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fem grupper — i ordning -->
+        <div class="max-w-[68rem]">
+          <!-- Steg 01 — Sopor -->
+          <div class="grid sm:grid-cols-[auto_1fr] gap-x-6 gap-y-3 py-6 border-t border-linne-200">
+            <div class="flex flex-col gap-1">
+              <i
+                class="ph-duotone ph-trash text-terra-600 text-[26px]"
+                aria-hidden="true"
+              ></i>
+              <span
+                class="font-mono text-label uppercase tracking-[0.14em] text-terra-700 tabular-nums"
+                >Steg 01</span
+              >
+              <h3
+                class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Sopor &amp; återvinning
+              </h3>
+            </div>
+            <div class="self-center">
+              <ul class="list-none p-0 m-0 space-y-2 text-body-sm text-blaeck-700">
+                <li class="flex items-baseline gap-2.5">
+                  <span class="text-terra-500 font-mono text-[10px] mt-1">●</span>
+                  <span>Töm alla papperskorgar i huset.</span>
+                </li>
+                <li class="flex items-baseline gap-2.5">
+                  <span class="text-terra-500 font-mono text-[10px] mt-1">●</span>
+                  <span>Sortera avfallet — matavfall, förpackningar, restavfall.</span>
+                </li>
+                <li class="flex items-baseline gap-2.5">
+                  <span class="text-terra-500 font-mono text-[10px] mt-1">●</span>
+                  <span>Bär ut till tunnan eller återvinningsstationen.</span>
+                </li>
+              </ul>
+
+              <!-- Kompakt CTA till full guide -->
+              <a
+                href="huset.html#sopor"
+                class="group inline-flex items-center gap-2 mt-4 px-3 py-2 rounded-md bg-terra-50 border border-terra-200 hover:bg-terra-100 transition-colors no-underline w-fit"
+              >
+                <i
+                  class="ph-duotone ph-recycle text-terra-600 text-[18px]"
+                  aria-hidden="true"
+                ></i>
+                <span
+                  class="font-mono text-[11px] uppercase tracking-[0.08em] font-semibold text-terra-700"
+                >
+                  Sorteringsguide &amp; karta
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="text-terra-600 group-hover:translate-x-1 transition-transform"
+                  >→</span
+                >
+              </a>
+            </div>
+          </div>
+
+          <!-- Steg 02 — Badrumen -->
+          <div class="grid sm:grid-cols-[auto_1fr] gap-x-6 gap-y-3 py-6 border-t border-linne-200">
+            <div class="flex flex-col gap-1">
+              <i
+                class="ph-duotone ph-bathtub text-terra-600 text-[26px]"
+                aria-hidden="true"
+              ></i>
+              <span
+                class="font-mono text-label uppercase tracking-[0.14em] text-terra-700 tabular-nums"
+                >Steg 02</span
+              >
+              <h3
+                class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Badrumen
+              </h3>
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.08em] text-blaeck-400 m-0"
+              >
+                Uppifrån och ner
+              </p>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1 inline-flex items-baseline gap-2">
+                  <span
+                    class="w-2 h-2 rounded-full"
+                    style="background: #3d6aa8"
+                    aria-hidden="true"
+                  ></span>
+                  Handfat &amp; spegel
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0">
+                  <strong>Spraya såpspray i blå trasan.</strong> Torka spegeln,
+                  putsa kranen, torka handfatet (renast → smutsigast).
+                </p>
+              </div>
+              <div>
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1 inline-flex items-baseline gap-2">
+                  <span
+                    class="w-2 h-2 rounded-full"
+                    style="background: #3d6aa8"
+                    aria-hidden="true"
+                  ></span>
+                  Dusch &amp; badkar
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0">
+                  <strong>Skölj med vatten.</strong> Ta bort hår från
+                  golvbrunnens galler.
+                </p>
+              </div>
+              <div>
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1 inline-flex items-baseline gap-2">
+                  <span
+                    class="w-2 h-2 rounded-full"
+                    style="background: #c9522f"
+                    aria-hidden="true"
+                  ></span>
+                  Toalettstolen — insidan
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0">
+                  <strong>Spraya såpspray i skålen.</strong> Skrubba med
+                  toalettborsten, spola.
+                </p>
+              </div>
+              <div>
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1 inline-flex items-baseline gap-2">
+                  <span
+                    class="w-2 h-2 rounded-full"
+                    style="background: #c9522f"
+                    aria-hidden="true"
+                  ></span>
+                  Toalettstolen — utsidan
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0 mb-2">
+                  <strong>Spraya såpspray i röda trasan.</strong> Torka i denna
+                  ordning (renast → smutsigast):
+                </p>
+                <ol
+                  class="list-none p-0 m-0 flex flex-wrap gap-x-2 gap-y-1 text-caption text-blaeck-600 font-mono uppercase tracking-[0.08em]"
+                >
+                  <li
+                    class="bg-linne-100 border border-linne-200 rounded-sm px-2 py-1"
+                  >
+                    Spolknapp
+                  </li>
+                  <li class="text-blaeck-300 self-center">→</li>
+                  <li
+                    class="bg-linne-100 border border-linne-200 rounded-sm px-2 py-1"
+                  >
+                    Lock
+                  </li>
+                  <li class="text-blaeck-300 self-center">→</li>
+                  <li
+                    class="bg-linne-100 border border-linne-200 rounded-sm px-2 py-1"
+                  >
+                    Sittring
+                  </li>
+                  <li class="text-blaeck-300 self-center">→</li>
+                  <li
+                    class="bg-linne-100 border border-linne-200 rounded-sm px-2 py-1"
+                  >
+                    Undersidan
+                  </li>
+                  <li class="text-blaeck-300 self-center">→</li>
+                  <li
+                    class="bg-linne-100 border border-linne-200 rounded-sm px-2 py-1"
+                  >
+                    Utsidan ner mot golvet
+                  </li>
+                </ol>
+              </div>
+            </div>
+          </div>
+
+          <!-- Steg 03 — Köket -->
+          <div class="grid sm:grid-cols-[auto_1fr] gap-x-6 gap-y-3 py-6 border-t border-linne-200">
+            <div class="flex flex-col gap-1">
+              <i
+                class="ph-duotone ph-cooking-pot text-terra-600 text-[26px]"
+                aria-hidden="true"
+              ></i>
+              <span
+                class="font-mono text-label uppercase tracking-[0.14em] text-terra-700 tabular-nums"
+                >Steg 03</span
+              >
+              <h3
+                class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Köket
+              </h3>
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.08em] text-blaeck-400 m-0 inline-flex items-baseline gap-1.5"
+              >
+                <span
+                  class="w-1.5 h-1.5 rounded-full"
+                  style="background: #627944"
+                  aria-hidden="true"
+                ></span>
+                Grön trasa
+              </p>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Disk
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0">
+                  <strong>Diska, torka och ställ tillbaka</strong> i skåpen.
+                </p>
+              </div>
+              <div>
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Bänkar &amp; bord
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0">
+                  <strong>Spraya såpspray i gröna trasan.</strong> Torka
+                  matbord, diskbänk och köksbänkar — plus alla matsmulor.
+                </p>
+              </div>
+              <div>
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Spis &amp; ugn
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0">
+                  <strong>Torka av spishällen.</strong> Vid fastbränd smuts:
+                  klicka på <strong
+                    >Fast <span translate="no">Västerbottenssåpa</span></strong
+                  >, gnugga, låt verka 2 min, torka bort.
+                </p>
+              </div>
+              <div>
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Kylskåpet
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0">
+                  <strong>Töm kylen på dina egna matvaror.</strong> Torka bort
+                  spill på hyllorna med såpspray.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Steg 04 — Sovrum -->
+          <div class="grid sm:grid-cols-[auto_1fr] gap-x-6 gap-y-3 py-6 border-t border-linne-200">
+            <div class="flex flex-col gap-1">
+              <i
+                class="ph-duotone ph-bed text-terra-600 text-[26px]"
+                aria-hidden="true"
+              ></i>
+              <span
+                class="font-mono text-label uppercase tracking-[0.14em] text-terra-700 tabular-nums"
+                >Steg 04</span
+              >
+              <h3
+                class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Ditt sovrum
+              </h3>
+            </div>
+            <div class="space-y-4">
+              <div>
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Sängkläder
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0 mb-2">
+                  <strong>Dra ur lakan, påslakan och örngott.</strong>
+                  Sängkläder ska alltid tvättas mellan vistelser. Två sätt:
+                </p>
+                <ul
+                  class="list-none p-0 m-0 space-y-1 text-body-sm text-blaeck-700"
+                >
+                  <li class="flex items-baseline gap-2">
+                    <span class="text-blaeck-300 text-[10px] mt-0.5">○</span>
+                    <span>Ta hem och tvätta hemma</span>
+                  </li>
+                  <li class="flex items-baseline gap-2">
+                    <span class="text-blaeck-300 text-[10px] mt-0.5">○</span>
+                    <span
+                      >Tvätta i huset och vik in i din egen garderob till nästa
+                      gång</span
+                    >
+                  </li>
+                </ul>
+                <div
+                  class="mt-3 flex items-start gap-2 px-3 py-2 bg-terra-50/80 border-l-2 border-terra-500 rounded-sm"
+                >
+                  <i
+                    class="ph-duotone ph-warning text-terra-700 text-[16px] mt-0.5 shrink-0"
+                    aria-hidden="true"
+                  ></i>
+                  <p class="text-body-sm text-terra-800 m-0">
+                    <strong>Glömda sängkläder och handdukar slängs vid
+                    slutstädning.</strong> Vi sparar dem inte och skickar inte
+                    hem.
+                  </p>
+                </div>
+                <p
+                  class="font-mono text-[10px] uppercase tracking-[0.12em] text-skog-700 font-semibold m-0 mt-3"
+                >
+                  Proffstips
+                </p>
+                <p class="text-caption text-blaeck-600 m-0 mt-1">
+                  Bor du här ofta — ha två uppsättningar sängkläder. Då finns
+                  alltid en ren redo.
+                </p>
+              </div>
+              <div>
+                <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
+                  Ytor
+                </p>
+                <p class="text-body-sm text-blaeck-700 m-0">
+                  <strong>Torka sängbordet</strong>, damma fönsterbrädan vid behov.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Steg 05 — Golv -->
+          <div class="grid sm:grid-cols-[auto_1fr] gap-x-6 gap-y-3 py-6 border-y border-linne-200">
+            <div class="flex flex-col gap-1">
+              <i
+                class="ph-duotone ph-broom text-terra-600 text-[26px]"
+                aria-hidden="true"
+              ></i>
+              <span
+                class="font-mono text-label uppercase tracking-[0.14em] text-terra-700 tabular-nums"
+                >Steg 05</span
+              >
+              <h3
+                class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
+                style="font-variation-settings: &quot;opsz&quot; 24"
+              >
+                Golv
+              </h3>
+              <p
+                class="font-mono text-[10px] uppercase tracking-[0.08em] text-terra-700 font-semibold m-0"
+              >
+                Görs allra sist
+              </p>
+            </div>
+            <ol
+              class="list-none p-0 m-0 space-y-3 self-center"
+              start="1"
+            >
+              <li class="flex gap-3">
+                <span
+                  class="font-mono text-label tabular-nums text-blaeck-400 mt-0.5 shrink-0"
+                  >01</span
+                >
+                <div>
+                  <p
+                    class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-0.5"
+                  >
+                    Dammsug eller sopa
+                  </p>
+                  <p class="text-body-sm text-blaeck-700 m-0">
+                    <strong>Bort med damm, hår och grus</strong> från alla golv.
+                  </p>
+                </div>
+              </li>
+              <li class="flex gap-3">
+                <span
+                  class="font-mono text-label tabular-nums text-blaeck-400 mt-0.5 shrink-0"
+                  >02</span
+                >
+                <div>
+                  <p
+                    class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-0.5"
+                  >
+                    Blanda såpvatten
+                  </p>
+                  <p class="text-body-sm text-blaeck-700 m-0">
+                    <strong>Ljummet vatten + 1–2 kapsyler</strong>
+                    <strong
+                      >Flytande
+                      <span translate="no">Västerbottenssåpa</span></strong
+                    >. Inte mer — då blir golven klibbiga.
+                  </p>
+                </div>
+              </li>
+              <li class="flex gap-3">
+                <span
+                  class="font-mono text-label tabular-nums text-blaeck-400 mt-0.5 shrink-0"
+                  >03</span
+                >
+                <div>
+                  <p
+                    class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-0.5"
+                  >
+                    Moppa
+                  </p>
+                  <p class="text-body-sm text-blaeck-700 m-0">
+                    <strong>Vrid ur moppen ordentligt</strong> — fuktig, inte
+                    plaskvåt. Börja längst in i rummet och backa mot dörren.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== 04 · AVRESECHECKLISTA ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <div class="grid lg:grid-cols-[1fr_2fr] gap-10 lg:gap-16 mb-8">
+          <div>
+            <i
+              class="ph-duotone ph-suitcase-rolling text-terra-600 text-[36px] mb-3 block"
+              aria-hidden="true"
+            ></i>
+            <p
+              class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
+            >
+              04 · Vid avresa
+            </p>
+            <h2
+              class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 96,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Avrese<em
+                class="wonk text-terra-600 font-normal"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 96,
+                    &quot;SOFT&quot; 30,
+                    &quot;WONK&quot; 1;
+                "
+                >checklista</em
+              >.
+            </h2>
+            <p
+              class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Tio punkter att bocka av efter <a href="#grundstadning"
+              class="link">grundstädningen</a>. Listan sparas i din webbläsare
+              tills du nollställer den.
+            </p>
+            <p class="text-caption text-blaeck-500 m-0 mt-4 leading-[1.5]">
+              Listan finns även i pappersform på insidan av ytterdörren.
+            </p>
+          </div>
+
+          <div
+            class="checklist bg-white border border-linne-200 rounded-md shadow-paper-1 overflow-hidden"
+          >
+            <!-- Progress -->
+            <div
+              class="checklist-progress flex items-center gap-4 px-5 py-4 bg-linne-50 border-b border-linne-200"
+            >
+              <div
+                class="progress-bar relative flex-1 h-1.5 bg-linne-200 rounded-full overflow-hidden"
+              >
+                <div
+                  class="progress-bar-fill absolute inset-y-0 left-0 bg-skog-500 rounded-full transition-[width] duration-300"
+                  style="width: 0%"
+                ></div>
+              </div>
+              <div
+                class="progress-count font-mono text-[12px] tracking-[0.06em] text-blaeck-600 tabular-nums whitespace-nowrap"
+              >
+                <strong class="text-blaeck-900 font-semibold">0</strong> / 10
+              </div>
+              <button
+                type="button"
+                class="checklist-reset font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 hover:text-terra-600 transition-colors whitespace-nowrap"
+                aria-label="Nollställ checklistan"
+              >
+                Nollställ
+              </button>
+            </div>
+
+            <!-- Items -->
+            <ul class="check-list list-none m-0 p-0">
+              <li
+                class="check-item border-b border-linne-100 last:border-b-0"
+              >
+                <label
+                  class="flex items-start gap-3 px-5 py-3.5 cursor-pointer hover:bg-linne-50/60 transition-colors"
+                >
+                  <input type="checkbox" class="peer sr-only" />
+                  <span
+                    class="box relative w-5 h-5 rounded-sm border-2 border-blaeck-300 bg-white shrink-0 mt-0.5 transition-colors peer-checked:bg-skog-500 peer-checked:border-skog-500 after:content-[''] after:absolute after:left-[3px] after:top-[-1px] after:w-[5px] after:h-[10px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 peer-checked:after:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-terra-500 peer-focus-visible:ring-offset-2"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
+                    >Disken är gjord och torkad</span
+                  >
+                </label>
+              </li>
+              <li
+                class="check-item border-b border-linne-100 last:border-b-0"
+              >
+                <label
+                  class="flex items-start gap-3 px-5 py-3.5 cursor-pointer hover:bg-linne-50/60 transition-colors"
+                >
+                  <input type="checkbox" class="peer sr-only" />
+                  <span
+                    class="box relative w-5 h-5 rounded-sm border-2 border-blaeck-300 bg-white shrink-0 mt-0.5 transition-colors peer-checked:bg-skog-500 peer-checked:border-skog-500 after:content-[''] after:absolute after:left-[3px] after:top-[-1px] after:w-[5px] after:h-[10px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 peer-checked:after:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-terra-500 peer-focus-visible:ring-offset-2"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
+                    >Kyl och frys är tömda</span
+                  >
+                </label>
+              </li>
+              <li
+                class="check-item border-b border-linne-100 last:border-b-0"
+              >
+                <label
+                  class="flex items-start gap-3 px-5 py-3.5 cursor-pointer hover:bg-linne-50/60 transition-colors"
+                >
+                  <input type="checkbox" class="peer sr-only" />
+                  <span
+                    class="box relative w-5 h-5 rounded-sm border-2 border-blaeck-300 bg-white shrink-0 mt-0.5 transition-colors peer-checked:bg-skog-500 peer-checked:border-skog-500 after:content-[''] after:absolute after:left-[3px] after:top-[-1px] after:w-[5px] after:h-[10px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 peer-checked:after:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-terra-500 peer-focus-visible:ring-offset-2"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
+                    >Soporna är utburna</span
+                  >
+                </label>
+              </li>
+              <li
+                class="check-item border-b border-linne-100 last:border-b-0"
+              >
+                <label
+                  class="flex items-start gap-3 px-5 py-3.5 cursor-pointer hover:bg-linne-50/60 transition-colors"
+                >
+                  <input type="checkbox" class="peer sr-only" />
+                  <span
+                    class="box relative w-5 h-5 rounded-sm border-2 border-blaeck-300 bg-white shrink-0 mt-0.5 transition-colors peer-checked:bg-skog-500 peer-checked:border-skog-500 after:content-[''] after:absolute after:left-[3px] after:top-[-1px] after:w-[5px] after:h-[10px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 peer-checked:after:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-terra-500 peer-focus-visible:ring-offset-2"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
+                    >Tvätten är hemtagen</span
+                  >
+                </label>
+              </li>
+              <li
+                class="check-item border-b border-linne-100 last:border-b-0"
+              >
+                <label
+                  class="flex items-start gap-3 px-5 py-3.5 cursor-pointer hover:bg-linne-50/60 transition-colors"
+                >
+                  <input type="checkbox" class="peer sr-only" />
+                  <span
+                    class="box relative w-5 h-5 rounded-sm border-2 border-blaeck-300 bg-white shrink-0 mt-0.5 transition-colors peer-checked:bg-skog-500 peer-checked:border-skog-500 after:content-[''] after:absolute after:left-[3px] after:top-[-1px] after:w-[5px] after:h-[10px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 peer-checked:after:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-terra-500 peer-focus-visible:ring-offset-2"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
+                    >Sängkläder och handdukar är hemtagna</span
+                  >
+                </label>
+              </li>
+              <li
+                class="check-item border-b border-linne-100 last:border-b-0"
+              >
+                <label
+                  class="flex items-start gap-3 px-5 py-3.5 cursor-pointer hover:bg-linne-50/60 transition-colors"
+                >
+                  <input type="checkbox" class="peer sr-only" />
+                  <span
+                    class="box relative w-5 h-5 rounded-sm border-2 border-blaeck-300 bg-white shrink-0 mt-0.5 transition-colors peer-checked:bg-skog-500 peer-checked:border-skog-500 after:content-[''] after:absolute after:left-[3px] after:top-[-1px] after:w-[5px] after:h-[10px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 peer-checked:after:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-terra-500 peer-focus-visible:ring-offset-2"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
+                    >Alla fönster är stängda</span
+                  >
+                </label>
+              </li>
+              <li
+                class="check-item border-b border-linne-100 last:border-b-0"
+              >
+                <label
+                  class="flex items-start gap-3 px-5 py-3.5 cursor-pointer hover:bg-linne-50/60 transition-colors"
+                >
+                  <input type="checkbox" class="peer sr-only" />
+                  <span
+                    class="box relative w-5 h-5 rounded-sm border-2 border-blaeck-300 bg-white shrink-0 mt-0.5 transition-colors peer-checked:bg-skog-500 peer-checked:border-skog-500 after:content-[''] after:absolute after:left-[3px] after:top-[-1px] after:w-[5px] after:h-[10px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 peer-checked:after:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-terra-500 peer-focus-visible:ring-offset-2"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
+                    >Ytterdörrar är låsta</span
+                  >
+                </label>
+              </li>
+              <li
+                class="check-item border-b border-linne-100 last:border-b-0"
+              >
+                <label
+                  class="flex items-start gap-3 px-5 py-3.5 cursor-pointer hover:bg-linne-50/60 transition-colors"
+                >
+                  <input type="checkbox" class="peer sr-only" />
+                  <span
+                    class="box relative w-5 h-5 rounded-sm border-2 border-blaeck-300 bg-white shrink-0 mt-0.5 transition-colors peer-checked:bg-skog-500 peer-checked:border-skog-500 after:content-[''] after:absolute after:left-[3px] after:top-[-1px] after:w-[5px] after:h-[10px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 peer-checked:after:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-terra-500 peer-focus-visible:ring-offset-2"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
+                    >Grundstädning är gjord</span
+                  >
+                </label>
+              </li>
+              <li
+                class="check-item border-b border-linne-100 last:border-b-0"
+              >
+                <label
+                  class="flex items-start gap-3 px-5 py-3.5 cursor-pointer hover:bg-linne-50/60 transition-colors"
+                >
+                  <input type="checkbox" class="peer sr-only" />
+                  <span
+                    class="box relative w-5 h-5 rounded-sm border-2 border-blaeck-300 bg-white shrink-0 mt-0.5 transition-colors peer-checked:bg-skog-500 peer-checked:border-skog-500 after:content-[''] after:absolute after:left-[3px] after:top-[-1px] after:w-[5px] after:h-[10px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 peer-checked:after:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-terra-500 peer-focus-visible:ring-offset-2"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
+                    >Vattnet är avstängt vid huvudkranen</span
+                  >
+                </label>
+              </li>
+              <li
+                class="check-item border-b border-linne-100 last:border-b-0"
+              >
+                <label
+                  class="flex items-start gap-3 px-5 py-3.5 cursor-pointer hover:bg-linne-50/60 transition-colors"
+                >
+                  <input type="checkbox" class="peer sr-only" />
+                  <span
+                    class="box relative w-5 h-5 rounded-sm border-2 border-blaeck-300 bg-white shrink-0 mt-0.5 transition-colors peer-checked:bg-skog-500 peer-checked:border-skog-500 after:content-[''] after:absolute after:left-[3px] after:top-[-1px] after:w-[5px] after:h-[10px] after:border-r-2 after:border-b-2 after:border-white after:rotate-45 after:opacity-0 peer-checked:after:opacity-100 peer-focus-visible:ring-2 peer-focus-visible:ring-terra-500 peer-focus-visible:ring-offset-2"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
+                    >Nycklarna är tillbaka i nyckelskåpet</span
+                  >
+                </label>
+              </li>
+            </ul>
+
+            <!-- Belöning vid 10/10 -->
+            <div
+              class="checklist-reward hidden items-start gap-4 px-5 py-5 bg-skog-50 border-t border-skog-200"
+            >
+              <i
+                class="ph-duotone ph-confetti text-skog-700 text-[32px] shrink-0"
+                aria-hidden="true"
+              ></i>
+              <div class="flex-1">
+                <h4
+                  class="font-display font-medium text-[18px] text-skog-800 m-0 mb-1"
+                  style="font-variation-settings: &quot;opsz&quot; 24"
+                >
+                  Tack — du är redo för avfärd.
+                </h4>
+                <p class="text-body-sm text-blaeck-700 m-0">
+                  Lås, lämna nycklarna i nyckelskåpet och stäng dörren efter
+                  dig. Trevlig resa hem.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ============== KONTAKT ============== -->
+      <section
+        class="max-w-[1280px] mx-auto px-6 sm:px-8 lg:px-12 py-12 lg:py-20 border-t border-linne-200"
+      >
+        <h2
+          class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
+        >
+          Vem du ringer
+        </h2>
+        <p
+          class="font-display font-light text-[17px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0 mb-10"
+          style="font-variation-settings: &quot;opsz&quot; 18"
+        >
+          Saknas nyckelkod, wifi-uppgifter eller schemainformation —
+          <span translate="no">Sanco</span>. Något som inte fungerar i huset
+          eller akut situation — <span translate="no">Hugo</span>.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <article
+            class="relative isolate overflow-hidden bg-terra-700 text-linne-100 flex flex-col gap-4 p-8 rounded-md before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-[image:var(--tex-bukett)] before:bg-[length:240px] before:opacity-[0.07] before:pointer-events-none"
+          >
+            <p
+              class="font-mono text-label uppercase tracking-[0.12em] text-terra-100 m-0"
+            >
+              Boendet · <span translate="no">Sanco</span>
+            </p>
+            <h3
+              translate="no"
+              class="font-display font-light text-[clamp(28px,3vw,36px)] leading-[1.1] text-linne-50 m-0"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 72,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Nicklas
+              <em
+                class="wonk text-senap-200"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 72,
+                    &quot;WONK&quot; 1,
+                    &quot;SOFT&quot; 30;
+                "
+                >Boström</em
+              >
+            </h3>
+            <p
+              class="font-display text-[15px] leading-[1.5] text-terra-100 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Bokningen, schemat, kontraktet, koder till nyckelskåp och wifi.
+            </p>
+            <dl
+              class="grid grid-cols-[90px_1fr] gap-3 text-[14px] py-3 border-t border-terra-800 m-0 mt-2"
+            >
+              <dt
+                class="font-mono text-label uppercase tracking-[0.08em] text-terra-200 mt-0.5"
+              >
+                Telefon
+              </dt>
+              <dd class="m-0 text-linne-50">
+                <a
+                  href="tel:+46706249411"
+                  translate="no"
+                  class="text-senap-200 no-underline border-b border-terra-800 transition-colors hover:text-linne-50 hover:border-senap-300"
+                  >070-624 94 11</a
+                >
+              </dd>
+              <dt
+                class="font-mono text-label uppercase tracking-[0.08em] text-terra-200 mt-0.5"
+              >
+                E-post
+              </dt>
+              <dd class="m-0 text-linne-50">
+                <a
+                  href="mailto:nicklas.bostrom@sancoab.se"
+                  class="text-senap-200 no-underline border-b border-terra-800 transition-colors hover:text-linne-50 hover:border-senap-300"
+                  >nicklas.bostrom@sancoab.se</a
+                >
+              </dd>
+            </dl>
+          </article>
+
+          <article
+            class="relative isolate overflow-hidden bg-skog-900 text-linne-100 flex flex-col gap-4 p-8 rounded-md before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-[image:var(--tex-sol)] before:bg-[length:80px] before:opacity-[0.15] before:pointer-events-none"
+          >
+            <p
+              class="font-mono text-label uppercase tracking-[0.12em] text-linne-300 m-0"
+            >
+              Huset
+            </p>
+            <h3
+              translate="no"
+              class="font-display font-light text-[clamp(28px,3vw,36px)] leading-[1.1] text-linne-50 m-0"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 72,
+                  &quot;SOFT&quot; 30;
+              "
+            >
+              Hugo
+              <em
+                class="wonk text-terra-300"
+                style="
+                  font-variation-settings:
+                    &quot;opsz&quot; 72,
+                    &quot;WONK&quot; 1,
+                    &quot;SOFT&quot; 30;
+                "
+                >Kjellsson</em
+              >
+            </h3>
+            <p
+              class="font-display text-[15px] leading-[1.5] text-linne-200 m-0"
+              style="font-variation-settings: &quot;opsz&quot; 18"
+            >
+              Vattenläcka, strömavbrott, trasig vitvara — eller något annat som
+              inte fungerar.
+            </p>
+            <dl
+              class="grid grid-cols-[90px_1fr] gap-3 text-[14px] py-3 border-t border-skog-700 m-0 mt-2"
+            >
+              <dt
+                class="font-mono text-label uppercase tracking-[0.08em] text-linne-400 mt-0.5"
+              >
+                Telefon
+              </dt>
+              <dd class="m-0 text-linne-100">
+                <a
+                  href="tel:+46703909051"
+                  translate="no"
+                  class="text-terra-300 no-underline border-b border-terra-700 transition-colors hover:text-terra-200 hover:border-terra-500"
+                  >070-390 90 51</a
+                >
+              </dd>
+              <dt
+                class="font-mono text-label uppercase tracking-[0.08em] text-linne-400 mt-0.5"
+              >
+                E-post
+              </dt>
+              <dd class="m-0 text-linne-100">
+                <a
+                  href="mailto:hugo@kjellsson.nu"
+                  class="text-terra-300 no-underline border-b border-terra-700 transition-colors hover:text-terra-200 hover:border-terra-500"
+                  >hugo@kjellsson.nu</a
+                >
+              </dd>
+            </dl>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============== FOOTER ============== -->
+    <footer
+      class="relative isolate overflow-hidden mt-24 bg-blaeck-800 text-linne-200 before:content-[''] before:absolute before:inset-0 before:-z-10 before:bg-[image:var(--tex-klover)] before:bg-[length:80px] before:opacity-[0.04] before:pointer-events-none"
+    >
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_2fr_1fr] gap-8 lg:gap-12 max-w-[1280px] mx-auto px-6 py-12 sm:px-8 sm:py-14 lg:px-12 lg:py-16"
+      >
+        <div>
+          <p
+            class="font-display font-light text-[28px] leading-[1.1] text-linne-50 m-0 mb-3 -tracking-[0.01em]"
+            style="
+              font-variation-settings:
+                &quot;opsz&quot; 72,
+                &quot;SOFT&quot; 30;
+            "
+          >
+            <span translate="no">Domek</span> —
+            <em
+              class="wonk text-terra-300"
+              style="
+                font-variation-settings:
+                  &quot;opsz&quot; 72,
+                  &quot;WONK&quot; 1,
+                  &quot;SOFT&quot; 30;
+              "
+              >litet hus</em
+            >,<br />tydliga ramar.
+          </p>
+          <p class="text-caption text-linne-300 m-0">
+            <span translate="no">Domek</span> är ett enfamiljshus från 1959 på
+            <span translate="no">Solrosvägen 17</span> i
+            <span translate="no">Örnsköldsvik</span>.
+            <span translate="no">Hugo &amp; Vega Kjellsson</span> äger det,
+            <span translate="no">Sanco</span> hyr det åt sina arbetare.
+          </p>
+        </div>
+
+        <div>
+          <h5
+            class="font-mono text-label uppercase tracking-[0.12em] text-terra-300 m-0 mb-4 font-medium"
+          >
+            Kontakt
+          </h5>
+          <div class="flex flex-col gap-1 text-caption mt-3">
+            <span
+              class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
+              >Huset</span
+            >
+            <span translate="no">Hugo Kjellsson</span>
+            <a
+              href="tel:+46703909051"
+              translate="no"
+              class="text-terra-300 no-underline hover:text-terra-200"
+              >+46 70-390 90 51</a
+            >
+            <a
+              href="mailto:hugo@kjellsson.nu"
+              class="text-terra-300 no-underline hover:text-terra-200"
+              >hugo@kjellsson.nu</a
+            >
+          </div>
+          <div class="flex flex-col gap-1 text-caption mt-3">
+            <span
+              class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
+              >Boendet · <span translate="no">Sanco</span></span
+            >
+            <span translate="no">Nicklas Boström</span>
+            <a
+              href="tel:+46706249411"
+              translate="no"
+              class="text-terra-300 no-underline hover:text-terra-200"
+              >+46 70-624 94 11</a
+            >
+            <a
+              href="mailto:nicklas.bostrom@sancoab.se"
+              class="text-terra-300 no-underline hover:text-terra-200"
+              >nicklas.bostrom@sancoab.se</a
+            >
+          </div>
+        </div>
+
+        <div>
+          <h5
+            class="font-mono text-label uppercase tracking-[0.12em] text-terra-300 m-0 mb-4 font-medium"
+          >
+            Sidor
+          </h5>
+          <ul class="list-none m-0 p-0 flex flex-col gap-2">
+            <li>
+              <a
+                href="huset.html"
+                class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
+                >Huset</a
+              >
+            </li>
+            <li>
+              <a
+                href="inflytt-utflytt.html"
+                class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
+                >Inflytt &amp; utflytt</a
+              >
+            </li>
+            <li>
+              <a
+                href="omradet.html"
+                class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
+                >Området</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="meta-row">
-        <dt data-i18n="inflytt.meta.wifi">WiFi</dt>
-        <dd data-i18n="inflytt.meta.wifi.value">Täcker hela huset</dd>
+
+      <div class="border-t border-blaeck-700">
+        <div
+          class="max-w-[1280px] mx-auto px-6 py-4 sm:px-8 lg:px-12 flex flex-wrap justify-between items-center gap-3 font-mono text-label tracking-[0.06em] text-linne-400"
+        >
+          <div>
+            <span translate="no">Domek</span>
+            <span class="text-terra-400">·</span>
+            <span translate="no">Solrosvägen 17, Örnsköldsvik</span>
+          </div>
+          <div>© 2026 <span translate="no">Hugo &amp; Vega Kjellsson</span></div>
+        </div>
       </div>
-      <div class="meta-row">
-        <dt data-i18n="inflytt.meta.heat">Värme</dt>
-        <dd data-i18n="inflytt.meta.heat.value">Fjärrvärme + radiatorer</dd>
-      </div>
-      <div class="meta-row">
-        <dt data-i18n="inflytt.meta.vent">Ventilation</dt>
-        <dd data-i18n="inflytt.meta.vent.value">Självdrag — <em>vädra dagligen</em></dd>
-      </div>
-    </dl>
-  </div>
-</section>
+    </footer>
 
-<!-- ============== 01 · VID ANKOMST ============== -->
-<section class="shell section reveal">
-  <div class="section-head">
-    <p class="section-num" data-i18n="inflytt.arrival.eyebrow">01 · Vid ankomst</p>
-    <div>
-      <h2 class="section-title" data-i18n="inflytt.arrival.title">Tre steg in i <em>huset</em>.</h2>
-      <p class="section-blurb" data-i18n="inflytt.arrival.blurb">Du behöver: kod till nyckelskåp, wifi-lösenord, och vetskap om hur värmen justeras. Allt finns nedan.</p>
-    </div>
-  </div>
-
-  <div class="steps">
-    <div class="step">
-      <p class="step-num">01</p>
-      <h4 data-i18n="inflytt.arrival.s1.title">Nyckelskåp vid dörren</h4>
-      <p data-i18n="inflytt.arrival.s1.body">Nyckelskåpet sitter på vänster sida om ytterdörren. Slå koden, ta nyckeln, lås upp.</p>
-      <ul class="data-list">
-        <li>
-          <span class="key" data-i18n="inflytt.arrival.s1.code.key">Kod</span>
-          <span class="val" data-i18n="inflytt.arrival.s1.code.val">[fås av Lars]</span>
-        </li>
-        <li>
-          <span class="key" data-i18n="inflytt.arrival.s1.note.key">OBS</span>
-          <span class="val" data-i18n="inflytt.arrival.s1.note.val">Lägg tillbaka nyckeln vid avresa</span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="step">
-      <p class="step-num">02</p>
-      <h4 data-i18n="inflytt.arrival.s2.title">Anslut till wifi</h4>
-      <p data-i18n="inflytt.arrival.s2.body">Routern sitter i vardagsrummet bakom TV:n. Nätverk och lösenord nedan.</p>
-      <ul class="data-list">
-        <li>
-          <span class="key" data-i18n="inflytt.arrival.s2.net.key">Nätverk</span>
-          <span class="val" data-i18n="inflytt.arrival.s2.net.val">[fås av Lars]</span>
-        </li>
-        <li>
-          <span class="key" data-i18n="inflytt.arrival.s2.pass.key">Lösenord</span>
-          <span class="val" data-i18n="inflytt.arrival.s2.pass.val">[fås av Lars]</span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="step">
-      <p class="step-num">03</p>
-      <h4 data-i18n="inflytt.arrival.s3.title">Justera värmen</h4>
-      <p data-i18n="inflytt.arrival.s3.body">Varje radiator har ett vred 1–5. Standardläge är 3. Justera per rum efter behov.</p>
-      <ul class="data-list">
-        <li>
-          <span class="key" data-i18n="inflytt.arrival.s3.vent.key">Vädra</span>
-          <span class="val" data-i18n="inflytt.arrival.s3.vent.val">Korsdrag 5–10 min/dag</span>
-        </li>
-        <li>
-          <span class="key" data-i18n="inflytt.arrival.s3.note.key">OBS</span>
-          <span class="val" data-i18n="inflytt.arrival.s3.note.val">Stäng inte ventiler i fönsterkarmar</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ============== 02 · STÄDNING ============== -->
-<section class="shell section reveal">
-  <div class="section-head">
-    <p class="section-num" data-i18n="inflytt.cleaning.eyebrow">02 · Städning under vistelsen</p>
-    <div>
-      <h2 class="section-title" data-i18n="inflytt.cleaning.title">Tre <em>rutiner</em>.</h2>
-      <p class="section-blurb" data-i18n="inflytt.cleaning.blurb">Köket dagligen, badrummet veckovis, golven vid behov. Att hålla det löpande är mycket lättare än att göra allt sista dagen.</p>
-    </div>
-  </div>
-
-  <div class="card-grid-3">
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow">A</p>
-        <h3 data-i18n="inflytt.cleaning.kitchen.title">Köket — dagligen</h3>
-        <p data-i18n="inflytt.cleaning.kitchen.body">Diska efter måltid. Torka av bänken. Bär ut soporna när påsen är full. Ta inte rast på regler.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow">B</p>
-        <h3 data-i18n="inflytt.cleaning.bath.title">Badrum — veckovis</h3>
-        <p data-i18n="inflytt.cleaning.bath.body">Skura toaletten, torka handfat, tvätta golvet. Städmedel finns under hon i köket.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <p class="card-eyebrow">C</p>
-        <h3 data-i18n="inflytt.cleaning.floor.title">Golv — vid behov</h3>
-        <p data-i18n="inflytt.cleaning.floor.body">Dammsug entré och kök oftare än övriga rum. Moppa fuktigt — inte vått. Trägolv tål inte stora vattenmängder.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============== 03 · VID AVRESA — CHECKLISTA ============== -->
-<section class="shell section reveal">
-  <div class="section-head">
-    <p class="section-num" data-i18n="inflytt.exit.eyebrow">03 · Vid avresa</p>
-    <div>
-      <h2 class="section-title" data-i18n="inflytt.exit.title">Avrese<em>checklista</em>.</h2>
-      <p class="section-blurb" data-i18n="inflytt.exit.blurb">Nio punkter. Kryssa i allt eftersom — framstegsindikatorn fyller på sig. Listan sparas inte mellan besök.</p>
-    </div>
-  </div>
-
-  <div class="checklist">
-    <div class="checklist-progress">
-      <div class="progress-bar">
-        <div class="progress-bar-fill" style="width: 0%;"></div>
-      </div>
-      <div class="progress-count">
-        <strong>0</strong> / 9
-      </div>
-    </div>
-
-    <ul class="check-list">
-      <li class="check-item">
-        <label>
-          <input type="checkbox">
-          <span class="box" aria-hidden="true"></span>
-          <span class="label" data-i18n="inflytt.check.1">Disken är gjord och torkad</span>
-        </label>
-      </li>
-      <li class="check-item">
-        <label>
-          <input type="checkbox">
-          <span class="box" aria-hidden="true"></span>
-          <span class="label" data-i18n="inflytt.check.2">Kyl och frys är tömda</span>
-        </label>
-      </li>
-      <li class="check-item">
-        <label>
-          <input type="checkbox">
-          <span class="box" aria-hidden="true"></span>
-          <span class="label" data-i18n="inflytt.check.3">Soporna är utburna</span>
-        </label>
-      </li>
-      <li class="check-item">
-        <label>
-          <input type="checkbox">
-          <span class="box" aria-hidden="true"></span>
-          <span class="label" data-i18n="inflytt.check.4">Tvätten är hemtagen</span>
-        </label>
-      </li>
-      <li class="check-item">
-        <label>
-          <input type="checkbox">
-          <span class="box" aria-hidden="true"></span>
-          <span class="label" data-i18n="inflytt.check.5">Sängkläder och handdukar är hemtagna</span>
-        </label>
-      </li>
-      <li class="check-item">
-        <label>
-          <input type="checkbox">
-          <span class="box" aria-hidden="true"></span>
-          <span class="label" data-i18n="inflytt.check.6">Alla fönster är stängda</span>
-        </label>
-      </li>
-      <li class="check-item">
-        <label>
-          <input type="checkbox">
-          <span class="box" aria-hidden="true"></span>
-          <span class="label" data-i18n="inflytt.check.7">Ytterdörrar är låsta</span>
-        </label>
-      </li>
-      <li class="check-item">
-        <label>
-          <input type="checkbox">
-          <span class="box" aria-hidden="true"></span>
-          <span class="label" data-i18n="inflytt.check.8">Grundstädning är gjord</span>
-        </label>
-      </li>
-      <li class="check-item">
-        <label>
-          <input type="checkbox">
-          <span class="box" aria-hidden="true"></span>
-          <span class="label" data-i18n="inflytt.check.9">Nycklarna är tillbaka i nyckelskåpet</span>
-        </label>
-      </li>
-    </ul>
-  </div>
-
-  <div class="notice tone-terra" style="margin-top: var(--s-5);">
-    <div class="icon" aria-hidden="true">!</div>
-    <div>
-      <h4 data-i18n="inflytt.exit.notice.title">Sängkläder ALLTID med hem</h4>
-      <p data-i18n="inflytt.exit.notice.body">Glömda sängkläder och handdukar slängs vid slutstädning. Vi sparar inte och skickar inte hem.</p>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<!-- ============== FOOTER ============== -->
-<footer class="foot-wrap">
-  <div class="foot-inner">
-    <div class="foot-block">
-      <p class="signoff" data-i18n="foot.signoff">Domek — <em>litet hus</em>,<br>tydliga ramar.</p>
-      <p data-i18n="foot.about">Domek är ett enfamiljshus från 1959 på Solrosvägen 17 i Örnsköldsvik. Hugo och Vega Kjellsson äger det, Sanco hyr det åt sina arbetare.</p>
-    </div>
-
-    <div class="foot-block">
-      <h5 data-i18n="foot.contact">Kontakt</h5>
-      <div class="contact-row">
-        <span class="who" data-i18n="foot.contact.house">Huset</span>
-        <span>Hugo &amp; Vega Kjellsson</span>
-        <a href="tel:+46700000000">+46 70 000 00 00</a>
-        <a href="mailto:hej@domek.se">hej@domek.se</a>
-      </div>
-      <div class="contact-row">
-        <span class="who" data-i18n="foot.contact.work">Jobbet</span>
-        <span>Lars Hellgren · Sanco</span>
-        <a href="tel:+46700000001">+46 70 000 00 01</a>
-        <a href="mailto:lars@sanco.se">lars@sanco.se</a>
-      </div>
-    </div>
-
-    <div class="foot-block">
-      <h5 data-i18n="foot.pages">Sidor</h5>
-      <ul>
-        <li><a href="huset.html"           data-i18n="nav.huset">Huset</a></li>
-        <li><a href="rum.html"             data-i18n="nav.rummen">Rummen</a></li>
-        <li><a href="inflytt-utflytt.html" data-i18n="nav.inflytt">Inflytt &amp; utflytt</a></li>
-        <li><a href="omradet.html"         data-i18n="nav.omradet">Området</a></li>
-      </ul>
-    </div>
-
-    <div class="foot-block">
-      <h5 data-i18n="foot.lang">Språk</h5>
-      <div class="lang-switch" role="group" aria-label="Språk">
-        <button data-lang="sv" aria-pressed="true">SV</button>
-        <button data-lang="en" aria-pressed="false">EN</button>
-        <button data-lang="pl" aria-pressed="false">PL</button>
-      </div>
-      <p style="margin-top: var(--s-4); font-size: 12px; color: var(--linne-400);">
-        <span data-i18n="foot.updated">Uppdaterad</span>: 2026-04-25
-      </p>
-    </div>
-  </div>
-
-  <div class="foot-bottom">
-    <div class="foot-bottom-inner">
-      <div data-i18n="foot.copy">Domek <span class="terra">·</span> Solrosvägen 17, Örnsköldsvik</div>
-      <div>v.1 <span class="terra">·</span> April 2026</div>
-    </div>
-  </div>
-</footer>
-
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
