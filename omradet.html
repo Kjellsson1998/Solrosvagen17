@@ -809,7 +809,7 @@
             places: [
               {
                 name: "Gimåt Elljusspår",
-                file: "vandring/Gimåt_Elljusspår.js",
+                file: "Vandring/Gimåt_Elljusspår.js",
                 coords: [63.32009, 18.71747],
                 address: "Gimåtvägen · belyst spår",
                 meta: "Lätt · ~5 km slinga · närmst",
@@ -817,7 +817,7 @@
               },
               {
                 name: "Gula Leden",
-                file: "vandring/Gula_Leden_Örnsköldsvik.js",
+                file: "Vandring/Gula_Leden_Örnsköldsvik.js",
                 coords: [63.29568, 18.70785],
                 address: "Brödrabacken · Åsberget",
                 meta: "Utmanande · ~6 km · brant, fin utsikt",
@@ -825,7 +825,7 @@
               },
               {
                 name: "Höga Kustenleden",
-                file: "vandring/Höga_Kustenleden_Sandlåga__Balestjärn.js",
+                file: "Vandring/Höga_Kustenleden_Sandlåga__Balestjärn.js",
                 coords: [63.20097, 18.70212],
                 address: "Sandlåga – Balestjärn",
                 meta: "Klassiska Höga Kusten · längre tur",
@@ -833,7 +833,7 @@
               },
               {
                 name: "Fäbodleden",
-                file: "vandring/Fäbodleden_i_Nätra_Fjällskog.js",
+                file: "Vandring/Fäbodleden_i_Nätra_Fjällskog.js",
                 coords: [63.16479, 18.27446],
                 address: "Nätra Fjällskog",
                 meta: "Medel–utmanande · längre tur",
@@ -841,7 +841,7 @@
               },
               {
                 name: "Skuleskogen Syd",
-                file: "vandring/Skuleskogen_Syd__Trollporten__Slåttdalsskrevan__Tärnättstugan.js",
+                file: "Vandring/Skuleskogen_Syd__Trollporten__Slåttdalsskrevan__Tärnättstugan.js",
                 coords: [63.08568, 18.48174],
                 address: "Skuleskogen · södra entrén",
                 meta: "Utmanande · Slåttdalsskrevan, Trollporten, Tärnättstugan",
@@ -996,6 +996,7 @@
         let placeLayer = null;
         let trailLayer = null;
         let activeKey = "stores";
+        let hasInitialFit = false;
         const trailCache = {};
 
         async function loadTrail(file) {
@@ -1179,7 +1180,19 @@
             opts.paddingTopLeft = [150, 30];
             opts.paddingBottomRight = [30, 30];
           }
-          map.fitBounds(bounds, opts);
+          // Första fit:en (initial load) gör vi instant så vi inte "flyger in"
+          // från Leaflets default världsvy. Efterföljande kategori-byten
+          // animeras — tiles pre-hämtas under animationen så ingen ladd-flicker.
+          if (!hasInitialFit) {
+            map.fitBounds(bounds, opts);
+            hasInitialFit = true;
+          } else {
+            map.flyToBounds(bounds, {
+              ...opts,
+              duration: 1.0,
+              easeLinearity: 0.25,
+            });
+          }
         }
 
         async function setActiveCategory(key) {
@@ -1312,6 +1325,97 @@
 
           // Initial category
           setActiveCategory(activeKey);
+
+          // Pre-cacha tiles för hela Örnsköldsvik-området vid lägsta
+          // prioritet, så att kategori-byten blir flicker-fria.
+          schedulePreload();
+        }
+
+        // ============================================================
+        // Tile-preload — kör i bakgrunden vid requestIdleCallback
+        // ============================================================
+        function schedulePreload() {
+          // Vänta 2 s så vi inte konkurrerar med den initiala kart-renderingen
+          setTimeout(() => {
+            if ("requestIdleCallback" in window) {
+              requestIdleCallback(preloadTiles, { timeout: 5000 });
+            } else {
+              preloadTiles();
+            }
+          }, 2000);
+        }
+
+        function preloadTiles() {
+          // Bounding-box som täcker alla kategorier (Örnsköldsvik + Höga Kusten)
+          const NORTH = 63.34;
+          const SOUTH = 63.07;
+          const WEST = 18.25;
+          const EAST = 18.8;
+
+          // lat/lng → tile-coords (Web Mercator)
+          const lngToTile = (lng, z) =>
+            Math.floor(((lng + 180) / 360) * Math.pow(2, z));
+          const latToTile = (lat, z) =>
+            Math.floor(
+              ((1 -
+                Math.log(
+                  Math.tan((lat * Math.PI) / 180) +
+                    1 / Math.cos((lat * Math.PI) / 180),
+                ) /
+                  Math.PI) /
+                2) *
+                Math.pow(2, z),
+            );
+
+          const subs = ["a", "b", "c", "d"];
+          const urls = [];
+
+          // Zoom 11–14 täcker de flesta kategorivyer (stad + närområde)
+          for (let z = 11; z <= 14; z++) {
+            const xMin = lngToTile(WEST, z);
+            const xMax = lngToTile(EAST, z);
+            const yMin = latToTile(NORTH, z);
+            const yMax = latToTile(SOUTH, z);
+            for (let x = xMin; x <= xMax; x++) {
+              for (let y = yMin; y <= yMax; y++) {
+                const s = subs[(x + y) % subs.length];
+                urls.push(
+                  "https://" +
+                    s +
+                    ".basemaps.cartocdn.com/light_all/" +
+                    z +
+                    "/" +
+                    x +
+                    "/" +
+                    y +
+                    ".png",
+                );
+              }
+            }
+          }
+
+          // Hämta sekventiellt vid idle, en åt gången, lägsta prio
+          let i = 0;
+          function next(deadline) {
+            while (
+              i < urls.length &&
+              (!deadline || deadline.timeRemaining() > 5)
+            ) {
+              const img = new Image();
+              if ("fetchPriority" in img) img.fetchPriority = "low";
+              img.decoding = "async";
+              img.loading = "lazy";
+              img.src = urls[i++];
+            }
+            if (i < urls.length) {
+              if ("requestIdleCallback" in window) {
+                requestIdleCallback(next, { timeout: 5000 });
+              } else {
+                setTimeout(next, 200);
+              }
+            }
+          }
+          next();
         }
 
         function attachToggleHandlers() {
