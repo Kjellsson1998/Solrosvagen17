@@ -19,6 +19,7 @@
   const TRANSLATIONS = {
     sv: {
       // Navigation
+      'nav.hem': 'Hem',
       'nav.huset': 'Huset',
       'nav.rummen': 'Rummen',
       'nav.inflytt': 'Inflytt & utflytt',
@@ -75,8 +76,8 @@
       'index.before.notice1.body': 'Du tar med dig själv. Glöm du dem så hänvisar vi till Jysk i Örnsköldsvik. Sängar utan kläder används inte.',
       'index.before.notice2.title': 'Köket har ingen diskmaskin',
       'index.before.notice2.body': 'Diska för hand. Det går snabbt om du gör det direkt efter måltid och inte låter det stå.',
-      'index.before.notice3.title': 'Kod till nyckelskåp och wifi får du av Lars',
-      'index.before.notice3.body': 'Vi som äger huset hanterar inte bokningen. Lars (Sanco) skickar uppgifterna före ankomst.',
+      'index.before.notice3.title': 'Kod till nyckelskåp och wifi får du av Nicklas',
+      'index.before.notice3.body': 'Vi som äger huset hanterar inte bokningen. Nicklas (Sanco) skickar uppgifterna före ankomst.',
 
       'index.find.eyebrow': '03 · Hitta i huset',
       'index.find.title': 'Vad behöver du <em>just nu</em>?',
@@ -105,7 +106,7 @@
       'index.contact.house.lang': 'Språk',
       'index.contact.house.lang.value': 'Svenska, engelska',
       'index.contact.work.role': 'Sanco — bokning & jobb',
-      'index.contact.work.title': 'Lars <em>Hellgren</em>',
+      'index.contact.work.title': 'Nicklas <em>Boström</em>',
       'index.contact.work.desc': 'Vid frågor om jobbet, schemat, bokningen, kod till nyckelskåp eller wifi-uppgifter.',
       'index.contact.work.phone': 'Telefon',
       'index.contact.work.email': 'E-post',
@@ -297,15 +298,15 @@
       'inflytt.arrival.s1.title': 'Nyckelskåp vid dörren',
       'inflytt.arrival.s1.body': 'Nyckelskåpet sitter på vänster sida om ytterdörren. Slå koden, ta nyckeln, lås upp.',
       'inflytt.arrival.s1.code.key': 'Kod',
-      'inflytt.arrival.s1.code.val': '[fås av Lars]',
+      'inflytt.arrival.s1.code.val': '[fås av Nicklas]',
       'inflytt.arrival.s1.note.key': 'OBS',
       'inflytt.arrival.s1.note.val': 'Lägg tillbaka nyckeln vid avresa',
       'inflytt.arrival.s2.title': 'Anslut till wifi',
       'inflytt.arrival.s2.body': 'Routern sitter i vardagsrummet bakom TV:n. Nätverk och lösenord nedan.',
       'inflytt.arrival.s2.net.key': 'Nätverk',
-      'inflytt.arrival.s2.net.val': '[fås av Lars]',
+      'inflytt.arrival.s2.net.val': '[fås av Nicklas]',
       'inflytt.arrival.s2.pass.key': 'Lösenord',
-      'inflytt.arrival.s2.pass.val': '[fås av Lars]',
+      'inflytt.arrival.s2.pass.val': '[fås av Nicklas]',
       'inflytt.arrival.s3.title': 'Justera värmen',
       'inflytt.arrival.s3.body': 'Varje radiator har ett vred 1–5. Standardläge är 3. Justera per rum efter behov.',
       'inflytt.arrival.s3.vent.key': 'Vädra',
@@ -388,6 +389,7 @@
 
     en: {
       // Navigation
+      'nav.hem': 'Home',
       'nav.huset': 'The house',
       'nav.rummen': 'The rooms',
       'nav.inflytt': 'Arrival & departure',
@@ -444,8 +446,8 @@
       'index.before.notice1.body': 'You bring them yourself. If you forget, we point you to Jysk in Örnsköldsvik. Beds without bedlinen are not used.',
       'index.before.notice2.title': 'The kitchen has no dishwasher',
       'index.before.notice2.body': 'Wash up by hand. It is quick if you do it right after the meal and do not let it sit.',
-      'index.before.notice3.title': 'Key code and wifi come from Lars',
-      'index.before.notice3.body': 'We who own the house do not handle bookings. Lars (Sanco) sends you the details before arrival.',
+      'index.before.notice3.title': 'Key code and wifi come from Nicklas',
+      'index.before.notice3.body': 'We who own the house do not handle bookings. Nicklas (Sanco) sends you the details before arrival.',
 
       'index.find.eyebrow': '03 · Find your way around',
       'index.find.title': 'What do you need <em>right now</em>?',
@@ -474,7 +476,7 @@
       'index.contact.house.lang': 'Language',
       'index.contact.house.lang.value': 'Swedish, English',
       'index.contact.work.role': 'Sanco — booking & job',
-      'index.contact.work.title': 'Lars <em>Hellgren</em>',
+      'index.contact.work.title': 'Nicklas <em>Boström</em>',
       'index.contact.work.desc': 'For questions about the job, the schedule, the booking, key code or wifi details.',
       'index.contact.work.phone': 'Phone',
       'index.contact.work.email': 'Email',
@@ -666,15 +668,15 @@
       'inflytt.arrival.s1.title': 'Key box at the door',
       'inflytt.arrival.s1.body': 'The key box is on the left of the front door. Enter the code, take the key, unlock.',
       'inflytt.arrival.s1.code.key': 'Code',
-      'inflytt.arrival.s1.code.val': '[from Lars]',
+      'inflytt.arrival.s1.code.val': '[from Nicklas]',
       'inflytt.arrival.s1.note.key': 'NOTE',
       'inflytt.arrival.s1.note.val': 'Return the key on departure',
       'inflytt.arrival.s2.title': 'Connect to wifi',
       'inflytt.arrival.s2.body': 'The router is in the living room behind the TV. Network and password below.',
       'inflytt.arrival.s2.net.key': 'Network',
-      'inflytt.arrival.s2.net.val': '[from Lars]',
+      'inflytt.arrival.s2.net.val': '[from Nicklas]',
       'inflytt.arrival.s2.pass.key': 'Password',
-      'inflytt.arrival.s2.pass.val': '[from Lars]',
+      'inflytt.arrival.s2.pass.val': '[from Nicklas]',
       'inflytt.arrival.s3.title': 'Adjust the heating',
       'inflytt.arrival.s3.body': 'Each radiator has a 1–5 dial. Default is 3. Adjust per room as needed.',
       'inflytt.arrival.s3.vent.key': 'Air',
@@ -760,6 +762,7 @@
       // Saknade nycklar faller tillbaka till engelska (sedan svenska).
 
       // Navigation
+      'nav.hem': 'Strona główna',
       'nav.huset': 'Dom',
       'nav.rummen': 'Pokoje',
       'nav.inflytt': 'Przyjazd i wyjazd',
@@ -798,8 +801,8 @@
       'index.before.notice1.body': 'Przywieź je sam. Jeśli zapomnisz, wskazujemy Jysk w Örnsköldsvik. Łóżek bez pościeli się nie używa.',
       'index.before.notice2.title': 'W kuchni nie ma zmywarki',
       'index.before.notice2.body': 'Zmywaj ręcznie. Idzie szybko, jeśli robisz to od razu po posiłku.',
-      'index.before.notice3.title': 'Kod do skrytki na klucze i wifi otrzymasz od Larsa',
-      'index.before.notice3.body': 'My, właściciele domu, nie zajmujemy się rezerwacją. Lars (Sanco) wysyła dane przed przyjazdem.',
+      'index.before.notice3.title': 'Kod do skrytki na klucze i wifi otrzymasz od Nicklasa',
+      'index.before.notice3.body': 'My, właściciele domu, nie zajmujemy się rezerwacją. Nicklas (Sanco) wysyła dane przed przyjazdem.',
 
       'index.contact.emergency.title': 'Nagły wypadek: 112',
       'index.contact.emergency.body': 'W razie pożaru, nagłej choroby lub przestępstwa — dzwoń 112 zanim zadzwonisz do nas. Niepilne porady medyczne: 1177.',

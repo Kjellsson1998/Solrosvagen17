@@ -42,6 +42,7 @@
     --radius-3xl: 1.5rem;
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --blur-md: 12px;
+    --blur-2xl: 40px;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -1241,6 +1242,12 @@
   .border-blaeck-800 {
     border-color: var(--color-blaeck-800);
   }
+  .border-blaeck-900\/70 {
+    border-color: color-mix(in srgb, #15110B 70%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-blaeck-900) 70%, transparent);
+    }
+  }
   .border-linne-100 {
     border-color: var(--color-linne-100);
   }
@@ -1276,12 +1283,6 @@
   }
   .border-transparent {
     border-color: transparent;
-  }
-  .border-white\/40 {
-    border-color: color-mix(in srgb, #fff 40%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-white) 40%, transparent);
-    }
   }
   .border-l-blaeck-500 {
     border-left-color: var(--color-blaeck-500);
@@ -1340,10 +1341,10 @@
   .bg-linne-50 {
     background-color: var(--color-linne-50);
   }
-  .bg-linne-50\/40 {
-    background-color: color-mix(in srgb, #FBF7F0 40%, transparent);
+  .bg-linne-50\/20 {
+    background-color: color-mix(in srgb, #FBF7F0 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-linne-50) 40%, transparent);
+      background-color: color-mix(in oklab, var(--color-linne-50) 20%, transparent);
     }
   }
   .bg-linne-50\/90 {
@@ -2349,10 +2350,6 @@
     --tw-shadow: 0 4px 8px var(--tw-shadow-color, rgba(34, 30, 21, 0.06)), 0 2px 4px var(--tw-shadow-color, rgba(34, 30, 21, 0.04));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
-  .shadow-sm {
-    --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
-    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
-  }
   .ring {
     --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color, currentcolor);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -2374,6 +2371,11 @@
   .outline-terra-500 {
     outline-color: var(--color-terra-500);
   }
+  .backdrop-blur-2xl {
+    --tw-backdrop-blur: blur(var(--blur-2xl));
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
   .backdrop-blur-md {
     --tw-backdrop-blur: blur(var(--blur-md));
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
@@ -2381,6 +2383,11 @@
   }
   .backdrop-saturate-150 {
     --tw-backdrop-saturate: saturate(150%);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+    backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
+  }
+  .backdrop-saturate-200 {
+    --tw-backdrop-saturate: saturate(200%);
     -webkit-backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
     backdrop-filter: var(--tw-backdrop-blur,) var(--tw-backdrop-brightness,) var(--tw-backdrop-contrast,) var(--tw-backdrop-grayscale,) var(--tw-backdrop-hue-rotate,) var(--tw-backdrop-invert,) var(--tw-backdrop-opacity,) var(--tw-backdrop-saturate,) var(--tw-backdrop-sepia,);
   }
@@ -2730,6 +2737,16 @@
       }
     }
   }
+  .hover\:border-blaeck-900\/90 {
+    &:hover {
+      @media (hover: hover) {
+        border-color: color-mix(in srgb, #15110B 90%, transparent);
+        @supports (color: color-mix(in lab, red, red)) {
+          border-color: color-mix(in oklab, var(--color-blaeck-900) 90%, transparent);
+        }
+      }
+    }
+  }
   .hover\:border-senap-300 {
     &:hover {
       @media (hover: hover) {
@@ -2751,12 +2768,12 @@
       }
     }
   }
-  .hover\:border-white\/60 {
+  .hover\:bg-linne-50\/45 {
     &:hover {
       @media (hover: hover) {
-        border-color: color-mix(in srgb, #fff 60%, transparent);
+        background-color: color-mix(in srgb, #FBF7F0 45%, transparent);
         @supports (color: color-mix(in lab, red, red)) {
-          border-color: color-mix(in oklab, var(--color-white) 60%, transparent);
+          background-color: color-mix(in oklab, var(--color-linne-50) 45%, transparent);
         }
       }
     }
@@ -2767,16 +2784,6 @@
         background-color: color-mix(in srgb, #FBF7F0 60%, transparent);
         @supports (color: color-mix(in lab, red, red)) {
           background-color: color-mix(in oklab, var(--color-linne-50) 60%, transparent);
-        }
-      }
-    }
-  }
-  .hover\:bg-linne-50\/65 {
-    &:hover {
-      @media (hover: hover) {
-        background-color: color-mix(in srgb, #FBF7F0 65%, transparent);
-        @supports (color: color-mix(in lab, red, red)) {
-          background-color: color-mix(in oklab, var(--color-linne-50) 65%, transparent);
         }
       }
     }
