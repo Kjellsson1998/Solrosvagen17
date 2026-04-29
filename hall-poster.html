@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Domek — hall poster</title>
+    <meta
+      name="description"
+      content="A3 printable info poster for the hallway at Solrosvägen 17."
+    />
+
+    <!--
+      INSTRUCTIONS
+      ============
+      1. Replace [NETWORK NAME] and [PASSWORD] with your actual Wi-Fi.
+      2. Replace the QR placeholder at the bottom with a real QR code image
+         (generate one for the live URL, then drop it in as
+         <img src="qr.png" alt="QR — domek.se" />).
+      3. Open in browser → Print → A3 portrait → no margins → enable
+         "Background graphics" so the colors print.
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --terra-50: #faeae3;
+        --terra-100: #f4d4c5;
+        --terra-200: #e8b7a0;
+        --terra-300: #dc9b7b;
+        --terra-500: #c9522f;
+        --terra-600: #a8421e;
+        --terra-700: #8a3617;
+        --senap-50: #fdf6e1;
+        --senap-100: #fcefc8;
+        --senap-200: #f5dca0;
+        --senap-500: #ddb04c;
+        --senap-600: #c49737;
+        --senap-700: #9c7726;
+        --skog-50: #ecf0e8;
+        --skog-100: #dae2d2;
+        --skog-200: #b7c3a4;
+        --skog-500: #5a7a4a;
+        --skog-600: #4a6a3d;
+        --skog-700: #3f5734;
+        --skog-800: #2f4128;
+        --skog-900: #1d2818;
+        --blaeck-900: #221e15;
+        --blaeck-800: #322d22;
+        --blaeck-700: #4b4334;
+        --blaeck-600: #6e6450;
+        --blaeck-500: #8e8470;
+        --blaeck-400: #b0a795;
+        --blaeck-300: #c8c0ae;
+        --blaeck-200: #ddd5c1;
+        --linne-50: #fbf7f0;
+        --linne-100: #f5efe3;
+        --linne-200: #e8e0d0;
+      }
+
+      @page {
+        size: A3 portrait;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 297mm;
+        min-height: 420mm;
+        margin: 0 auto;
+        padding: 14mm 20mm 12mm;
+        background: var(--linne-50);
+        color: var(--blaeck-900);
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        font-weight: 400;
+        line-height: 1.45;
+        font-size: 12pt;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      @media screen {
+        body {
+          margin: 24px auto;
+          box-shadow: 0 8px 40px rgba(34, 30, 21, 0.18);
+        }
+      }
+
+      /* ============== HEADER ============== */
+      .head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10mm;
+        padding-bottom: 6mm;
+        border-bottom: 1px solid var(--linne-200);
+      }
+      .brand {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 500;
+        font-size: 26pt;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: var(--blaeck-900);
+        font-variation-settings: "opsz" 144, "SOFT" 30;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 6pt;
+      }
+      .brand em {
+        font-style: italic;
+        color: var(--terra-600);
+        font-weight: 400;
+        font-variation-settings: "opsz" 144, "WONK" 1, "SOFT" 30;
+      }
+      .brand-dot {
+        display: inline-block;
+        width: 7pt;
+        height: 7pt;
+        border-radius: 50%;
+        background: var(--terra-500);
+        align-self: center;
+        transform: translateY(-1pt);
+      }
+      .head-meta {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--blaeck-500);
+      }
+
+      /* ============== HERO ============== */
+      .hero {
+        margin: 5mm 0 0;
+      }
+      .hero h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 300;
+        font-size: 52pt;
+        line-height: 0.95;
+        letter-spacing: -0.015em;
+        margin: 0;
+        color: var(--blaeck-900);
+        font-variation-settings: "opsz" 144, "SOFT" 30;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--terra-600);
+        font-weight: 400;
+        font-variation-settings: "opsz" 144, "WONK" 1, "SOFT" 30;
+      }
+
+      /* ============== ORNAMENT — handgjord blombukett ============== */
+      .ornament {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6mm;
+        margin: 5mm 0 7mm;
+        color: var(--blaeck-300);
+      }
+      .ornament .line {
+        flex: 1;
+        max-width: 28mm;
+        height: 1px;
+        background: currentColor;
+      }
+
+      /* ============== SECTION HEAD ============== */
+      .sec-head {
+        display: flex;
+        align-items: center;
+        gap: 4mm;
+        margin: 0 0 3mm;
+      }
+      .sec-head .icon {
+        width: 8mm;
+        height: 8mm;
+        color: var(--terra-500);
+        flex-shrink: 0;
+      }
+      .sec-head .eyebrow {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 10pt;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--terra-600);
+        font-weight: 500;
+      }
+      .sec-head.skog .icon {
+        color: var(--skog-600);
+      }
+      .sec-head.skog .eyebrow {
+        color: var(--skog-700);
+      }
+
+      .section {
+        margin-top: 7mm;
+      }
+
+      /* ============== WIFI — flagship card ============== */
+      .wifi {
+        background: white;
+        background-image: linear-gradient(
+          135deg,
+          transparent 49.5%,
+          rgba(34, 30, 21, 0.025) 50%,
+          transparent 50.5%
+        );
+        background-size: 14px 14px;
+        border: 1px solid var(--linne-200);
+        border-left: 5mm solid var(--terra-500);
+        padding: 6mm 9mm;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9mm;
+      }
+      .wifi .label {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--blaeck-500);
+        margin: 0 0 3mm;
+      }
+      .wifi .value {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 30pt;
+        font-weight: 600;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: var(--blaeck-900);
+        margin: 0;
+        word-break: break-all;
+      }
+
+      /* ============== BEDDING + TRASH PAIR ============== */
+      .pair {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5mm;
+      }
+      .pair > article {
+        padding: 5mm 7mm;
+        border-radius: 2mm;
+        position: relative;
+        overflow: hidden;
+      }
+      .pair .bedding {
+        background: var(--terra-50);
+        border: 1px solid var(--terra-200);
+      }
+      .pair .trash {
+        background: var(--senap-50);
+        border: 1px solid var(--senap-200);
+        border-left: 3mm solid var(--senap-500);
+      }
+      .panel-head {
+        display: flex;
+        align-items: center;
+        gap: 3mm;
+        margin: 0 0 3mm;
+      }
+      .panel-head .icon {
+        width: 7mm;
+        height: 7mm;
+        flex-shrink: 0;
+      }
+      .pair .bedding .panel-head .icon {
+        color: var(--terra-700);
+      }
+      .pair .trash .panel-head .icon {
+        color: var(--senap-700);
+      }
+      .panel-head .label {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-weight: 500;
+      }
+      .pair .bedding .panel-head .label {
+        color: var(--terra-700);
+      }
+      .pair .trash .panel-head .label {
+        color: var(--senap-700);
+      }
+      .pair h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 400;
+        font-size: 18pt;
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        margin: 0 0 3mm;
+        color: var(--blaeck-900);
+        font-variation-settings: "opsz" 36, "SOFT" 30;
+      }
+      .pair h3 em {
+        font-style: italic;
+        font-weight: 400;
+        font-variation-settings: "opsz" 36, "WONK" 1, "SOFT" 30;
+      }
+      .pair .bedding h3 em {
+        color: var(--terra-700);
+      }
+      .pair .trash h3 em {
+        color: var(--senap-700);
+      }
+      .pair p {
+        font-size: 11pt;
+        line-height: 1.45;
+        color: var(--blaeck-700);
+        margin: 0;
+      }
+      .pair p strong {
+        color: var(--blaeck-900);
+        font-weight: 600;
+      }
+
+      /* ============== CONTACT ============== */
+      .contact {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6mm;
+      }
+      .contact-card {
+        padding: 6mm 8mm;
+        border-radius: 2mm;
+        color: var(--linne-100);
+        position: relative;
+        overflow: hidden;
+      }
+      .contact-card.hugo {
+        background: var(--skog-900);
+      }
+      .contact-card.vega {
+        background: var(--terra-700);
+      }
+      /* Domek "sol" pattern overlay on Hugo card */
+      .contact-card.hugo::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("patterns/domek-sol.svg");
+        background-size: 80px 80px;
+        background-repeat: repeat;
+        opacity: 0.18;
+        pointer-events: none;
+      }
+      /* Domek "bukett" pattern overlay on Vega card */
+      .contact-card.vega::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: url("patterns/domek-bukett.svg");
+        background-size: 240px 240px;
+        background-repeat: repeat;
+        opacity: 0.09;
+        pointer-events: none;
+      }
+      .contact-card > * {
+        position: relative;
+        z-index: 1;
+      }
+      .contact-card .role {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        margin: 0 0 3mm;
+        color: var(--blaeck-300);
+      }
+      .contact-card.vega .role {
+        color: var(--terra-100);
+      }
+      .contact-card h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 300;
+        font-size: 22pt;
+        line-height: 1;
+        margin: 0 0 4mm;
+        color: var(--linne-50);
+        font-variation-settings: "opsz" 72, "SOFT" 30;
+      }
+      .contact-card h3 em {
+        font-style: italic;
+        color: var(--terra-200);
+        font-weight: 400;
+        font-variation-settings: "opsz" 72, "WONK" 1, "SOFT" 30;
+      }
+      .contact-card.vega h3 em {
+        color: var(--senap-200);
+      }
+      .contact-card .phone {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 21pt;
+        font-weight: 600;
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+        color: var(--linne-50);
+        margin: 0 0 2mm;
+      }
+      .contact-card .email {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 11pt;
+        line-height: 1.3;
+        color: var(--linne-200);
+        margin: 0;
+      }
+
+      /* ============== DEPARTURE ============== */
+      .checklist {
+        background: white;
+        border: 1px solid var(--linne-200);
+        border-left: 3mm solid var(--skog-500);
+        border-radius: 2mm;
+        padding: 5mm 7mm 4mm;
+      }
+      .checklist h3 {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 400;
+        font-size: 19pt;
+        line-height: 1;
+        margin: 0 0 1mm;
+        color: var(--blaeck-900);
+        font-variation-settings: "opsz" 48, "SOFT" 30;
+      }
+      .checklist h3 em {
+        font-style: italic;
+        color: var(--skog-700);
+        font-weight: 400;
+        font-variation-settings: "opsz" 48, "WONK" 1, "SOFT" 30;
+      }
+      .checklist .sub {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--blaeck-500);
+        margin: 0 0 3mm;
+      }
+      .checklist ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 8mm;
+      }
+      .checklist li {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: baseline;
+        gap: 4mm;
+        padding: 2.2mm 0;
+        border-bottom: 1px solid var(--linne-100);
+        font-size: 11pt;
+        line-height: 1.3;
+        color: var(--blaeck-800);
+      }
+      .checklist li:last-child,
+      .checklist li:nth-last-child(2):nth-child(odd) {
+        border-bottom: 0;
+      }
+      .checklist .num {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 11pt;
+        font-weight: 600;
+        color: var(--skog-700);
+        font-variant-numeric: tabular-nums;
+        letter-spacing: 0.02em;
+        min-width: 7mm;
+      }
+
+      /* ============== PERSONAL NOTE ============== */
+      .note {
+        margin: 7mm auto 0;
+        padding: 5mm 10mm 0;
+        text-align: center;
+        max-width: 70ch;
+      }
+      .note p {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13pt;
+        line-height: 1.5;
+        color: var(--blaeck-700);
+        margin: 0;
+        font-variation-settings: "opsz" 24, "WONK" 1, "SOFT" 30;
+      }
+      .note p em {
+        color: var(--terra-600);
+        font-weight: 400;
+      }
+      .note .signoff {
+        display: block;
+        margin-top: 4mm;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 9pt;
+        font-style: normal;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--terra-600);
+      }
+
+      /* ============== FOOTER ============== */
+      .foot {
+        margin-top: 6mm;
+        padding-top: 5mm;
+        border-top: 1px solid var(--linne-200);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8mm;
+        align-items: center;
+      }
+      .foot .more {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 300;
+        font-size: 15pt;
+        line-height: 1.3;
+        color: var(--blaeck-700);
+        margin: 0;
+        font-variation-settings: "opsz" 36, "SOFT" 30;
+      }
+      .foot .more em {
+        font-style: italic;
+        color: var(--terra-600);
+        font-weight: 400;
+        font-variation-settings: "opsz" 36, "WONK" 1, "SOFT" 30;
+      }
+      .foot .url {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 17pt;
+        font-weight: 600;
+        color: var(--blaeck-900);
+        display: block;
+        margin-top: 2mm;
+      }
+      .qr-placeholder {
+        width: 26mm;
+        height: 26mm;
+        border: 1.4pt dashed var(--blaeck-400);
+        border-radius: 1mm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 7.5pt;
+        color: var(--blaeck-500);
+        line-height: 1.3;
+        padding: 2mm;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============== HEADER ============== -->
+    <header class="head">
+      <div class="brand" translate="no">
+        <span class="brand-dot" aria-hidden="true"></span>Dom<em>e</em>k
+      </div>
+      <div class="head-meta" translate="no">
+        Solrosvägen 17 · Örnsköldsvik
+      </div>
+    </header>
+
+    <!-- ============== HERO ============== -->
+    <section class="hero">
+      <h1>Welcome <em>home</em>.</h1>
+    </section>
+
+    <!-- ============== ORNAMENT — small bouquet (terra + senap + skog) ============== -->
+    <div class="ornament" aria-hidden="true">
+      <span class="line"></span>
+      <svg width="34mm" height="8mm" viewBox="0 0 100 24">
+        <!-- Left flower: terra -->
+        <g transform="translate(20,12)">
+          <ellipse cx="0" cy="-5.5" rx="1.4" ry="3.8" fill="#c9522f" opacity="0.75" />
+          <ellipse cx="0" cy="-5.5" rx="1.4" ry="3.8" fill="#c9522f" opacity="0.75" transform="rotate(72)" />
+          <ellipse cx="0" cy="-5.5" rx="1.4" ry="3.8" fill="#c9522f" opacity="0.75" transform="rotate(144)" />
+          <ellipse cx="0" cy="-5.5" rx="1.4" ry="3.8" fill="#c9522f" opacity="0.75" transform="rotate(216)" />
+          <ellipse cx="0" cy="-5.5" rx="1.4" ry="3.8" fill="#c9522f" opacity="0.75" transform="rotate(288)" />
+          <circle r="1.4" fill="#8a3617" />
+        </g>
+
+        <!-- Leaf 1: skog -->
+        <path d="M33 13 Q37 9 42 12 Q39 14 33 13 Z" fill="#5a7a4a" opacity="0.75" />
+        <line x1="33" y1="13" x2="42" y2="12" stroke="#3f5734" stroke-width="0.4" opacity="0.6" />
+
+        <!-- Center flower: senap (mustard, slightly larger) -->
+        <g transform="translate(50,12)">
+          <ellipse cx="0" cy="-6.5" rx="1.7" ry="4.5" fill="#ddb04c" opacity="0.85" />
+          <ellipse cx="0" cy="-6.5" rx="1.7" ry="4.5" fill="#ddb04c" opacity="0.85" transform="rotate(72)" />
+          <ellipse cx="0" cy="-6.5" rx="1.7" ry="4.5" fill="#ddb04c" opacity="0.85" transform="rotate(144)" />
+          <ellipse cx="0" cy="-6.5" rx="1.7" ry="4.5" fill="#ddb04c" opacity="0.85" transform="rotate(216)" />
+          <ellipse cx="0" cy="-6.5" rx="1.7" ry="4.5" fill="#ddb04c" opacity="0.85" transform="rotate(288)" />
+          <circle r="1.7" fill="#9c7726" />
+        </g>
+
+        <!-- Leaf 2: skog -->
+        <path d="M58 12 Q63 9 67 13 Q62 14 58 12 Z" fill="#5a7a4a" opacity="0.75" />
+        <line x1="58" y1="12" x2="67" y2="13" stroke="#3f5734" stroke-width="0.4" opacity="0.6" />
+
+        <!-- Right flower: light terra -->
+        <g transform="translate(80,12)">
+          <ellipse cx="0" cy="-5" rx="1.2" ry="3.4" fill="#dc9b7b" opacity="0.85" />
+          <ellipse cx="0" cy="-5" rx="1.2" ry="3.4" fill="#dc9b7b" opacity="0.85" transform="rotate(72)" />
+          <ellipse cx="0" cy="-5" rx="1.2" ry="3.4" fill="#dc9b7b" opacity="0.85" transform="rotate(144)" />
+          <ellipse cx="0" cy="-5" rx="1.2" ry="3.4" fill="#dc9b7b" opacity="0.85" transform="rotate(216)" />
+          <ellipse cx="0" cy="-5" rx="1.2" ry="3.4" fill="#dc9b7b" opacity="0.85" transform="rotate(288)" />
+          <circle r="1.2" fill="#a8421e" />
+        </g>
+      </svg>
+      <span class="line"></span>
+    </div>
+
+    <!-- ============== WIFI ============== -->
+    <section class="section">
+      <header class="sec-head">
+        <svg
+          class="icon"
+          viewBox="0 0 32 32"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M3 13 Q16 1 29 13"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M8 18 Q16 10 24 18"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+          <path
+            d="M12.5 23 Q16 19.5 19.5 23"
+            stroke="currentColor"
+            stroke-width="2.2"
+            stroke-linecap="round"
+          />
+          <circle cx="16" cy="27" r="1.7" fill="currentColor" />
+        </svg>
+        <span class="eyebrow">Wi-Fi</span>
+      </header>
+      <div class="wifi">
+        <div>
+          <p class="label">Network</p>
+          <p class="value">[NETWORK NAME]</p>
+        </div>
+        <div>
+          <p class="label">Password</p>
+          <p class="value">[PASSWORD]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============== BEDDING + TRASH (paired) ============== -->
+    <section class="section">
+      <div class="pair">
+        <article class="bedding">
+          <header class="panel-head">
+            <svg
+              class="icon"
+              viewBox="0 0 32 32"
+              fill="none"
+              aria-hidden="true"
+            >
+              <rect
+                x="4"
+                y="9"
+                width="24"
+                height="14"
+                rx="3"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+              <path
+                d="M8 13 Q16 11.5 24 13"
+                stroke="currentColor"
+                stroke-width="1.3"
+                opacity="0.6"
+              />
+              <path
+                d="M8 19 Q16 20.5 24 19"
+                stroke="currentColor"
+                stroke-width="1.3"
+                opacity="0.6"
+              />
+            </svg>
+            <span class="label">Bedding</span>
+          </header>
+          <h3>Bring your <em>own</em>.</h3>
+          <p>
+            Pillows &amp; duvets are on the beds.
+            <strong
+              >Sheets, pillowcases, duvet covers and towels — bring your
+              own.</strong
+            >
+            Closest store: Jysk in Örnsköldsvik.
+          </p>
+        </article>
+
+        <article class="trash">
+          <header class="panel-head">
+            <svg
+              class="icon"
+              viewBox="0 0 32 32"
+              fill="none"
+              aria-hidden="true"
+            >
+              <line
+                x1="5"
+                y1="9"
+                x2="27"
+                y2="9"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+              <path
+                d="M11 9 V6 H21 V9"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <path
+                d="M7 9 L9 28 H23 L25 9"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <line
+                x1="13"
+                y1="14"
+                x2="13"
+                y2="23"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+              <line
+                x1="19"
+                y1="14"
+                x2="19"
+                y2="23"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linecap="round"
+              />
+            </svg>
+            <span class="label">Trash</span>
+          </header>
+          <h3>Watch the <em>neighbors</em>.</h3>
+          <p>
+            If theirs are at the road,
+            <strong>truck comes the next morning</strong> — drag yours out
+            too. Schedule on
+            <strong>domek.se</strong>.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============== CONTACT ============== -->
+    <section class="section">
+      <header class="sec-head">
+        <svg
+          class="icon"
+          viewBox="0 0 32 32"
+          fill="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M6 7 Q6 5 8 5 H11 L13 11 L11 13 Q12 17 15 20 Q18 23 21 24 L23 22 L29 24 V27 Q29 29 27 29 Q14 29 6 21 V7 Z"
+            fill="currentColor"
+          />
+        </svg>
+        <span class="eyebrow">Owners — call us</span>
+      </header>
+      <div class="contact">
+        <article class="contact-card hugo">
+          <p class="role">Anything in the house</p>
+          <h3 translate="no">Hugo <em>Kjellsson</em></h3>
+          <p class="phone" translate="no">+46 70 390 90 51</p>
+          <p class="email" translate="no">hugo@kjellsson.nu</p>
+        </article>
+        <article class="contact-card vega">
+          <p class="role">Co-owner &amp; backup</p>
+          <h3 translate="no">Vega <em>Kjellsson</em></h3>
+          <p class="phone" translate="no">+46 70 390 91 90</p>
+          <p class="email" translate="no">vega@kjellsson.nu</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============== DEPARTURE ============== -->
+    <section class="section">
+      <header class="sec-head skog">
+        <svg
+          class="icon"
+          viewBox="0 0 32 32"
+          fill="none"
+          aria-hidden="true"
+        >
+          <rect
+            x="8"
+            y="4"
+            width="14"
+            height="22"
+            rx="0.8"
+            stroke="currentColor"
+            stroke-width="1.8"
+          />
+          <circle cx="18" cy="16" r="1.2" fill="currentColor" />
+          <line
+            x1="3"
+            y1="27.5"
+            x2="29"
+            y2="27.5"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+          />
+        </svg>
+        <span class="eyebrow">Before you leave</span>
+      </header>
+      <div class="checklist">
+        <h3>Departure <em>checklist</em>.</h3>
+        <p class="sub">Run through this list before you lock the door.</p>
+        <ol>
+          <li>
+            <span class="num">01</span><span>Dishes washed &amp; dried</span>
+          </li>
+          <li>
+            <span class="num">02</span><span>Fridge &amp; freezer empty</span>
+          </li>
+          <li>
+            <span class="num">03</span><span>Trash out</span>
+          </li>
+          <li>
+            <span class="num">04</span><span>Laundry packed</span>
+          </li>
+          <li>
+            <span class="num">05</span><span>Bedding &amp; towels packed</span>
+          </li>
+          <li>
+            <span class="num">06</span><span>Windows closed</span>
+          </li>
+          <li>
+            <span class="num">07</span><span>Outer doors locked</span>
+          </li>
+          <li>
+            <span class="num">08</span><span>Cleaning done</span>
+          </li>
+          <li>
+            <span class="num">09</span><span>Water off (main valve)</span>
+          </li>
+          <li>
+            <span class="num">10</span><span>Keys back in key box</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============== PERSONAL NOTE ============== -->
+    <aside class="note">
+      <p>
+        Hope you will have a good time and make it <em>yours</em> for the
+        stay — and call us if there's anything you or the house need.
+        <span class="signoff" translate="no">— Hugo &amp; Vega</span>
+      </p>
+    </aside>
+
+    <!-- ============== FOOTER ============== -->
+    <footer class="foot">
+      <p class="more">
+        For more — house rules, the area, room info — visit the
+        <em>website</em>.
+        <span class="url" translate="no">domek.se</span>
+      </p>
+      <div class="qr-placeholder">
+        QR code<br />for<br />domek.se
+      </div>
+    </footer>
+  </body>
+</html>
