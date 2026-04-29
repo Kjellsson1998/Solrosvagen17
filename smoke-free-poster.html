@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Domek — glassed-in patio poster</title>
+    <meta
+      name="description"
+      content="A 30×40 cm printable poster for the glassed-in patio at Solrosvägen 17 — kept smoke-free."
+    />
+
+    <!--
+      INSTRUCTIONS
+      ============
+      Sized for a 30×40 cm picture frame. Print on a sheet at least
+      that size (A3 works — page is 300×400 mm, A3 is 297×420 mm,
+      so trim ~10 mm off the bottom and live with a hairline crop on
+      the sides). Use "actual size" / 100% scaling, no margins, and
+      enable "Background graphics" so the colors print.
+    -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --terra-50: #faeae3;
+        --terra-100: #f4d4c5;
+        --terra-200: #e8b7a0;
+        --terra-300: #dc9b7b;
+        --terra-500: #c9522f;
+        --terra-600: #a8421e;
+        --terra-700: #8a3617;
+        --senap-50: #fdf6e1;
+        --senap-100: #fcefc8;
+        --senap-200: #f5dca0;
+        --senap-500: #ddb04c;
+        --senap-600: #c49737;
+        --senap-700: #9c7726;
+        --skog-50: #ecf0e8;
+        --skog-100: #dae2d2;
+        --skog-200: #b7c3a4;
+        --skog-500: #5a7a4a;
+        --skog-600: #4a6a3d;
+        --skog-700: #3f5734;
+        --skog-800: #2f4128;
+        --skog-900: #1d2818;
+        --blaeck-900: #221e15;
+        --blaeck-800: #322d22;
+        --blaeck-700: #4b4334;
+        --blaeck-600: #6e6450;
+        --blaeck-500: #8e8470;
+        --blaeck-400: #b0a795;
+        --blaeck-300: #c8c0ae;
+        --blaeck-200: #ddd5c1;
+        --linne-50: #fbf7f0;
+        --linne-100: #f5efe3;
+        --linne-200: #e8e0d0;
+      }
+
+      @page {
+        size: 300mm 400mm;
+        margin: 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 300mm;
+        min-height: 400mm;
+        margin: 0 auto;
+        padding: 14mm 22mm 12mm;
+        background: var(--linne-50);
+        color: var(--blaeck-900);
+        font-family: "IBM Plex Sans", system-ui, sans-serif;
+        font-weight: 400;
+        line-height: 1.45;
+        font-size: 12pt;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      @media screen {
+        body {
+          margin: 24px auto;
+          box-shadow: 0 8px 40px rgba(34, 30, 21, 0.18);
+        }
+      }
+
+      /* ============== HEADER ============== */
+      .head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 10mm;
+        padding-bottom: 6mm;
+        border-bottom: 1px solid var(--linne-200);
+      }
+      .brand {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 500;
+        font-size: 26pt;
+        line-height: 1;
+        letter-spacing: -0.01em;
+        color: var(--blaeck-900);
+        font-variation-settings: "opsz" 144, "SOFT" 30;
+        display: inline-flex;
+        align-items: baseline;
+        gap: 6pt;
+      }
+      .brand em {
+        font-style: italic;
+        color: var(--terra-600);
+        font-weight: 400;
+        font-variation-settings: "opsz" 144, "WONK" 1, "SOFT" 30;
+      }
+      .brand-dot {
+        display: inline-block;
+        width: 7pt;
+        height: 7pt;
+        border-radius: 50%;
+        background: var(--terra-500);
+        align-self: center;
+        transform: translateY(-1pt);
+      }
+      .head-meta {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 9pt;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--blaeck-500);
+      }
+
+      /* ============== EYEBROW BAR ============== */
+      .eyebrow-row {
+        display: flex;
+        align-items: center;
+        gap: 6mm;
+        margin: 9mm 0 4mm;
+        color: var(--blaeck-300);
+      }
+      .eyebrow-row .line {
+        flex: 1;
+        max-width: 36mm;
+        height: 1px;
+        background: currentColor;
+      }
+      .eyebrow-row .eyebrow {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 11pt;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: var(--terra-600);
+        font-weight: 500;
+      }
+
+      /* ============== HERO ============== */
+      .hero {
+        text-align: center;
+        margin: 0 0 4mm;
+      }
+      .hero h1 {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 300;
+        font-size: 70pt;
+        line-height: 0.95;
+        letter-spacing: -0.018em;
+        margin: 0;
+        color: var(--blaeck-900);
+        font-variation-settings: "opsz" 144, "SOFT" 30;
+      }
+      .hero h1 em {
+        font-style: italic;
+        color: var(--terra-600);
+        font-weight: 400;
+        font-variation-settings: "opsz" 144, "WONK" 1, "SOFT" 30;
+      }
+
+      /* ============== SYMBOL ============== */
+      .symbol-stage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 10mm 0 10mm;
+        position: relative;
+      }
+      .symbol-frame {
+        width: 130mm;
+        height: 130mm;
+        background: white;
+        border: 1px solid var(--linne-200);
+        border-radius: 50%;
+        background-image: linear-gradient(
+          135deg,
+          transparent 49.5%,
+          rgba(34, 30, 21, 0.025) 50%,
+          transparent 50.5%
+        );
+        background-size: 14px 14px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+      .symbol-frame::before,
+      .symbol-frame::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        height: 1px;
+        background: var(--linne-200);
+        width: 28mm;
+      }
+      .symbol-frame::before {
+        right: 100%;
+        margin-right: 6mm;
+      }
+      .symbol-frame::after {
+        left: 100%;
+        margin-left: 6mm;
+      }
+      .symbol {
+        width: 100mm;
+        height: 100mm;
+        color: var(--terra-500);
+      }
+
+      /* ============== RULE CARD ============== */
+      .rule {
+        background: white;
+        border: 1px solid var(--linne-200);
+        border-left: 5mm solid var(--terra-500);
+        padding: 7mm 10mm;
+        border-radius: 1mm;
+        margin-top: 4mm;
+      }
+      .rule .lead {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 400;
+        font-size: 24pt;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        margin: 0 0 4mm;
+        color: var(--blaeck-900);
+        font-variation-settings: "opsz" 48, "SOFT" 30;
+      }
+      .rule .lead em {
+        font-style: italic;
+        color: var(--terra-600);
+        font-weight: 400;
+        font-variation-settings: "opsz" 48, "WONK" 1, "SOFT" 30;
+      }
+      .rule .detail {
+        font-size: 13pt;
+        line-height: 1.5;
+        color: var(--blaeck-700);
+        margin: 0;
+      }
+      .rule .detail strong {
+        color: var(--blaeck-900);
+        font-weight: 600;
+      }
+
+      /* ============== PERSONAL NOTE ============== */
+      .note {
+        margin: 8mm auto 0;
+        padding: 5mm 10mm 0;
+        text-align: center;
+        max-width: 70ch;
+      }
+      .note p {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 300;
+        font-style: italic;
+        font-size: 13pt;
+        line-height: 1.5;
+        color: var(--blaeck-700);
+        margin: 0;
+        font-variation-settings: "opsz" 24, "WONK" 1, "SOFT" 30;
+      }
+      .note p em {
+        color: var(--terra-600);
+        font-weight: 400;
+      }
+      .note .signoff {
+        display: block;
+        margin-top: 4mm;
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 9pt;
+        font-style: normal;
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--terra-600);
+      }
+
+      /* ============== FOOTER ============== */
+      .foot {
+        margin-top: 8mm;
+        padding-top: 5mm;
+        border-top: 1px solid var(--linne-200);
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 8mm;
+      }
+      .foot .more {
+        font-family: "Fraunces", Georgia, serif;
+        font-weight: 300;
+        font-size: 13pt;
+        line-height: 1.3;
+        color: var(--blaeck-700);
+        margin: 0;
+        font-variation-settings: "opsz" 36, "SOFT" 30;
+      }
+      .foot .more em {
+        font-style: italic;
+        color: var(--terra-600);
+        font-weight: 400;
+        font-variation-settings: "opsz" 36, "WONK" 1, "SOFT" 30;
+      }
+      .foot .url {
+        font-family: "IBM Plex Mono", ui-monospace, monospace;
+        font-size: 15pt;
+        font-weight: 600;
+        color: var(--blaeck-900);
+        letter-spacing: -0.005em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ============== HEADER ============== -->
+    <header class="head">
+      <div class="brand" translate="no">
+        <span class="brand-dot" aria-hidden="true"></span>Dom<em>e</em>k
+      </div>
+      <div class="head-meta" translate="no">
+        Glassed-in patio · Solrosvägen 17
+      </div>
+    </header>
+
+    <!-- ============== EYEBROW BAR ============== -->
+    <div class="eyebrow-row">
+      <span class="line"></span>
+      <span class="eyebrow">A house rule</span>
+      <span class="line"></span>
+    </div>
+
+    <!-- ============== HERO ============== -->
+    <section class="hero">
+      <h1>Take it <em>outside</em>.</h1>
+    </section>
+
+    <!-- ============== SYMBOL ============== -->
+    <div class="symbol-stage" aria-hidden="true">
+      <div class="symbol-frame">
+        <svg
+          class="symbol"
+          viewBox="0 0 32 32"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <!-- Mask: 1 px negative-space halo around the slash -->
+            <mask id="cut">
+              <rect x="0" y="0" width="32" height="32" fill="white" />
+              <line
+                x1="6.5"
+                y1="6.5"
+                x2="25.5"
+                y2="25.5"
+                stroke="black"
+                stroke-width="4.5"
+                stroke-linecap="square"
+              />
+            </mask>
+          </defs>
+
+          <!-- Drafting registration marks -->
+          <g stroke="currentColor" stroke-width="0.5" opacity="0.3">
+            <line x1="16" y1="0.5" x2="16" y2="2.5" />
+            <line x1="16" y1="29.5" x2="16" y2="31.5" />
+            <line x1="0.5" y1="16" x2="2.5" y2="16" />
+            <line x1="29.5" y1="16" x2="31.5" y2="16" />
+          </g>
+
+          <g mask="url(#cut)">
+            <!-- Smoke (parallel to the slash) -->
+            <path
+              d="M 21.5 13.5 V 10 L 16.5 5 V 3.5"
+              stroke="currentColor"
+              stroke-width="0.6"
+              stroke-linejoin="miter"
+            />
+            <path
+              d="M 24 13.5 V 10 L 19 5 V 3.5"
+              stroke="currentColor"
+              stroke-width="0.6"
+              stroke-linejoin="miter"
+            />
+
+            <!-- Cigarette body -->
+            <rect
+              x="5.5"
+              y="14.5"
+              width="16"
+              height="3"
+              stroke="currentColor"
+              stroke-width="1.25"
+            />
+            <line
+              x1="10.5"
+              y1="14.5"
+              x2="10.5"
+              y2="17.5"
+              stroke="currentColor"
+              stroke-width="1.25"
+            />
+
+            <!-- Filter texture -->
+            <line
+              x1="7.5"
+              y1="14.75"
+              x2="7.5"
+              y2="17.25"
+              stroke="currentColor"
+              stroke-width="0.4"
+            />
+            <line
+              x1="9"
+              y1="14.75"
+              x2="9"
+              y2="17.25"
+              stroke="currentColor"
+              stroke-width="0.4"
+            />
+
+            <!-- Ash tip — tapering line weights -->
+            <line
+              x1="22.5"
+              y1="14.5"
+              x2="22.5"
+              y2="17.5"
+              stroke="currentColor"
+              stroke-width="1.25"
+            />
+            <line
+              x1="23.5"
+              y1="14.75"
+              x2="23.5"
+              y2="17.25"
+              stroke="currentColor"
+              stroke-width="0.6"
+            />
+            <line
+              x1="24.5"
+              y1="15"
+              x2="24.5"
+              y2="17"
+              stroke="currentColor"
+              stroke-width="0.4"
+            />
+          </g>
+
+          <!-- Prohibition frame -->
+          <circle
+            cx="16"
+            cy="16"
+            r="14"
+            stroke="currentColor"
+            stroke-width="2.5"
+          />
+          <line
+            x1="6.5"
+            y1="6.5"
+            x2="25.5"
+            y2="25.5"
+            stroke="currentColor"
+            stroke-width="2.5"
+          />
+        </svg>
+      </div>
+    </div>
+
+    <!-- ============== RULE CARD ============== -->
+    <section class="rule">
+      <p class="lead">Smoke under the <em>open sky</em>.</p>
+      <p class="detail">
+        Anywhere on the property works — garden, driveway, front step.
+        <strong
+          >Cigarette ends go in the metal box on the front step</strong
+        >, not on the ground.
+      </p>
+    </section>
+
+    <!-- ============== PERSONAL NOTE ============== -->
+    <aside class="note">
+      <p>
+        Yes, the glassed-in patio still counts as <em>indoors</em> —
+        windows on three sides, but the smoke settles into the cushions
+        all the same. Thanks for keeping the house fresh for everyone
+        after you.
+        <span class="signoff" translate="no">— Hugo &amp; Vega</span>
+      </p>
+    </aside>
+
+    <!-- ============== FOOTER ============== -->
+    <footer class="foot">
+      <p class="more">
+        House rules &amp; more on the <em>website</em>.
+      </p>
+      <span class="url" translate="no">domek.se</span>
+    </footer>
+  </body>
+</html>
