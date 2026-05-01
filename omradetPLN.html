@@ -1,30 +1,12 @@
 <!doctype html>
-<html lang="sv">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Default to Polish unless user has chosen Swedish -->
-    <script>
-      (function () {
-        try {
-          if (localStorage.getItem("domek-lang") === "sv") return;
-          var map = {
-            "index.html": "indexPLN.html",
-            "huset.html": "husetPLN.html",
-            "inflytt-utflytt.html": "inflytt-utflyttPLN.html",
-            "omradet.html": "omradetPLN.html",
-          };
-          var file = location.pathname.split("/").pop() || "index.html";
-          if (map[file]) location.replace(map[file]);
-        } catch (e) {}
-      })();
-    </script>
-
-    <title>Området — Domek</title>
+    <title>Okolica — Domek</title>
     <meta
       name="description"
-      content="Området runt Domek — interaktiv karta över matbutiker, restauranger, löprundor, sängklädesbutiker, tåg och lokala favoriter i Örnsköldsvik."
+      content="Okolica wokół Domek — interaktywna mapa sklepów spożywczych, restauracji, tras biegowych, sklepów z pościelą, pociągów i lokalnych ulubieńców w Örnsköldsvik."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -160,7 +142,7 @@
     </style>
   </head>
   <body>
-    <a href="#main" class="skip">Hoppa till innehåll</a>
+    <a href="#main" class="skip">Przejdź do treści</a>
 
     <!-- ============== HEADER ============== -->
     <header
@@ -171,7 +153,7 @@
       >
         <div class="flex items-center gap-3 sm:gap-4">
         <a
-          href="index.html"
+          href="indexPLN.html"
           translate="no"
           class="font-display font-medium text-2xl -tracking-[0.01em] text-blaeck-900 inline-flex items-baseline gap-2 no-underline"
           style="
@@ -196,15 +178,15 @@
             >e</em
           >k
         </a>
-        <div class="inline-flex items-center bg-linne-100 border border-linne-200 rounded-full p-0.5 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold leading-none" role="group" aria-label="Språkval">
-          <span aria-current="page" class="px-2.5 py-1 rounded-full bg-blaeck-800 text-linne-50">SV</span>
-          <a href="omradetPLN.html" onclick="try{localStorage.setItem('domek-lang','pl')}catch(e){}" translate="no" class="px-2.5 py-1 rounded-full text-blaeck-500 hover:text-blaeck-900 no-underline transition-colors">PL</a>
+        <div class="inline-flex items-center bg-linne-100 border border-linne-200 rounded-full p-0.5 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold leading-none" role="group" aria-label="Wybór języka">
+          <a href="omradet.html" onclick="try{localStorage.setItem('domek-lang','sv')}catch(e){}" translate="no" class="px-2.5 py-1 rounded-full text-blaeck-500 hover:text-blaeck-900 no-underline transition-colors">SV</a>
+          <span aria-current="page" class="px-2.5 py-1 rounded-full bg-blaeck-800 text-linne-50">PL</span>
         </div>
         </div>
 
         <button
           class="nav-toggle group lg:hidden bg-transparent border border-linne-200 rounded-sm p-2 cursor-pointer"
-          aria-label="Öppna meny"
+          aria-label="Otwórz menu"
           aria-controls="primary-nav"
           aria-expanded="false"
         >
@@ -228,30 +210,31 @@
           >
             <li>
               <a
-                href="index.html"
+                href="indexPLN.html"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 [&.is-active]:text-terra-700 [&.is-active]:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Hem</a
+                >Start</a
               >
             </li>
             <li>
               <a
                 href="huset.html"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 [&.is-active]:text-terra-700 [&.is-active]:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Huset</a
+                >Dom</a
               >
             </li>
             <li>
               <a
-                href="inflytt-utflytt.html"
+                href="inflytt-utflyttPLN.html"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 [&.is-active]:text-terra-700 [&.is-active]:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Inflytt &amp; utflytt</a
+                >Wprowadzenie i wyprowadzka</a
               >
             </li>
             <li>
               <a
-                href="omradet.html"
-                class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 [&.is-active]:text-terra-700 [&.is-active]:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Området</a
+                href="omradetPLN.html"
+                class="block text-terra-700 bg-terra-50 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 max-lg:px-3 max-lg:py-3"
+                aria-current="page"
+                >Okolica</a
               >
             </li>
           </ul>
@@ -267,7 +250,7 @@
         <p
           class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-4 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
         >
-          Området
+          Okolica
         </p>
         <h1
           class="font-display font-light text-[clamp(40px,7vw,80px)] leading-[0.98] -tracking-[0.015em] text-blaeck-900 m-0 mb-5"
@@ -277,7 +260,7 @@
               &quot;SOFT&quot; 30;
           "
         >
-          Hitta
+          Odkryj
           <em
             class="wonk text-terra-600 font-normal"
             style="
@@ -286,15 +269,15 @@
                 &quot;WONK&quot; 1,
                 &quot;SOFT&quot; 30;
             "
-            >runt</em
+            >okolicę</em
           >.
         </h1>
         <p
           class="font-display font-light text-[18px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0"
           style="font-variation-settings: &quot;opsz&quot; 24"
         >
-          Välj en kategori — kartan filtreras och listan uppdateras. Klicka en
-          plats för att få vägbeskrivning från
+          Wybierz kategorię — mapa się przefiltruje, a lista się zaktualizuje.
+          Kliknij miejsce, aby uzyskać wskazówki dojazdu z
           <span translate="no">Domek</span>.
         </p>
       </section>
@@ -313,7 +296,7 @@
             <div
               class="flex flex-col items-start gap-1.5"
               role="tablist"
-              aria-label="Filtrera platser efter kategori"
+              aria-label="Filtruj miejsca według kategorii"
             >
               <button
                 type="button"
@@ -321,7 +304,7 @@
                 class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-blaeck-900/70 text-blaeck-800 bg-linne-50/20 backdrop-blur-2xl backdrop-saturate-200 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/45 hover:border-blaeck-900/90 whitespace-nowrap"
                 aria-pressed="false"
               >
-                Mat
+                Jedzenie
               </button>
               <button
                 type="button"
@@ -329,7 +312,7 @@
                 class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-blaeck-900/70 text-blaeck-800 bg-linne-50/20 backdrop-blur-2xl backdrop-saturate-200 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/45 hover:border-blaeck-900/90 whitespace-nowrap"
                 aria-pressed="false"
               >
-                Apotek
+                Apteka
               </button>
               <button
                 type="button"
@@ -337,7 +320,7 @@
                 class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-blaeck-900/70 text-blaeck-800 bg-linne-50/20 backdrop-blur-2xl backdrop-saturate-200 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/45 hover:border-blaeck-900/90 whitespace-nowrap"
                 aria-pressed="false"
               >
-                Sopor
+                Śmieci
               </button>
               <button
                 type="button"
@@ -345,7 +328,7 @@
                 class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-blaeck-900/70 text-blaeck-800 bg-linne-50/20 backdrop-blur-2xl backdrop-saturate-200 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/45 hover:border-blaeck-900/90 whitespace-nowrap"
                 aria-pressed="false"
               >
-                Sängkit
+                Pościel
               </button>
               <button
                 type="button"
@@ -353,7 +336,7 @@
                 class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-blaeck-900/70 text-blaeck-800 bg-linne-50/20 backdrop-blur-2xl backdrop-saturate-200 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/45 hover:border-blaeck-900/90 whitespace-nowrap"
                 aria-pressed="false"
               >
-                Restauranger
+                Restauracje
               </button>
               <button
                 type="button"
@@ -361,7 +344,7 @@
                 class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-blaeck-900/70 text-blaeck-800 bg-linne-50/20 backdrop-blur-2xl backdrop-saturate-200 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/45 hover:border-blaeck-900/90 whitespace-nowrap"
                 aria-pressed="false"
               >
-                Kaféer
+                Kawiarnie
               </button>
               <button
                 type="button"
@@ -369,7 +352,7 @@
                 class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-blaeck-900/70 text-blaeck-800 bg-linne-50/20 backdrop-blur-2xl backdrop-saturate-200 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/45 hover:border-blaeck-900/90 whitespace-nowrap"
                 aria-pressed="false"
               >
-                Vandring
+                Szlaki
               </button>
               <button
                 type="button"
@@ -377,7 +360,7 @@
                 class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-blaeck-900/70 text-blaeck-800 bg-linne-50/20 backdrop-blur-2xl backdrop-saturate-200 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/45 hover:border-blaeck-900/90 whitespace-nowrap"
                 aria-pressed="false"
               >
-                Kollektivtrafik
+                Transport publiczny
               </button>
               <button
                 type="button"
@@ -385,7 +368,7 @@
                 class="font-mono text-[11px] uppercase tracking-[0.08em] font-medium border border-blaeck-900/70 text-blaeck-800 bg-linne-50/20 backdrop-blur-2xl backdrop-saturate-200 px-3.5 py-1.5 rounded-pill cursor-pointer transition-all duration-200 hover:bg-linne-50/45 hover:border-blaeck-900/90 whitespace-nowrap"
                 aria-pressed="false"
               >
-                Tips
+                Atrakcje
               </button>
             </div>
           </div>
@@ -402,7 +385,7 @@
                 class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 36"
               >
-                Mat
+                Jedzenie
               </h2>
               <span
                 data-cat-count
@@ -425,7 +408,7 @@
               class="font-display font-medium text-[20px] text-blaeck-900 m-0"
               style="font-variation-settings: &quot;opsz&quot; 36"
             >
-              Mat
+              Jedzenie
             </h2>
             <span
               data-cat-count
@@ -466,15 +449,15 @@
                   &quot;WONK&quot; 1,
                   &quot;SOFT&quot; 30;
               "
-              >litet hus</em
-            >,<br />tydliga ramar.
+              >mały dom</em
+            >,<br />jasne zasady.
           </p>
           <p class="text-caption text-linne-300 m-0">
-            <span translate="no">Domek</span> är ett enfamiljshus från 1959 på
-            <span translate="no">Solrosvägen 17</span> i
+            <span translate="no">Domek</span> to dom jednorodzinny z 1959 roku przy
+            <span translate="no">Solrosvägen 17</span> w
             <span translate="no">Örnsköldsvik</span>.
-            <span translate="no">Hugo &amp; Vega Kjellsson</span> äger det,
-            <span translate="no">Sanco</span> hyr det åt sina arbetare.
+            <span translate="no">Hugo &amp; Vega Kjellsson</span> są właścicielami,
+            <span translate="no">Sanco</span> wynajmuje go dla swoich pracowników.
           </p>
         </div>
 
@@ -487,7 +470,7 @@
           <div class="flex flex-col gap-1 text-caption mt-3">
             <span
               class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
-              >Huset</span
+              >Dom</span
             >
             <span translate="no">Hugo Kjellsson</span>
             <a
@@ -515,7 +498,7 @@
           <div class="flex flex-col gap-1 text-caption mt-3">
             <span
               class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
-              >Boendet · <span translate="no">Sanco</span></span
+              >Zakwaterowanie · <span translate="no">Sanco</span></span
             >
             <span translate="no">Nicklas Boström</span>
             <a
@@ -535,28 +518,28 @@
           <h5
             class="font-mono text-label uppercase tracking-[0.12em] text-terra-300 m-0 mb-4 font-medium"
           >
-            Sidor
+            Strony
           </h5>
           <ul class="list-none m-0 p-0 flex flex-col gap-2">
             <li>
               <a
                 href="huset.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Huset</a
+                >Dom</a
               >
             </li>
             <li>
               <a
-                href="inflytt-utflytt.html"
+                href="inflytt-utflyttPLN.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Inflytt &amp; utflytt</a
+                >Wprowadzenie i wyprowadzka</a
               >
             </li>
             <li>
               <a
-                href="omradet.html"
+                href="omradetPLN.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Området</a
+                >Okolica</a
               >
             </li>
           </ul>
@@ -593,13 +576,13 @@
 
         const CATEGORIES = {
           stores: {
-            label: "Mat",
+            label: "Jedzenie",
             places: [
               {
                 name: "Willys",
                 coords: [63.305057, 18.743376],
                 address: "Terminalvägen 3A",
-                meta: "1,0 km · 12 min gång · 2 min bil",
+                meta: "1,0 km · 12 min pieszo · 2 min autem",
                 hours: { weekday: "08–21", saturday: "08–21", sunday: "09–21" },
                 destQuery:
                   "Willys+Terminalv%C3%A4gen+3A+%C3%96rnsk%C3%B6ldsvik",
@@ -608,7 +591,7 @@
                 name: "Stora Coop",
                 coords: [63.302548, 18.734056],
                 address: "Hästmarksvägen 6A",
-                meta: "1,5 km · 3 min bil",
+                meta: "1,5 km · 3 min autem",
                 hours: { weekday: "07–22", saturday: "07–22", sunday: "07–22" },
                 destQuery:
                   "Stora+Coop+H%C3%A4stmarksv%C3%A4gen+6A+%C3%96rnsk%C3%B6ldsvik",
@@ -617,7 +600,7 @@
                 name: "ICA Nära Östra",
                 coords: [63.29456, 18.72724],
                 address: "Vintergatan 2",
-                meta: "2,4 km · 5 min bil",
+                meta: "2,4 km · 5 min autem",
                 hours: { weekday: "08–21", saturday: "08–21", sunday: "08–21" },
                 destQuery:
                   "ICA+N%C3%A4ra+%C3%96stra+Vintergatan+2+%C3%96rnsk%C3%B6ldsvik",
@@ -626,7 +609,7 @@
                 name: "Lidl",
                 coords: [63.30287, 18.7179],
                 address: "Ångermanlandsgatan 17",
-                meta: "2,1 km · 4 min bil",
+                meta: "2,1 km · 4 min autem",
                 hours: { weekday: "08–21", saturday: "08–19", sunday: "09–19" },
                 destQuery:
                   "Lidl+%C3%85ngermanlandsgatan+17+%C3%96rnsk%C3%B6ldsvik",
@@ -635,7 +618,7 @@
                 name: "ICA Kvantum",
                 coords: [63.302757, 18.721486],
                 address: "Ångermanlandsgatan 24",
-                meta: "2,0 km · 4 min bil · störst utbud",
+                meta: "2,0 km · 4 min autem · największy wybór",
                 hours: { weekday: "07–22", saturday: "07–22", sunday: "07–22" },
                 destQuery:
                   "ICA+Kvantum+%C3%85ngermanlandsgatan+24+%C3%96rnsk%C3%B6ldsvik",
@@ -643,15 +626,15 @@
             ],
           },
           apotek: {
-            label: "Apotek",
+            label: "Apteka",
             places: [
               {
                 name: "Apoteket Havsörnen",
                 coords: [63.30264, 18.73403],
-                address: "Hästmarksvägen 6A · vid Stora Coop",
-                meta: "1,5 km · 3 min bil · närmst",
+                address: "Hästmarksvägen 6A · przy Stora Coop",
+                meta: "1,5 km · 3 min autem · najbliżej",
                 hours: {
-                  weekday: "09–19 (tor 09–17, fre 11–16)",
+                  weekday: "09–19 (czw 09–17, pt 11–16)",
                   saturday: "10–16",
                   sunday: "11–16",
                 },
@@ -662,7 +645,7 @@
                 name: "Apotek Hjärtat",
                 coords: [63.29122, 18.715228],
                 address: "Storgatan 28 · centrum",
-                meta: "3 km · 6 min bil",
+                meta: "3 km · 6 min autem",
                 hours: { weekday: "09–18", saturday: "10–15", sunday: "—" },
                 destQuery:
                   "Apotek+Hj%C3%A4rtat+Storgatan+28+%C3%96rnsk%C3%B6ldsvik",
@@ -670,17 +653,17 @@
             ],
           },
           waste: {
-            label: "Sopor",
+            label: "Śmieci",
             places: [
               {
                 name: "Återvinningsstation",
                 coords: [63.30951, 18.75163],
                 address: "Strandgatan",
-                meta: "300 m bort · förpackningar, tidningar, glas, metall",
+                meta: "300 m stąd · opakowania, gazety, szkło, metal",
                 hours: {
-                  weekday: "Dygnet runt",
-                  saturday: "Dygnet runt",
-                  sunday: "Dygnet runt",
+                  weekday: "Całodobowo",
+                  saturday: "Całodobowo",
+                  sunday: "Całodobowo",
                 },
                 destQuery: "63.30951,18.75163",
               },
@@ -688,9 +671,9 @@
                 name: "Må återvinningscentral",
                 coords: [63.301196, 18.765169],
                 address: "Returvägen 11",
-                meta: "1,4 km · 3 min bil · grovavfall, farligt, elavfall",
+                meta: "1,4 km · 3 min autem · odpady wielkogabarytowe, niebezpieczne, elektroodpady",
                 hours: {
-                  weekday: "07–20 (fre 07–16)",
+                  weekday: "07–20 (pt 07–16)",
                   saturday: "10–14",
                   sunday: "—",
                 },
@@ -700,13 +683,13 @@
             ],
           },
           bedding: {
-            label: "Sängkit",
+            label: "Pościel",
             places: [
               {
                 name: "Jysk",
                 coords: [63.304885, 18.745824],
                 address: "Terminalvägen 2",
-                meta: "1,0 km · 2 min bil · sängkläder, handdukar",
+                meta: "1,0 km · 2 min autem · pościel, ręczniki",
                 hours: { weekday: "10–19", saturday: "10–17", sunday: "11–17" },
                 destQuery: "Jysk+Terminalv%C3%A4gen+2+%C3%96rnsk%C3%B6ldsvik",
               },
@@ -714,7 +697,7 @@
                 name: "Mio",
                 coords: [63.303707, 18.723314],
                 address: "Ångermanlandsgatan 25",
-                meta: "1,9 km · 4 min bil · sängkläder, möbler",
+                meta: "1,9 km · 4 min autem · pościel, meble",
                 hours: { weekday: "10–19", saturday: "10–16", sunday: "11–16" },
                 destQuery:
                   "Mio+%C3%85ngermanlandsgatan+25+%C3%96rnsk%C3%B6ldsvik",
@@ -723,20 +706,20 @@
                 name: "Hemtex",
                 coords: [63.289627, 18.718219],
                 address: "Nygatan 12",
-                meta: "3,1 km · 6 min bil · textil, lakan, handdukar",
+                meta: "3,1 km · 6 min autem · tekstylia, prześcieradła, ręczniki",
                 hours: { weekday: "10–18", saturday: "10–15", sunday: "—" },
                 destQuery: "Hemtex+Nygatan+12+%C3%96rnsk%C3%B6ldsvik",
               },
             ],
           },
           restaurants: {
-            label: "Restauranger",
+            label: "Restauracje",
             places: [
               {
                 name: "Matlådan.eu",
                 coords: [63.311734, 18.751166],
                 address: "Svartbyvägen 5",
-                meta: "5 min gång · närmst",
+                meta: "5 min pieszo · najbliżej",
                 hours: { weekday: "11–20", saturday: "11–20", sunday: "11–20" },
                 destQuery:
                   "Matl%C3%A5dan+Svartbyv%C3%A4gen+5+%C3%96rnsk%C3%B6ldsvik",
@@ -746,7 +729,7 @@
                 name: "Burger Burger",
                 coords: [63.291081, 18.717324],
                 address: "Nygatan 20",
-                meta: "3 km · 6 min bil · burgare",
+                meta: "3 km · 6 min autem · burgery",
                 hours: {
                   weekday: "11–19",
                   monday: "—",
@@ -759,7 +742,7 @@
                 name: "Linnéa & Peter",
                 coords: [63.290628, 18.718025],
                 address: "Fabriksgatan 12B",
-                meta: "3 km · 6 min bil · centrum",
+                meta: "3 km · 6 min autem · centrum",
                 hours: {
                   weekday: "17–23",
                   monday: "—",
@@ -775,7 +758,7 @@
                 name: "Mamma Mia",
                 coords: [63.287595, 18.717198],
                 address: "Storgatan 6",
-                meta: "3,2 km · 6 min bil · italienskt",
+                meta: "3,2 km · 6 min autem · włoska",
                 hours: {
                   weekday: "11–14, 16:30–22",
                   friday: "11–14, 16:30–23",
@@ -788,7 +771,7 @@
                 name: "Restaurang Safir",
                 coords: [63.310858, 18.709633],
                 address: "Björnavägen 42B",
-                meta: "2,3 km · 5 min bil",
+                meta: "2,3 km · 5 min autem",
                 hours: {
                   weekday: "11–21",
                   friday: "11–23",
@@ -802,7 +785,7 @@
                 name: "Il Romanos",
                 coords: [63.282159, 18.736605],
                 address: "Sjögatan 5D",
-                meta: "3,5 km · 7 min bil · italienskt",
+                meta: "3,5 km · 7 min autem · włoska",
                 hours: {
                   weekday: "11–21",
                   friday: "11–22",
@@ -814,13 +797,13 @@
             ],
           },
           cafes: {
-            label: "Kaféer",
+            label: "Kawiarnie",
             places: [
               {
                 name: "Gräddat i Norr",
                 coords: [63.290379, 18.716251],
                 address: "Fabriksgatan 16",
-                meta: "3 km · 6 min bil · centrum",
+                meta: "3 km · 6 min autem · centrum",
                 hours: {
                   weekday: "07:30–17:30",
                   saturday: "09–16",
@@ -833,7 +816,7 @@
                 name: "Café UH",
                 coords: [63.289098, 18.712339],
                 address: "Lasarettsgatan 9A",
-                meta: "3,3 km · 6 min bil",
+                meta: "3,3 km · 6 min autem",
                 hours: {
                   weekday: "09–21",
                   friday: "08–21",
@@ -847,7 +830,7 @@
                 name: "Lundbergs Bröd",
                 coords: [63.292795, 18.716],
                 address: "Nygatan 35",
-                meta: "2,8 km · 5 min bil · bageri & fika",
+                meta: "2,8 km · 5 min autem · piekarnia i kawa",
                 hours: { weekday: "06–17", saturday: "—", sunday: "—" },
                 destQuery:
                   "Lundbergs+Br%C3%B6d+Nygatan+35+%C3%96rnsk%C3%B6ldsvik",
@@ -855,14 +838,14 @@
             ],
           },
           trails: {
-            label: "Vandring",
+            label: "Szlaki",
             places: [
               {
                 name: "Gimåt Elljusspår",
                 file: "Vandring/Gimåt_Elljusspår.js",
                 coords: [63.32009, 18.71747],
-                address: "Gimåtvägen · belyst spår",
-                meta: "Lätt · ~5 km slinga · närmst",
+                address: "Gimåtvägen · oświetlona trasa",
+                meta: "Łatwy · ~5 km pętla · najbliżej",
                 destQuery: "63.32009,18.71747",
               },
               {
@@ -870,7 +853,7 @@
                 file: "Vandring/Gula_Leden_Örnsköldsvik.js",
                 coords: [63.29568, 18.70785],
                 address: "Brödrabacken · Åsberget",
-                meta: "Utmanande · ~6 km · brant, fin utsikt",
+                meta: "Trudny · ~6 km · stromy, ładny widok",
                 destQuery: "63.29568,18.70785",
               },
               {
@@ -878,7 +861,7 @@
                 file: "Vandring/Höga_Kustenleden_Sandlåga__Balestjärn.js",
                 coords: [63.20097, 18.70212],
                 address: "Sandlåga – Balestjärn",
-                meta: "Klassiska Höga Kusten · längre tur",
+                meta: "Klasyka Höga Kusten · dłuższa wycieczka",
                 destQuery: "63.20097,18.70212",
               },
               {
@@ -886,63 +869,63 @@
                 file: "Vandring/Fäbodleden_i_Nätra_Fjällskog.js",
                 coords: [63.16479, 18.27446],
                 address: "Nätra Fjällskog",
-                meta: "Medel–utmanande · längre tur",
+                meta: "Średni–trudny · dłuższa wycieczka",
                 destQuery: "63.16479,18.27446",
               },
               {
                 name: "Skuleskogen Syd",
                 file: "Vandring/Skuleskogen_Syd__Trollporten__Slåttdalsskrevan__Tärnättstugan.js",
                 coords: [63.08568, 18.48174],
-                address: "Skuleskogen · södra entrén",
-                meta: "Utmanande · Slåttdalsskrevan, Trollporten, Tärnättstugan",
+                address: "Skuleskogen · południowe wejście",
+                meta: "Trudny · Slåttdalsskrevan, Trollporten, Tärnättstugan",
                 destQuery: "63.08568,18.48174",
               },
             ],
           },
           transit: {
-            label: "Kollektivtrafik",
+            label: "Transport publiczny",
             places: [
               {
-                name: "Svartbyvägen (buss)",
+                name: "Svartbyvägen (autobus)",
                 coords: [63.310073, 18.760531],
-                address: "Hållplats Svartbyvägen",
-                meta: "~300 m gång · stadsbuss mot centrum",
+                address: "Przystanek Svartbyvägen",
+                meta: "~300 m pieszo · autobus miejski do centrum",
                 destQuery: "63.310073,18.760531",
               },
               {
-                name: "Örtagårdsvägen (buss)",
+                name: "Örtagårdsvägen (autobus)",
                 coords: [63.310413, 18.750585],
-                address: "Hållplats Örtagårdsvägen",
-                meta: "~300 m gång · stadsbuss mot centrum",
+                address: "Przystanek Örtagårdsvägen",
+                meta: "~300 m pieszo · autobus miejski do centrum",
                 destQuery: "63.310413,18.750585",
               },
               {
                 name: "Örnsköldsvik C",
                 coords: [63.288016, 18.70777],
-                address: "Järnvägsgatan 11 · centralstation",
-                meta: "7 min bil · alla tåg stannar här",
+                address: "Järnvägsgatan 11 · stacja centralna",
+                meta: "7 min autem · wszystkie pociągi tu się zatrzymują",
                 destQuery:
                   "%C3%96rnsk%C3%B6ldsvik+C+J%C3%A4rnv%C3%A4gsgatan+11",
               },
               {
                 name: "Örnsköldsvik Norra",
                 coords: [63.303032, 18.716104],
-                address: "Norra station",
-                meta: "4 min bil · fjärrtåg — inte alla stannar här",
+                address: "Stacja północna",
+                meta: "4 min autem · pociągi dalekobieżne — nie wszystkie się tu zatrzymują",
                 destQuery: "%C3%96rnsk%C3%B6ldsvik+Norra+station",
               },
             ],
           },
           gems: {
-            label: "Tips",
+            label: "Atrakcje",
             places: [
               {
                 name: "Örnsköldsviks museum & konsthall",
                 coords: [63.29, 18.725278],
                 address: "Läroverksgatan 1",
-                meta: "Sevärdhet · konst, lokal historia",
+                meta: "Atrakcja · sztuka, lokalna historia",
                 hours: {
-                  weekday: "12–16 (tis 12–20, mån stängt)",
+                  weekday: "12–16 (wt 12–20, pn zamknięte)",
                   saturday: "12–16",
                   sunday: "—",
                 },
@@ -952,23 +935,23 @@
                 name: "Strutsfarmen i Gerdal",
                 coords: [63.29528, 18.423538],
                 address: "Kasta 241, Överhörnäs",
-                meta: "Utflyktsmål · säsongsöppet, ring för bordsbokning",
+                meta: "Cel wycieczki · sezonowo otwarte, dzwoń po rezerwację stolika",
                 hours: {
-                  weekday: "Säsongsöppet · bokning",
-                  saturday: "Säsong",
-                  sunday: "Säsong",
+                  weekday: "Sezonowo · rezerwacja",
+                  saturday: "Sezonowo",
+                  sunday: "Sezonowo",
                 },
                 destQuery: "63.29528,18.423538",
               },
               {
                 name: "Ulvön (Ulvöhamn)",
                 coords: [63.02239, 18.647777],
-                address: "Färja från Köpmanholmen",
-                meta: "Utflyktsmål · klassisk höga kusten-ö",
+                address: "Prom z Köpmanholmen",
+                meta: "Cel wycieczki · klasyczna wyspa Höga Kusten",
                 hours: {
-                  weekday: "Dygnet runt (se färjetider)",
-                  saturday: "Dygnet runt",
-                  sunday: "Dygnet runt",
+                  weekday: "Całodobowo (sprawdź rozkład promów)",
+                  saturday: "Całodobowo",
+                  sunday: "Całodobowo",
                 },
                 destQuery: "63.02239,18.647777",
               },
@@ -1056,7 +1039,7 @@
           const resp = await fetch(url);
           if (!resp.ok) {
             throw new Error(
-              "Kunde inte hämta " + file + " (status " + resp.status + ")",
+              "Nie udało się pobrać " + file + " (status " + resp.status + ")",
             );
           }
           const data = await resp.json();
@@ -1072,6 +1055,20 @@
             .replace(/"/g, "&quot;");
         }
 
+        // Polish plural helper for "miejsce / miejsca / miejsc"
+        function plPlural(n, one, few, many) {
+          if (n === 1) return one;
+          const lastDigit = n % 10;
+          const lastTwoDigits = n % 100;
+          if (
+            lastDigit >= 2 &&
+            lastDigit <= 4 &&
+            (lastTwoDigits < 12 || lastTwoDigits > 14)
+          )
+            return few;
+          return many;
+        }
+
         // Dagens öppettider — söndag=0, mån–fre=1–5, lör=6
         const HOUR_KEYS = [
           "sunday",
@@ -1083,13 +1080,13 @@
           "saturday",
         ];
         const HOUR_LABELS = [
-          "Söndag",
-          "Idag",
-          "Idag",
-          "Idag",
-          "Idag",
-          "Idag",
-          "Lördag",
+          "Niedziela",
+          "Dziś",
+          "Dziś",
+          "Dziś",
+          "Dziś",
+          "Dziś",
+          "Sobota",
         ];
 
         const WEEKDAY_KEYS = [
@@ -1113,11 +1110,11 @@
         // Bygger HTML för öppettider — Mån–fre grupperas på lika värden,
         // Lör/Sön är alltid egna rader; dagens rad fetstil
         const WEEKDAY_DAYS = [
-          { key: "monday", label: "Mån" },
-          { key: "tuesday", label: "Tis" },
-          { key: "wednesday", label: "Ons" },
-          { key: "thursday", label: "Tor" },
-          { key: "friday", label: "Fre" },
+          { key: "monday", label: "Pn" },
+          { key: "tuesday", label: "Wt" },
+          { key: "wednesday", label: "Śr" },
+          { key: "thursday", label: "Czw" },
+          { key: "friday", label: "Pt" },
         ];
 
         function groupWeekdayRows(hours) {
@@ -1136,7 +1133,7 @@
             if (values[i]) {
               const label =
                 i === 0 && j === 4
-                  ? "Mån–fre"
+                  ? "Pn–pt"
                   : i === j
                     ? WEEKDAY_DAYS[i].label
                     : WEEKDAY_DAYS[i].label +
@@ -1158,8 +1155,8 @@
           const todayKey = HOUR_KEYS[new Date().getDay()];
           const rows = [
             ...groupWeekdayRows(hours),
-            { keys: ["saturday"], label: "Lör", value: hours.saturday },
-            { keys: ["sunday"], label: "Sön", value: hours.sunday },
+            { keys: ["saturday"], label: "Sob", value: hours.saturday },
+            { keys: ["sunday"], label: "Nd", value: hours.sunday },
           ].filter((r) => r.value);
           if (!rows.length) return "";
           const inner = rows
@@ -1205,10 +1202,9 @@
           });
 
           const countEls = document.querySelectorAll("[data-cat-count]");
+          const n = category.places.length;
           const countLabel =
-            category.places.length === 1
-              ? "1 plats"
-              : category.places.length + " platser";
+            n + " " + plPlural(n, "miejsce", "miejsca", "miejsc");
           countEls.forEach((el) => {
             el.textContent = countLabel;
           });
@@ -1245,7 +1241,7 @@
                 "</p>" +
                 hoursHtml +
                 '<p class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 group-hover:text-terra-900 m-0">' +
-                "Vägbeskrivning →" +
+                "Wskazówki dojazdu →" +
                 "</p>" +
                 "</div>" +
                 "</div>" +
@@ -1379,7 +1375,7 @@
                     interactive: false,
                   }).addTo(layer);
                 } catch (e) {
-                  console.warn("Kunde inte ladda rutt:", p.file, e);
+                  console.warn("Nie udało się załadować trasy:", p.file, e);
                 }
               }),
             );

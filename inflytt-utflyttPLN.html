@@ -1,30 +1,12 @@
 <!doctype html>
-<html lang="sv">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Default to Polish unless user has chosen Swedish -->
-    <script>
-      (function () {
-        try {
-          if (localStorage.getItem("domek-lang") === "sv") return;
-          var map = {
-            "index.html": "indexPLN.html",
-            "huset.html": "husetPLN.html",
-            "inflytt-utflytt.html": "inflytt-utflyttPLN.html",
-            "omradet.html": "omradetPLN.html",
-          };
-          var file = location.pathname.split("/").pop() || "index.html";
-          if (map[file]) location.replace(map[file]);
-        } catch (e) {}
-      })();
-    </script>
-
-    <title>Inflytt &amp; utflytt — Domek</title>
+    <title>Wprowadzenie i wyprowadzka — Domek</title>
     <meta
       name="description"
-      content="Vad du gör första kvällen — och sista dagen. Steg vid ankomst, städrutiner under vistelsen, och avreschecklistan på Solrosvägen 17."
+      content="Co robisz pierwszego wieczoru — i ostatniego dnia. Kroki po przyjeździe, rutyny sprzątania w trakcie pobytu i lista kontrolna przed wyjazdem na Solrosvägen 17."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -60,7 +42,7 @@
     </style>
   </head>
   <body>
-    <a href="#main" class="skip">Hoppa till innehåll</a>
+    <a href="#main" class="skip">Przejdź do treści</a>
 
     <!-- ============== HEADER ============== -->
     <header
@@ -71,7 +53,7 @@
       >
         <div class="flex items-center gap-3 sm:gap-4">
         <a
-          href="index.html"
+          href="indexPLN.html"
           translate="no"
           class="font-display font-medium text-2xl -tracking-[0.01em] text-blaeck-900 inline-flex items-baseline gap-2 no-underline"
           style="
@@ -96,15 +78,15 @@
             >e</em
           >k
         </a>
-        <div class="inline-flex items-center bg-linne-100 border border-linne-200 rounded-full p-0.5 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold leading-none" role="group" aria-label="Språkval">
-          <span aria-current="page" class="px-2.5 py-1 rounded-full bg-blaeck-800 text-linne-50">SV</span>
-          <a href="inflytt-utflyttPLN.html" onclick="try{localStorage.setItem('domek-lang','pl')}catch(e){}" translate="no" class="px-2.5 py-1 rounded-full text-blaeck-500 hover:text-blaeck-900 no-underline transition-colors">PL</a>
+        <div class="inline-flex items-center bg-linne-100 border border-linne-200 rounded-full p-0.5 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold leading-none" role="group" aria-label="Wybór języka">
+          <a href="inflytt-utflytt.html" onclick="try{localStorage.setItem('domek-lang','sv')}catch(e){}" translate="no" class="px-2.5 py-1 rounded-full text-blaeck-500 hover:text-blaeck-900 no-underline transition-colors">SV</a>
+          <span aria-current="page" class="px-2.5 py-1 rounded-full bg-blaeck-800 text-linne-50">PL</span>
         </div>
         </div>
 
         <button
           class="nav-toggle group lg:hidden bg-transparent border border-linne-200 rounded-sm p-2 cursor-pointer"
-          aria-label="Öppna meny"
+          aria-label="Otwórz menu"
           aria-controls="primary-nav"
           aria-expanded="false"
         >
@@ -128,31 +110,31 @@
           >
             <li>
               <a
-                href="index.html"
+                href="indexPLN.html"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Hem</a
+                >Start</a
               >
             </li>
             <li>
               <a
                 href="huset.html"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Huset</a
+                >Dom</a
               >
             </li>
             <li>
               <a
-                href="inflytt-utflytt.html"
+                href="inflytt-utflyttPLN.html"
                 class="block text-terra-700 bg-terra-50 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 max-lg:px-3 max-lg:py-3"
                 aria-current="page"
-                >Inflytt &amp; utflytt</a
+                >Wprowadzenie i wyprowadzka</a
               >
             </li>
             <li>
               <a
                 href="omradet.html"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Området</a
+                >Okolica</a
               >
             </li>
           </ul>
@@ -170,7 +152,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-5 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
             >
-              Inflytt · utflytt
+              Wprowadzenie · wyprowadzka
             </p>
             <h1
               class="font-display font-light text-[clamp(48px,8vw,88px)] leading-[0.95] -tracking-[0.02em] text-blaeck-900 m-0 mb-5"
@@ -180,7 +162,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Vad du gör
+              Co robisz
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -189,9 +171,9 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >första</em
+                >pierwszego</em
               >
-              kvällen — och
+              wieczoru — i
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -200,17 +182,17 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >sista</em
+                >ostatniego</em
               >
-              dagen.
+              dnia.
             </h1>
             <p
               class="font-display text-[clamp(17px,2vw,21px)] leading-[1.5] text-blaeck-600 max-w-[55ch] m-0"
               style="font-variation-settings: &quot;opsz&quot; 24"
             >
-              Tre steg vid ankomst. Tre rutiner under vistelsen.
-              Grundstädning vid avresa följt av tio punkter på
-              avreschecklistan.
+              Trzy kroki po przyjeździe. Trzy rutyny w trakcie pobytu.
+              Sprzątanie podstawowe przed wyjazdem oraz dziesięć punktów na
+              liście kontrolnej.
             </p>
           </div>
 
@@ -221,28 +203,28 @@
               <dt
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
               >
-                Nyckel
+                Klucz
               </dt>
               <dd
                 class="font-display text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Nyckelskåp vid dörren
+                Skrzynka na klucze przy drzwiach
               </dd>
             </div>
-           
-            
+
+
             <div class="flex flex-col gap-1">
               <dt
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
               >
-                Sängkläder
+                Pościel
               </dt>
               <dd
                 class="font-display text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Tar du <em class="wonk text-terra-600">med själv</em>
+                Bierzesz <em class="wonk text-terra-600">własną</em>
               </dd>
             </div>
           </dl>
@@ -262,7 +244,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              01 · Vid ankomst
+              01 · Po przyjeździe
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -272,7 +254,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Tre steg in i
+              Trzy kroki do
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -281,21 +263,21 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >huset</em
+                >domu</em
               >.
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Hämta nyckeln, koppla upp dig och bädda sängen — på den
-              ordningen.
+              Odbierz klucz, połącz się z wi-fi i pościel łóżko — w tej
+              kolejności.
             </p>
             <p
               class="font-mono text-caption text-blaeck-500 m-0 mt-4 leading-[1.5]"
             >
-              Kod till nyckelskåpet får du av <span translate="no">Sanco</span>
-              före ankomst.
+              Kod do skrzynki na klucze otrzymasz od <span translate="no">Sanco</span>
+              przed przyjazdem.
             </p>
           </div>
 
@@ -307,22 +289,23 @@
               ></i>
               <span
                 class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
-                >Steg 01</span
+                >Krok 01</span
               >
               <h3
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Hämta nyckeln
+                Odbierz klucz
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Nyckelskåpet sitter på höger sida om ytterdörren.
-                <strong>Slå koden, ta nyckeln, lås upp.</strong>
+                Skrzynka na klucze znajduje się po prawej stronie drzwi
+                wejściowych.
+                <strong>Wpisz kod, weź klucz, otwórz drzwi.</strong>
               </p>
               <p
                 class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 m-0 mt-1"
               >
-                En nyckel i skåpet
+                Jeden klucz w skrzynce
               </p>
             </li>
 
@@ -333,19 +316,19 @@
               ></i>
               <span
                 class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
-                >Steg 02</span
+                >Krok 02</span
               >
               <h3
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Anslut till wifi
+                Połącz się z wi-fi
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Routern står i vardagsrummet. <strong>Nätverk och lösenord</strong>
-                finns på A3-skylten i hallen och under routern.
+                Router stoi w salonie. <strong>Nazwa sieci i hasło</strong>
+                znajdują się na tabliczce A3 w przedpokoju oraz pod routerem.
               </p>
-              
+
             </li>
 
             <li
@@ -357,23 +340,23 @@
               ></i>
               <span
                 class="font-mono text-label uppercase tracking-[0.12em] text-terra-700 m-0"
-                >Steg 03</span
+                >Krok 03</span
               >
               <h3
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Bädda sängen
+                Pościel łóżko
               </h3>
               <p class="text-body-sm text-blaeck-700 m-0">
-                Kuddar och täcken ligger på sängarna.
-                <strong>Lakan, örngott och påslakan</strong> tar du fram ur
-                väskan.
+                Poduszki i kołdry leżą na łóżkach.
+                <strong>Prześcieradło, poszewki i poszwę na kołdrę</strong>
+                wyjmujesz z walizki.
               </p>
               <p
                 class="font-mono text-[11px] uppercase tracking-[0.08em] text-terra-700 m-0 mt-1"
               >
-                Inga sängkläder ingår
+                Pościel nie jest zapewniona
               </p>
             </li>
           </ol>
@@ -393,7 +376,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              02 · Under vistelsen
+              02 · W trakcie pobytu
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -403,7 +386,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Tre
+              Trzy
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -412,15 +395,16 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >rutiner</em
+                >rutyny</em
               >.
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Köket dagligen, badrummen veckovis, golven vid behov. Att hålla
-              det löpande är mycket lättare än att göra allt sista dagen.
+              Kuchnia codziennie, łazienki co tydzień, podłogi w razie potrzeby.
+              Utrzymywanie porządku na bieżąco jest dużo łatwiejsze niż robienie
+              wszystkiego ostatniego dnia.
             </p>
           </div>
 
@@ -429,51 +413,52 @@
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.14em] text-terra-700 font-semibold m-0"
               >
-                Dagligen
+                Codziennie
               </p>
               <h3
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Köket
+                Kuchnia
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Diska efter måltid. Torka av bänken. Bär ut soporna när påsen
-                är full. Lämna inget i diskhon över natten.
+                Zmywaj po posiłku. Wytrzyj blat. Wynieś śmieci, gdy worek jest
+                pełny. Nie zostawiaj niczego w zlewie na noc.
               </p>
             </article>
             <article class="card p-5 flex flex-col gap-2">
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0"
               >
-                Veckovis
+                Co tydzień
               </p>
               <h3
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Badrummen
+                Łazienki
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Skura toaletten, torka handfaten, tvätta golvet. Städmedel
-                finns i städskåpet.
+                Wyszoruj toaletę, wytrzyj umywalki, umyj podłogę. Środki
+                czystości znajdziesz w schowku gospodarczym.
               </p>
             </article>
             <article class="card p-5 flex flex-col gap-2">
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0"
               >
-                Vid behov
+                W razie potrzeby
               </p>
               <h3
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Golv
+                Podłogi
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Dammsug entré och kök oftare än övriga rum. Moppa fuktigt — inte
-                vått. Trägolven tål inte stora vattenmängder.
+                Odkurzaj wejście i kuchnię częściej niż pozostałe pomieszczenia.
+                Mopuj wilgotno — nie na mokro. Drewniane podłogi nie znoszą
+                dużej ilości wody.
               </p>
             </article>
           </div>
@@ -497,10 +482,10 @@
             <h4
               class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
             >
-              Bristfällig städning godtas inte
+              Niewystarczające sprzątanie nie jest akceptowane
             </h4>
             <p class="text-body-sm text-blaeck-700 m-0">
-              Huset får inte lämnas orent. Tag städningen på allvar.
+              Domu nie wolno zostawiać brudnego. Potraktuj sprzątanie poważnie.
             </p>
           </div>
         </div>
@@ -514,7 +499,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              03 · Grundstädning vid avresa
+              03 · Sprzątanie podstawowe przed wyjazdem
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -524,7 +509,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Städa som ett
+              Sprzątaj jak
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -533,17 +518,17 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >proffs</em
+                >profesjonalista</em
               >.
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Innan du bockar av avreschecklistan görs en grundstädning.
-              Ordningen är uppifrån och ner — produkterna från
-              <span translate="no">Västerbottenssåpa</span> hittar du i
-              städskåpet.
+              Zanim odhaczysz listę kontrolną przed wyjazdem, zrób sprzątanie
+              podstawowe. Kolejność: od góry do dołu — produkty
+              <span translate="no">Västerbottenssåpa</span> znajdziesz w
+              schowku gospodarczym.
             </p>
           </div>
 
@@ -552,40 +537,40 @@
             <p
               class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
             >
-              Innan du börjar — tre regler
+              Zanim zaczniesz — trzy zasady
             </p>
             <div class="grid sm:grid-cols-2 gap-3">
               <article class="card p-5 flex flex-col gap-2">
                 <p
                   class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
                 >
-                  Regel 01
+                  Zasada 01
                 </p>
                 <h3
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
                 >
-                  Spraya i trasan
+                  Spryskaj ścierkę
                 </h3>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Direkt i mikrofiberduken, inte på ytan — det blir renare och
-                  lämnar inga ränder. Vik trasan på mitten två gånger så får
-                  du åtta rena sidor.
+                  Bezpośrednio na ściereczkę z mikrofibry, nie na powierzchnię —
+                  będzie czyściej i bez smug. Złóż ścierkę dwa razy na pół, a
+                  uzyskasz osiem czystych stron.
                 </p>
               </article>
               <article class="card p-5 flex flex-col gap-2">
                 <p
                   class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
                 >
-                  Regel 02
+                  Zasada 02
                 </p>
                 <h3
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
                 >
-                  Torrt före vått
+                  Najpierw na sucho, potem na mokro
                 </h3>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Dammsug alltid upp smuts och grus innan du våttorkar.
-                  Annars drar du runt lera över hela huset.
+                  Zawsze najpierw odkurz brud i piasek, zanim zaczniesz wycierać
+                  na mokro. Inaczej rozsmarujesz błoto po całym domu.
                 </p>
               </article>
             </div>
@@ -603,34 +588,34 @@
               ></i>
               <span
                 class="font-mono text-label uppercase tracking-[0.14em] text-terra-700 tabular-nums"
-                >Steg 01</span
+                >Krok 01</span
               >
               <h3
                 class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Sopor &amp; återvinning
+                Śmieci i recykling
               </h3>
             </div>
             <div class="self-center">
               <ul class="list-none p-0 m-0 space-y-2 text-body-sm text-blaeck-700">
                 <li class="flex items-baseline gap-2.5">
                   <span class="text-terra-500 font-mono text-[10px] mt-1">●</span>
-                  <span>Töm alla papperskorgar i huset.</span>
+                  <span>Opróżnij wszystkie kosze w domu.</span>
                 </li>
                 <li class="flex items-baseline gap-2.5">
                   <span class="text-terra-500 font-mono text-[10px] mt-1">●</span>
-                  <span>Sortera avfallet — matavfall, förpackningar, restavfall.</span>
+                  <span>Posegreguj odpady — bioodpady, opakowania, odpady zmieszane.</span>
                 </li>
                 <li class="flex items-baseline gap-2.5">
                   <span class="text-terra-500 font-mono text-[10px] mt-1">●</span>
-                  <span>Bär ut till tunnan eller återvinningsstationen.</span>
+                  <span>Wynieś do kosza lub do punktu recyklingu.</span>
                 </li>
               </ul>
 
               <!-- Kompakt CTA till full guide -->
               <a
-                href="huset.html#sopor"
+                href="husetPLN.html#sopor"
                 class="group inline-flex items-center gap-2 mt-4 px-3 py-2 rounded-md bg-terra-50 border border-terra-200 hover:bg-terra-100 transition-colors no-underline w-fit"
               >
                 <i
@@ -640,7 +625,7 @@
                 <span
                   class="font-mono text-[11px] uppercase tracking-[0.08em] font-semibold text-terra-700"
                 >
-                  Sorteringsguide &amp; karta
+                  Przewodnik segregacji i mapa
                 </span>
                 <span
                   aria-hidden="true"
@@ -660,55 +645,56 @@
               ></i>
               <span
                 class="font-mono text-label uppercase tracking-[0.14em] text-terra-700 tabular-nums"
-                >Steg 02</span
+                >Krok 02</span
               >
               <h3
                 class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Badrummen
+                Łazienki
               </h3>
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.08em] text-blaeck-400 m-0"
               >
-                Uppifrån och ner
+                Od góry do dołu
               </p>
             </div>
             <div class="space-y-4">
               <div>
                 <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
-                  Handfat &amp; spegel
+                  Umywalka i lustro
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0">
-                  <strong>Spraya såpspray i trasan.</strong> Torka spegeln,
-                  putsa kranen, torka handfatet (renast → smutsigast).
+                  <strong>Spryskaj ścierkę środkiem czyszczącym.</strong>
+                  Przetrzyj lustro, wypoleruj kran, wytrzyj umywalkę
+                  (od najczystszego → do najbrudniejszego).
                 </p>
               </div>
               <div>
                 <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
-                  Dusch &amp; badkar
+                  Prysznic i wanna
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0">
-                  <strong>Skölj med vatten.</strong> Ta bort hår från
-                  golvbrunnens galler.
+                  <strong>Spłucz wodą.</strong> Usuń włosy z kratki odpływu.
                 </p>
               </div>
               <div>
                 <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
-                  Toalettstolen — insidan
+                  Muszla klozetowa — wnętrze
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0">
-                  <strong>Spraya såpspray i skålen.</strong> Skrubba med
-                  toalettborsten, spola.
+                  <strong>Spryskaj wnętrze muszli środkiem czyszczącym.</strong>
+                  Wyszoruj szczotką klozetową, spłucz.
                 </p>
               </div>
               <div>
                 <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
-                  Toalettstolen — utsidan
+                  Muszla klozetowa — z zewnątrz
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0 mb-2">
-                  <strong>Spraya såpspray i trasan.</strong> Torka i denna
-                  ordning (renast → smutsigast):
+                  <strong>Spryskaj ścierkę środkiem czyszczącym.</strong>
+                  Przetrzyj w tej kolejności (od najczystszego → do
+                  najbrudniejszego):
                 </p>
                 <ol
                   class="list-none p-0 m-0 flex flex-wrap gap-x-2 gap-y-1 text-caption text-blaeck-600 font-mono uppercase tracking-[0.08em]"
@@ -716,31 +702,31 @@
                   <li
                     class="bg-linne-100 border border-linne-200 rounded-sm px-2 py-1"
                   >
-                    Spolknapp
+                    Przycisk spłuczki
                   </li>
                   <li class="text-blaeck-300 self-center">→</li>
                   <li
                     class="bg-linne-100 border border-linne-200 rounded-sm px-2 py-1"
                   >
-                    Lock
+                    Klapa
                   </li>
                   <li class="text-blaeck-300 self-center">→</li>
                   <li
                     class="bg-linne-100 border border-linne-200 rounded-sm px-2 py-1"
                   >
-                    Sittring
+                    Deska
                   </li>
                   <li class="text-blaeck-300 self-center">→</li>
                   <li
                     class="bg-linne-100 border border-linne-200 rounded-sm px-2 py-1"
                   >
-                    Undersidan
+                    Spód
                   </li>
                   <li class="text-blaeck-300 self-center">→</li>
                   <li
                     class="bg-linne-100 border border-linne-200 rounded-sm px-2 py-1"
                   >
-                    Utsidan ner mot golvet
+                    Bok aż do podłogi
                   </li>
                 </ol>
               </div>
@@ -756,51 +742,52 @@
               ></i>
               <span
                 class="font-mono text-label uppercase tracking-[0.14em] text-terra-700 tabular-nums"
-                >Steg 03</span
+                >Krok 03</span
               >
               <h3
                 class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Köket
+                Kuchnia
               </h3>
             </div>
             <div class="space-y-4">
               <div>
                 <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
-                  Disk
+                  Naczynia
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0">
-                  <strong>Diska, torka och ställ tillbaka</strong> i skåpen.
+                  <strong>Pozmywaj, wytrzyj i odstaw</strong> do szafek.
                 </p>
               </div>
               <div>
                 <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
-                  Bänkar &amp; bord
+                  Blaty i stół
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0">
-                  <strong>Spraya såpspray i trasan.</strong> Torka
-                  matbord, diskbänk och köksbänkar — plus alla matsmulor.
+                  <strong>Spryskaj ścierkę środkiem czyszczącym.</strong>
+                  Przetrzyj stół, blat zlewu i blaty kuchenne — wraz z
+                  okruszkami.
                 </p>
               </div>
               <div>
                 <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
-                  Spis &amp; ugn
+                  Kuchenka i piekarnik
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0">
-                  <strong>Torka av spishällen.</strong> Vid fastbränd smuts:
-                  klicka på <strong
-                    >Fast <span translate="no">Västerbottenssåpa</span></strong
-                  >, gnugga, låt verka 2 min, torka bort.
+                  <strong>Przetrzyj płytę kuchenną.</strong> W razie
+                  przypalonego brudu: nałóż <strong
+                    >Stałą <span translate="no">Västerbottenssåpa</span></strong
+                  >, potrzyj, odczekaj 2 min, zetrzyj.
                 </p>
               </div>
               <div>
                 <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
-                  Kylskåpet
+                  Lodówka
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0">
-                  <strong>Töm kylen på dina egna matvaror.</strong> Torka bort
-                  spill på hyllorna med såpspray.
+                  <strong>Opróżnij lodówkę z własnych produktów.</strong> Wytrzyj
+                  rozlane resztki z półek środkiem czyszczącym.
                 </p>
               </div>
             </div>
@@ -815,36 +802,36 @@
               ></i>
               <span
                 class="font-mono text-label uppercase tracking-[0.14em] text-terra-700 tabular-nums"
-                >Steg 04</span
+                >Krok 04</span
               >
               <h3
                 class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Ditt sovrum
+                Twoja sypialnia
               </h3>
             </div>
             <div class="space-y-4">
               <div>
                 <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
-                  Sängkläder
+                  Pościel
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0 mb-2">
-                  <strong>Dra ur lakan, påslakan och örngott.</strong>
-                  Sängkläder ska alltid tvättas mellan vistelser. Två sätt:
+                  <strong>Zdejmij prześcieradło, poszwę i poszewki.</strong>
+                  Pościel zawsze trzeba prać między pobytami. Dwie możliwości:
                 </p>
                 <ul
                   class="list-none p-0 m-0 space-y-1 text-body-sm text-blaeck-700"
                 >
                   <li class="flex items-baseline gap-2">
                     <span class="text-blaeck-300 text-[10px] mt-0.5">○</span>
-                    <span>Ta hem och tvätta hemma</span>
+                    <span>Zabierz do siebie i upierz w domu</span>
                   </li>
                   <li class="flex items-baseline gap-2">
                     <span class="text-blaeck-300 text-[10px] mt-0.5">○</span>
                     <span
-                      >Tvätta i huset och vik in i din egen garderob till nästa
-                      gång</span
+                      >Wypierz tutaj i odłóż do własnej szafy na następny
+                      raz</span
                     >
                   </li>
                 </ul>
@@ -856,27 +843,28 @@
                     aria-hidden="true"
                   ></i>
                   <p class="text-body-sm text-terra-800 m-0">
-                    <strong>Glömda sängkläder och handdukar slängs vid
-                    slutstädning.</strong> Vi sparar dem inte och skickar inte
-                    hem.
+                    <strong>Zapomniana pościel i ręczniki są wyrzucane przy
+                    sprzątaniu końcowym.</strong> Nie przechowujemy ich ani nie
+                    odsyłamy.
                   </p>
                 </div>
                 <p
                   class="font-mono text-[10px] uppercase tracking-[0.12em] text-skog-700 font-semibold m-0 mt-3"
                 >
-                  Proffstips
+                  Wskazówka profesjonalisty
                 </p>
                 <p class="text-caption text-blaeck-600 m-0 mt-1">
-                  Bor du här ofta — ha två uppsättningar sängkläder. Då finns
-                  alltid en ren redo.
+                  Mieszkasz tu często — miej dwa komplety pościeli. Wtedy zawsze
+                  masz jeden czysty pod ręką.
                 </p>
               </div>
               <div>
                 <p class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1">
-                  Ytor
+                  Powierzchnie
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0">
-                  <strong>Torka sängbordet</strong>, damma fönsterbrädan vid behov.
+                  <strong>Wytrzyj szafkę nocną</strong>, w razie potrzeby odkurz
+                  parapet.
                 </p>
               </div>
             </div>
@@ -891,18 +879,18 @@
               ></i>
               <span
                 class="font-mono text-label uppercase tracking-[0.14em] text-terra-700 tabular-nums"
-                >Steg 05</span
+                >Krok 05</span
               >
               <h3
                 class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Golv
+                Podłogi
               </h3>
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.08em] text-terra-700 font-semibold m-0"
               >
-                Görs allra sist
+                Robione na samym końcu
               </p>
             </div>
             <ol
@@ -918,10 +906,11 @@
                   <p
                     class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-0.5"
                   >
-                    Dammsug eller sopa
+                    Odkurz lub zamieć
                   </p>
                   <p class="text-body-sm text-blaeck-700 m-0">
-                    <strong>Bort med damm, hår och grus</strong> från alla golv.
+                    <strong>Usuń kurz, włosy i piasek</strong> ze wszystkich
+                    podłóg.
                   </p>
                 </div>
               </li>
@@ -934,14 +923,14 @@
                   <p
                     class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-0.5"
                   >
-                    Blanda såpvatten
+                    Przygotuj wodę z mydłem
                   </p>
                   <p class="text-body-sm text-blaeck-700 m-0">
-                    <strong>Ljummet vatten + 1–2 kapsyler</strong>
+                    <strong>Letnia woda + 1–2 nakrętki</strong>
                     <strong
-                      >Flytande
+                      >Płynnej
                       <span translate="no">Västerbottenssåpa</span></strong
-                    >. Inte mer — då blir golven klibbiga.
+                    >. Nie więcej — bo podłogi staną się lepkie.
                   </p>
                 </div>
               </li>
@@ -954,11 +943,12 @@
                   <p
                     class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-0.5"
                   >
-                    Moppa
+                    Mopuj
                   </p>
                   <p class="text-body-sm text-blaeck-700 m-0">
-                    <strong>Vrid ur moppen ordentligt</strong> — fuktig, inte
-                    plaskvåt. Börja längst in i rummet och backa mot dörren.
+                    <strong>Dobrze wyciśnij mopa</strong> — wilgotny, nie
+                    ociekający. Zacznij w głębi pomieszczenia i cofaj się w
+                    stronę drzwi.
                   </p>
                 </div>
               </li>
@@ -980,7 +970,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              04 · Vid avresa
+              04 · Przed wyjazdem
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -990,7 +980,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Avrese<em
+              Lista <em
                 class="wonk text-terra-600 font-normal"
                 style="
                   font-variation-settings:
@@ -998,19 +988,20 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >checklista</em
+                >kontrolna</em
               >.
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Tio punkter att bocka av efter <a href="#grundstadning"
-              class="link">grundstädningen</a>. Listan sparas i din webbläsare
-              tills du nollställer den.
+              Dziesięć punktów do odhaczenia po <a href="#grundstadning"
+              class="link">sprzątaniu podstawowym</a>. Lista zapisuje się w
+              twojej przeglądarce, dopóki jej nie wyzerujesz.
             </p>
             <p class="text-caption text-blaeck-500 m-0 mt-4 leading-[1.5]">
-              Listan finns även i pappersform på insidan av ytterdörren.
+              Lista jest również w formie papierowej, po wewnętrznej stronie
+              drzwi wejściowych.
             </p>
           </div>
 
@@ -1037,9 +1028,9 @@
               <button
                 type="button"
                 class="checklist-reset font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 hover:text-terra-600 transition-colors whitespace-nowrap"
-                aria-label="Nollställ checklistan"
+                aria-label="Wyzeruj listę kontrolną"
               >
-                Nollställ
+                Wyzeruj
               </button>
             </div>
 
@@ -1058,7 +1049,7 @@
                   ></span>
                   <span
                     class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
-                    >Disken är gjord och torkad</span
+                    >Naczynia są pozmywane i wytarte</span
                   >
                 </label>
               </li>
@@ -1075,7 +1066,7 @@
                   ></span>
                   <span
                     class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
-                    >Kyl och frys är tömda</span
+                    >Lodówka i zamrażarka są opróżnione</span
                   >
                 </label>
               </li>
@@ -1092,7 +1083,7 @@
                   ></span>
                   <span
                     class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
-                    >Soporna är utburna</span
+                    >Śmieci są wyniesione</span
                   >
                 </label>
               </li>
@@ -1109,7 +1100,7 @@
                   ></span>
                   <span
                     class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
-                    >Tvätten är hemtagen</span
+                    >Pranie zostało zabrane</span
                   >
                 </label>
               </li>
@@ -1126,7 +1117,7 @@
                   ></span>
                   <span
                     class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
-                    >Sängkläder och handdukar är hemtagna</span
+                    >Pościel i ręczniki zostały zabrane</span
                   >
                 </label>
               </li>
@@ -1143,7 +1134,7 @@
                   ></span>
                   <span
                     class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
-                    >Alla fönster är stängda</span
+                    >Wszystkie okna są zamknięte</span
                   >
                 </label>
               </li>
@@ -1160,7 +1151,7 @@
                   ></span>
                   <span
                     class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
-                    >Alla lampor är släckta</span
+                    >Wszystkie światła są wyłączone</span
                   >
                 </label>
               </li>
@@ -1177,7 +1168,7 @@
                   ></span>
                   <span
                     class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
-                    >Ytterdörrar är låsta</span
+                    >Drzwi wejściowe są zamknięte na klucz</span
                   >
                 </label>
               </li>
@@ -1194,7 +1185,7 @@
                   ></span>
                   <span
                     class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
-                    >Grundstädning är gjord</span
+                    >Sprzątanie podstawowe zostało wykonane</span
                   >
                 </label>
               </li>
@@ -1211,7 +1202,7 @@
                   ></span>
                   <span
                     class="label text-[15px] text-blaeck-800 leading-snug peer-checked:text-blaeck-400 peer-checked:line-through transition-[color]"
-                    >Nycklarna är tillbaka i nyckelskåpet</span
+                    >Klucze są z powrotem w skrzynce</span
                   >
                 </label>
               </li>
@@ -1230,11 +1221,11 @@
                   class="font-display font-medium text-[18px] text-skog-800 m-0 mb-1"
                   style="font-variation-settings: &quot;opsz&quot; 24"
                 >
-                  Tack — du är redo för avfärd.
+                  Dziękujemy — jesteś gotowy do wyjazdu.
                 </h4>
                 <p class="text-body-sm text-blaeck-700 m-0">
-                  Lås, lämna nycklarna i nyckelskåpet och stäng dörren efter
-                  dig. Trevlig resa hem.
+                  Zamknij na klucz, włóż klucze do skrzynki i zamknij za sobą
+                  drzwi. Bezpiecznej drogi do domu.
                 </p>
               </div>
             </div>
@@ -1250,15 +1241,15 @@
         <h2
           class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
         >
-          Vem du ringer
+          Do kogo dzwonić
         </h2>
         <p
           class="font-display font-light text-[17px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0 mb-10"
           style="font-variation-settings: &quot;opsz&quot; 18"
         >
-          Saknas nyckelkod, wifi-uppgifter eller schemainformation —
-          <span translate="no">Sanco</span>. Något som inte fungerar i huset
-          eller akut situation — <span translate="no">Hugo</span>.
+          Brakuje kodu do skrzynki, danych wi-fi lub informacji o harmonogramie —
+          <span translate="no">Sanco</span>. Coś nie działa w domu lub sytuacja
+          nagła — <span translate="no">Hugo</span>.
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1268,7 +1259,7 @@
             <p
               class="font-mono text-label uppercase tracking-[0.12em] text-terra-100 m-0"
             >
-              Boendet · <span translate="no">Sanco</span>
+              Zakwaterowanie · <span translate="no">Sanco</span>
             </p>
             <h3
               translate="no"
@@ -1295,7 +1286,7 @@
               class="font-display text-[15px] leading-[1.5] text-terra-100 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Bokningen, schemat, kontraktet, koder till nyckelskåp.
+              Rezerwacja, harmonogram, umowa, kody do skrzynki na klucze.
             </p>
             <dl
               class="grid grid-cols-[90px_1fr] gap-3 text-[14px] py-3 border-t border-terra-800 m-0 mt-2"
@@ -1316,7 +1307,7 @@
               <dt
                 class="font-mono text-label uppercase tracking-[0.08em] text-terra-200 mt-0.5"
               >
-                E-post
+                E-mail
               </dt>
               <dd class="m-0 text-linne-50">
                 <a
@@ -1334,7 +1325,7 @@
             <p
               class="font-mono text-label uppercase tracking-[0.12em] text-linne-300 m-0"
             >
-              Huset
+              Dom
             </p>
             <h3
               translate="no"
@@ -1361,8 +1352,8 @@
               class="font-display text-[15px] leading-[1.5] text-linne-200 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Vattenläcka, strömavbrott, wifi som inte funkar, trasig vitvara
-              — eller något annat som inte fungerar.
+              Wyciek wody, awaria prądu, niedziałające wi-fi, zepsuty sprzęt AGD
+              — lub cokolwiek innego, co nie działa.
             </p>
             <dl
               class="grid grid-cols-[90px_1fr] gap-3 text-[14px] py-3 border-t border-skog-700 m-0 mt-2"
@@ -1383,7 +1374,7 @@
               <dt
                 class="font-mono text-label uppercase tracking-[0.08em] text-linne-400 mt-0.5"
               >
-                E-post
+                E-mail
               </dt>
               <dd class="m-0 text-linne-100">
                 <a
@@ -1423,15 +1414,15 @@
                   &quot;WONK&quot; 1,
                   &quot;SOFT&quot; 30;
               "
-              >litet hus</em
-            >,<br />tydliga ramar.
+              >mały dom</em
+            >,<br />jasne zasady.
           </p>
           <p class="text-caption text-linne-300 m-0">
-            <span translate="no">Domek</span> är ett enfamiljshus från 1959 på
-            <span translate="no">Solrosvägen 17</span> i
+            <span translate="no">Domek</span> to dom jednorodzinny z 1959 roku przy
+            <span translate="no">Solrosvägen 17</span> w
             <span translate="no">Örnsköldsvik</span>.
-            <span translate="no">Hugo &amp; Vega Kjellsson</span> äger det,
-            <span translate="no">Sanco</span> hyr det åt sina arbetare.
+            <span translate="no">Hugo &amp; Vega Kjellsson</span> są właścicielami,
+            <span translate="no">Sanco</span> wynajmuje go dla swoich pracowników.
           </p>
         </div>
 
@@ -1444,7 +1435,7 @@
           <div class="flex flex-col gap-1 text-caption mt-3">
             <span
               class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
-              >Huset</span
+              >Dom</span
             >
             <span translate="no">Hugo Kjellsson</span>
             <a
@@ -1474,7 +1465,7 @@
           <div class="flex flex-col gap-1 text-caption mt-3">
             <span
               class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
-              >Boendet · <span translate="no">Sanco</span></span
+              >Zakwaterowanie · <span translate="no">Sanco</span></span
             >
             <span translate="no">Nicklas Boström</span>
             <a
@@ -1495,28 +1486,28 @@
           <h5
             class="font-mono text-label uppercase tracking-[0.12em] text-terra-300 m-0 mb-4 font-medium"
           >
-            Sidor
+            Strony
           </h5>
           <ul class="list-none m-0 p-0 flex flex-col gap-2">
             <li>
               <a
                 href="huset.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Huset</a
+                >Dom</a
               >
             </li>
             <li>
               <a
-                href="inflytt-utflytt.html"
+                href="inflytt-utflyttPLN.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Inflytt &amp; utflytt</a
+                >Wprowadzenie i wyprowadzka</a
               >
             </li>
             <li>
               <a
                 href="omradet.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Området</a
+                >Okolica</a
               >
             </li>
           </ul>

@@ -1,30 +1,12 @@
 <!doctype html>
-<html lang="sv">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Default to Polish unless user has chosen Swedish -->
-    <script>
-      (function () {
-        try {
-          if (localStorage.getItem("domek-lang") === "sv") return;
-          var map = {
-            "index.html": "indexPLN.html",
-            "huset.html": "husetPLN.html",
-            "inflytt-utflytt.html": "inflytt-utflyttPLN.html",
-            "omradet.html": "omradetPLN.html",
-          };
-          var file = location.pathname.split("/").pop() || "index.html";
-          if (map[file]) location.replace(map[file]);
-        } catch (e) {}
-      })();
-    </script>
-
-    <title>Huset — Domek</title>
+    <title>Dom — Domek</title>
     <meta
       name="description"
-      content="Hur huset fungerar — kök, tvätt, sopor, vatten, el, värme och vad du gör om något går sönder. Solrosvägen 17, Örnsköldsvik."
+      content="Jak działa dom — kuchnia, pranie, śmieci, woda, prąd, ogrzewanie i co robić, gdy coś się zepsuje. Solrosvägen 17, Örnsköldsvik."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -73,7 +55,6 @@
       }
 
       /* ===== Leaflet map-pins (sopor) ===== */
-      /* Två dots vid Domek — brun & grön = de fysiska kärlen */
       .bin-pair {
         position: relative;
         display: flex;
@@ -146,7 +127,7 @@
     </style>
   </head>
   <body>
-    <a href="#main" class="skip">Hoppa till innehåll</a>
+    <a href="#main" class="skip">Przejdź do treści</a>
 
     <!-- ============== HEADER ============== -->
     <header
@@ -157,7 +138,7 @@
       >
         <div class="flex items-center gap-3 sm:gap-4">
         <a
-          href="index.html"
+          href="indexPLN.html"
           translate="no"
           class="font-display font-medium text-2xl -tracking-[0.01em] text-blaeck-900 inline-flex items-baseline gap-2 no-underline"
           style="
@@ -182,15 +163,15 @@
             >e</em
           >k
         </a>
-        <div class="inline-flex items-center bg-linne-100 border border-linne-200 rounded-full p-0.5 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold leading-none" role="group" aria-label="Språkval">
-          <span aria-current="page" class="px-2.5 py-1 rounded-full bg-blaeck-800 text-linne-50">SV</span>
-          <a href="husetPLN.html" onclick="try{localStorage.setItem('domek-lang','pl')}catch(e){}" translate="no" class="px-2.5 py-1 rounded-full text-blaeck-500 hover:text-blaeck-900 no-underline transition-colors">PL</a>
+        <div class="inline-flex items-center bg-linne-100 border border-linne-200 rounded-full p-0.5 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold leading-none" role="group" aria-label="Wybór języka">
+          <a href="huset.html" onclick="try{localStorage.setItem('domek-lang','sv')}catch(e){}" translate="no" class="px-2.5 py-1 rounded-full text-blaeck-500 hover:text-blaeck-900 no-underline transition-colors">SV</a>
+          <span aria-current="page" class="px-2.5 py-1 rounded-full bg-blaeck-800 text-linne-50">PL</span>
         </div>
         </div>
 
         <button
           class="nav-toggle group lg:hidden bg-transparent border border-linne-200 rounded-sm p-2 cursor-pointer"
-          aria-label="Öppna meny"
+          aria-label="Otwórz menu"
           aria-controls="primary-nav"
           aria-expanded="false"
         >
@@ -214,31 +195,31 @@
           >
             <li>
               <a
-                href="index.html"
+                href="indexPLN.html"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Hem</a
+                >Start</a
               >
             </li>
             <li>
               <a
-                href="huset.html"
+                href="husetPLN.html"
                 class="block text-terra-700 bg-terra-50 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 max-lg:px-3 max-lg:py-3"
                 aria-current="page"
-                >Huset</a
+                >Dom</a
               >
             </li>
             <li>
               <a
-                href="inflytt-utflytt.html"
+                href="inflytt-utflyttPLN.html"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Inflytt &amp; utflytt</a
+                >Wprowadzenie i wyprowadzka</a
               >
             </li>
             <li>
               <a
-                href="omradet.html"
+                href="omradetPLN.html"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Området</a
+                >Okolica</a
               >
             </li>
           </ul>
@@ -258,7 +239,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-5 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
             >
-              Huset · <span translate="no">Solrosvägen 17</span>
+              Dom · <span translate="no">Solrosvägen 17</span>
             </p>
             <h1
               class="font-display font-light text-[clamp(48px,8vw,88px)] leading-[0.95] -tracking-[0.02em] text-blaeck-900 m-0 mb-5"
@@ -268,7 +249,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Hur huset
+              Jak dom
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -277,16 +258,16 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >fungerar</em
+                >działa</em
               >.
             </h1>
             <p
               class="font-display text-[clamp(17px,2vw,21px)] leading-[1.5] text-blaeck-600 max-w-[55ch] m-0"
               style="font-variation-settings: &quot;opsz&quot; 24"
             >
-              Allt du behöver veta om kök, tvätt, sopor, värme och vatten — och
-              vad du gör om något går sönder. Det här är ett 50-talshus, så
-              saker har en patina och knarrar ibland.
+              Wszystko, co musisz wiedzieć o kuchni, praniu, śmieciach,
+              ogrzewaniu i wodzie — i co robić, gdy coś się zepsuje. To dom z
+              lat 50., więc rzeczy mają patynę i czasami skrzypią.
             </p>
           </div>
 
@@ -295,7 +276,7 @@
           >
             <img
               src="Image/Domek.jpg"
-              alt="Domek — röd träfasad med vita fönsterkarmar och inramad uppfart, hösten."
+              alt="Domek — czerwona drewniana fasada z białymi ramami okiennymi i wjazdem, jesienią."
               class="block w-full h-auto aspect-[3/2] object-cover"
               loading="eager"
               decoding="async"
@@ -310,7 +291,7 @@
             <dt
               class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
             >
-              Byggår
+              Rok budowy
             </dt>
             <dd
               class="font-display text-[20px] text-blaeck-900 m-0"
@@ -323,7 +304,7 @@
             <dt
               class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
             >
-              Boyta
+              Pow. mieszkalna
             </dt>
             <dd
               class="font-display text-[20px] text-blaeck-900 m-0"
@@ -336,7 +317,7 @@
             <dt
               class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
             >
-              Biarea
+              Pow. dodatkowa
             </dt>
             <dd
               class="font-display text-[20px] text-blaeck-900 m-0"
@@ -349,7 +330,7 @@
             <dt
               class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
             >
-              Tomt
+              Działka
             </dt>
             <dd
               class="font-display text-[20px] text-blaeck-900 m-0"
@@ -362,26 +343,26 @@
             <dt
               class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
             >
-              Parkering
+              Parking
             </dt>
             <dd
               class="font-display text-[20px] text-blaeck-900 m-0"
               style="font-variation-settings: &quot;opsz&quot; 24"
             >
-              3 P-platser
+              3 miejsca
             </dd>
           </div>
           <div class="flex flex-col gap-1">
             <dt
               class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
             >
-              Värme
+              Ogrzewanie
             </dt>
             <dd
               class="font-display text-[20px] text-blaeck-900 m-0"
               style="font-variation-settings: &quot;opsz&quot; 24"
             >
-              Fjärrvärme
+              Sieć ciepłownicza
             </dd>
           </div>
         </dl>
@@ -400,7 +381,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              01 · Husets historia
+              01 · Historia domu
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0"
@@ -410,7 +391,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Ett hus från
+              Dom z
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -435,12 +416,12 @@
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Originalhuset
+                Oryginalny dom
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Familjebostad i rött trä med vita karmar. Hall, vardagsrum, tre
-                sovrum och två badrum på entréplan. Källaren rymmer pannrum,
-                tvättstuga, allrum och garage.
+                Dom rodzinny z czerwonego drewna z białymi ramami. Przedpokój,
+                salon, trzy sypialnie i dwie łazienki na parterze. Piwnica
+                mieści kotłownię, pralnię, pokój wspólny i garaż.
               </p>
             </article>
             <article class="flex flex-col gap-2">
@@ -453,12 +434,11 @@
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Tillbyggnad
+                Rozbudowa
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Köket, kontoret (bruna rummet), en toalett och hallen byggdes
-                till. Tapeterna och skåpen i de tillagda delarna är från
-                70-talet.
+                Dobudowano kuchnię, biuro (brązowy pokój), toaletę i przedpokój.
+                Tapety i szafki w dobudowanych częściach pochodzą z lat 70.
               </p>
             </article>
             <article class="flex flex-col gap-2">
@@ -471,11 +451,11 @@
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Takad uteplats
+                Zadaszony taras
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Den takade uteplatsen mot trädgården kom till. Röda paneler,
-                vita räcken — i samma tonart som fasaden.
+                Powstał zadaszony taras od strony ogrodu. Czerwone panele, białe
+                poręcze — w tej samej tonacji co fasada.
               </p>
             </article>
           </div>
@@ -496,7 +476,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              02 · Rummen
+              02 · Pokoje
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -506,7 +486,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Fyra
+              Cztery
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -515,16 +495,17 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >sovrum</em
-              >, fyra tapeter.
+                >sypialnie</em
+              >, cztery tapety.
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Alla rum ligger på entréplan. Alla sängar är enkelsängar i olika
-              bredd. Husets totala kapacitet är 4 personer — vem som sover var
-              bestämmer ni eller <span translate="no">Sanco</span>.
+              Wszystkie pokoje znajdują się na parterze. Wszystkie łóżka są
+              pojedyncze, o różnej szerokości. Całkowita pojemność domu to 4
+              osoby — kto śpi gdzie ustalacie wy lub
+              <span translate="no">Sanco</span>.
             </p>
           </div>
 
@@ -540,17 +521,17 @@
                     class="inline-block w-2 h-2 rounded-full bg-rum-saffran"
                     aria-hidden="true"
                   ></span>
-                  Gula rummet
+                  Żółty pokój
                 </p>
                 <h3
                   class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                   style="font-variation-settings: &quot;opsz&quot; 24"
                 >
-                  Senapsgult med blommor
+                  Musztardowy z kwiatami
                 </h3>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Husets största sovrum. Tapet i senapsgult med små blommor från
-                  sent 60-tal.
+                  Największa sypialnia w domu. Tapeta w kolorze musztardowym z
+                  drobnymi kwiatami z końca lat 60.
                 </p>
                 <dl
                   class="grid grid-cols-3 gap-x-3 gap-y-2 mt-2 m-0 pt-3 border-t border-linne-200"
@@ -559,7 +540,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Storlek
+                      Rozmiar
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -571,7 +552,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Säng
+                      Łóżko
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -584,7 +565,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Extra
+                      Dodatki
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -605,17 +586,17 @@
                     class="inline-block w-2 h-2 rounded-full bg-rum-kamelia"
                     aria-hidden="true"
                   ></span>
-                  Röda rummet
+                  Czerwony pokój
                 </p>
                 <h3
                   class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                   style="font-variation-settings: &quot;opsz&quot; 24"
                 >
-                  Randig terrakotta
+                  Terakota w paski
                 </h3>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Mindre rum med randig terrakottatapet från 70-talet. Ligger
-                  närmast badrummet.
+                  Mniejszy pokój z tapetą w paski w kolorze terakoty z lat 70.
+                  Znajduje się najbliżej łazienki.
                 </p>
                 <dl
                   class="grid grid-cols-3 gap-x-3 gap-y-2 mt-2 m-0 pt-3 border-t border-linne-200"
@@ -624,7 +605,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Storlek
+                      Rozmiar
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -636,7 +617,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Säng
+                      Łóżko
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -649,7 +630,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Extra
+                      Dodatki
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -670,17 +651,18 @@
                     class="inline-block w-2 h-2 rounded-full bg-rum-mossa"
                     aria-hidden="true"
                   ></span>
-                  Gröna rummet
+                  Zielony pokój
                 </p>
                 <h3
                   class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                   style="font-variation-settings: &quot;opsz&quot; 24"
                 >
-                  Mörkgrön mosstapet
+                  Ciemnozielona tapeta z mchem
                 </h3>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Mörkgrön mosstapet med små guld- och senapsdetaljer. Egen
-                  balkong åt söder, skrivbord vid fönstret.
+                  Ciemnozielona tapeta z motywem mchu z drobnymi złotymi i
+                  musztardowymi detalami. Własny balkon na południe, biurko
+                  przy oknie.
                 </p>
                 <dl
                   class="grid grid-cols-3 gap-x-3 gap-y-2 mt-2 m-0 pt-3 border-t border-linne-200"
@@ -689,7 +671,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Storlek
+                      Rozmiar
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -701,7 +683,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Säng
+                      Łóżko
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -714,12 +696,12 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Extra
+                      Dodatki
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
                     >
-                      Balkong Skrivbord
+                      Balkon Biurko
                     </dd>
                   </div>
                 </dl>
@@ -737,20 +719,20 @@
                     class="inline-block w-2 h-2 rounded-full bg-rum-tobak"
                     aria-hidden="true"
                   ></span>
-                  Bruna rummet
+                  Brązowy pokój
                   <span class="text-blaeck-400 normal-case tracking-normal"
-                    >· kontoret</span
+                    >· biuro</span
                   >
                 </p>
                 <h3
                   class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                   style="font-variation-settings: &quot;opsz&quot; 24"
                 >
-                  Brun bukett-tapet
+                  Brązowa tapeta z bukietami
                 </h3>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Innanför köket. Brun bukett-/randtapet och ett skrivbord vid
-                  fönstret — bra om du behöver jobba kvällar.
+                  Za kuchnią. Brązowa tapeta w bukiety/paski i biurko przy
+                  oknie — dobre, jeśli musisz pracować wieczorami.
                 </p>
                 <dl
                   class="grid grid-cols-3 gap-x-3 gap-y-2 mt-2 m-0 pt-3 border-t border-linne-200"
@@ -759,7 +741,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Storlek
+                      Rozmiar
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -771,7 +753,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Säng
+                      Łóżko
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -784,7 +766,7 @@
                     <dt
                       class="font-mono text-[9px] uppercase tracking-[0.1em] text-blaeck-400 m-0"
                     >
-                      Extra
+                      Dodatki
                     </dt>
                     <dd
                       class="font-mono text-[13px] font-semibold text-blaeck-900 m-0"
@@ -802,14 +784,14 @@
         >
           <span
             class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold whitespace-nowrap mt-0.5 shrink-0"
-            >Kommer senare</span
+            >Wkrótce</span
           >
           <p
             class="font-display text-[15px] leading-[1.5] text-blaeck-700 m-0"
             style="font-variation-settings: &quot;opsz&quot; 18"
           >
-            Källarrummet bredvid pannrummet utreds som ett femte sovrum. När det
-            är klart läggs det in här.
+            Pokój w piwnicy obok kotłowni jest rozważany jako piąta sypialnia.
+            Gdy będzie gotowy, zostanie tu dodany.
           </p>
         </div>
       </section>
@@ -827,7 +809,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              03 · Köket
+              03 · Kuchnia
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -837,7 +819,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Vad finns i
+              Co jest w
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -846,15 +828,15 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >köket</em
+                >kuchni</em
               >?
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Det vanliga som täcker matlagning för fyra. Bestick, glas och
-              porslin för 4–6 personer.
+              To, co potrzebne do gotowania dla czterech osób. Sztućce,
+              szklanki i naczynia dla 4–6 osób.
             </p>
           </div>
 
@@ -868,10 +850,10 @@
                 <h3
                   class="font-sans font-medium text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Kyl &amp; frys
+                  Lodówka i zamrażarka
                 </h3>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Kombiskåp, normal storlek för fyra personer.
+                  Lodówko-zamrażarka, normalny rozmiar dla czterech osób.
                 </p>
               </div>
             </div>
@@ -884,11 +866,11 @@
                 <h3
                   class="font-sans font-medium text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Spis, ugn &amp; mikro
+                  Kuchenka, piekarnik i mikrofalówka
                 </h3>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Häll och ugn enligt 70-talsstandard. Mikrovågsugn vid sidan av
-                  spisen.
+                  Płyta i piekarnik zgodnie ze standardem lat 70. Mikrofalówka
+                  obok kuchenki.
                 </p>
               </div>
             </div>
@@ -901,10 +883,10 @@
                 <h3
                   class="font-sans font-medium text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Vattenkokare
+                  Czajnik elektryczny
                 </h3>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Elektrisk vattenkokare. Kaffefilter och kaffe köper du själv.
+                  Czajnik elektryczny. Filtry do kawy i kawę kupujesz sam.
                 </p>
               </div>
             </div>
@@ -917,11 +899,11 @@
                 <h3
                   class="font-sans font-medium text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Bestick &amp; porslin
+                  Sztućce i naczynia
                 </h3>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Tallrikar, glas, bestick för 4–6 personer av varje. Kastruller
-                  och stekpannor finns.
+                  Talerze, szklanki, sztućce dla 4–6 osób każdego rodzaju.
+                  Garnki i patelnie są.
                 </p>
               </div>
             </div>
@@ -942,11 +924,12 @@
             <h4
               class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
             >
-              Det finns ingen diskmaskin
+              Nie ma zmywarki
             </h4>
             <p class="text-body-sm text-blaeck-700 m-0">
-              Diska för hand i hon på höger sida. Diskmedel och svamp finns i
-              städskåpet. Lämna inget i hon över natten.
+              Zmywaj ręcznie w zlewie po prawej stronie. Płyn do mycia naczyń i
+              gąbka są w schowku gospodarczym. Nie zostawiaj niczego w zlewie
+              na noc.
             </p>
           </div>
         </div>
@@ -957,22 +940,22 @@
             <p
               class="font-mono text-[10px] uppercase tracking-[0.14em] text-skog-700 font-semibold m-0 mb-2"
             >
-              Finns i städskåpet
+              Jest w schowku
             </p>
             <ul
               class="list-none p-0 m-0 space-y-1 text-body-sm text-blaeck-700"
             >
               <li class="flex items-baseline gap-2">
                 <span class="text-skog-500 text-[10px] mt-0.5">●</span>
-                <span>Diskmedel &amp; svamp</span>
+                <span>Płyn do naczyń i gąbka</span>
               </li>
               <li class="flex items-baseline gap-2">
                 <span class="text-skog-500 text-[10px] mt-0.5">●</span>
-                <span>Bruna papperspåsar för matavfall</span>
+                <span>Brązowe papierowe torby na bioodpady</span>
               </li>
               <li class="flex items-baseline gap-2">
                 <span class="text-skog-500 text-[10px] mt-0.5">●</span>
-                <span>Allrengöringsmedel &amp; trasor</span>
+                <span>Uniwersalny środek czyszczący i ścierki</span>
               </li>
             </ul>
           </div>
@@ -980,22 +963,22 @@
             <p
               class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-2"
             >
-              Tar du med själv
+              Bierzesz ze sobą
             </p>
             <ul
               class="list-none p-0 m-0 space-y-1 text-body-sm text-blaeck-700"
             >
               <li class="flex items-baseline gap-2">
                 <span class="text-blaeck-300 text-[10px] mt-0.5">○</span>
-                <span>Salt, peppar, baskryddor &amp; olja</span>
+                <span>Sól, pieprz, podstawowe przyprawy i olej</span>
               </li>
               <li class="flex items-baseline gap-2">
                 <span class="text-blaeck-300 text-[10px] mt-0.5">○</span>
-                <span>Kaffe &amp; kaffefilter</span>
+                <span>Kawa i filtry do kawy</span>
               </li>
               <li class="flex items-baseline gap-2">
                 <span class="text-blaeck-300 text-[10px] mt-0.5">○</span>
-                <span>Disktrasor om du föredrar nya</span>
+                <span>Ścierki, jeśli wolisz nowe</span>
               </li>
             </ul>
           </div>
@@ -1015,7 +998,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              04 · Tvätt &amp; sängkläder
+              04 · Pranie i pościel
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -1025,7 +1008,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Vad
+              Co
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -1034,16 +1017,15 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >finns</em
+                >jest</em
               >
-              och vad du tar med.
+              i co bierzesz ze sobą.
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Tvättmaskin finns i källaren — sängkläder och handdukar tar du med
-              själv.
+              Pralka jest w piwnicy — pościel i ręczniki bierzesz ze sobą.
             </p>
           </div>
 
@@ -1054,23 +1036,23 @@
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.14em] text-skog-700 font-semibold m-0"
               >
-                Finns i huset
+                Jest w domu
               </p>
               <h3
                 class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Tvättmaskin &amp; torkrum
+                Pralka i suszarnia
               </h3>
               <p class="text-body-sm text-blaeck-700 m-0">
-                Tvättmaskinen står i källaren, intill pannrummet. Tvättmedel
-                finns på hyllan ovanför. Torkrum med uppvärmd luft och
-                torkställning bredvid maskinen.
+                Pralka stoi w piwnicy, obok kotłowni. Proszek do prania jest na
+                półce powyżej. Suszarnia z ogrzanym powietrzem i stojakiem do
+                suszenia obok pralki.
               </p>
               <p
                 class="text-caption text-blaeck-500 m-0 mt-2 font-mono uppercase tracking-[0.06em]"
               >
-                Ingen torktumlare
+                Bez suszarki bębnowej
               </p>
             </article>
             <article
@@ -1079,22 +1061,22 @@
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.14em] text-terra-700 font-semibold m-0"
               >
-                Tar du med själv
+                Bierzesz ze sobą
               </p>
               <h3
                 class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Sängkläder &amp; handdukar
+                Pościel i ręczniki
               </h3>
               <p class="text-body-sm text-blaeck-700 m-0">
-                Lakan, påslakan, örngott och handdukar
-                <strong class="font-semibold">finns inte i huset</strong>. På
-                sängarna ligger kuddar och täcken — inget annat.
+                Prześcieradeł, poszw, poszewek i ręczników
+                <strong class="font-semibold">nie ma w domu</strong>. Na łóżkach
+                leżą poduszki i kołdry — nic więcej.
               </p>
               <p class="text-caption text-blaeck-700 m-0 mt-1">
-                Glömt? Närmaste butiker (Jysk, Mio, Hemtex) finns på
-                <a href="omradet.html#sangkit" class="link">Området-kartan</a>.
+                Zapomniałeś? Najbliższe sklepy (Jysk, Mio, Hemtex) są na
+                <a href="omradetPLN.html" class="link">mapie Okolica</a>.
               </p>
             </article>
           </div>
@@ -1107,13 +1089,13 @@
           <p
             class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
           >
-            Sängstorlekar — för dig som handlar lakan
+            Rozmiary łóżek — dla kupujących pościel
           </p>
           <dl
             class="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-2 text-body-sm m-0"
           >
             <div class="flex justify-between sm:flex-col gap-1">
-              <dt class="text-blaeck-600">Röda &amp; bruna rummet</dt>
+              <dt class="text-blaeck-600">Czerwony i brązowy pokój</dt>
               <dd
                 class="font-mono text-blaeck-900 font-semibold m-0"
                 translate="no"
@@ -1122,7 +1104,7 @@
               </dd>
             </div>
             <div class="flex justify-between sm:flex-col gap-1">
-              <dt class="text-blaeck-600">Gula rummet</dt>
+              <dt class="text-blaeck-600">Żółty pokój</dt>
               <dd
                 class="font-mono text-blaeck-900 font-semibold m-0"
                 translate="no"
@@ -1131,7 +1113,7 @@
               </dd>
             </div>
             <div class="flex justify-between sm:flex-col gap-1">
-              <dt class="text-blaeck-600">Gröna rummet</dt>
+              <dt class="text-blaeck-600">Zielony pokój</dt>
               <dd
                 class="font-mono text-blaeck-900 font-semibold m-0"
                 translate="no"
@@ -1156,7 +1138,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              05 · Badrumen
+              05 · Łazienki
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0"
@@ -1166,7 +1148,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Två
+              Dwie
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -1175,7 +1157,7 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >badrum</em
+                >łazienki</em
               >.
             </h2>
           </div>
@@ -1185,35 +1167,35 @@
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
               >
-                Vid entrén
+                Przy wejściu
               </p>
               <h3
                 class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Lilla badrummet
+                Mała łazienka
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Toalett och dusch. Det här är badrummet du använder snabbt på
-                vägen in eller ut.
+                Toaleta i prysznic. To łazienka, której używasz szybko przy
+                wejściu lub wyjściu.
               </p>
             </article>
             <article class="card p-6 flex flex-col gap-2">
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
               >
-                Mellan sovrummet och vardagsrummet
+                Między sypialnią a salonem
               </p>
               <h3
                 class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Gröna badrummet
+                Zielona łazienka
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Toalett, dusch
-                <strong class="font-semibold">och badkar</strong>. Det större
-                badrummet — om någon vill bada efter en lång dag.
+                Toaleta, prysznic
+                <strong class="font-semibold">i wanna</strong>. Większa
+                łazienka — jeśli ktoś chce się wykąpać po długim dniu.
               </p>
             </article>
           </div>
@@ -1233,7 +1215,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              06 · System
+              06 · Instalacje
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -1243,7 +1225,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Vatten, el &amp;
+              Woda, prąd i
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -1252,15 +1234,15 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >värme</em
+                >ogrzewanie</em
               >.
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Var sakerna sitter, och hur du gör om något måste stängas av i en
-              hast.
+              Gdzie wszystko się znajduje i co robić, jeśli coś trzeba szybko
+              wyłączyć.
             </p>
           </div>
 
@@ -1271,23 +1253,23 @@
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 m-0"
               >
-                Vatten
+                Woda
               </p>
               <h3
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Huvudkran
+                Zawór główny
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Sitter i pannrummet i källaren, direkt till vänster när du
-                kommer in. Klassisk kulventil — handtaget i rörets riktning =
-                öppet, tvärs över = stängt.
+                Znajduje się w kotłowni w piwnicy, bezpośrednio po lewej stronie
+                po wejściu. Klasyczny zawór kulowy — uchwyt w kierunku rury =
+                otwarte, w poprzek = zamknięte.
               </p>
               <p
                 class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 m-0 mt-1"
               >
-                Kranvattnet kan drickas
+                Woda z kranu jest zdatna do picia
               </p>
             </article>
             <article
@@ -1296,23 +1278,23 @@
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-senap-700 m-0"
               >
-                El
+                Prąd
               </p>
               <h3
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Proppskåp
+                Skrzynka bezpiecznikowa
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Modernt skåp i hallen vid ytterdörren — jordfelsbrytare och
-                automatsäkringar. Äldre keramiska säkringar i källaren ligger
-                kvar.
+                Nowoczesna skrzynka w przedpokoju przy drzwiach wejściowych —
+                wyłącznik różnicowoprądowy i automatyczne bezpieczniki. Starsze
+                ceramiczne bezpieczniki w piwnicy zostały.
               </p>
               <p
                 class="font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-500 m-0 mt-1"
               >
-                Reservsäkringar i städskåpet
+                Zapasowe bezpieczniki w schowku
               </p>
             </article>
             <article
@@ -1321,17 +1303,17 @@
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-skog-700 m-0"
               >
-                Värme
+                Ogrzewanie
               </p>
               <h3
                 class="font-display font-medium text-[18px] text-blaeck-900 m-0"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                Fjärrvärme
+                Sieć ciepłownicza
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Alltid på, året runt. Varje radiator har ett vred 1–5 — ställ
-                som du vill ha det. Självdragsventilation sköter sig själv.
+                Zawsze włączone, przez cały rok. Każdy grzejnik ma pokrętło
+                1–5 — ustaw jak chcesz. Wentylacja grawitacyjna działa sama.
               </p>
             </article>
           </div>
@@ -1352,7 +1334,7 @@
           <p
             class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
           >
-            07 · Sopor &amp; återvinning
+            07 · Śmieci i recykling
           </p>
           <h2
             class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -1362,7 +1344,7 @@
                 &quot;SOFT&quot; 30;
             "
           >
-            Vart sätter du
+            Gdzie wkładasz
             <em
               class="wonk text-terra-600 font-normal"
               style="
@@ -1371,19 +1353,20 @@
                   &quot;SOFT&quot; 30,
                   &quot;WONK&quot; 1;
               "
-              >vad</em
+              >co</em
             >?
           </h2>
           <p
             class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
             style="font-variation-settings: &quot;opsz&quot; 18"
           >
-            Fyra ställen. Två kärl vid huset, en station 200&nbsp;m bort, en
-            central för storgods. Hitta din pryl i listorna nedan på kartan.
+            Cztery miejsca. Dwa kosze przy domu, stacja 200&nbsp;m dalej,
+            centrum dla rzeczy wielkogabarytowych. Znajdź swój przedmiot na
+            listach poniżej i na mapie.
           </p>
           <p class="text-caption text-blaeck-500 m-0 mt-4">
-            Nästa hämtning &amp; schema:
-            <a href="index.html#sopor" class="link">se startsidan</a>.
+            Następny odbiór i harmonogram:
+            <a href="indexPLN.html#sopor" class="link">zobacz stronę główną</a>.
           </p>
         </header>
 
@@ -1391,14 +1374,14 @@
         <div
           class="relative isolate overflow-hidden border-y border-linne-200 mb-12 mx-[calc(50%-50vw)] lg:min-h-[720px]"
         >
-          <!-- Karta — mobil: panorama-strip i toppen. Desktop: full bakgrund. -->
+          <!-- Karta -->
           <div
             id="sopor-map"
             class="relative z-0 w-full h-[180px] sm:h-[220px] lg:absolute lg:inset-0 lg:h-auto lg:w-auto"
-            aria-label="Karta över återvinningsstationer kring Domek"
+            aria-label="Mapa stacji recyklingu wokół Domek"
           ></div>
 
-          <!-- Topbar (legend + länk) — constrained till max-w-[68rem] -->
+          <!-- Topbar (legend + länk) -->
           <div
             class="absolute top-0 inset-x-0 z-20 max-w-[68rem] mx-auto px-3 sm:px-4 lg:px-6 pt-3 sm:pt-4 lg:pt-6 flex items-start justify-between gap-3 pointer-events-none"
           >
@@ -1409,7 +1392,7 @@
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-2"
               >
-                På kartan
+                Na mapie
               </p>
               <ul
                 class="list-none p-0 m-0 space-y-1.5 text-[11px] font-mono text-blaeck-700"
@@ -1420,7 +1403,7 @@
                     style="background: #6e4a1c"
                     aria-hidden="true"
                   ></span>
-                  Brunt kärl
+                  Brązowy kosz
                 </li>
                 <li class="inline-flex items-center gap-2 w-full">
                   <span
@@ -1428,7 +1411,7 @@
                     style="background: #4d6033"
                     aria-hidden="true"
                   ></span>
-                  Grönt kärl
+                  Zielony kosz
                 </li>
                 <li class="inline-flex items-center gap-2 w-full">
                   <span
@@ -1436,7 +1419,7 @@
                     style="background: #c9522f"
                     aria-hidden="true"
                   ></span>
-                  Återvinningsst.
+                  Stacja recyklingu
                 </li>
                 <li class="inline-flex items-center gap-2 w-full">
                   <span
@@ -1444,22 +1427,21 @@
                     style="background: #221e15"
                     aria-hidden="true"
                   ></span>
-                  Må central
+                  Centrum Må
                 </li>
               </ul>
             </div>
 
             <!-- Större karta-länk -->
             <a
-              href="omradet.html#sopor"
+              href="omradetPLN.html"
               class="bg-linne-50/92 backdrop-blur-md backdrop-saturate-150 border border-linne-200 rounded-md px-3 py-2 shadow-paper-1 font-mono text-[11px] uppercase tracking-[0.08em] text-blaeck-700 no-underline hover:text-terra-600 transition-colors pointer-events-auto whitespace-nowrap"
             >
-              Större karta →
+              Większa mapa →
             </a>
           </div>
-          <!-- /topbar -->
 
-          <!-- 4 destinationskort — mobil: flow under kartan. Desktop: overlay i botten. -->
+          <!-- 4 destinationskort -->
           <div
             class="relative z-10 max-w-[68rem] mx-auto w-full px-3 sm:px-4 lg:px-6 pt-4 sm:pt-5 lg:pt-0 pb-3 sm:pb-4 lg:pb-6 lg:flex lg:flex-col lg:justify-end lg:min-h-[720px]"
           >
@@ -1477,16 +1459,16 @@
                       class="font-mono text-[10px] uppercase tracking-[0.14em] m-0 mb-1.5"
                       style="color: #6e4a1c"
                     >
-                      Vid garaget
+                      Przy garażu
                     </p>
                     <h3
                       class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                       style="font-variation-settings: &quot;opsz&quot; 24"
                     >
-                      Brunt kärl
+                      Brązowy kosz
                     </h3>
                     <p class="text-caption text-blaeck-600 m-0 mt-0.5">
-                      Matavfall
+                      Bioodpady
                     </p>
                   </div>
                   <i
@@ -1505,7 +1487,7 @@
                         style="color: #6e4a1c"
                         aria-hidden="true"
                       ></i>
-                      Bananskal
+                      Skórki od banana
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1515,7 +1497,7 @@
                         style="color: #6e4a1c"
                         aria-hidden="true"
                       ></i>
-                      Kaffesump
+                      Fusy z kawy
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1525,7 +1507,7 @@
                         style="color: #6e4a1c"
                         aria-hidden="true"
                       ></i>
-                      Äggskal
+                      Skorupki jaj
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1535,7 +1517,7 @@
                         style="color: #6e4a1c"
                         aria-hidden="true"
                       ></i>
-                      Tepåsar
+                      Torebki herbaty
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1545,7 +1527,7 @@
                         style="color: #6e4a1c"
                         aria-hidden="true"
                       ></i>
-                      Köttben
+                      Kości
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1555,7 +1537,7 @@
                         style="color: #6e4a1c"
                         aria-hidden="true"
                       ></i>
-                      Frukt &amp; grönt
+                      Owoce i warzywa
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1565,13 +1547,13 @@
                         style="color: #6e4a1c"
                         aria-hidden="true"
                       ></i>
-                      Matrester
+                      Resztki jedzenia
                     </li>
                   </ul>
                   <p
                     class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-500 mt-3 m-0"
                   >
-                    Bruna papperspåsar (städskåpet) · ingen plast
+                    Brązowe papierowe torby (schowek) · bez plastiku
                   </p>
                 </div>
               </article>
@@ -1587,16 +1569,16 @@
                     <p
                       class="font-mono text-[10px] uppercase tracking-[0.14em] text-skog-700 m-0 mb-1.5"
                     >
-                      Vid garaget
+                      Przy garażu
                     </p>
                     <h3
                       class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                       style="font-variation-settings: &quot;opsz&quot; 24"
                     >
-                      Grönt kärl
+                      Zielony kosz
                     </h3>
                     <p class="text-caption text-blaeck-600 m-0 mt-0.5">
-                      Restavfall
+                      Odpady zmieszane
                     </p>
                   </div>
                   <i
@@ -1613,7 +1595,7 @@
                         class="ph-duotone ph-cigarette text-skog-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Snus
+                      <span translate="no">Snus</span>
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1622,7 +1604,7 @@
                         class="ph-duotone ph-paint-brush text-skog-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Tops &amp; bomullspinnar
+                      Patyczki kosmetyczne
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1631,7 +1613,7 @@
                         class="ph-duotone ph-scissors text-skog-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Hår
+                      Włosy
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1640,7 +1622,7 @@
                         class="ph-duotone ph-bandaids text-skog-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Plåster
+                      Plastry
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1649,7 +1631,7 @@
                         class="ph-duotone ph-paper-plane text-skog-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Disktrasor
+                      Ścierki do naczyń
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1658,13 +1640,13 @@
                         class="ph-duotone ph-package text-skog-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Smutsiga förp.
+                      Brudne opakowania
                     </li>
                   </ul>
                   <p
                     class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-500 mt-3 m-0"
                   >
-                    Knuten plastpåse · inga rena förpackningar
+                    Zawiązany worek plastikowy · bez czystych opakowań
                   </p>
                 </div>
               </article>
@@ -1680,16 +1662,16 @@
                     <p
                       class="font-mono text-[10px] uppercase tracking-[0.14em] text-terra-700 m-0 mb-1.5"
                     >
-                      200&nbsp;m bort · Strandgatan
+                      200&nbsp;m stąd · Strandgatan
                     </p>
                     <h3
                       class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                       style="font-variation-settings: &quot;opsz&quot; 24"
                     >
-                      Återvinnings­stationen
+                      Stacja recyklingu
                     </h3>
                     <p class="text-caption text-blaeck-600 m-0 mt-0.5">
-                      Rena förpackningar &amp; tidningar
+                      Czyste opakowania i gazety
                     </p>
                   </div>
                   <i
@@ -1706,7 +1688,7 @@
                         class="ph-duotone ph-cube text-terra-600 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Mjölk- &amp; juicepaket
+                      Kartony po mleku i soku
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1715,7 +1697,7 @@
                         class="ph-duotone ph-jar text-terra-600 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Plastförpackning
+                      Opakowania plastikowe
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1724,7 +1706,7 @@
                         class="ph-duotone ph-wine text-terra-600 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Glasflaska &amp; -burk
+                      Butelki i słoiki szklane
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1733,7 +1715,7 @@
                         class="ph-duotone ph-cylinder text-terra-600 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Konservburk
+                      Puszki konserwowe
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1742,7 +1724,7 @@
                         class="ph-duotone ph-package text-terra-600 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Wellpapp &amp; kartong
+                      Tektura i karton
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1751,7 +1733,7 @@
                         class="ph-duotone ph-newspaper text-terra-600 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Tidningar
+                      Gazety
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1760,13 +1742,13 @@
                         class="ph-duotone ph-envelope text-terra-600 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Kuvert &amp; papper
+                      Koperty i papier
                     </li>
                   </ul>
                   <p
                     class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-500 mt-3 m-0"
                   >
-                    Skölj rena · platta till kartonger · sortera per kärl
+                    Wypłucz · spłaszcz kartony · sortuj według kosza
                   </p>
                 </div>
               </article>
@@ -1782,16 +1764,16 @@
                     <p
                       class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-600 m-0 mb-1.5"
                     >
-                      1,4&nbsp;km · 3 min bil · Returvägen 11
+                      1,4&nbsp;km · 3 min autem · Returvägen 11
                     </p>
                     <h3
                       class="font-display font-medium text-[20px] text-blaeck-900 m-0"
                       style="font-variation-settings: &quot;opsz&quot; 24"
                     >
-                      Må återvinnings­central
+                      Centrum recyklingu Må
                     </h3>
                     <p class="text-caption text-blaeck-600 m-0 mt-0.5">
-                      Grovsopor &amp; farligt avfall
+                      Odpady wielkogabarytowe i niebezpieczne
                     </p>
                   </div>
                   <i
@@ -1808,7 +1790,7 @@
                         class="ph-duotone ph-couch text-blaeck-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Möbler
+                      Meble
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1817,7 +1799,7 @@
                         class="ph-duotone ph-bed text-blaeck-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Madrasser
+                      Materace
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1826,7 +1808,7 @@
                         class="ph-duotone ph-battery-medium text-blaeck-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Batterier
+                      Baterie
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1835,7 +1817,7 @@
                         class="ph-duotone ph-lightbulb text-blaeck-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Glödlampor
+                      Żarówki
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1844,7 +1826,7 @@
                         class="ph-duotone ph-paint-bucket text-blaeck-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Färg &amp; kemikalier
+                      Farby i chemikalia
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1853,7 +1835,7 @@
                         class="ph-duotone ph-plug text-blaeck-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Elavfall
+                      Elektroodpady
                     </li>
                     <li
                       class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border border-linne-300 bg-white text-[12px] text-blaeck-700"
@@ -1862,13 +1844,14 @@
                         class="ph-duotone ph-plant text-blaeck-700 text-[14px]"
                         aria-hidden="true"
                       ></i>
-                      Trädgård
+                      Odpady ogrodowe
                     </li>
                   </ul>
                   <p
                     class="font-mono text-[10px] uppercase tracking-[0.06em] text-blaeck-500 mt-3 m-0"
                   >
-                    Drop-in · ingen kostnad för hushåll · ID kan krävas
+                    Bez umawiania · bez opłat dla gospodarstw domowych ·
+                    możliwy wymóg dokumentu
                   </p>
                 </div>
               </article>
@@ -1882,13 +1865,13 @@
             <p
               class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-2"
             >
-              Var slänger jag…
+              Gdzie wyrzucam…
             </p>
             <h3
               class="font-display font-medium text-[clamp(20px,2.5vw,24px)] text-blaeck-900 m-0"
               style="font-variation-settings: &quot;opsz&quot; 24"
             >
-              Det som inte är självklart.
+              Rzeczy, które nie są oczywiste.
             </h3>
           </header>
           <div class="grid sm:grid-cols-2 gap-3">
@@ -1904,10 +1887,10 @@
                 <p
                   class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1"
                 >
-                  Pizzakartong med fett?
+                  Karton po pizzy z tłuszczem?
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
-                  Smutsig wellpapp blir <strong>restavfall</strong>.
+                  Brudna tektura to <strong>odpady zmieszane</strong>.
                 </p>
                 <span
                   class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-skog-700"
@@ -1916,7 +1899,7 @@
                     class="inline-block w-2 h-2 rounded-full bg-skog-600"
                     aria-hidden="true"
                   ></span>
-                  Grönt kärl
+                  Zielony kosz
                 </span>
               </div>
             </div>
@@ -1933,10 +1916,11 @@
                 <p
                   class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1"
                 >
-                  Mjölkpaket med skvätt kvar?
+                  Karton mleka z resztką w środku?
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
-                  <strong>Skölj först</strong>, vik ihop, lämna i pappersförp.
+                  <strong>Najpierw wypłucz</strong>, złóż, oddaj jako opakowanie
+                  papierowe.
                 </p>
                 <span
                   class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-terra-700"
@@ -1945,7 +1929,7 @@
                     class="inline-block w-2 h-2 rounded-full bg-terra-500"
                     aria-hidden="true"
                   ></span>
-                  Återvinnings­stationen
+                  Stacja recyklingu
                 </span>
               </div>
             </div>
@@ -1962,10 +1946,10 @@
                 <p
                   class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1"
                 >
-                  Snus, tuggummi, fimpar?
+                  <span translate="no">Snus</span>, gumy do żucia, niedopałki?
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
-                  Inga av dem komposteras. <strong>Knyt påsen</strong>.
+                  Żadne z tego nie kompostuje się. <strong>Zawiąż worek</strong>.
                 </p>
                 <span
                   class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-skog-700"
@@ -1974,7 +1958,7 @@
                     class="inline-block w-2 h-2 rounded-full bg-skog-600"
                     aria-hidden="true"
                   ></span>
-                  Grönt kärl
+                  Zielony kosz
                 </span>
               </div>
             </div>
@@ -1991,10 +1975,10 @@
                 <p
                   class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1"
                 >
-                  PET-flaskor &amp; aluminiumburkar?
+                  Butelki PET i puszki aluminiowe?
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
-                  De har pant — <strong>lämna i butik</strong>, inte här.
+                  Są objęte kaucją — <strong>oddaj w sklepie</strong>, nie tutaj.
                 </p>
                 <span
                   class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-senap-700"
@@ -2003,7 +1987,7 @@
                     class="inline-block w-2 h-2 rounded-full bg-senap-500"
                     aria-hidden="true"
                   ></span>
-                  Pantautomat (Coop, Willys, ICA)
+                  Automat kaucyjny (Coop, Willys, ICA)
                 </span>
               </div>
             </div>
@@ -2020,11 +2004,11 @@
                 <p
                   class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1"
                 >
-                  Glasburk med metall­lock?
+                  Słoik szklany z metalową pokrywką?
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
-                  <strong>Skruva av locket</strong> — glas i glaskärl, lock i
-                  metallkärl.
+                  <strong>Odkręć pokrywkę</strong> — szkło do kosza na szkło,
+                  pokrywka do kosza na metal.
                 </p>
                 <span
                   class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-terra-700"
@@ -2033,7 +2017,7 @@
                     class="inline-block w-2 h-2 rounded-full bg-terra-500"
                     aria-hidden="true"
                   ></span>
-                  Återvinnings­stationen
+                  Stacja recyklingu
                 </span>
               </div>
             </div>
@@ -2050,10 +2034,10 @@
                 <p
                   class="font-sans font-semibold text-[14px] text-blaeck-900 m-0 mb-1"
                 >
-                  Kvitton från butiken?
+                  Paragony ze sklepu?
                 </p>
                 <p class="text-body-sm text-blaeck-700 m-0 mb-1.5">
-                  Termopapper är <strong>inte återvinningsbart</strong>.
+                  Papier termiczny <strong>nie nadaje się do recyklingu</strong>.
                 </p>
                 <span
                   class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.08em] text-skog-700"
@@ -2062,7 +2046,7 @@
                     class="inline-block w-2 h-2 rounded-full bg-skog-600"
                     aria-hidden="true"
                   ></span>
-                  Grönt kärl
+                  Zielony kosz
                 </span>
               </div>
             </div>
@@ -2079,12 +2063,12 @@
             <h4
               class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
             >
-              Var står tunnorna och vem drar ut dem?
+              Gdzie stoją kosze i kto je wystawia?
             </h4>
             <p class="text-body-sm text-blaeck-700 m-0">
-              Tunnorna står vid garaget. <strong>Kvällen innan tömning</strong>
-              drar ni ut dem till vägen. När sopbilen har tömt, dra tillbaka dem
-              mot garaget. Locket måste alltid gå att stänga.
+              Kosze stoją przy garażu. <strong>Wieczorem przed odbiorem</strong>
+              wystawiacie je na ulicę. Gdy śmieciarka opróżni, wstawcie je
+              z powrotem do garażu. Pokrywa zawsze musi się zamykać.
             </p>
           </div>
         </div>
@@ -2103,7 +2087,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              08 · Akut
+              08 · Awaryjnie
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -2113,7 +2097,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              När något
+              Gdy coś się
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -2122,15 +2106,15 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >går sönder</em
+                >zepsuje</em
               >.
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Stora rubriker, korta steg. Telefonen längst ner — ring direkt vid
-              läckage, brand eller om något inte går att lösa.
+              Duże nagłówki, krótkie kroki. Telefon na dole — dzwoń od razu przy
+              wycieku, pożarze lub gdy czegoś nie da się rozwiązać.
             </p>
           </div>
           <div class="flex items-end">
@@ -2141,7 +2125,7 @@
                 <p
                   class="font-mono text-[10px] uppercase tracking-[0.14em] text-terra-300 m-0 mb-1"
                 >
-                  Akut — ring först
+                  Awaria — najpierw zadzwoń
                 </p>
                 <p
                   class="font-display font-light text-[22px] text-linne-50 m-0"
@@ -2165,47 +2149,46 @@
         <p
           class="font-mono text-[11px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
         >
-          Vid vattenläckage
+          Przy wycieku wody
         </p>
         <ol class="grid sm:grid-cols-3 gap-4 list-none p-0 m-0 mb-10">
           <li class="card p-5 flex flex-col gap-2">
             <span
               class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
-              >Steg 01</span
+              >Krok 01</span
             >
             <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
-              Stäng huvudkranen
+              Zamknij zawór główny
             </h4>
             <p class="text-body-sm text-blaeck-600 m-0">
-              I pannrummet, direkt till vänster. Vrid handtaget tvärs över
-              röret.
+              W kotłowni, bezpośrednio po lewej. Obróć uchwyt w poprzek rury.
             </p>
           </li>
           <li class="card p-5 flex flex-col gap-2">
             <span
               class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
-              >Steg 02</span
+              >Krok 02</span
             >
             <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
-              Torka upp
+              Wytrzyj
             </h4>
             <p class="text-body-sm text-blaeck-600 m-0">
-              Lämna inget vatten stående — det går snabbt in i golv och väggar i
-              ett 50-talshus.
+              Nie zostawiaj stojącej wody — w domu z lat 50. szybko wsiąka w
+              podłogi i ściany.
             </p>
           </li>
           <li class="card p-5 flex flex-col gap-2 bg-terra-50 border-terra-200">
             <span
               class="font-mono text-label uppercase tracking-[0.12em] text-terra-700 m-0"
-              >Steg 03</span
+              >Krok 03</span
             >
             <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
-              Ring oss direkt
+              Zadzwoń do nas od razu
             </h4>
             <p class="text-body-sm text-blaeck-700 m-0">
               <a href="tel:+46703909051" translate="no" class="link"
                 >070-390 90 51</a
-              >. Inget meddelande — ring tills någon svarar.
+              >. Bez wiadomości — dzwoń, aż ktoś odbierze.
             </p>
           </li>
         </ol>
@@ -2214,45 +2197,45 @@
         <p
           class="font-mono text-[11px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
         >
-          Vid strömavbrott
+          Przy awarii prądu
         </p>
         <ol class="grid sm:grid-cols-3 gap-4 list-none p-0 m-0 mb-10">
           <li class="card p-5 flex flex-col gap-2">
             <span
               class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
-              >Steg 01</span
+              >Krok 01</span
             >
             <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
-              Kolla grannarna
+              Sprawdź sąsiadów
             </h4>
             <p class="text-body-sm text-blaeck-600 m-0">
-              Är det mörkt hos grannarna också? Då är det områdesfel — vänta
-              ungefär 15 min innan ni gör något mer.
+              Czy u sąsiadów też jest ciemno? Wtedy to awaria w okolicy —
+              odczekajcie około 15 min, zanim zrobicie coś jeszcze.
             </p>
           </li>
           <li class="card p-5 flex flex-col gap-2">
             <span
               class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
-              >Steg 02</span
+              >Krok 02</span
             >
             <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
-              Proppskåpet i hallen
+              Skrzynka bezpiecznikowa w przedpokoju
             </h4>
             <p class="text-body-sm text-blaeck-600 m-0">
-              Slå tillbaka eventuell utlöst säkring. Använd inte den apparat som
-              orsakade utlösningen.
+              Przywróć ewentualnie wyłączony bezpiecznik. Nie używaj urządzenia,
+              które spowodowało wyłączenie.
             </p>
           </li>
           <li class="card p-5 flex flex-col gap-2 bg-terra-50 border-terra-200">
             <span
               class="font-mono text-label uppercase tracking-[0.12em] text-terra-700 m-0"
-              >Steg 03</span
+              >Krok 03</span
             >
             <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
-              Löser ut igen?
+              Wyłącza się ponownie?
             </h4>
             <p class="text-body-sm text-blaeck-700 m-0">
-              Ring oss innan du gör ett tredje försök —
+              Zadzwoń do nas, zanim spróbujesz po raz trzeci —
               <a href="tel:+46703909051" translate="no" class="link"
                 >070-390 90 51</a
               >.
@@ -2264,45 +2247,45 @@
         <p
           class="font-mono text-[11px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
         >
-          Vid brand
+          Przy pożarze
         </p>
         <ol class="grid sm:grid-cols-3 gap-4 list-none p-0 m-0 mb-10">
           <li class="card p-5 flex flex-col gap-2">
             <span
               class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
-              >Steg 01</span
+              >Krok 01</span
             >
             <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
-              Brandsläckare i hallen
+              Gaśnica w przedpokoju
             </h4>
             <p class="text-body-sm text-blaeck-600 m-0">
-              Står direkt i hallen — central placering, nära köket. Brandfilten
-              hänger bredvid.
+              Stoi w przedpokoju — centralne miejsce, blisko kuchni. Koc
+              gaśniczy wisi obok.
             </p>
           </li>
           <li class="card p-5 flex flex-col gap-2">
             <span
               class="font-mono text-label uppercase tracking-[0.12em] text-blaeck-400 m-0"
-              >Steg 02</span
+              >Krok 02</span
             >
             <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
-              Ut ur huset
+              Wyjdź z domu
             </h4>
             <p class="text-body-sm text-blaeck-600 m-0">
-              Lämna huset om elden inte slocknar omedelbart. Stäng inga dörrar
-              som du normalt går igenom.
+              Opuść dom, jeśli ogień nie gaśnie natychmiast. Nie zamykaj drzwi,
+              przez które normalnie przechodzisz.
             </p>
           </li>
           <li class="card p-5 flex flex-col gap-2 bg-terra-50 border-terra-200">
             <span
               class="font-mono text-label uppercase tracking-[0.12em] text-terra-700 m-0"
-              >Steg 03</span
+              >Krok 03</span
             >
             <h4 class="font-sans font-semibold text-[16px] text-blaeck-900 m-0">
-              Ring 112
+              Zadzwoń pod 112
             </h4>
             <p class="text-body-sm text-blaeck-700 m-0">
-              Sedan oss på
+              Następnie do nas pod
               <a href="tel:+46703909051" translate="no" class="link"
                 >070-390 90 51</a
               >.
@@ -2317,7 +2300,7 @@
           <p
             class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-3"
           >
-            Bra nummer att ha
+            Przydatne numery
           </p>
           <dl
             class="grid grid-cols-1 sm:grid-cols-3 gap-x-6 gap-y-3 text-body-sm m-0"
@@ -2326,7 +2309,7 @@
               <dt
                 class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400"
               >
-                Akut — brand, olycka, brott
+                Alarmowy — pożar, wypadek, przestępstwo
               </dt>
               <dd class="m-0">
                 <a
@@ -2341,7 +2324,7 @@
               <dt
                 class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400"
               >
-                Sjukvårdsrådgivning
+                Porady medyczne
               </dt>
               <dd class="m-0">
                 <a
@@ -2356,7 +2339,7 @@
               <dt
                 class="font-mono text-[10px] uppercase tracking-[0.1em] text-blaeck-400"
               >
-                Polis — icke-akut
+                Policja — nieawaryjnie
               </dt>
               <dd class="m-0">
                 <a
@@ -2384,7 +2367,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              09 · Ordningsregler
+              09 · Regulamin
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -2394,7 +2377,6 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Husets
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -2403,16 +2385,17 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >ramar</em
-              >.
+                >Zasady</em
+              >
+              domu.
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Tre regler är icke-förhandlingsbara — brott räknas som väsentligt
-              avtalsbrott. Resten är observera-regler. Allvarsgraden står till
-              höger.
+              Trzy zasady są niepodlegające negocjacji — ich naruszenie liczy
+              się jako istotne naruszenie umowy. Pozostałe to zasady do
+              obserwacji. Stopień ważności po prawej.
             </p>
           </div>
 
@@ -2428,16 +2411,16 @@
                 <h4
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Rökfritt inomhus
+                  Zakaz palenia w pomieszczeniach
                 </h4>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Rök utomhus på tomten. Fimpar i metalldosan på trappan — inte
-                  på marken.
+                  Pal na zewnątrz, na działce. Niedopałki do metalowej puszki na
+                  schodach — nie na ziemi.
                 </p>
               </div>
               <span
                 class="font-mono text-[10px] uppercase tracking-[0.12em] bg-terra-100 text-terra-800 px-2 py-1 rounded-sm whitespace-nowrap"
-                >Strikt</span
+                >Surowo</span
               >
             </li>
             <li
@@ -2451,16 +2434,16 @@
                 <h4
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Inga husdjur
+                  Bez zwierząt
                 </h4>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Hund, katt eller annat djur får inte vistas i huset. Inga
-                  undantag.
+                  Pies, kot lub inne zwierzę nie może przebywać w domu. Bez
+                  wyjątków.
                 </p>
               </div>
               <span
                 class="font-mono text-[10px] uppercase tracking-[0.12em] bg-terra-100 text-terra-800 px-2 py-1 rounded-sm whitespace-nowrap"
-                >Strikt</span
+                >Surowo</span
               >
             </li>
             <li
@@ -2474,16 +2457,16 @@
                 <h4
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Eldstaden får inte användas
+                  Nie wolno używać kominka
                 </h4>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Den öppna spisen i vardagsrummet är dekorativ — den är inte
-                  besiktigad för eldning.
+                  Otwarty kominek w salonie jest dekoracyjny — nie został
+                  przebadany pod kątem palenia.
                 </p>
               </div>
               <span
                 class="font-mono text-[10px] uppercase tracking-[0.12em] bg-terra-100 text-terra-800 px-2 py-1 rounded-sm whitespace-nowrap"
-                >Strikt</span
+                >Surowo</span
               >
             </li>
             <li
@@ -2497,16 +2480,16 @@
                 <h4
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Inga byggåtgärder
+                  Bez prac budowlanych
                 </h4>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Inga skruvar, dyckert, krokar eller tejp i väggar och möbler.
-                  Säg till om något måste sättas upp.
+                  Bez śrub, gwoździ, haczyków ani taśmy w ścianach i meblach.
+                  Powiedz, jeśli coś musi być powieszone.
                 </p>
               </div>
               <span
                 class="font-mono text-[10px] uppercase tracking-[0.12em] bg-senap-200 text-senap-900 px-2 py-1 rounded-sm whitespace-nowrap"
-                >Observera</span
+                >Uwaga</span
               >
             </li>
             <li
@@ -2520,16 +2503,16 @@
                 <h4
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Tystnad efter 22:00
+                  Cisza po 22:00
                 </h4>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Volym ner på TV och musik. Det är ett villaområde — alla har
-                  jobb morgonen efter.
+                  Ścisz telewizor i muzykę. To dzielnica domów jednorodzinnych —
+                  wszyscy mają pracę następnego dnia rano.
                 </p>
               </div>
               <span
                 class="font-mono text-[10px] uppercase tracking-[0.12em] bg-senap-200 text-senap-900 px-2 py-1 rounded-sm whitespace-nowrap"
-                >Observera</span
+                >Uwaga</span
               >
             </li>
             <li
@@ -2543,16 +2526,16 @@
                 <h4
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Diska samma dag
+                  Zmywaj tego samego dnia
                 </h4>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Lämna inget i hon över natten. Det blir bara värre dagen
-                  efter.
+                  Nie zostawiaj niczego w zlewie na noc. Następnego dnia będzie
+                  tylko gorzej.
                 </p>
               </div>
               <span
                 class="font-mono text-[10px] uppercase tracking-[0.12em] bg-senap-200 text-senap-900 px-2 py-1 rounded-sm whitespace-nowrap"
-                >Observera</span
+                >Uwaga</span
               >
             </li>
             <li
@@ -2566,16 +2549,16 @@
                 <h4
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Max 5 boende samtidigt
+                  Maks. 5 mieszkańców jednocześnie
                 </h4>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Idag finns fyra sängar —
-                  den femte sovplatsen tillkommer när källarrummet blir klart.
+                  Obecnie są cztery łóżka — piąte miejsce do spania pojawi się,
+                  gdy pokój w piwnicy będzie gotowy.
                 </p>
               </div>
               <span
                 class="font-mono text-[10px] uppercase tracking-[0.12em] bg-senap-200 text-senap-900 px-2 py-1 rounded-sm whitespace-nowrap"
-                >Observera</span
+                >Uwaga</span
               >
             </li>
             <li
@@ -2589,16 +2572,16 @@
                 <h4
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Garaget &amp; gäststugan ingår inte
+                  Garaż i domek gościnny nie wchodzą w skład
                 </h4>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Båda är låsta och används av oss för förvaring. Använd inte
-                  uppfarten på sätt som blockerar dem.
+                  Oba są zamknięte i używane przez nas do przechowywania. Nie
+                  używaj wjazdu w sposób blokujący je.
                 </p>
               </div>
               <span
                 class="font-mono text-[10px] uppercase tracking-[0.12em] bg-linne-200 text-blaeck-700 px-2 py-1 rounded-sm whitespace-nowrap"
-                >Bra att veta</span
+                >Warto wiedzieć</span
               >
             </li>
             <li class="grid grid-cols-[auto_1fr_auto] gap-4 items-start py-4">
@@ -2610,18 +2593,18 @@
                 <h4
                   class="font-sans font-semibold text-[15px] text-blaeck-900 m-0 mb-1"
                 >
-                  Tvätta bilen
+                  Mycie samochodu
                 </h4>
                 <p class="text-body-sm text-blaeck-600 m-0">
-                  Det går att tvätta bilen på uppfarten. men jag rekomenderar att kör till
-                  tvätthallen vid <span translate="no">OKQ8</span>,
-                  <span translate="no">Hästmarksvägen 1</span> — fem minuter
-                  bort.
+                  Można umyć samochód na wjeździe, ale polecam pojechać do myjni
+                  przy <span translate="no">OKQ8</span>,
+                  <span translate="no">Hästmarksvägen 1</span> — pięć minut
+                  stąd.
                 </p>
               </div>
               <span
                 class="font-mono text-[10px] uppercase tracking-[0.12em] bg-linne-200 text-blaeck-700 px-2 py-1 rounded-sm whitespace-nowrap"
-                >Bra att veta</span
+                >Warto wiedzieć</span
               >
             </li>
           </ul>
@@ -2641,7 +2624,7 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3"
             >
-              10 · Utomhus
+              10 · Na zewnątrz
             </p>
             <h2
               class="font-display font-light text-[clamp(28px,4vw,44px)] leading-[1.1] -tracking-[0.015em] text-blaeck-900 m-0 mb-4"
@@ -2651,7 +2634,7 @@
                   &quot;SOFT&quot; 30;
               "
             >
-              Trädgård,
+              Ogród,
               <em
                 class="wonk text-terra-600 font-normal"
                 style="
@@ -2660,16 +2643,16 @@
                     &quot;SOFT&quot; 30,
                     &quot;WONK&quot; 1;
                 "
-                >uppfart</em
+                >wjazd</em
               >
-              &amp; uteplats.
+              i taras.
             </h2>
             <p
               class="font-display text-[16px] leading-[1.55] text-blaeck-600 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Vi sköter gräset och snöröjningen på parkeringen. Ni gör
-              vintervägen till entrén.
+              My zajmujemy się trawą i odśnieżaniem parkingu. Wy odśnieżacie
+              ścieżkę do wejścia.
             </p>
           </div>
 
@@ -2678,64 +2661,64 @@
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-skog-700 m-0"
               >
-                Vi ansvarar för
+                My odpowiadamy za
               </p>
               <h3
                 class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
               >
-                Gräsklippning &amp; snöröjning av parkeringen
+                Koszenie trawy i odśnieżanie parkingu
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Sommartid klipper vi gräset. Vintertid skottar vi parkeringen så
-                att ni kommer in och ut.
+                Latem kosimy trawę. Zimą odśnieżamy parking, abyście mogli
+                wjechać i wyjechać.
               </p>
             </article>
             <article class="card p-5 flex flex-col gap-2">
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-terra-700 m-0"
               >
-                Ni ansvarar för
+                Wy odpowiadacie za
               </p>
               <h3
                 class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
               >
-                Skotta &amp; grusa till entrén
+                Odśnieżanie i posypywanie ścieżki do wejścia
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Spaden står i garagets ytterförråd, gruset i en tunna bredvid.
-                Halkbekämpa när det behövs — det räcker långt.
+                Łopata jest w zewnętrznym schowku przy garażu, piasek w beczce
+                obok. Posypujcie, gdy trzeba — to wystarcza.
               </p>
             </article>
             <article class="card p-5 flex flex-col gap-2">
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
               >
-                Trädgården
+                Ogród
               </p>
               <h3
                 class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
               >
-                Plocka kvistar om något har blåst ner
+                Zbierz gałęzie, jeśli coś spadło
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Inget krav. Men det är välkommet — ni bor här ändå, och 940 m²
-                tomt blåser till en del under hösten.
+                Bez wymagań. Ale mile widziane — i tak tutaj mieszkacie, a
+                940 m² działki sporo zwiewa jesienią.
               </p>
             </article>
             <article class="card p-5 flex flex-col gap-2">
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0"
               >
-                Uteplatsen
+                Taras
               </p>
               <h3
                 class="font-sans font-semibold text-[15px] text-blaeck-900 m-0"
               >
-                Grilla på den takade uteplatsen
+                Grill na zadaszonym tarasie
               </h3>
               <p class="text-body-sm text-blaeck-600 m-0">
-                Det är OK. Vi litar på sunt förnuft — håll avstånd till
-                träväggen och stäng av kolen ordentligt.
+                OK. Ufamy zdrowemu rozsądkowi — trzymaj odstęp od drewnianej
+                ściany i porządnie wygaś węgiel.
               </p>
             </article>
           </div>
@@ -2749,16 +2732,16 @@
         <h2
           class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
         >
-          Vem du ringer
+          Do kogo dzwonić
         </h2>
         <p
           class="font-display font-light text-[17px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0 mb-10"
           style="font-variation-settings: &quot;opsz&quot; 18"
         >
-          Allt som rör <em class="wonk text-terra-600">huset</em> går till
-          <span translate="no">Hugo</span>. Allt som rör
-          <em class="wonk text-terra-600">boendet</em> — kontrakt, schema, koder
-          — går till <span translate="no">Sanco</span>.
+          Wszystko, co dotyczy <em class="wonk text-terra-600">domu</em>, kieruj
+          do <span translate="no">Hugo</span>. Wszystko, co dotyczy
+          <em class="wonk text-terra-600">zakwaterowania</em> — umowy,
+          harmonogramu, kodów — kieruj do <span translate="no">Sanco</span>.
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -2768,7 +2751,7 @@
             <p
               class="font-mono text-label uppercase tracking-[0.12em] text-linne-300 m-0"
             >
-              Huset
+              Dom
             </p>
             <h3
               translate="no"
@@ -2795,8 +2778,8 @@
               class="font-display text-[15px] leading-[1.5] text-linne-200 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Vattenläcka, strömavbrott, wifi som inte funkar, trasig vitvara —
-              eller något annat som inte fungerar.
+              Wyciek wody, awaria prądu, niedziałające wi-fi, zepsuty sprzęt AGD
+              — lub cokolwiek innego, co nie działa.
             </p>
             <dl
               class="grid grid-cols-[90px_1fr] gap-3 text-[14px] py-3 border-t border-skog-700 m-0 mt-2"
@@ -2817,7 +2800,7 @@
               <dt
                 class="font-mono text-label uppercase tracking-[0.08em] text-linne-400 mt-0.5"
               >
-                E-post
+                E-mail
               </dt>
               <dd class="m-0 text-linne-100">
                 <a
@@ -2835,7 +2818,7 @@
             <p
               class="font-mono text-label uppercase tracking-[0.12em] text-terra-100 m-0"
             >
-              Boendet · <span translate="no">Sanco</span>
+              Zakwaterowanie · <span translate="no">Sanco</span>
             </p>
             <h3
               translate="no"
@@ -2862,7 +2845,7 @@
               class="font-display text-[15px] leading-[1.5] text-terra-100 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Bokningen, schemat, kontraktet, koder till nyckelskåp.
+              Rezerwacja, harmonogram, umowa, kody do skrzynki na klucze.
             </p>
             <dl
               class="grid grid-cols-[90px_1fr] gap-3 text-[14px] py-3 border-t border-terra-800 m-0 mt-2"
@@ -2883,7 +2866,7 @@
               <dt
                 class="font-mono text-label uppercase tracking-[0.08em] text-terra-200 mt-0.5"
               >
-                E-post
+                E-mail
               </dt>
               <dd class="m-0 text-linne-50">
                 <a
@@ -2923,15 +2906,17 @@
                   &quot;WONK&quot; 1,
                   &quot;SOFT&quot; 30;
               "
-              >litet hus</em
-            >,<br />tydliga ramar.
+              >mały dom</em
+            >,<br />jasne zasady.
           </p>
           <p class="text-caption text-linne-300 m-0">
-            <span translate="no">Domek</span> är ett enfamiljshus från 1959 på
-            <span translate="no">Solrosvägen 17</span> i
+            <span translate="no">Domek</span> to dom jednorodzinny z 1959 roku przy
+            <span translate="no">Solrosvägen 17</span> w
             <span translate="no">Örnsköldsvik</span>.
-            <span translate="no">Hugo &amp; Vega Kjellsson</span> äger det,
-            <span translate="no">Sanco</span> hyr det åt sina arbetare.
+            <span translate="no">Hugo &amp; Vega Kjellsson</span> są
+            właścicielami,
+            <span translate="no">Sanco</span> wynajmuje go dla swoich
+            pracowników.
           </p>
         </div>
 
@@ -2944,7 +2929,7 @@
           <div class="flex flex-col gap-1 text-caption mt-3">
             <span
               class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
-              >Huset</span
+              >Dom</span
             >
             <span translate="no">Hugo Kjellsson</span>
             <a
@@ -2974,7 +2959,7 @@
           <div class="flex flex-col gap-1 text-caption mt-3">
             <span
               class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
-              >Boendet · <span translate="no">Sanco</span></span
+              >Zakwaterowanie · <span translate="no">Sanco</span></span
             >
             <span translate="no">Nicklas Boström</span>
             <a
@@ -2995,28 +2980,28 @@
           <h5
             class="font-mono text-label uppercase tracking-[0.12em] text-terra-300 m-0 mb-4 font-medium"
           >
-            Sidor
+            Strony
           </h5>
           <ul class="list-none m-0 p-0 flex flex-col gap-2">
             <li>
               <a
-                href="huset.html"
+                href="husetPLN.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Huset</a
+                >Dom</a
               >
             </li>
             <li>
               <a
-                href="inflytt-utflytt.html"
+                href="inflytt-utflyttPLN.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Inflytt &amp; utflytt</a
+                >Wprowadzenie i wyprowadzka</a
               >
             </li>
             <li>
               <a
-                href="omradet.html"
+                href="omradetPLN.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Området</a
+                >Okolica</a
               >
             </li>
           </ul>
@@ -3074,15 +3059,15 @@
             },
           ).addTo(map);
 
-          // Domek — två dots (brun + grön) som representerar de fysiska kärlen
+          // Domek — dwie kropki (brązowa + zielona) symbolizujące fizyczne kosze
           L.marker(DOMEK, {
             icon: L.divIcon({
               className: "",
               html:
                 '<div class="bin-pair">' +
                 '<span class="pin-label" translate="no">Domek</span>' +
-                '<span class="bin-dot bin-brown" title="Brunt kärl"></span>' +
-                '<span class="bin-dot bin-green" title="Grönt kärl"></span>' +
+                '<span class="bin-dot bin-brown" title="Brązowy kosz"></span>' +
+                '<span class="bin-dot bin-green" title="Zielony kosz"></span>' +
                 "</div>",
               iconSize: [36, 16],
               iconAnchor: [18, 8],
@@ -3091,21 +3076,21 @@
             interactive: false,
           }).addTo(map);
 
-          // Återvinningsstation (terra)
+          // Stacja recyklingu (terra)
           L.marker(AVS, {
             icon: L.divIcon({
               className: "",
-              html: '<div class="place-pin" style="background:#c9522f">Å</div>',
+              html: '<div class="place-pin" style="background:#c9522f">S</div>',
               iconSize: [28, 28],
               iconAnchor: [14, 14],
             }),
           })
             .bindPopup(
-              '<strong>Återvinningsstation</strong><br>Strandgatan · 200 m<br><a href="https://www.google.com/maps/dir/?api=1&origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&destination=63.30951,18.75163" target="_blank" rel="noopener">Vägbeskrivning →</a>',
+              '<strong>Stacja recyklingu</strong><br>Strandgatan · 200 m<br><a href="https://www.google.com/maps/dir/?api=1&origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&destination=63.30951,18.75163" target="_blank" rel="noopener">Wskazówki dojazdu →</a>',
             )
             .addTo(map);
 
-          // Må återvinningscentral (mörk)
+          // Centrum recyklingu Må (mörk)
           L.marker(MA, {
             icon: L.divIcon({
               className: "",
@@ -3115,13 +3100,10 @@
             }),
           })
             .bindPopup(
-              '<strong>Må återvinningscentral</strong><br>Returvägen 11 · 1,4 km<br><a href="https://www.google.com/maps/dir/?api=1&origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&destination=M%C3%A5+%C3%85tervinningscentral+Returv%C3%A4gen+11+%C3%96rnsk%C3%B6ldsvik" target="_blank" rel="noopener">Vägbeskrivning →</a>',
+              '<strong>Centrum recyklingu Må</strong><br>Returvägen 11 · 1,4 km<br><a href="https://www.google.com/maps/dir/?api=1&origin=Solrosv%C3%A4gen+17+%C3%96rnsk%C3%B6ldsvik&destination=M%C3%A5+%C3%85tervinningscentral+Returv%C3%A4gen+11+%C3%96rnsk%C3%B6ldsvik" target="_blank" rel="noopener">Wskazówki dojazdu →</a>',
             )
             .addTo(map);
 
-          // Anpassa vy så alla tre pins syns. På desktop reserveras 320px
-          // i botten för kort-overlayen; på mobil ligger korten under kartan
-          // så vi kan använda full kartyta.
           const bounds = L.latLngBounds([DOMEK, AVS, MA]);
           function refit() {
             const isMobile = window.matchMedia("(max-width: 1023px)").matches;
@@ -3132,7 +3114,6 @@
           }
           refit();
 
-          // Refit & invalidate vid resize/orientationchange
           let resizeTimer = null;
           window.addEventListener("resize", () => {
             clearTimeout(resizeTimer);
@@ -3143,13 +3124,11 @@
           });
         }
 
-        // Vänta på att Leaflet (defer) och DOM laddats
         if (document.readyState === "loading") {
           document.addEventListener("DOMContentLoaded", initSoporMap);
         } else {
           initSoporMap();
         }
-        // Backup: om Leaflet laddar långsamt
         window.addEventListener("load", initSoporMap);
       })();
     </script>

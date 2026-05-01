@@ -1,30 +1,12 @@
 <!doctype html>
-<html lang="sv">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Default to Polish unless user has chosen Swedish -->
-    <script>
-      (function () {
-        try {
-          if (localStorage.getItem("domek-lang") === "sv") return;
-          var map = {
-            "index.html": "indexPLN.html",
-            "huset.html": "husetPLN.html",
-            "inflytt-utflytt.html": "inflytt-utflyttPLN.html",
-            "omradet.html": "omradetPLN.html",
-          };
-          var file = location.pathname.split("/").pop() || "index.html";
-          if (map[file]) location.replace(map[file]);
-        } catch (e) {}
-      })();
-    </script>
-
     <title data-i18n="index.title">Domek — Solrosvägen 17</title>
     <meta
       name="description"
-      content="Domek — ett enfamiljshus från 1959 i Örnsköldsvik. Praktisk information för boende på Solrosvägen 17."
+      content="Domek — dom jednorodzinny z 1959 roku w Örnsköldsvik. Praktyczne informacje dla mieszkańców Solrosvägen 17."
     />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -155,7 +137,7 @@
     </style>
   </head>
   <body>
-    <a href="#main" class="skip">Hoppa till innehåll</a>
+    <a href="#main" class="skip">Przejdź do treści</a>
 
     <!-- ============== HEADER (Domek) ============== -->
     <header
@@ -166,7 +148,7 @@
       >
         <div class="flex items-center gap-3 sm:gap-4">
         <a
-          href="index.html"
+          href="indexPLN.html"
           translate="no"
           class="font-display font-medium text-2xl -tracking-[0.01em] text-blaeck-900 inline-flex items-baseline gap-2 no-underline"
           style="
@@ -191,15 +173,15 @@
             >e</em
           >k
         </a>
-        <div class="inline-flex items-center bg-linne-100 border border-linne-200 rounded-full p-0.5 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold leading-none" role="group" aria-label="Språkval">
-          <span aria-current="page" class="px-2.5 py-1 rounded-full bg-blaeck-800 text-linne-50">SV</span>
-          <a href="indexPLN.html" onclick="try{localStorage.setItem('domek-lang','pl')}catch(e){}" translate="no" class="px-2.5 py-1 rounded-full text-blaeck-500 hover:text-blaeck-900 no-underline transition-colors">PL</a>
+        <div class="inline-flex items-center bg-linne-100 border border-linne-200 rounded-full p-0.5 font-mono text-[10px] uppercase tracking-[0.1em] font-semibold leading-none" role="group" aria-label="Wybór języka">
+          <a href="index.html" onclick="try{localStorage.setItem('domek-lang','sv')}catch(e){}" translate="no" class="px-2.5 py-1 rounded-full text-blaeck-500 hover:text-blaeck-900 no-underline transition-colors">SV</a>
+          <span aria-current="page" class="px-2.5 py-1 rounded-full bg-blaeck-800 text-linne-50">PL</span>
         </div>
         </div>
 
         <button
           class="nav-toggle group lg:hidden bg-transparent border border-linne-200 rounded-sm p-2 cursor-pointer"
-          aria-label="Öppna meny"
+          aria-label="Otwórz menu"
           aria-controls="primary-nav"
           aria-expanded="false"
         >
@@ -223,11 +205,11 @@
           >
             <li>
               <a
-                href="index.html"
+                href="indexPLN.html"
                 data-i18n="nav.hem"
                 aria-current="page"
                 class="block text-terra-700 bg-terra-50 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 max-lg:px-3 max-lg:py-3"
-                >Hem</a
+                >Start</a
               >
             </li>
             <li>
@@ -235,7 +217,7 @@
                 href="huset.html"
                 data-i18n="nav.huset"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 [&.is-active]:text-terra-700 [&.is-active]:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Huset</a
+                >Dom</a
               >
             </li>
             <li>
@@ -243,7 +225,7 @@
                 href="inflytt-utflytt.html"
                 data-i18n="nav.inflytt"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 [&.is-active]:text-terra-700 [&.is-active]:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Inflytt &amp; utflytt</a
+                >Wprowadzenie i wyprowadzka</a
               >
             </li>
             <li>
@@ -251,7 +233,7 @@
                 href="omradet.html"
                 data-i18n="nav.omradet"
                 class="block text-blaeck-600 no-underline px-2.5 py-1.5 rounded-sm transition-colors hover:text-terra-600 hover:bg-terra-50 [&.is-active]:text-terra-700 [&.is-active]:bg-terra-50 max-lg:px-3 max-lg:py-3"
-                >Området</a
+                >Okolica</a
               >
             </li>
           </ul>
@@ -309,13 +291,13 @@
               rel="noopener"
               class="btn btn-primary"
             >
-              Vägbeskrivning <span class="ml-1">→</span>
+              Wskazówki dojazdu <span class="ml-1">→</span>
             </a>
 
             <div class="mt-5">
               <span
                 class="inline-flex items-center gap-2.5 font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-700"
-                title="Rökning är inte tillåten inomhus"
+                title="Palenie w pomieszczeniach jest zabronione"
               >
                 <svg
                   width="48"
@@ -448,7 +430,7 @@
                     stroke-width="2.5"
                   />
                 </svg>
-                Rökfritt inomhus
+                Zakaz palenia w pomieszczeniach
               </span>
             </div>
           </div>
@@ -460,14 +442,14 @@
             <p
               class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-700 m-0 mb-5 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
             >
-              Ta med dig
+              Zabierz ze sobą
             </p>
 
             <!-- Måste ha -->
             <p
               class="font-mono text-[10px] uppercase tracking-[0.14em] text-terra-700 font-semibold m-0 mb-2"
             >
-              Måste ha
+              Niezbędne
             </p>
 
             <ul class="list-none p-0 m-0 mb-5 space-y-2">
@@ -476,7 +458,7 @@
               >
                 <span class="text-terra-500 font-mono text-[10px] mt-1">●</span>
                 <span
-                  >Sängkläder
+                  >Pościel
                   <span class="text-blaeck-400"
                     >—
                     <a
@@ -484,34 +466,34 @@
                       target="_blank"
                       rel="noopener"
                       class="text-terra-700 hover:text-terra-900 underline decoration-terra-300 hover:decoration-terra-600 underline-offset-2 transition-colors"
-                      >lakan</a
+                      >prześcieradło</a
                     >,
                     <a
                       href="https://www.google.com/search?q=Mio+Jysk+%C3%B6rngott+50x60+%C3%96rnsk%C3%B6ldsvik"
                       target="_blank"
                       rel="noopener"
                       class="text-terra-700 hover:text-terra-900 underline decoration-terra-300 hover:decoration-terra-600 underline-offset-2 transition-colors"
-                      >örngott</a
+                      >poszewka</a
                     >,
                     <a
                       href="https://www.google.com/search?q=Mio+Jysk+p%C3%A5slakan+150x200+%C3%96rnsk%C3%B6ldsvik"
                       target="_blank"
                       rel="noopener"
                       class="text-terra-700 hover:text-terra-900 underline decoration-terra-300 hover:decoration-terra-600 underline-offset-2 transition-colors"
-                      >påslakan</a
+                      >poszwa na kołdrę</a
                     ></span
                   ></span
                 >
               </li>
               <p class="text-[12px] text-blaeck-400 m-0 mb-2 leading-snug">
-                Mått: lakan 150×260, örngott 50×60, påslakan 150×200.
+                Wymiary: prześcieradło 150×260, poszewka 50×60, poszwa na kołdrę 150×200.
               </p>
               <li
                 class="text-[15px] text-blaeck-800 flex items-baseline gap-2.5"
               >
                 <span class="text-terra-500 font-mono text-[10px] mt-1">●</span>
                 <span
-                  >Handdukar
+                  >Ręczniki
                   <span class="text-blaeck-400"
                     >—
                     <a
@@ -519,21 +501,21 @@
                       target="_blank"
                       rel="noopener"
                       class="text-terra-700 hover:text-terra-900 underline decoration-terra-300 hover:decoration-terra-600 underline-offset-2 transition-colors"
-                      >badhandduk</a
+                      >ręcznik kąpielowy</a
                     >,
                     <a
                       href="https://www.google.com/search?q=Mio+Jysk+g%C3%A4sthandduk+%C3%96rnsk%C3%B6ldsvik"
                       target="_blank"
                       rel="noopener"
                       class="text-terra-700 hover:text-terra-900 underline decoration-terra-300 hover:decoration-terra-600 underline-offset-2 transition-colors"
-                      >gästhandduk</a
+                      >ręcznik dla gości</a
                     >,
                     <a
                       href="https://www.google.com/search?q=Mio+Jysk+k%C3%B6kshandduk+%C3%96rnsk%C3%B6ldsvik"
                       target="_blank"
                       rel="noopener"
                       class="text-terra-700 hover:text-terra-900 underline decoration-terra-300 hover:decoration-terra-600 underline-offset-2 transition-colors"
-                      >kökshandduk</a
+                      >ręcznik kuchenny</a
                     ></span
                   ></span
                 >
@@ -545,7 +527,7 @@
               <p
                 class="font-mono text-[10px] uppercase tracking-[0.14em] text-blaeck-500 font-semibold m-0 mb-2"
               >
-                Rekommendation
+                Zalecane
               </p>
               <ul class="list-none p-0 m-0 space-y-2">
                 <li
@@ -554,7 +536,7 @@
                   <span class="text-blaeck-300 font-mono text-[10px] mt-1"
                     >○</span
                   >
-                  <span>Underkläder &amp; ombyte</span>
+                  <span>Bielizna i odzież na zmianę</span>
                 </li>
                 <li
                   class="text-[15px] text-blaeck-800 flex items-baseline gap-2.5"
@@ -562,7 +544,7 @@
                   <span class="text-blaeck-300 font-mono text-[10px] mt-1"
                     >○</span
                   >
-                  <span>Tandborste, schampo, deodorant</span>
+                  <span>Szczoteczka do zębów, szampon, dezodorant</span>
                 </li>
                 <li
                   class="text-[15px] text-blaeck-800 flex items-baseline gap-2.5"
@@ -570,7 +552,7 @@
                   <span class="text-blaeck-300 font-mono text-[10px] mt-1"
                     >○</span
                   >
-                  <span>Hörlurar &amp; dator</span>
+                  <span>Słuchawki i komputer</span>
                 </li>
               </ul>
             </div>
@@ -586,7 +568,7 @@
         <h2
           class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-8 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
         >
-          Sophämtning
+          Wywóz śmieci
         </h2>
 
         <!-- THE WIDGET — three tiers: instruktion / nedräkning / schemadag -->
@@ -607,7 +589,7 @@
                     &quot;SOFT&quot; 30;
                 "
               >
-                Dra ut tunnan
+                Wystaw kosz
                 <em
                   class="wonk text-terra-600 font-normal"
                   style="
@@ -616,20 +598,20 @@
                       &quot;WONK&quot; 1,
                       &quot;SOFT&quot; 30;
                   "
-                  ><span data-bin-day-before>tisdag</span> kväll</em
+                  ><span data-bin-day-before>we wtorek</span> wieczorem</em
                 >.
               </h3>
               <p
                 class="font-mono text-[11px] uppercase tracking-[0.1em] text-blaeck-400 m-0 mb-5 first-letter:uppercase"
                 data-bin-date
               >
-                tisdag 28 april
+                wtorek 28 kwietnia
               </p>
               <p
                 class="font-display text-[clamp(18px,2vw,22px)] leading-[1.3] text-blaeck-600 m-0 first-letter:uppercase"
                 style="font-variation-settings: &quot;opsz&quot; 24"
               >
-                <span data-bin-countdown>om 3 dagar</span>.
+                <span data-bin-countdown>za 3 dni</span>.
               </p>
 
               <!-- Section 2: pickup -->
@@ -637,14 +619,14 @@
                 <p
                   class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0 mb-1.5"
                 >
-                  Sopbilen kommer
+                  Śmieciarka przyjedzie
                 </p>
                 <p
                   class="font-display text-[clamp(18px,2vw,22px)] leading-[1.3] text-blaeck-700 m-0 first-letter:uppercase"
                   style="font-variation-settings: &quot;opsz&quot; 24"
                   data-bin-pickup
                 >
-                  onsdag 29 april
+                  środa 29 kwietnia
                 </p>
               </div>
             </div>
@@ -660,7 +642,7 @@
                     &quot;SOFT&quot; 30;
                 "
               >
-                Dra ut tunnan
+                Wystaw kosz
                 <em
                   class="wonk font-normal"
                   style="
@@ -669,14 +651,14 @@
                       &quot;WONK&quot; 1,
                       &quot;SOFT&quot; 30;
                   "
-                  >ikväll</em
+                  >dziś wieczorem</em
                 >.
               </h3>
               <p
                 class="font-mono text-[11px] uppercase tracking-[0.1em] text-blaeck-400 m-0 first-letter:uppercase"
                 data-bin-date
               >
-                tisdag 28 april
+                wtorek 28 kwietnia
               </p>
 
               <!-- Section 2: pickup -->
@@ -684,13 +666,13 @@
                 <p
                   class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0 mb-1.5"
                 >
-                  Sopbilen kommer imorgon
+                  Śmieciarka przyjedzie jutro
                 </p>
                 <p
                   class="font-display text-[clamp(18px,2vw,22px)] leading-[1.3] text-blaeck-700 m-0 first-letter:uppercase"
                   style="font-variation-settings: &quot;opsz&quot; 24"
                 >
-                  <span data-bin-pickup>onsdag 29 april</span>, 06–14
+                  <span data-bin-pickup>środa 29 kwietnia</span>, 06–14
                 </p>
               </div>
             </div>
@@ -706,7 +688,7 @@
                     &quot;SOFT&quot; 30;
                 "
               >
-                Dra ut tunnan
+                Wystaw kosz
                 <em
                   class="wonk font-normal"
                   style="
@@ -715,14 +697,14 @@
                       &quot;WONK&quot; 1,
                       &quot;SOFT&quot; 30;
                   "
-                  >imorse</em
+                  >dziś rano</em
                 >.
               </h3>
               <p
                 class="font-mono text-[11px] uppercase tracking-[0.1em] text-blaeck-400 m-0 first-letter:uppercase"
                 data-bin-date
               >
-                onsdag 29 april
+                środa 29 kwietnia
               </p>
 
               <!-- Section 2: pickup -->
@@ -730,13 +712,13 @@
                 <p
                   class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0 mb-1.5"
                 >
-                  Sopbilen kommer idag
+                  Śmieciarka przyjedzie dzisiaj
                 </p>
                 <p
                   class="font-display text-[clamp(18px,2vw,22px)] leading-[1.3] text-blaeck-700 m-0"
                   style="font-variation-settings: &quot;opsz&quot; 24"
                 >
-                  Mellan 06 och 14
+                  Między 06:00 a 14:00
                 </p>
               </div>
             </div>
@@ -752,7 +734,7 @@
                     &quot;SOFT&quot; 30;
                 "
               >
-                Tunnan ska
+                Kosz powinien
                 <em
                   class="wonk text-senap-700 font-normal"
                   style="
@@ -761,14 +743,14 @@
                       &quot;WONK&quot; 1,
                       &quot;SOFT&quot; 30;
                   "
-                  >stå ute</em
+                  >stać na zewnątrz</em
                 >.
               </h3>
               <p
                 class="font-mono text-[11px] uppercase tracking-[0.1em] text-blaeck-400 m-0 first-letter:uppercase"
                 data-bin-date
               >
-                onsdag 29 april
+                środa 29 kwietnia
               </p>
 
               <!-- Section 2: pickup -->
@@ -776,13 +758,13 @@
                 <p
                   class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0 mb-1.5"
                 >
-                  Sopbilen kommer idag
+                  Śmieciarka przyjedzie dzisiaj
                 </p>
                 <p
                   class="font-display text-[clamp(18px,2vw,22px)] leading-[1.3] text-blaeck-700 m-0"
                   style="font-variation-settings: &quot;opsz&quot; 24"
                 >
-                  Mellan 06 och 14
+                  Między 06:00 a 14:00
                 </p>
               </div>
             </div>
@@ -798,7 +780,7 @@
                     &quot;SOFT&quot; 30;
                 "
               >
-                Dra
+                Wstaw
                 <em
                   class="wonk text-skog-700 font-normal"
                   style="
@@ -807,15 +789,15 @@
                       &quot;WONK&quot; 1,
                       &quot;SOFT&quot; 30;
                   "
-                  >in</em
+                  >z powrotem</em
                 >
-                tunnan.
+                kosz.
               </h3>
               <p
                 class="font-mono text-[11px] uppercase tracking-[0.1em] text-blaeck-400 m-0 first-letter:uppercase"
                 data-bin-date
               >
-                onsdag 29 april
+                środa 29 kwietnia
               </p>
 
               <!-- Section 2: next pickup (no countdown — informational) -->
@@ -823,14 +805,14 @@
                 <p
                   class="font-mono text-[10px] uppercase tracking-[0.12em] text-blaeck-400 m-0 mb-1.5"
                 >
-                  Sopbilen kommer nästa gång
+                  Następny wywóz śmieci
                 </p>
                 <p
                   class="font-display text-[clamp(18px,2vw,22px)] leading-[1.3] text-blaeck-700 m-0 first-letter:uppercase"
                   style="font-variation-settings: &quot;opsz&quot; 24"
                   data-bin-pickup
                 >
-                  onsdag 13 maj
+                  środa 13 maja
                 </p>
               </div>
             </div>
@@ -846,11 +828,11 @@
               class="inline-block transition-transform group-open:rotate-90 text-[8px]"
               >▸</span
             >
-            Visa schemat
+            Pokaż harmonogram
           </summary>
           <ul data-bin-upcoming class="mt-3 space-y-0 list-none p-0"></ul>
           <p class="text-[11px] text-blaeck-400 mt-3 leading-[1.5]">
-            Källa:
+            Źródło:
             <a
               href="https://miva.se/kundservice/sjalvservice/sophamtning/nar-kommer-sopbilen?sv.target=12.5e486747177feaef88f29850&amp;sv.12.5e486747177feaef88f29850.route=%2Fdetails%2FSolrosv%C3%A4gen+17&amp;city=%C3%96RNSK%C3%96LDSVIK"
               target="_blank"
@@ -869,16 +851,16 @@
         <h2
           class="font-mono text-[11px] uppercase tracking-[0.16em] text-terra-600 m-0 mb-3 inline-flex items-center gap-2.5 before:content-[''] before:w-8 before:h-px before:bg-terra-500"
         >
-          Vem du ringer
+          Do kogo dzwonić
         </h2>
         <p
           class="font-display font-light text-[17px] leading-[1.55] text-blaeck-600 max-w-[62ch] m-0 mb-10"
           style="font-variation-settings: &quot;opsz&quot; 18"
         >
-          Allt som rör <em class="wonk text-terra-600">huset</em> går till
-          <span translate="no">Hugo</span>. Allt som rör
-          <em class="wonk text-terra-600">boendet</em> — kontrakt, schema, koder
-          — går till <span translate="no">Sanco</span>.
+          Wszystko, co dotyczy <em class="wonk text-terra-600">domu</em>, kieruj do
+          <span translate="no">Hugo</span>. Wszystko, co dotyczy
+          <em class="wonk text-terra-600">zakwaterowania</em> — umowy, harmonogramu, kodów
+          — kieruj do <span translate="no">Sanco</span>.
         </p>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -889,7 +871,7 @@
             <p
               class="font-mono text-label uppercase tracking-[0.12em] text-linne-300 m-0"
             >
-              Huset
+              Dom
             </p>
             <h3
               translate="no"
@@ -916,8 +898,8 @@
               class="font-display text-[15px] leading-[1.5] text-linne-200 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Vattenläcka, strömavbrott, wifi som inte funkar, trasig vitvara —
-              eller något annat som inte fungerar.
+              Wyciek wody, awaria prądu, niedziałające wi-fi, zepsuty sprzęt AGD —
+              lub cokolwiek innego, co nie działa.
             </p>
             <dl
               class="grid grid-cols-[90px_1fr] gap-3 text-[14px] py-3 border-t border-skog-700 m-0 mt-2"
@@ -937,7 +919,7 @@
               <dt
                 class="font-mono text-label uppercase tracking-[0.08em] text-linne-400 mt-0.5"
               >
-                E-post
+                E-mail
               </dt>
               <dd class="m-0 text-linne-100">
                 <a
@@ -956,7 +938,7 @@
             <p
               class="font-mono text-label uppercase tracking-[0.12em] text-terra-100 m-0"
             >
-              Boendet · <span translate="no">Sanco</span>
+              Zakwaterowanie · <span translate="no">Sanco</span>
             </p>
             <h3
               translate="no"
@@ -983,7 +965,7 @@
               class="font-display text-[15px] leading-[1.5] text-terra-100 m-0"
               style="font-variation-settings: &quot;opsz&quot; 18"
             >
-              Bokningen, schemat, kontraktet, koder till nyckelskåp.
+              Rezerwacja, harmonogram, umowa, kody do skrzynki na klucze.
             </p>
             <dl
               class="grid grid-cols-[90px_1fr] gap-3 text-[14px] py-3 border-t border-terra-800 m-0 mt-2"
@@ -1003,7 +985,7 @@
               <dt
                 class="font-mono text-label uppercase tracking-[0.08em] text-terra-200 mt-0.5"
               >
-                E-post
+                E-mail
               </dt>
               <dd class="m-0 text-linne-50">
                 <a
@@ -1043,15 +1025,15 @@
                   &quot;WONK&quot; 1,
                   &quot;SOFT&quot; 30;
               "
-              >litet hus</em
-            >,<br />tydliga ramar.
+              >mały dom</em
+            >,<br />jasne zasady.
           </p>
           <p class="text-caption text-linne-300 m-0">
-            <span translate="no">Domek</span> är ett enfamiljshus från 1959 på
-            <span translate="no">Solrosvägen 17</span> i
+            <span translate="no">Domek</span> to dom jednorodzinny z 1959 roku przy
+            <span translate="no">Solrosvägen 17</span> w
             <span translate="no">Örnsköldsvik</span>.
-            <span translate="no">Hugo &amp; Vega Kjellsson</span> äger det,
-            <span translate="no">Sanco</span> hyr det åt sina arbetare.
+            <span translate="no">Hugo &amp; Vega Kjellsson</span> są właścicielami,
+            <span translate="no">Sanco</span> wynajmuje go dla swoich pracowników.
           </p>
         </div>
 
@@ -1064,7 +1046,7 @@
           <div class="flex flex-col gap-1 text-caption mt-3">
             <span
               class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
-              >Huset</span
+              >Dom</span
             >
             <span translate="no">Hugo Kjellsson</span>
             <a
@@ -1092,7 +1074,7 @@
           <div class="flex flex-col gap-1 text-caption mt-3">
             <span
               class="font-mono text-label uppercase tracking-[0.08em] text-linne-400"
-              >Boendet · <span translate="no">Sanco</span></span
+              >Zakwaterowanie · <span translate="no">Sanco</span></span
             >
             <span translate="no">Nicklas Boström</span>
             <a
@@ -1112,28 +1094,28 @@
           <h5
             class="font-mono text-label uppercase tracking-[0.12em] text-terra-300 m-0 mb-4 font-medium"
           >
-            Sidor
+            Strony
           </h5>
           <ul class="list-none m-0 p-0 flex flex-col gap-2">
             <li>
               <a
                 href="huset.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Huset</a
+                >Dom</a
               >
             </li>
             <li>
               <a
                 href="inflytt-utflytt.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Inflytt &amp; utflytt</a
+                >Wprowadzenie i wyprowadzka</a
               >
             </li>
             <li>
               <a
                 href="omradet.html"
                 class="text-linne-200 no-underline text-body-sm border-b border-transparent transition-colors hover:text-terra-300 hover:border-terra-700"
-                >Området</a
+                >Okolica</a
               >
             </li>
           </ul>
@@ -1259,28 +1241,40 @@
           "2026-12-23",
         ];
 
-        const SV_DAYS = [
-          "söndag",
-          "måndag",
-          "tisdag",
-          "onsdag",
-          "torsdag",
-          "fredag",
-          "lördag",
+        // Polish day names (nominative)
+        const PL_DAYS = [
+          "niedziela",
+          "poniedziałek",
+          "wtorek",
+          "środa",
+          "czwartek",
+          "piątek",
+          "sobota",
         ];
-        const SV_MONTHS_LONG = [
-          "januari",
-          "februari",
-          "mars",
-          "april",
-          "maj",
-          "juni",
-          "juli",
-          "augusti",
-          "september",
-          "oktober",
-          "november",
-          "december",
+        // Polish day names (accusative — used after "w/we")
+        const PL_DAYS_ACC = [
+          "niedzielę",
+          "poniedziałek",
+          "wtorek",
+          "środę",
+          "czwartek",
+          "piątek",
+          "sobotę",
+        ];
+        // Polish months (genitive — used in dates: "28 kwietnia")
+        const PL_MONTHS_GEN = [
+          "stycznia",
+          "lutego",
+          "marca",
+          "kwietnia",
+          "maja",
+          "czerwca",
+          "lipca",
+          "sierpnia",
+          "września",
+          "października",
+          "listopada",
+          "grudnia",
         ];
 
         function parseISO(s) {
@@ -1289,31 +1283,49 @@
 
         function fmtLong(d) {
           return (
-            SV_DAYS[d.getDay()] +
+            PL_DAYS[d.getDay()] +
             " " +
             d.getDate() +
             " " +
-            SV_MONTHS_LONG[d.getMonth()]
+            PL_MONTHS_GEN[d.getMonth()]
           );
         }
 
         function dayBefore(pickup) {
           const d = new Date(pickup);
           d.setDate(d.getDate() - 1);
-          return SV_DAYS[d.getDay()];
+          const acc = PL_DAYS_ACC[d.getDay()];
+          // "we" before "wtorek" (phonetic), "w" otherwise
+          const prefix = acc === "wtorek" ? "we " : "w ";
+          return prefix + acc;
+        }
+
+        // Polish plural helper: picks correct form based on number
+        function plPlural(n, one, few, many) {
+          if (n === 1) return one;
+          const lastDigit = n % 10;
+          const lastTwoDigits = n % 100;
+          if (
+            lastDigit >= 2 &&
+            lastDigit <= 4 &&
+            (lastTwoDigits < 12 || lastTwoDigits > 14)
+          )
+            return few;
+          return many;
         }
 
         function countdown(now, target) {
           const diff = target - now;
-          if (diff <= 0) return "idag";
+          if (diff <= 0) return "dzisiaj";
           const days = Math.floor(diff / 86400000);
-          if (days >= 2) return "om " + days + " dagar";
-          if (days === 1) return "om 1 dag";
+          if (days >= 1) return "za " + days + " " + plPlural(days, "dzień", "dni", "dni");
           const hours = Math.floor(diff / 3600000);
-          if (hours >= 2) return "om " + hours + " timmar";
-          if (hours === 1) return "om 1 timme";
+          if (hours >= 1)
+            return (
+              "za " + hours + " " + plPlural(hours, "godzinę", "godziny", "godzin")
+            );
           const mins = Math.max(1, Math.floor(diff / 60000));
-          return "om " + mins + " min";
+          return "za " + mins + " " + plPlural(mins, "minutę", "minuty", "minut");
         }
 
         function nextRelevantPickup(now) {
